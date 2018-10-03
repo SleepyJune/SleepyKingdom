@@ -14,6 +14,8 @@ public class CountryUI : MonoBehaviour
 
     public Transform resourceParent;
 
+    public Text countryPopulation;
+
     private void Start()
     {
         if (GameManager.instance.sceneChanger)
@@ -39,8 +41,10 @@ public class CountryUI : MonoBehaviour
 
         countryName.text = country.countryName;
 
-        GenerateResourceUI("Population", country.population);
-        GenerateResourceUI("Happiness", country.happiness);
+        countryPopulation.text = country.population.ToString();
+
+        //GenerateResourceUI("Population", country.population);
+        //GenerateResourceUI("Happiness", country.happiness);
 
         GenerateResourceUI("Wood", country.wood);
         GenerateResourceUI("Stone", country.stone);
