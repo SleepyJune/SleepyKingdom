@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
+using Random = UnityEngine.Random;
+
 public enum WeatherType
 {
     Sunny,
@@ -28,7 +30,15 @@ public class WeatherManager : MonoBehaviour
     [NonSerialized]
     public WeatherEvent currentWeather;
 
+    [NonSerialized]
+    public EventManager eventManager;
+
     public Dictionary<string, Sprite> weatherPictures = new Dictionary<string, Sprite>();
+        
+    private void Start()
+    {
+        eventManager = GameManager.instance.eventManager;
+    }
 
     private void Update()
     {
@@ -40,7 +50,15 @@ public class WeatherManager : MonoBehaviour
     }
 
     private void ChangeWeather()
-    {
+    {        
+        int randomEventIndex = Random.Range(0, eventManager.weatherEventObjects.Count);
 
+        EventObject eventObject = eventManager.weatherEventObjects[randomEventIndex];
+
+        WeatherEvent newWeather = new WeatherEvent(eventObject);
+
+        currentWeather = newWeather;
+
+        eventManager.NewWeatherEvent(newWeather);
     }
 }

@@ -6,5 +6,8 @@ using UnityEngine;
 
 public class WeatherEvent : Event
 {
-
+    public WeatherEvent(EventObject eventObject) : base(eventObject)
+    {
+        //SetValues(eventObject);
+    }
 }

@@ -16,6 +16,8 @@ public class CountryUI : MonoBehaviour
 
     public Text countryPopulation;
 
+    public Image weatherImage;
+
     private void Start()
     {
         if (GameManager.instance.sceneChanger)
@@ -33,6 +35,15 @@ public class CountryUI : MonoBehaviour
 
             SetCountry(targetCountry);
         }
+
+        GameManager.instance.eventManager.OnNewWeatherEvent += OnNewWeatherEvent;
+    }
+
+    private void OnNewWeatherEvent(Event gameEvent)
+    {
+        WeatherEvent newWeather = gameEvent as WeatherEvent;
+
+        weatherImage.sprite = newWeather.image;
     }
 
     private void SetCountry(Country targetCountry)
