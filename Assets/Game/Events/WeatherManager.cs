@@ -21,11 +21,8 @@ public enum WeatherType
 
 public class WeatherManager : MonoBehaviour
 {
-    [NonSerialized]
-    public int weatherChangeTime = 10; //every 10 seconds
-
-    [NonSerialized]
-    public float lastCheckTime = 0;
+    private int weatherChangeTime = 10; //every 10 seconds
+    private float lastCheckTime = 0;
 
     [NonSerialized]
     public WeatherEvent currentWeather;
@@ -49,7 +46,7 @@ public class WeatherManager : MonoBehaviour
         }        
     }
 
-    private void ChangeWeather()
+    public void ChangeWeather()
     {        
         int randomEventIndex = Random.Range(0, eventManager.weatherEventObjects.Count);
 

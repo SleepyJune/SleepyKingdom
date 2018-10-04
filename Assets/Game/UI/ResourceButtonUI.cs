@@ -11,8 +11,26 @@ public class ResourceButtonUI : MonoBehaviour
     public Text resourceName;
     public Text amount;
 
-    public void UpdateResource(int value)
+    public Button amountButton;
+
+    private Country country;
+    private CountryResourceType resourceType;
+
+    public void SetResource(Country country, CountryResourceType type)
     {
-        amount.text = value.ToString();
+        this.country = country;
+        this.resourceType = type;
+
+        amount.text = country.GetResource(type).ToString();
+
+        country.OnResourceChange += OnResourceChange;
+    }
+
+    private void OnResourceChange(CountryResourceType type, int oldValue, int newValue)
+    {        
+        if(type == resourceType)
+        {
+            amount.text = newValue.ToString();
+        }
     }
 }

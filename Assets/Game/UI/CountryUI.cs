@@ -39,6 +39,11 @@ public class CountryUI : MonoBehaviour
         GameManager.instance.eventManager.OnNewWeatherEvent += OnNewWeatherEvent;
     }
 
+    public void OnWeatherIconClick()
+    {
+        GameManager.instance.weatherManager.ChangeWeather();
+    }
+
     private void OnNewWeatherEvent(Event gameEvent)
     {
         WeatherEvent newWeather = gameEvent as WeatherEvent;
@@ -52,22 +57,33 @@ public class CountryUI : MonoBehaviour
 
         countryName.text = country.countryName;
 
-        countryPopulation.text = country.population.ToString();
+        countryPopulation.text = country.Population.ToString();
+        country.OnResourceChange += OnResourceChange;
 
         //GenerateResourceUI("Population", country.population);
         //GenerateResourceUI("Happiness", country.happiness);
 
-        GenerateResourceUI("Wood", country.wood);
-        GenerateResourceUI("Stone", country.stone);
-        GenerateResourceUI("Wheat", country.wheat);
-        GenerateResourceUI("Gold", country.gold);
+        GenerateResourceUI(CountryResourceType.Wood);
+        GenerateResourceUI(CountryResourceType.Stone);
+        GenerateResourceUI(CountryResourceType.Wheat);
+        GenerateResourceUI(CountryResourceType.Gold);
     }
 
-    public void GenerateResourceUI(string name, int value)
+    private void OnResourceChange(CountryResourceType type, int oldValue, int newValue)
+    {
+        if(type == CountryResourceType.Population)
+        {
+            countryPopulation.text = newValue.ToString();
+        }
+    }
+
+    public void GenerateResourceUI(CountryResourceType type)
     {
         var newResource = Instantiate(resourceButtonUIPrefab, resourceParent);
 
-        newResource.resourceName.text = name;
-        newResource.UpdateResource(value);
+        newResource.resourceName.text = type.ToString();
+        newResource.SetResource(country, type);
+
+        //newResource.amountButton.onClick.AddListener(() => { update});
     }
 }
