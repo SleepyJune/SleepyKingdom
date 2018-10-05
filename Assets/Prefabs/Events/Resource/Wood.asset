@@ -9,8 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 51b9469e5f51ad64aaca999c5c07a6f1, type: 3}
-  m_Name: HouseFire
+  m_Name: Wood
   m_EditorClassIdentifier: 
-  eventName: HouseFire
-  image: {fileID: 21300026, guid: ef9355d2e1884ca43a9041d2b180c742, type: 3}
-  shortDescription: HouseFire
+  eventType: 1
+  eventName: Wood
+  image: {fileID: 21300010, guid: 32f07fc5613b83d4ba049e6bbda9bd8d, type: 3}
+  shortDescription: For making houses.

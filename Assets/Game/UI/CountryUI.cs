@@ -69,11 +69,11 @@ public class CountryUI : MonoBehaviour
         GenerateResourceUI(CountryResourceType.Gold);
     }
 
-    private void OnResourceChange(CountryResourceType type, int oldValue, int newValue)
+    private void OnResourceChange(CountryResourceType type, float oldValue, float newValue)
     {
         if(type == CountryResourceType.Population)
         {
-            countryPopulation.text = newValue.ToString();
+            countryPopulation.text = Mathf.Round(newValue).ToString();
         }
     }
 

@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Name: EventDatabase
   m_EditorClassIdentifier: 
   allEvents:
+  - {fileID: 11400000, guid: 7edd9d676c5e8ea40ad9c9cba2f394e3, type: 2}
+  - {fileID: 11400000, guid: c2dea15278d7c5648b11e8a3f9d62ac8, type: 2}
+  - {fileID: 11400000, guid: 461c7d5edcd070b49abc4dd23c8d9a05, type: 2}
+  - {fileID: 11400000, guid: 324c690e7dde93d4e9027bc28b6c733e, type: 2}
   - {fileID: 11400000, guid: 6ee372924b4075c4b8eed16f64b743b3, type: 2}
   - {fileID: 11400000, guid: 47b81cb39828a2c4f8686b8ed5f7b4e6, type: 2}
   - {fileID: 11400000, guid: 1e3346513aa7b98449c0f38709e8906a, type: 2}

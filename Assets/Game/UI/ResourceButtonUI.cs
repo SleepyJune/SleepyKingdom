@@ -26,11 +26,11 @@ public class ResourceButtonUI : MonoBehaviour
         country.OnResourceChange += OnResourceChange;
     }
 
-    private void OnResourceChange(CountryResourceType type, int oldValue, int newValue)
+    private void OnResourceChange(CountryResourceType type, float oldValue, float newValue)
     {        
         if(type == resourceType)
         {
-            amount.text = newValue.ToString();
+            amount.text = Mathf.Round(newValue).ToString();
         }
     }
 }

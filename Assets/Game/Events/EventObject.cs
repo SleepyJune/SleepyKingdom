@@ -7,6 +7,7 @@ using UnityEngine;
 public enum GameEventType
 {
     Weather,
+    Resource,
 }
 
 [CreateAssetMenu(menuName = "Events/Event Object")]

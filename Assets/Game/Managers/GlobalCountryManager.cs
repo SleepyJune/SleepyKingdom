@@ -26,6 +26,12 @@ public class GlobalCountryManager : MonoBehaviour
         foreach(var country in countries)
         {
             country.Population += 1;
+            country.Wood += country.Population / 1000.0f;
+            country.Stone += country.Population / 1000.0f;
+            country.Wheat += 2 * country.Population / 1000.0f;
+            country.Gold += country.Population / 1000.0f;
+
+            country.Wheat -= country.Population / 1000.0f;
         }
     }
 }

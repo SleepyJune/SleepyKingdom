@@ -9,8 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 51b9469e5f51ad64aaca999c5c07a6f1, type: 3}
-  m_Name: Snowing
+  m_Name: ForestFire
   m_EditorClassIdentifier: 
-  eventName: Snowing
-  image: {fileID: 21300016, guid: ef9355d2e1884ca43a9041d2b180c742, type: 3}
-  shortDescription: Snowing
+  eventType: 0
+  eventName: ForestFire
+  image: {fileID: 21300028, guid: ef9355d2e1884ca43a9041d2b180c742, type: 3}
+  shortDescription: ForestFire

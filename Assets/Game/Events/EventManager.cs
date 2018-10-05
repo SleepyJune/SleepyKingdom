@@ -13,6 +13,9 @@ public class EventManager : MonoBehaviour
     [NonSerialized]
     public List<EventObject> weatherEventObjects = new List<EventObject>();
 
+    [NonSerialized]
+    public List<EventObject> defaultResourceObjects = new List<EventObject>();
+
     public delegate void ProcessGameEvent(Event gameEvent);
     public event ProcessGameEvent OnNewWeatherEvent;
 
@@ -25,6 +28,11 @@ public class EventManager : MonoBehaviour
             if(gameEvent.eventType == GameEventType.Weather)
             {
                 weatherEventObjects.Add(gameEvent);
+            }
+
+            if(gameEvent.eventType == GameEventType.Resource)
+            {
+                defaultResourceObjects.Add(gameEvent);
             }
         }
     }

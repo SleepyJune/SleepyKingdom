@@ -26,15 +26,15 @@ public class Country
     //leader
 
     //private resources
-    private int _population;
+    private float _population;
 
-    private int _wood;
-    private int _stone;
-    private int _wheat;
-    private int _gold;
+    private float _wood;
+    private float _stone;
+    private float _wheat;
+    private float _gold;
 
-    private int _taxRate;
-    private int _happiness;
+    private float _taxRate;
+    private float _happiness;
 
     [NonSerialized]
     static int countryCounter;
@@ -42,54 +42,54 @@ public class Country
     [NonSerialized]
     public static List<Country> countries = new List<Country>();
 
-    private Dictionary<CountryResourceType, int> resourcesDictionary = new Dictionary<CountryResourceType, int>();
+    private Dictionary<CountryResourceType, float> resourcesDictionary = new Dictionary<CountryResourceType, float>();
 
-    public int Population
+    public float Population
     {
         get { return _population; }
         set { ResourceChange(CountryResourceType.Population, _population, value); _population = value; }
     }
 
-    public int Wood
+    public float Wood
     {
         get { return _wood; }
         set { ResourceChange(CountryResourceType.Wood, _wood, value); _wood = value; }
     }
 
-    public int Stone
+    public float Stone
     {
         get { return _stone; }
         set { ResourceChange(CountryResourceType.Stone, _stone, value); _stone = value; }
     }
 
-    public int Wheat
+    public float Wheat
     {
         get { return _wheat; }
         set { ResourceChange(CountryResourceType.Wheat, _wheat, value); _wheat = value; }
     }
 
-    public int Gold
+    public float Gold
     {
         get { return _gold; }
         set { ResourceChange(CountryResourceType.Gold, _gold, value); _gold = value; }
     }
 
-    public int TaxRate
+    public float TaxRate
     {
         get { return _taxRate; }
         set { ResourceChange(CountryResourceType.TaxRate, _taxRate, value); _taxRate = value; }
     }
 
-    public int Happiness
+    public float Happiness
     {
         get { return _happiness; }
         set { ResourceChange(CountryResourceType.Happiness, _happiness, value); _happiness = value; }
     }
 
-    public delegate void ProcessResourceEvent(CountryResourceType type, int oldValue, int newValue);
+    public delegate void ProcessResourceEvent(CountryResourceType type, float oldValue, float newValue);
     public event ProcessResourceEvent OnResourceChange;
 
-    private void ResourceChange(CountryResourceType type, int oldValue, int newValue)
+    private void ResourceChange(CountryResourceType type, float oldValue, float newValue)
     {
         resourcesDictionary[type] = newValue;
 
@@ -99,7 +99,7 @@ public class Country
         }
     }
 
-    public int GetResource(CountryResourceType type)
+    public float GetResource(CountryResourceType type)
     {
         return resourcesDictionary[type];
     }
