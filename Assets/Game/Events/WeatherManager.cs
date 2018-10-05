@@ -48,9 +48,9 @@ public class WeatherManager : MonoBehaviour
 
     public void ChangeWeather()
     {        
-        int randomEventIndex = Random.Range(0, eventManager.weatherEventObjects.Count);
+        int randomEventIndex = Random.Range(0, eventManager.weatherSpriteObjects.Count);
 
-        EventObject eventObject = eventManager.weatherEventObjects[randomEventIndex];
+        SpriteObject eventObject = eventManager.weatherSpriteObjects[randomEventIndex];
 
         WeatherEvent newWeather = new WeatherEvent(eventObject);
 

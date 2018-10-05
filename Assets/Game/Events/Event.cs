@@ -10,20 +10,20 @@ public class Event
 
     public Sprite image;
 
-    public GameEventType eventType;
+    public SpriteObjectType eventType;
 
     public string shortDescription;
 
-    public Event(EventObject eventObject)
+    public Event(SpriteObject eventObject)
     {
         SetValues(eventObject);
     }
 
-    public void SetValues(EventObject eventObject)
+    public void SetValues(SpriteObject spriteObject)
     {
-        this.eventName = eventObject.name;
-        this.image = eventObject.image;
-        this.eventType = eventObject.eventType;
-        this.shortDescription = eventObject.shortDescription;
+        this.eventName = spriteObject.name;
+        this.image = spriteObject.image;
+        this.eventType = spriteObject.spriteType;
+        this.shortDescription = spriteObject.shortDescription;
     }
 }

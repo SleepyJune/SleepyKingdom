@@ -9,9 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb819f441c58ca84d963d40c58cead36, type: 3}
-  m_Name: EventDatabase
+  m_Name: SpriteDatabase
   m_EditorClassIdentifier: 
-  allEvents:
+  allSprites:
   - {fileID: 11400000, guid: 7edd9d676c5e8ea40ad9c9cba2f394e3, type: 2}
   - {fileID: 11400000, guid: c2dea15278d7c5648b11e8a3f9d62ac8, type: 2}
   - {fileID: 11400000, guid: 461c7d5edcd070b49abc4dd23c8d9a05, type: 2}

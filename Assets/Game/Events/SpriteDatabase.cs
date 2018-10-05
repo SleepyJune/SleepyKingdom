@@ -6,7 +6,7 @@ using UnityEngine;
 
 [CreateAssetMenu(menuName = "Events/EventDatabase")]
 
-public class EventDatabase : ScriptableObject
+public class SpriteDatabase : ScriptableObject
 {
-    public EventObject[] allEvents = new EventObject[0];
+    public SpriteObject[] allSprites = new SpriteObject[0];
 }

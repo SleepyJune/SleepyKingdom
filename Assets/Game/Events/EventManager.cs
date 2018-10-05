@@ -6,31 +6,31 @@ using UnityEngine;
 
 public class EventManager : MonoBehaviour
 {
-    public EventDatabase eventDatabase;
+    public SpriteDatabase eventDatabase;
 
-    public Dictionary<string, EventObject> eventObjects = new Dictionary<string, EventObject>();
-
-    [NonSerialized]
-    public List<EventObject> weatherEventObjects = new List<EventObject>();
+    public Dictionary<string, SpriteObject> eventObjects = new Dictionary<string, SpriteObject>();
 
     [NonSerialized]
-    public List<EventObject> defaultResourceObjects = new List<EventObject>();
+    public List<SpriteObject> weatherSpriteObjects = new List<SpriteObject>();
+
+    [NonSerialized]
+    public List<SpriteObject> defaultResourceObjects = new List<SpriteObject>();
 
     public delegate void ProcessGameEvent(Event gameEvent);
     public event ProcessGameEvent OnNewWeatherEvent;
 
     private void Awake()
     {
-        foreach(var gameEvent in eventDatabase.allEvents)
+        foreach(var gameEvent in eventDatabase.allSprites)
         {
-            eventObjects.Add(gameEvent.eventName, gameEvent);
+            eventObjects.Add(gameEvent.spriteName, gameEvent);
 
-            if(gameEvent.eventType == GameEventType.Weather)
+            if(gameEvent.spriteType == SpriteObjectType.Weather)
             {
-                weatherEventObjects.Add(gameEvent);
+                weatherSpriteObjects.Add(gameEvent);
             }
 
-            if(gameEvent.eventType == GameEventType.Resource)
+            if(gameEvent.spriteType == SpriteObjectType.Resource)
             {
                 defaultResourceObjects.Add(gameEvent);
             }

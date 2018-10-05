@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class ResourceButtonUI : MonoBehaviour
 {
-    public Sprite resourceImage;
-
+    public Image icon;
+    
     public Text resourceName;
     public Text amount;
 
@@ -20,6 +20,14 @@ public class ResourceButtonUI : MonoBehaviour
     {
         this.country = country;
         this.resourceType = type;
+
+        string name = type.ToString();
+
+        SpriteObject spriteObject;
+        if(GameManager.instance.spriteObjectManager.spriteObjects.TryGetValue(name, out spriteObject))
+        {
+            icon.sprite = spriteObject.image;
+        }
 
         amount.text = country.GetResource(type).ToString();
 

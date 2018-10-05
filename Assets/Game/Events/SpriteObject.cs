@@ -3,19 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public enum GameEventType
+public enum SpriteObjectType
 {
     Weather,
     Resource,
 }
 
 [CreateAssetMenu(menuName = "Events/Event Object")]
-public class EventObject : ScriptableObject
+public class SpriteObject : ScriptableObject
 {
-    public GameEventType eventType;
-
-    public string eventName;
+    public SpriteObjectType spriteType;
+        
+    public string spriteName;
 
     public Sprite image;
 

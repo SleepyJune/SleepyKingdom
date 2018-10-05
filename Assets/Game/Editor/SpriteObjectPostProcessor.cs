@@ -8,22 +8,22 @@ using UnityEditor;
 
 using System.Linq;
 
-class EventGeneratorPostProcessor : AssetPostprocessor
+class SpriteObjectPostProcessor : AssetPostprocessor
 {
-    static EventDatabase database;
+    static SpriteDatabase database;
 
     static void OnPostprocessAllAssets(string[] importedAssets, string[] deletedAssets, string[] movedAssets, string[] movedFromAssetPaths)
     {
         if (database == null)
         {
-            database = (EventDatabase)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Events/EventDatabase.asset", typeof(EventDatabase));
+            database = (SpriteDatabase)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/SpriteObjects/SpriteDatabase.asset", typeof(SpriteDatabase));
         }
 
         bool databaseModified = false;
 
         foreach (string str in importedAssets)
         {
-            if (str.StartsWith("Assets/Prefabs/Events/"))
+            if (str.StartsWith("Assets/Prefabs/SpriteObjects/"))
             {
                 databaseModified = true;
                 break;
@@ -34,7 +34,7 @@ class EventGeneratorPostProcessor : AssetPostprocessor
 
         foreach (string str in deletedAssets)
         {
-            if (str.StartsWith("Assets/Prefabs/Events/"))
+            if (str.StartsWith("Assets/Prefabs/SpriteObjects/"))
             {
                 databaseModified = true;
                 break;
@@ -45,7 +45,7 @@ class EventGeneratorPostProcessor : AssetPostprocessor
 
         if (databaseModified)
         {
-            EditorHelperFunctions.GenerateFromAsset("/Prefabs/Events", ref database.allEvents, database, "*.asset");                     
+            EditorHelperFunctions.GenerateFromAsset("/Prefabs/SpriteObjects", ref database.allSprites, database, "*.asset");                     
         }
     }
 }

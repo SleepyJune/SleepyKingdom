@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class ResourceEvent : Event
 {
-    public ResourceEvent(EventObject eventObject) : base(eventObject)
+    public ResourceEvent(SpriteObject eventObject) : base(eventObject)
     {
 
     }

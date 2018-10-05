@@ -7,7 +7,10 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
-        
+    
+    [NonSerialized]
+    public SpriteObjectManager spriteObjectManager;
+
     [NonSerialized]
     public SceneChanger sceneChanger;
 
@@ -37,5 +40,6 @@ public class GameManager : MonoBehaviour
         eventManager = GetComponent<EventManager>();
         weatherManager = GetComponent<WeatherManager>();
         globalCountryManager = GetComponent<GlobalCountryManager>();
+        spriteObjectManager = GetComponent<SpriteObjectManager>();
     }
 }
