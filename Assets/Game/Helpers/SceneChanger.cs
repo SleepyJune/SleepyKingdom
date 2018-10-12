@@ -15,7 +15,12 @@ public class SceneChanger : MonoBehaviour
 
     [NonSerialized]
     public Tower targetTower;
-    
+            
+    public void GoBack()
+    {
+        ChangeScene((Country)null);
+    }
+
     public void ChangeScene(Country target)
     {
         GameManager.instance.gameStateManager.Save();

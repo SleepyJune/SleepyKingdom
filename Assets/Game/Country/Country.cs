@@ -40,7 +40,7 @@ public class Country
     private float _happiness;
 
     [NonSerialized]
-    static int countryCounter;
+    static int countryCounter = 1;
 
     private Dictionary<CountryResourceType, float> resourcesDictionary = new Dictionary<CountryResourceType, float>();
 

@@ -29,7 +29,7 @@ public class ResourceButtonUI : MonoBehaviour
             icon.sprite = spriteObject.image;
         }
 
-        amount.text = country.GetResource(type).ToString();
+        amount.text = Mathf.Round(country.GetResource(type)).ToString();
 
         country.OnResourceChange += OnResourceChange;
     }

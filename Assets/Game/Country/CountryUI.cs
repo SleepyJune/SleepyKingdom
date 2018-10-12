@@ -22,27 +22,31 @@ public class CountryUI : MonoBehaviour
 
     private void Start()
     {
-        bool hasSetCountry = false;
-
         if (GameManager.instance.sceneChanger)
         {
-            var targetCountry = GameManager.instance.sceneChanger.targetCountry;
+            country = GameManager.instance.sceneChanger.targetCountry;
+        }
 
-            if (targetCountry != null)
+        var gameState = GameManager.instance.gameStateManager.gameState;
+
+        if (gameState != null)
+        {
+            var list = gameState.GetCountries();
+            if(list.Count > 0)
             {
-                SetCountry(targetCountry);
-                hasSetCountry = true;
+                country = list[0];
             }
         }
-        
-        if(!hasSetCountry)
+
+
+        if(country == null || country.countryID == 0)
         {
-            var targetCountry = Country.Generate();
+            country = Country.Generate();
 
-            GameManager.instance.gameStateManager.gameState.AddCountry(targetCountry);
-
-            SetCountry(targetCountry);
+            GameManager.instance.gameStateManager.gameState.AddCountry(country);            
         }
+
+        SetCountry(country);
 
         GameManager.instance.eventManager.OnNewWeatherEvent += OnNewWeatherEvent;
     }
