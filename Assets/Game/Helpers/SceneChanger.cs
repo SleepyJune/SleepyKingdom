@@ -10,9 +10,18 @@ public class SceneChanger : MonoBehaviour
     [NonSerialized]
     public Country targetCountry;
 
-    public void ChangeScene(Country country)
+    [NonSerialized]
+    public TowerFloor targetFloor;
+
+    public void ChangeScene(Country target)
     {
-        targetCountry = country;
+        targetCountry = target;
+        SceneManager.LoadScene("CountryScene");
+    }
+
+    public void ChangeScene(TowerFloor target)
+    {
+        targetFloor = target;
         SceneManager.LoadScene("CountryScene");
     }
 }

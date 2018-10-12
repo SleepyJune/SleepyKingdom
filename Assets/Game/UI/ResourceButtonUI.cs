@@ -23,8 +23,8 @@ public class ResourceButtonUI : MonoBehaviour
 
         string name = type.ToString();
 
-        SpriteObject spriteObject;
-        if(GameManager.instance.spriteObjectManager.spriteObjects.TryGetValue(name, out spriteObject))
+        SpriteObject spriteObject = GameManager.instance.gamedatabaseManager.GetSpriteObject(name);
+        if (spriteObject != null)
         {
             icon.sprite = spriteObject.image;
         }

@@ -8,22 +8,28 @@ using UnityEditor;
 
 using System.Linq;
 
-class SpriteObjectPostProcessor : AssetPostprocessor
+class GameDatabasePostProcessor : AssetPostprocessor
 {
-    static SpriteDatabase database;
+    static GameDatabase database;
 
     static void OnPostprocessAllAssets(string[] importedAssets, string[] deletedAssets, string[] movedAssets, string[] movedFromAssetPaths)
     {
         if (database == null)
         {
-            database = (SpriteDatabase)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/SpriteObjects/SpriteDatabase.asset", typeof(SpriteDatabase));
+            database = (GameDatabase)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Managers/GameDatabase.asset", typeof(GameDatabase));
         }
 
+        CheckModified("/Prefabs/SpriteObjects/", ref database.allSprites, importedAssets, deletedAssets);
+        CheckModified("/Prefabs/BuildingObjects/", ref database.allBuildings, importedAssets, deletedAssets);
+    }
+
+    static void CheckModified<T>(string path, ref T[] collection, string[] importedAssets, string[] deletedAssets)
+    {
         bool databaseModified = false;
 
         foreach (string str in importedAssets)
         {
-            if (str.StartsWith("Assets/Prefabs/SpriteObjects/"))
+            if (str.StartsWith("Assets" + path))
             {
                 databaseModified = true;
                 break;
@@ -34,7 +40,7 @@ class SpriteObjectPostProcessor : AssetPostprocessor
 
         foreach (string str in deletedAssets)
         {
-            if (str.StartsWith("Assets/Prefabs/SpriteObjects/"))
+            if (str.StartsWith("Assets" + path))
             {
                 databaseModified = true;
                 break;
@@ -45,7 +51,7 @@ class SpriteObjectPostProcessor : AssetPostprocessor
 
         if (databaseModified)
         {
-            EditorHelperFunctions.GenerateFromAsset("/Prefabs/SpriteObjects", ref database.allSprites, database, "*.asset");                     
+            EditorHelperFunctions.GenerateFromAsset(path, ref collection, database, "*.asset");
         }
     }
 }

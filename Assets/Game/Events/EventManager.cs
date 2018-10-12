@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class EventManager : MonoBehaviour
 {
-    public SpriteDatabase eventDatabase;
+    public GameDatabase eventDatabase;
 
     public Dictionary<string, SpriteObject> eventObjects = new Dictionary<string, SpriteObject>();
 

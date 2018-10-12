@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114765982919982516}
   - component: {fileID: 114832715140779184}
   - component: {fileID: 114441995602465836}
-  - component: {fileID: 114249401581337408}
+  - component: {fileID: 114269978435713752}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -44,7 +44,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114249401581337408
+--- !u!114 &114269978435713752
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}

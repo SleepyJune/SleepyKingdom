@@ -9,9 +9,10 @@ public enum SpriteObjectType
 {
     Weather,
     Resource,
+    Building,
 }
 
-[CreateAssetMenu(menuName = "Events/Event Object")]
+[CreateAssetMenu(menuName = "Game/Sprites/Sprite Object")]
 public class SpriteObject : ScriptableObject
 {
     public SpriteObjectType spriteType;
