@@ -23,6 +23,9 @@ public class GameManager : MonoBehaviour
     [NonSerialized]
     public GlobalCountryManager globalCountryManager;
 
+    [NonSerialized]
+    public GameStateManager gameStateManager;
+
     void Awake()
     {
         if (instance == null)
@@ -41,5 +44,6 @@ public class GameManager : MonoBehaviour
         weatherManager = GetComponent<WeatherManager>();
         globalCountryManager = GetComponent<GlobalCountryManager>();
         gamedatabaseManager = GetComponent<GameDatabaseManager>();
+        gameStateManager = GetComponent<GameStateManager>();
     }
 }

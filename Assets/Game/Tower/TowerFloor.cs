@@ -6,6 +6,7 @@ using Random = UnityEngine.Random;
 
 using UnityEngine;
 
+[Serializable]
 public class TowerFloor
 {
     public Tower tower;
@@ -50,7 +51,7 @@ public class TowerFloor
         {
             if(i <= randFloors)
             {
-                newFloor.buildings[i] = new Building();
+                newFloor.buildings[i] = Building.GenerateBuilding();
             }
         }
 

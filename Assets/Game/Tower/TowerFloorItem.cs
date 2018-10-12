@@ -25,6 +25,6 @@ public class TowerFloorItem : MonoBehaviour
 
     public void OnFloorPress()
     {
-
+        GameManager.instance.sceneChanger.ChangeScene(towerFloor);
     }
 }

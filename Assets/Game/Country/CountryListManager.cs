@@ -10,9 +10,18 @@ public class CountryListManager : MonoBehaviour
 
     public GameObject countryButtonPrefab;
 
+    private GameState gameState;
+
+    private void Start()
+    {
+        gameState = GameManager.instance.gameStateManager.gameState;
+    }
+
     public void GenerateCountry()
     {
         var newCountry = Country.Generate();
+
+        gameState.AddCountry(newCountry);
 
         UpdateList();
     }
@@ -29,7 +38,7 @@ public class CountryListManager : MonoBehaviour
             Destroy(transform.gameObject);
         }
 
-        foreach(var country in Country.countries)
+        foreach(var country in gameState.GetCountries())
         {
             var newButton = Instantiate(countryButtonPrefab, countryListParent);
 

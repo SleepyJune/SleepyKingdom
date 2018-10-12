@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
@@ -8,6 +9,7 @@ public class CountryUI : MonoBehaviour
 {
     public Text countryName;
 
+    [NonSerialized]
     public Country country;
 
     public ResourceButtonUI resourceButtonUIPrefab;
@@ -20,6 +22,8 @@ public class CountryUI : MonoBehaviour
 
     private void Start()
     {
+        bool hasSetCountry = false;
+
         if (GameManager.instance.sceneChanger)
         {
             var targetCountry = GameManager.instance.sceneChanger.targetCountry;
@@ -27,11 +31,15 @@ public class CountryUI : MonoBehaviour
             if (targetCountry != null)
             {
                 SetCountry(targetCountry);
+                hasSetCountry = true;
             }
         }
-        else
+        
+        if(!hasSetCountry)
         {
             var targetCountry = Country.Generate();
+
+            GameManager.instance.gameStateManager.gameState.AddCountry(targetCountry);
 
             SetCountry(targetCountry);
         }

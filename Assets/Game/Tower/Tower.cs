@@ -6,6 +6,7 @@ using Random = UnityEngine.Random;
 
 using UnityEngine;
 
+[Serializable]
 public class Tower
 {
     public Country country;

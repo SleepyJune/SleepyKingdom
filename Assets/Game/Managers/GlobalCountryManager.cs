@@ -5,11 +5,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GlobalCountryManager : MonoBehaviour
-{
-    private List<Country> countries = Country.countries;
-
+{    
     private float lastUpdateTime;
     private float updateFrequency = 1;
+
+    private GameState gameState;
+
+    private void Start()
+    {
+        gameState = GameManager.instance.gameStateManager.gameState;
+    }
 
     private void Update()
     {
@@ -23,7 +28,7 @@ public class GlobalCountryManager : MonoBehaviour
 
     private void UpdateCountryPopulation()
     {
-        foreach(var country in countries)
+        foreach(var country in gameState.GetCountries())
         {
             country.Population += 1;
             country.Wood += country.Population / 1000.0f;

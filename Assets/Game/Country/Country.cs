@@ -17,11 +17,14 @@ public enum CountryResourceType
     Happiness,
 }
 
+[Serializable]
 public class Country
 {
     public int countryID;
 
     public string countryName;
+
+    public Tower tower;
 
     //leader
 
@@ -38,9 +41,6 @@ public class Country
 
     [NonSerialized]
     static int countryCounter;
-
-    [NonSerialized]
-    public static List<Country> countries = new List<Country>();
 
     private Dictionary<CountryResourceType, float> resourcesDictionary = new Dictionary<CountryResourceType, float>();
 
@@ -122,9 +122,7 @@ public class Country
         newCountry.TaxRate = Random.Range(0, 100);
 
         newCountry.Happiness = Random.Range(1, 100);
-
-        countries.Add(newCountry);
-
+                
         return newCountry;
     }
 
