@@ -47,6 +47,12 @@ public class CountryUI : MonoBehaviour
         GameManager.instance.eventManager.OnNewWeatherEvent += OnNewWeatherEvent;
     }
 
+    private void OnDestroy()
+    {
+        GameManager.instance.eventManager.OnNewWeatherEvent -= OnNewWeatherEvent;
+        country.OnResourceChange -= OnResourceChange;
+    }
+
     public void OnWeatherIconClick()
     {
         GameManager.instance.weatherManager.ChangeWeather();
@@ -93,5 +99,10 @@ public class CountryUI : MonoBehaviour
         newResource.SetResource(country, type);
 
         //newResource.amountButton.onClick.AddListener(() => { update});
+    }
+
+    public void OnTowerButtonPress()
+    {
+        GameManager.instance.sceneChanger.ChangeScene(country.tower);
     }
 }

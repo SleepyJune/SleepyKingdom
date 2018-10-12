@@ -112,6 +112,8 @@ public class Country
 
         newCountry.countryName = "New Country " + newCountry.countryID;
 
+        newCountry.tower = Tower.Generate();
+
         newCountry.Population = Random.Range(100, 1000);
 
         newCountry.Wood = Random.Range(1, 100);

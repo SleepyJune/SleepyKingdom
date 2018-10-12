@@ -14,7 +14,15 @@ public class TowerManager : MonoBehaviour
 
     private void Start()
     {
-        tower = Tower.Generate();
+        if (GameManager.instance.sceneChanger)
+        {
+            tower = GameManager.instance.sceneChanger.targetTower;
+        }
+
+        if (tower == null)
+        {
+            tower = Tower.Generate();
+        }        
 
         SetTower(tower);
     }
@@ -27,7 +35,7 @@ public class TowerManager : MonoBehaviour
         {
             var floor = tower.floors[i];
 
-            if(floor == null)
+            if(floor == null || floor.floorSize == 0)
             {
                 continue;
             }

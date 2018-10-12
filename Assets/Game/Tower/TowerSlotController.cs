@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class TowerSlotController : MonoBehaviour
 {
+    [NonSerialized]
     public Building building;
 
     public Image iconImage;
@@ -26,7 +27,7 @@ public class TowerSlotController : MonoBehaviour
 
     public void SetBuilding(Building newBuilding)
     {
-        if(newBuilding != null)
+        if(newBuilding.buildingID != 0)
         {
             building = newBuilding;
             iconImage.sprite = building.buildingObject.spriteObject.image;

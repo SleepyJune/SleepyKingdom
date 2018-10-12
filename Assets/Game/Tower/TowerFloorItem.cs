@@ -9,6 +9,7 @@ public class TowerFloorItem : MonoBehaviour
 {
     public Text floorName;
 
+    [NonSerialized]
     public TowerFloor towerFloor;
 
     public void SetFloor(TowerFloor floor)

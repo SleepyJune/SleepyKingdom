@@ -8,7 +8,7 @@ using UnityEngine;
 [Serializable]
 public class GameState
 {
-    private Country[] countries = new Country[0];
+    public Country[] countries = new Country[0];
 
     [NonSerialized]
     private List<Country> countryList = new List<Country>();

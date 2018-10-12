@@ -13,4 +13,9 @@ public class GameStateManager : MonoBehaviour
     {
         gameState = GameState.LoadSave();
     }
+
+    public void Save()
+    {
+        gameState.Save();
+    }
 }

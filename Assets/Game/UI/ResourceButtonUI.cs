@@ -34,6 +34,11 @@ public class ResourceButtonUI : MonoBehaviour
         country.OnResourceChange += OnResourceChange;
     }
 
+    private void OnDestroy()
+    {
+        country.OnResourceChange -= OnResourceChange;
+    }
+
     private void OnResourceChange(CountryResourceType type, float oldValue, float newValue)
     {        
         if(type == resourceType)

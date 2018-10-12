@@ -16,7 +16,7 @@ public class Building
 
     public BuildingObject buildingObject;
 
-    public static int buildingCounter;
+    public static int buildingCounter = 1;
 
     public Building(BuildingObject obj)
     {
