@@ -9,6 +9,7 @@ using UnityEngine;
 [Serializable]
 public class Tower
 {
+    [NonSerialized]
     public Country country;
     
     public TowerFloor[] floors = new TowerFloor[maxFloors];

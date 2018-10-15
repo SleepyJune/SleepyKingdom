@@ -11,12 +11,18 @@ using Random = UnityEngine.Random;
 using UnityEditor;
 #endif
 
-public class GroundTile : Tile
+public class GroundTile : GameTileBase
 {
     public Sprite[] sprites;
 
     public override void GetTileData(Vector3Int location, ITilemap tilemap, ref TileData tileData)
-    {        
+    {
+        tileData.sprite = this.sprite;
+        tileData.color = this.color;
+        tileData.transform = this.transform;
+        tileData.gameObject = this.gameObject;
+        tileData.flags = this.flags;
+                
         int index = Random.Range(0, sprites.Length);
         if (index >= 0 && index < sprites.Length)
         {
@@ -24,7 +30,7 @@ public class GroundTile : Tile
         }
         else
         {
-            Debug.LogWarning("Not enough sprites in RoadTile instance");
+            Debug.LogWarning("Not enough sprites");
         }
     }
 

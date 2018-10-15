@@ -9,6 +9,7 @@ using UnityEngine;
 [Serializable]
 public class TowerFloor
 {
+    [NonSerialized]
     public Tower tower;
 
     public int floorNum;
