@@ -12,7 +12,7 @@ public class Building
 {
     public int buildingID;
 
-    public string buildingObjectName;
+    //public string buildingObjectName;
 
     public BuildingObject buildingObject;
 
@@ -22,7 +22,7 @@ public class Building
     {
         buildingID = GetBuildingCounter();
         buildingObject = obj;
-        buildingObjectName = obj.name;
+        //buildingObjectName = obj.name;
     }
 
     public static int GetBuildingCounter()
