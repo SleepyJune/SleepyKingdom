@@ -10,6 +10,9 @@ public class GameState
 {
     public Country[] countries = new Country[0];
 
+    public int gold;
+    public int gems;
+
     [NonSerialized]
     private List<Country> countryList = new List<Country>();
 

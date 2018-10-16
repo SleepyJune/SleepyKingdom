@@ -12,6 +12,7 @@ public enum CountryResourceType
     Wood,
     Stone,
     Wheat,
+    Water,
     Gold,
     TaxRate,
     Happiness,
@@ -35,6 +36,7 @@ public class Country
     private float _stone;
     private float _wheat;
     private float _gold;
+    private float _water;
 
     private float _taxRate;
     private float _happiness;
@@ -48,6 +50,12 @@ public class Country
     {
         get { return _population; }
         set { ResourceChange(CountryResourceType.Population, _population, value); _population = value; }
+    }
+
+    public float Water
+    {
+        get { return _water; }
+        set { ResourceChange(CountryResourceType.Water, _water, value); _water = value; }
     }
 
     public float Wood
