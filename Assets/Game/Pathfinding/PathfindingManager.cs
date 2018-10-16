@@ -11,18 +11,16 @@ public class PathfindingManager : MonoBehaviour
     public Tilemap terrainMap;
 
     [NonSerialized]
-    public Tilemap unitMap;
-
-    [NonSerialized]
     public Tilemap overlayMap;
 
     public TileBase overlayPrefab;
+
+    public Unit castle;
 
     public Dictionary<Vector3Int, GameTile> map;
 
     private void Start()
     {
-        //Invoke("Initialize", .05f);
         Initialize();
     }
 
@@ -36,11 +34,25 @@ public class PathfindingManager : MonoBehaviour
             var tile = GetGameTile(testPos);
 
             if (tile != null)
-            {                
+            {
                 overlayMap.ClearAllTiles();
                 overlayMap.SetTile(testPos, overlayPrefab);
 
-                Debug.Log(tile.position.ToString());
+                var start = GetGameTile(terrainMap.WorldToCell(castle.transform.position));
+                castle.path = Pathfinder.GetShortestPath(castle, start, tile);
+                castle.startMovingTime = Time.time;
+
+                /*foreach(var path in castle.path)
+                {
+                    overlayMap.SetTile(path, overlayPrefab);
+                }*/
+
+                /*foreach (var neighbour in tile.neighbours)
+                {
+                    overlayMap.SetTile(neighbour.position, overlayPrefab);
+                }*/
+
+                //castle.path = new Vector3Int[] { testPos };
             }
 
         }
@@ -49,13 +61,19 @@ public class PathfindingManager : MonoBehaviour
     public void Initialize()
     {
         var terrainGO = GameObject.Find("TerrainMap");
-        var unitGO = GameObject.Find("UnitMap");
+        //var unitGO = GameObject.Find("UnitMap");
         var overlayGO = GameObject.Find("OverlayMap");
+
+        var castleGO = GameObject.Find("DirtCity");
+        if (castleGO != null)
+        {
+            castle = castleGO.GetComponent<Unit>();
+        }
 
         if (terrainGO != null)
         {
             terrainMap = terrainGO.GetComponentInChildren<Tilemap>();
-            unitMap = unitGO.GetComponentInChildren<Tilemap>();
+            //unitMap = unitGO.GetComponentInChildren<Tilemap>();
             overlayMap = overlayGO.GetComponentInChildren<Tilemap>();
 
             InitializeMap();
@@ -67,19 +85,16 @@ public class PathfindingManager : MonoBehaviour
     {
         if (map == null)
         {
-            map = new Dictionary<Vector3Int, GameTile>();
+            map = Pathfinder.map;
         }
 
         BoundsInt bounds = terrainMap.cellBounds;
-        //TileBase[] allTiles = terrainMap.GetTilesBlock(bounds);
 
         for (int x = bounds.xMin; x < bounds.xMax; x++)
         {
             for (int y = bounds.yMin; y < bounds.yMax; y++)
             {
                 Vector3Int pos = new Vector3Int(x, y, 0);
-
-                //TileBase tile = allTiles[x + y * bounds.size.x];
 
                 var tile = terrainMap.GetTile(pos);
 
@@ -89,7 +104,6 @@ public class PathfindingManager : MonoBehaviour
 
                     if (!map.ContainsKey(newTile.position))
                     {
-                        //Debug.Log("x:" + x + " y:" + y + " tile:" + tile.name);
                         map.Add(newTile.position, newTile);
                     }
                 }
@@ -99,33 +113,23 @@ public class PathfindingManager : MonoBehaviour
 
     public void InitializeNeighbours()
     {
-        /*List<Vector3Int> directions = new List<Vector3Int>{
-            new Vector3Int( 1, 0, 0), new Vector3Int( 1,-1, 0), new Vector3Int( 0,-1, 0),
-            new Vector3Int(-1, 0, 0), new Vector3Int(-1, 1, 0), new Vector3Int( 0, 1, 0),
-        };*/
-
-        var directions = new int[][,] {
-            new int[,]{{+1, 0}, {0, -1}, {-1, -1},{-1, 0}, {-1, +1}, {0, +1}},
-            new int[,]{{+1,  0}, {+1, -1}, { 0, -1},{-1,  0}, { 0, +1}, {+1, +1}}
-        };
+        var directions = HexVectorExtensions.hexDirections;
 
         foreach (var tile in map.Values)
         {
             tile.neighbours = new HashSet<GameTile>();
 
-            var parity = tile.position.x & 1;
+            var parity = tile.position.y & 1;
 
             for (int i = 0; i < 6; i++)
             {
                 var dir = new Vector3Int(directions[parity][i, 0], directions[parity][i, 1], 0);
-                var pos = tile.position + dir;
-
+                var pos = new Vector3Int(tile.position.x + directions[parity][i, 0], tile.position.y + directions[parity][i, 1], 0);
+                
                 GameTile neighbour;
                 if (map.TryGetValue(pos, out neighbour))
                 {
                     tile.neighbours.Add(neighbour);
-
-                    //Debug.Log("neighbour: " + neighbour.position.ToString());
                 }
             }
         }
@@ -140,5 +144,20 @@ public class PathfindingManager : MonoBehaviour
         }
 
         return null;
+    }
+
+    public Vector3 CellToWorldPosition(Vector3 pos)
+    {
+        return terrainMap.LocalToWorld(terrainMap.CellToLocalInterpolated(pos));
+    }
+
+    public Vector3 CellToGridWorldPosition(Vector3 pos)
+    {
+        return terrainMap.CellToWorld(CellToCellPosition(pos));
+    }
+
+    public Vector3Int CellToCellPosition(Vector3 pos)
+    {
+        return terrainMap.LocalToCell(terrainMap.CellToLocalInterpolated(pos));
     }
 }

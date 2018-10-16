@@ -11,8 +11,18 @@ public class GameTile
 
     public Vector3Int position;
 
+    public double gScore;
+    public double fScore;
+
+    public GameTile parent = null;
+
     public GameTile(Vector3Int pos)
     {
         this.position = pos;
+    }
+
+    public double Distance(GameTile b)
+    {
+        return position.OffsetDistance(b.position);
     }
 }
