@@ -4,33 +4,52 @@ using System.Collections.Generic;
 using System.Linq;
 
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Unit : MonoBehaviour
 {
-    //public Vector3 position;
-    
+    public Vector3Int position;
+
+    public GameTile gameTile;
+
+    [NonSerialized]
     public Vector3 targetPos;
 
+    [NonSerialized]
     public Vector3Int[] path;
 
+    [NonSerialized]
     public float startMovingTime;
 
-    public float speed = .01f;
+    public float speed = 1.0f;
+
+    private Tilemap tilemap;
+
+    [NonSerialized]
+    public UnitManager unitManager;
+
+    private void Start()
+    {
+        tilemap = Pathfinder.tilemap;        
+    }
+
+    public virtual void OnMouseDownEvent()
+    {
+        
+    }
 
     private void Update()
     {
         if(path != null && path.Length > 1)
         {
-            var tileMap = GameManager.instance.pathfindingManager.terrainMap;
-
             var nextPos = path[1];
 
-            var nextPosWorld = tileMap.CellToWorld(nextPos);
+            var nextPosWorld = tilemap.CellToWorld(nextPos);
             //var positionWorld = GameManager.instance.pathfindingManager.CellToWorldPosition(position);
 
             if (Vector3.Distance(nextPosWorld, transform.position) >= .01f)
             {
-                var previousPosWorld = tileMap.CellToWorld(path[0]);
+                var previousPosWorld = tilemap.CellToWorld(path[0]);
 
                 Vector3 dir = (nextPosWorld - previousPosWorld).normalized;
 
@@ -45,46 +64,30 @@ public class Unit : MonoBehaviour
             }
             else
             {
-                transform.position = tileMap.CellToWorld(nextPos);
+                transform.position = tilemap.CellToWorld(nextPos);
                 path = path.Skip(1).ToArray();
+
+                SetPosition(nextPos);
 
                 startMovingTime = Time.time;
             }
         }
     }
 
-    /*public void UpdatePosition()
+    public void SetPosition(Vector3Int nextPosition)
     {
-        if (path != null && path.Length > 1)
+        this.position = nextPosition;
+
+        if(gameTile != null)
         {
-            var tileMap = GameManager.instance.pathfindingManager.terrainMap;
-
-            var movingTime = Time.time - startMovingTime;
-            
-
-            var nextPos = path[1];
-
-            var nextPosWorld = GameManager.instance.pathfindingManager.CellToWorldPosition(nextPos);
-            var positionWorld = GameManager.instance.pathfindingManager.CellToWorldPosition(position);
-
-            if (Vector3.Distance(nextPosWorld, positionWorld) >= .1f)
-            {
-                var previousPosWorld = tileMap.CellToWorld(path[0]);
-
-                Vector3 dir = (nextPosWorld - previousPosWorld).normalized;
-
-                transform.position = previousPosWorld + dir;
-
-                //position += dir * speed * Time.deltaTime;
-
-
-                //transform.position = GameManager.instance.pathfindingManager.CellToWorldPosition(position);
-            }
-            else
-            {
-                transform.position = GameManager.instance.pathfindingManager.CellToGridWorldPosition(position);
-                path = path.Skip(1).ToArray();
-            }
+            gameTile.DeleteUnit(this);
         }
-    }*/
+
+        var newGameTile = Pathfinder.GetGameTile(nextPosition);
+        if(newGameTile != null)
+        {
+            newGameTile.AddUnit(this);
+            gameTile = newGameTile;
+        }
+    }
 }

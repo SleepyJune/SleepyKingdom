@@ -21,7 +21,7 @@ public class CountryListManager : MonoBehaviour
     {
         var newCountry = Country.Generate();
 
-        gameState.AddCountry(newCountry);
+        GameManager.instance.globalCountryManager.AddCountry(newCountry);
 
         UpdateList();
     }

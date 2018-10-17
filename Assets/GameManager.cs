@@ -25,10 +25,7 @@ public class GameManager : MonoBehaviour
 
     [NonSerialized]
     public GameStateManager gameStateManager;
-
-    [NonSerialized]
-    public PathfindingManager pathfindingManager;
-
+    
     void Awake()
     {
         if (instance == null)
@@ -48,6 +45,5 @@ public class GameManager : MonoBehaviour
         globalCountryManager = GetComponent<GlobalCountryManager>();
         gamedatabaseManager = GetComponent<GameDatabaseManager>();
         gameStateManager = GetComponent<GameStateManager>();
-        pathfindingManager = GetComponent<PathfindingManager>();
     }
 }

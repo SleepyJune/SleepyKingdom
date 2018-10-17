@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GlobalCountryManager : MonoBehaviour
 {    
@@ -11,9 +12,46 @@ public class GlobalCountryManager : MonoBehaviour
 
     private GameState gameState;
 
+    public CreateCountryPopup createCountryPrefab;
+
+    public delegate void AddCountryEventFunction(Country country);
+    public event AddCountryEventFunction OnAddCountryEvent;
+
     private void Start()
     {
         gameState = GameManager.instance.gameStateManager.gameState;
+
+        if(gameState.countries.Length == 0)
+        {
+            CreateCountryPopup();
+        }
+    }
+
+    private void CreateCountryPopup()
+    {
+        var canvas = GameObject.Find("Canvas");
+
+        if(canvas != null)
+        {
+            var newPopup = Instantiate(createCountryPrefab, canvas.transform);
+        }
+    }
+
+    public void AddCountry(Country newCountry)
+    {        
+        GameManager.instance.gameStateManager.gameState.AddCountry(newCountry);
+
+        if(OnAddCountryEvent != null)
+        {
+            OnAddCountryEvent(newCountry);
+        }
+
+    }
+
+    public void OnCreateCountry(string name)
+    {
+        var country = Country.Generate(name);
+        AddCountry(country);
     }
 
     private void Update()

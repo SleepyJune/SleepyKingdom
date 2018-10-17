@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MarketScene.unity
     guid: 9fd7720a94bf3a1468316f70f6c3b4c3
+  - enabled: 1
+    path: Assets/Scenes/BuildingScene.unity
+    guid: ba66dd160b2d19a488039fc0ca30bc97
   m_configObjects: {}

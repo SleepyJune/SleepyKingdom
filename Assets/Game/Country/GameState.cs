@@ -20,7 +20,7 @@ public class GameState
     {
         countryList.Add(newCountry);
 
-        countries = countryList.ToArray();
+        countries = countryList.ToArray();        
     }
 
     public List<Country> GetCountries()

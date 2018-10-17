@@ -6,5 +6,11 @@ using UnityEngine;
 
 public class CastleUnit : Unit
 {
+    [NonSerialized]
+    public Country country;
 
+    public override void OnMouseDownEvent()
+    {
+        
+    }
 }

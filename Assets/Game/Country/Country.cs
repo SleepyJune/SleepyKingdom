@@ -27,6 +27,10 @@ public class Country
 
     public Tower tower;
 
+    public Vector3Int position;
+
+    public float speed;
+
     //leader
 
     //private resources
@@ -112,13 +116,18 @@ public class Country
         return resourcesDictionary[type];
     }
 
-    public static Country Generate()
+    public static Country Generate(string countryName = "")
     {
         var newCountry = new Country();
 
         newCountry.countryID = GetCountryCounter();
 
         newCountry.countryName = "New Country " + newCountry.countryID;
+
+        if(countryName != "")
+        {
+            newCountry.countryName = countryName;
+        }
 
         newCountry.tower = Tower.Generate();
 
