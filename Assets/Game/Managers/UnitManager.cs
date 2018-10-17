@@ -16,6 +16,11 @@ public class UnitManager : MonoBehaviour
 
     public static Dictionary<Vector3Int, GameTile> map;
 
+    //public delegate void OnMouseClickFunction(Unit unit);
+    //public event OnMouseClickFunction OnUnitClickEvent;
+
+    public CastleWindowController castleWindow;
+
     private void Start()
     {
         GameManager.instance.globalCountryManager.OnAddCountryEvent += OnAddCountryEvent;
@@ -26,6 +31,16 @@ public class UnitManager : MonoBehaviour
     private void OnDestroy()
     {
         GameManager.instance.globalCountryManager.OnAddCountryEvent -= OnAddCountryEvent;
+    }
+
+    public void OnUnitMouseClickEvent(Unit unit)
+    {
+        if(unit is CastleUnit)
+        {
+            var castle = unit as CastleUnit;
+
+            castleWindow.SetCountry(castle.country);
+        }
     }
 
     private void OnAddCountryEvent(Country country)

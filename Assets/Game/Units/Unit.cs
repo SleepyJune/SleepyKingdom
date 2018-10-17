@@ -35,7 +35,7 @@ public class Unit : MonoBehaviour
 
     public virtual void OnMouseDownEvent()
     {
-        
+        unitManager.OnUnitMouseClickEvent(this);
     }
 
     private void Update()
