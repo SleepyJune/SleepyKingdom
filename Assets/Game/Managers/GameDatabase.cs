@@ -8,7 +8,5 @@ using UnityEngine;
 
 public class GameDatabase : ScriptableObject
 {
-    public SpriteObject[] allSprites = new SpriteObject[0];
-
-    public BuildingObject[] allBuildings = new BuildingObject[0];
+    public GameDataObject[] allObjects = new GameDataObject[0];
 }

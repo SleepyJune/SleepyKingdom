@@ -20,13 +20,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4473684343473320}
   - component: {fileID: 114785165609663488}
+  - component: {fileID: 114269978435713752}
   - component: {fileID: 114021183068192512}
   - component: {fileID: 114765982919982516}
   - component: {fileID: 114832715140779184}
   - component: {fileID: 114441995602465836}
-  - component: {fileID: 114269978435713752}
   - component: {fileID: 114298329028251624}
-  - component: {fileID: 114631899644545824}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -94,19 +93,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   createCountryPrefab: {fileID: 114393483414073790, guid: 67c3df78b28fca741aadf1137c176af1,
     type: 2}
---- !u!114 &114631899644545824
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1535288021289118}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0748baa7d8524744aa50fa91afa87f56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  overlayPrefab: {fileID: 11400000, guid: e7260cc63a7aafc40ae247c518701177, type: 2}
-  castle: {fileID: 0}
 --- !u!114 &114765982919982516
 MonoBehaviour:
   m_ObjectHideFlags: 1

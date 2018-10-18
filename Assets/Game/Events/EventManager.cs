@@ -5,9 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EventManager : MonoBehaviour
-{
-    public GameDatabase eventDatabase;
-
+{    
     public Dictionary<string, SpriteObject> eventObjects = new Dictionary<string, SpriteObject>();
 
     [NonSerialized]
@@ -19,11 +17,11 @@ public class EventManager : MonoBehaviour
     public delegate void ProcessGameEvent(Event gameEvent);
     public event ProcessGameEvent OnNewWeatherEvent;
 
-    private void Awake()
+    private void Start()
     {
-        foreach(var gameEvent in eventDatabase.allSprites)
+        foreach(var gameEvent in GameManager.instance.gamedatabaseManager.spriteObjects.Values)
         {
-            eventObjects.Add(gameEvent.spriteName, gameEvent);
+            eventObjects.Add(gameEvent.name, gameEvent);
 
             if(gameEvent.spriteType == SpriteObjectType.Weather)
             {

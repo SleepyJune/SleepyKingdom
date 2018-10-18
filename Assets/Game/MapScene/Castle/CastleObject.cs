@@ -4,10 +4,8 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Game/Building Object")]
-public class BuildingObject : GameDataObject
+[CreateAssetMenu(menuName = "Game/Castle Object")]
+public class CastleObject : GameDataObject
 {
     public SpriteObject spriteObject;
-
-    public int cost;
 }

@@ -23,7 +23,7 @@ public class GlobalCountryManager : MonoBehaviour
 
         if(gameState.countries.Length == 0)
         {
-            CreateCountryPopup();
+            //CreateCountryPopup();
         }
     }
 

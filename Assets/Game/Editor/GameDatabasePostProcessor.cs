@@ -16,11 +16,10 @@ class GameDatabasePostProcessor : AssetPostprocessor
     {
         if (database == null)
         {
-            database = (GameDatabase)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Managers/GameDatabase.asset", typeof(GameDatabase));
+            database = (GameDatabase)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/GameDataObjects/GameDatabase.asset", typeof(GameDatabase));
         }
 
-        CheckModified("/Prefabs/SpriteObjects/", ref database.allSprites, importedAssets, deletedAssets);
-        CheckModified("/Prefabs/BuildingObjects/", ref database.allBuildings, importedAssets, deletedAssets);
+        CheckModified("/Prefabs/GameDataObjects/", ref database.allObjects, importedAssets, deletedAssets);
     }
 
     static void CheckModified<T>(string path, ref T[] collection, string[] importedAssets, string[] deletedAssets)

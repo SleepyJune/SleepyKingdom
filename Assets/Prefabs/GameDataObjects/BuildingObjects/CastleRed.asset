@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffc0a71399199de4ba0fb57bc088cdfc, type: 3}
+  m_Name: CastleRed
+  m_EditorClassIdentifier: 
+  name: CastleRed
+  spriteObject: {fileID: 11400000, guid: e871d95767d1e3b419b59b69e3517e70, type: 2}
+  cost: 0

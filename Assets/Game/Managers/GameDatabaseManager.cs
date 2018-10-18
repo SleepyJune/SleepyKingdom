@@ -12,17 +12,37 @@ public class GameDatabaseManager : MonoBehaviour
 
     public Dictionary<string, BuildingObject> buildingObjects = new Dictionary<string, BuildingObject>();
 
+    public Dictionary<string, CastleObject> castleObjects = new Dictionary<string, CastleObject>();
+
     private void Awake()
     {
-        foreach(var obj in database.allSprites)
+        foreach(var obj in database.allObjects)
         {
-            spriteObjects.Add(obj.spriteName, obj);
+            if(obj is SpriteObject)
+            {                
+                spriteObjects.Add(obj.name, obj as SpriteObject);
+            }
+
+            if (obj is BuildingObject)
+            {
+                buildingObjects.Add(obj.name, obj as BuildingObject);
+            }
+
+            if (obj is CastleObject)
+            {
+                castleObjects.Add(obj.name, obj as CastleObject);
+            }
         }
 
-        foreach (var obj in database.allBuildings)
+        /*foreach (var obj in database.allBuildings)
         {
             buildingObjects.Add(obj.buildingName, obj);
         }
+
+        foreach (var obj in database.allCastles)
+        {
+            castleObjects.Add(obj.castleName, obj);
+        }*/
     }
 
     public SpriteObject GetSpriteObject(string name)
