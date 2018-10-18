@@ -28,9 +28,11 @@ public class Unit : MonoBehaviour
     [NonSerialized]
     public UnitManager unitManager;
 
-    private void Start()
+    protected virtual void Start()
     {
-        tilemap = Pathfinder.tilemap;        
+        tilemap = Pathfinder.tilemap;
+
+        SetPosition(position);
     }
 
     public virtual void OnMouseDownEvent()
@@ -63,8 +65,7 @@ public class Unit : MonoBehaviour
                 //transform.position = GameManager.instance.pathfindingManager.CellToWorldPosition(position);
             }
             else
-            {
-                transform.position = tilemap.CellToWorld(nextPos);
+            {                
                 path = path.Skip(1).ToArray();
 
                 SetPosition(nextPos);
@@ -76,9 +77,11 @@ public class Unit : MonoBehaviour
 
     public void SetPosition(Vector3Int nextPosition)
     {
-        this.position = nextPosition;
+        position = nextPosition;
 
-        if(gameTile != null)
+        transform.position = tilemap.CellToWorld(position);
+
+        if (gameTile != null)
         {
             gameTile.DeleteUnit(this);
         }

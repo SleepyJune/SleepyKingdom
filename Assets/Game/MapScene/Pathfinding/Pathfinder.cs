@@ -200,6 +200,11 @@ public class Pathfinder
         return points.ToArray();
     }
 
+    public static GameTile GetGameTile(Vector3 pos)
+    {
+        return GetGameTile(tilemap.WorldToCell(pos));
+    }
+
     public static GameTile GetGameTile(Vector3Int pos)
     {
         GameTile tile;

@@ -28,7 +28,7 @@ public class BuildingSelectItem : MonoBehaviour
     public void OnPress()
     {
         popup.slot.SetBuilding(new Building(building));
-        popup.Close();
+        popup.Hide();
     }
 
 }

@@ -13,7 +13,7 @@ public class CastleSelectItem : MonoBehaviour
 
     private CastleObject castle;
 
-    private CastleSelectPopup popup;
+    private CastleSelectPopup parent;
 
     public void SetBuilding(CastleObject target, CastleSelectPopup parent)
     {
@@ -22,13 +22,12 @@ public class CastleSelectItem : MonoBehaviour
         icon.sprite = castle.spriteObject.image;
         buildingName.text = castle.name;
 
-        popup = parent;
+        this.parent = parent;
     }
 
     public void OnPress()
     {
-        //popup.slot.SetBuilding(new Building(castle));
-        //popup.Close();
+        parent.ShowCreateCountryPopup(castle);
     }
 
 }

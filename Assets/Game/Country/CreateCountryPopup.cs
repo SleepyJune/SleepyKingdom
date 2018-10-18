@@ -5,18 +5,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CreateCountryPopup : MonoBehaviour
+public class CreateCountryPopup : Popup
 {
     //public Text text;
     public InputField input;
 
     public Button button;
 
+    [NonSerialized]
+    public string inputText;
+
     public void OnCreateButtonPress()
     {
-        var name = input.text;
-        GameManager.instance.globalCountryManager.OnCreateCountry(name);
+        inputText = input.text;
+        //GameManager.instance.globalCountryManager.OnCreateCountry(inputText);
 
-        Destroy(gameObject);
+        Close();
     }
 }

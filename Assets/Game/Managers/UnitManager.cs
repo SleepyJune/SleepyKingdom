@@ -52,6 +52,12 @@ public class UnitManager : MonoBehaviour
     {
         var newCastle = Instantiate(castlePrefab, unitParent);
         newCastle.country = country;
+        newCastle.position = country.position;
+
+        if(country.castleObject != null)
+        {
+            newCastle.castleObject = country.castleObject;
+        }
 
         InitializeUnit(newCastle);
     }
@@ -59,8 +65,7 @@ public class UnitManager : MonoBehaviour
     public void InitializeUnit(Unit unit)
     {
         unit.unitManager = this;
-        unit.SetPosition(unit.position);
-
+        
         allUnits.Add(unit);
     }
 }

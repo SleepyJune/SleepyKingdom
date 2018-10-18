@@ -27,6 +27,8 @@ public class Country
 
     public Tower tower;
 
+    public CastleObject castleObject;
+
     public Vector3Int position;
 
     public float speed;

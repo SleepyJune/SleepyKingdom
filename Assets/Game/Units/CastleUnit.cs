@@ -8,4 +8,19 @@ public class CastleUnit : Unit
 {
     [NonSerialized]
     public Country country;
+
+    [NonSerialized]
+    public CastleObject castleObject;
+
+    public SpriteRenderer castleSprite;
+
+    protected override void Start()
+    {
+        base.Start();
+
+        if(castleObject != null)
+        {
+            castleSprite.sprite = castleObject.spriteObject.image;
+        }
+    }
 }
