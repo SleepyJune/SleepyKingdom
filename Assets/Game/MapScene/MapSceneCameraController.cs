@@ -21,7 +21,7 @@ public class MapSceneCameraController : MonoBehaviour
     {
         Zoom();
     }
-
+    
     private void OnMouseDown()
     {
         if (!EventSystem.current.IsPointerOverGameObject())
@@ -58,9 +58,12 @@ public class MapSceneCameraController : MonoBehaviour
     {
         var scrollSpeed = Input.GetAxis("Mouse ScrollWheel");
 
-        float size = Camera.main.orthographicSize;
-        size -= scrollSpeed * zoomSensitivity;
-        size = Mathf.Clamp(size, minSize, maxSize);
-        Camera.main.orthographicSize = size;
+        if (scrollSpeed != 0 && !EventSystem.current.IsPointerOverGameObject())
+        {
+            float size = Camera.main.orthographicSize;
+            size -= scrollSpeed * zoomSensitivity;
+            size = Mathf.Clamp(size, minSize, maxSize);
+            Camera.main.orthographicSize = size;
+        }
     }
 }

@@ -11,7 +11,7 @@ public class GameStateManager : MonoBehaviour
 
     private void Awake()
     {
-        gameState = GameState.LoadSave();
+        gameState = GameState.Load();
     }
 
     public void Save()

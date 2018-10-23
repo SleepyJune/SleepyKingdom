@@ -5,6 +5,7 @@ using System.Linq;
 
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.EventSystems;
 
 public class Unit : MonoBehaviour
 {
@@ -37,7 +38,10 @@ public class Unit : MonoBehaviour
 
     public virtual void OnMouseDownEvent()
     {
-        unitManager.OnUnitMouseClickEvent(this);
+        if (!EventSystem.current.IsPointerOverGameObject())
+        {
+            unitManager.OnUnitMouseClickEvent(this);
+        }
     }
 
     private void Update()

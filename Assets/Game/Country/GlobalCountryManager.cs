@@ -21,7 +21,21 @@ public class GlobalCountryManager : MonoBehaviour
     {
         gameState = GameManager.instance.gameStateManager.gameState;
 
-        if(gameState.countries.Length == 0)
+        Invoke("InitiateCountries", .05f);
+    }
+
+    private void InitiateCountries()
+    {
+        var countries = gameState.GetCountries();
+
+        if (countries.Count > 0)
+        {
+            foreach (var country in countries)
+            {
+                AddCountry(country, false);
+            }
+        }
+        else
         {
             //CreateCountryPopup();
         }
@@ -37,15 +51,17 @@ public class GlobalCountryManager : MonoBehaviour
         }
     }
 
-    public void AddCountry(Country newCountry)
-    {        
-        GameManager.instance.gameStateManager.gameState.AddCountry(newCountry);
+    public void AddCountry(Country newCountry, bool addToState = true)
+    {
+        if (addToState)
+        {
+            GameManager.instance.gameStateManager.gameState.AddCountry(newCountry);
+        }
 
         if(OnAddCountryEvent != null)
         {
             OnAddCountryEvent(newCountry);
         }
-
     }
 
     public void OnCreateCountry(string name)

@@ -14,11 +14,11 @@ public class DataPath
             if (Application.platform == RuntimePlatform.Android
              || Application.platform == RuntimePlatform.WebGLPlayer)
             {
-                return Application.persistentDataPath + "/Saves/";
+                return Application.persistentDataPath + "/Resources/Saves/";
             }
             else
             {
-                return Application.dataPath + "/Saves/";
+                return Application.dataPath + "/Resources/Saves/";
             }
         }
     }

@@ -36,18 +36,27 @@ public class Country
     //leader
 
     //private resources
+
+    [SerializeField]
     private float _population;
 
+    [SerializeField]
     private float _wood;
+
+    [SerializeField]
     private float _stone;
+    [SerializeField]
     private float _wheat;
+    [SerializeField]
     private float _gold;
+    [SerializeField]
     private float _water;
 
+    [SerializeField]
     private float _taxRate;
+    [SerializeField]
     private float _happiness;
 
-    [NonSerialized]
     static int countryCounter = 1;
 
     private Dictionary<CountryResourceType, float> resourcesDictionary = new Dictionary<CountryResourceType, float>();
@@ -113,6 +122,20 @@ public class Country
         }
     }
 
+    public void InitializeResources()
+    {
+        Population = _population;
+
+        Wood = _wood;
+        Stone = _stone;
+        Wheat = _wheat;
+        Gold = _gold;
+        Water = _water;
+
+        TaxRate = _taxRate;
+        Happiness = _happiness;
+    }
+
     public float GetResource(CountryResourceType type)
     {
         return resourcesDictionary[type];
@@ -126,7 +149,7 @@ public class Country
 
         newCountry.countryName = "New Country " + newCountry.countryID;
 
-        if(countryName != "")
+        if (countryName != "")
         {
             newCountry.countryName = countryName;
         }
@@ -143,7 +166,7 @@ public class Country
         newCountry.TaxRate = Random.Range(0, 100);
 
         newCountry.Happiness = Random.Range(1, 100);
-                
+
         return newCountry;
     }
 
