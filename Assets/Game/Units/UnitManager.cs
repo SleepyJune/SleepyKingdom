@@ -21,9 +21,18 @@ public class UnitManager : MonoBehaviour
 
     public CastleWindowController castleWindow;
 
+    public GameTileClickHandler gameTileClickHandler;
+
+    private bool myCountrySelected = false;
+
+    private CastleUnit myCastle;
+
     private void Start()
     {
         GameManager.instance.globalCountryManager.OnAddCountryEvent += OnAddCountryEvent;
+        GameManager.instance.globalCountryManager.OnDeleteCountryEvent += OnDeleteCountryEvent;
+
+        gameTileClickHandler.OnGameTileClickedEvent += OnGameTileClickedEvent;
 
         map = Pathfinder.map;
     }
@@ -31,6 +40,22 @@ public class UnitManager : MonoBehaviour
     private void OnDestroy()
     {
         GameManager.instance.globalCountryManager.OnAddCountryEvent -= OnAddCountryEvent;
+        GameManager.instance.globalCountryManager.OnDeleteCountryEvent -= OnDeleteCountryEvent;
+
+        gameTileClickHandler.OnGameTileClickedEvent -= OnGameTileClickedEvent;
+    }
+
+    private void OnGameTileClickedEvent(GameTile tile)
+    {
+        if (myCountrySelected)
+        {
+            myCastle.SetMovePosition(tile.position);
+        }
+    }
+
+    public void DeselectMyCountry()
+    {
+        myCountrySelected = false;
     }
 
     public void OnUnitMouseClickEvent(Unit unit)
@@ -40,6 +65,15 @@ public class UnitManager : MonoBehaviour
             var castle = unit as CastleUnit;
 
             castleWindow.SetCountry(castle.country);
+
+            if(castle.country.countryID == 1)
+            {
+                myCountrySelected = true;
+            }
+            else
+            {
+                myCountrySelected = false;
+            }
         }
     }
 
@@ -59,7 +93,34 @@ public class UnitManager : MonoBehaviour
             newCastle.castleObject = country.castleObject;
         }
 
+        if(country.countryID == 1)
+        {
+            myCastle = newCastle;
+        }
+
         InitializeUnit(newCastle);
+    }
+
+    private void OnDeleteCountryEvent(Country country)
+    {
+        DeleteCastleUnit(country);
+    }
+
+    public void DeleteCastleUnit(Country country)
+    {        
+        foreach(var unit in allUnits)
+        {
+            var castle = unit as CastleUnit;
+            if(castle != null)
+            {
+                if(castle.country.countryID == country.countryID)
+                {
+                    allUnits.Remove(unit);
+                    Destroy(castle.gameObject);
+                    break;
+                }
+            }
+        }
     }
 
     public void InitializeUnit(Unit unit)

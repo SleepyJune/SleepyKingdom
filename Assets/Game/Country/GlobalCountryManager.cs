@@ -14,8 +14,9 @@ public class GlobalCountryManager : MonoBehaviour
 
     public CreateCountryPopup createCountryPrefab;
 
-    public delegate void AddCountryEventFunction(Country country);
-    public event AddCountryEventFunction OnAddCountryEvent;
+    public delegate void CountryEventFunction(Country country);
+    public event CountryEventFunction OnAddCountryEvent;
+    public event CountryEventFunction OnDeleteCountryEvent;
 
     private void Start()
     {
@@ -26,6 +27,8 @@ public class GlobalCountryManager : MonoBehaviour
 
     private void InitiateCountries()
     {
+        Country.countryCounter = gameState.countryCounter;
+
         var countries = gameState.GetCountries();
 
         if (countries.Count > 0)
@@ -61,6 +64,16 @@ public class GlobalCountryManager : MonoBehaviour
         if(OnAddCountryEvent != null)
         {
             OnAddCountryEvent(newCountry);
+        }
+    }
+
+    public void DeleteCountry(Country country)
+    {
+        GameManager.instance.gameStateManager.gameState.DeleteCountry(country);
+
+        if(OnDeleteCountryEvent != null)
+        {
+            OnDeleteCountryEvent(country);
         }
     }
 

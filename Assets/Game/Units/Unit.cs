@@ -14,7 +14,7 @@ public class Unit : MonoBehaviour
     public GameTile gameTile;
 
     [NonSerialized]
-    public Vector3 targetPos;
+    public Vector3Int targetPos;
 
     [NonSerialized]
     public Vector3Int[] path;
@@ -35,12 +35,26 @@ public class Unit : MonoBehaviour
 
         SetPosition(position);
     }
-
+    
     public virtual void OnMouseDownEvent()
     {
         if (!EventSystem.current.IsPointerOverGameObject())
         {
             unitManager.OnUnitMouseClickEvent(this);
+        }
+    }
+
+    public void SetMovePosition(Vector3Int pos)
+    {                
+        var tempPath = Pathfinder.GetShortestPath(this, position, pos);
+
+        if(tempPath != null && tempPath.Length > 1)
+        {
+            path = tempPath;
+
+            targetPos = pos;
+
+            startMovingTime = Time.time;
         }
     }
 
@@ -53,13 +67,13 @@ public class Unit : MonoBehaviour
             var nextPosWorld = tilemap.CellToWorld(nextPos);
             //var positionWorld = GameManager.instance.pathfindingManager.CellToWorldPosition(position);
 
-            if (Vector3.Distance(nextPosWorld, transform.position) >= .01f)
+            var movingTime = Time.time - startMovingTime;
+
+            if (Vector3.Distance(nextPosWorld, transform.position) >= .01f && movingTime * speed < 1f)
             {
                 var previousPosWorld = tilemap.CellToWorld(path[0]);
 
                 Vector3 dir = (nextPosWorld - previousPosWorld).normalized;
-
-                var movingTime = Time.time - startMovingTime;
 
                 transform.position = previousPosWorld + dir * speed * movingTime;
 

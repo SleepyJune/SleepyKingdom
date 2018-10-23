@@ -46,4 +46,9 @@ public class GameManager : MonoBehaviour
         gamedatabaseManager = GetComponent<GameDatabaseManager>();
         gameStateManager = GetComponent<GameStateManager>();
     }
+
+    private void OnApplicationQuit()
+    {
+        gameStateManager.Save();
+    }
 }

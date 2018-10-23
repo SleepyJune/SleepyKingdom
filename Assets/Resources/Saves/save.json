@@ -325,18 +325,18 @@
                 "z": 0
             },
             "speed": 0.0,
-            "_population": 1160.0,
-            "_wood": 388.6239929199219,
-            "_stone": 302.6240234375,
-            "_wheat": 337.6239929199219,
-            "_gold": 363.6240234375,
+            "_population": 3045.0,
+            "_wood": 4352.779296875,
+            "_stone": 4266.77978515625,
+            "_wheat": 4301.77880859375,
+            "_gold": 4327.7802734375,
             "_water": 0.0,
             "_taxRate": 3.0,
             "_happiness": 72.0
         },
         {
-            "countryID": 1,
-            "countryName": "cc",
+            "countryID": 4,
+            "countryName": "ccc",
             "tower": {
                 "floors": [
                     {
@@ -346,13 +346,13 @@
                             {
                                 "buildingID": 1,
                                 "buildingObject": {
-                                    "instanceID": 20900
+                                    "instanceID": -15588702
                                 }
                             },
                             {
                                 "buildingID": 2,
                                 "buildingObject": {
-                                    "instanceID": -15588702
+                                    "instanceID": 20888
                                 }
                             },
                             {
@@ -388,7 +388,7 @@
                             {
                                 "buildingID": 4,
                                 "buildingObject": {
-                                    "instanceID": 20894
+                                    "instanceID": 20882
                                 }
                             },
                             {
@@ -400,19 +400,19 @@
                             {
                                 "buildingID": 6,
                                 "buildingObject": {
-                                    "instanceID": 20894
+                                    "instanceID": 20900
                                 }
                             },
                             {
                                 "buildingID": 7,
                                 "buildingObject": {
-                                    "instanceID": 20882
+                                    "instanceID": 20900
                                 }
                             },
                             {
                                 "buildingID": 8,
                                 "buildingObject": {
-                                    "instanceID": 20882
+                                    "instanceID": -15588702
                                 }
                             },
                             {
@@ -430,10 +430,240 @@
                             {
                                 "buildingID": 10,
                                 "buildingObject": {
+                                    "instanceID": 20888
+                                }
+                            },
+                            {
+                                "buildingID": 11,
+                                "buildingObject": {
+                                    "instanceID": 20900
+                                }
+                            },
+                            {
+                                "buildingID": 12,
+                                "buildingObject": {
+                                    "instanceID": 20888
+                                }
+                            },
+                            {
+                                "buildingID": 13,
+                                "buildingObject": {
                                     "instanceID": -15588702
                                 }
                             },
                             {
+                                "buildingID": 14,
+                                "buildingObject": {
+                                    "instanceID": 20900
+                                }
+                            },
+                            {
+                                "buildingID": 0,
+                                "buildingObject": {
+                                    "instanceID": 0
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "floorNum": 3,
+                        "floorSize": 9,
+                        "buildings": [
+                            {
+                                "buildingID": 15,
+                                "buildingObject": {
+                                    "instanceID": 20894
+                                }
+                            },
+                            {
+                                "buildingID": 16,
+                                "buildingObject": {
+                                    "instanceID": -15588702
+                                }
+                            },
+                            {
+                                "buildingID": 17,
+                                "buildingObject": {
+                                    "instanceID": 20894
+                                }
+                            },
+                            {
+                                "buildingID": 18,
+                                "buildingObject": {
+                                    "instanceID": -15588702
+                                }
+                            },
+                            {
+                                "buildingID": 19,
+                                "buildingObject": {
+                                    "instanceID": 20900
+                                }
+                            },
+                            {
+                                "buildingID": 0,
+                                "buildingObject": {
+                                    "instanceID": 0
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "floorNum": 4,
+                        "floorSize": 8,
+                        "buildings": [
+                            {
+                                "buildingID": 20,
+                                "buildingObject": {
+                                    "instanceID": 20894
+                                }
+                            },
+                            {
+                                "buildingID": 21,
+                                "buildingObject": {
+                                    "instanceID": 20894
+                                }
+                            },
+                            {
+                                "buildingID": 22,
+                                "buildingObject": {
+                                    "instanceID": 20882
+                                }
+                            },
+                            {
+                                "buildingID": 23,
+                                "buildingObject": {
+                                    "instanceID": 20882
+                                }
+                            },
+                            {
+                                "buildingID": 0,
+                                "buildingObject": {
+                                    "instanceID": 0
+                                }
+                            },
+                            {
+                                "buildingID": 0,
+                                "buildingObject": {
+                                    "instanceID": 0
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "floorNum": 0,
+                        "floorSize": 0,
+                        "buildings": []
+                    },
+                    {
+                        "floorNum": 0,
+                        "floorSize": 0,
+                        "buildings": []
+                    },
+                    {
+                        "floorNum": 0,
+                        "floorSize": 0,
+                        "buildings": []
+                    },
+                    {
+                        "floorNum": 0,
+                        "floorSize": 0,
+                        "buildings": []
+                    },
+                    {
+                        "floorNum": 0,
+                        "floorSize": 0,
+                        "buildings": []
+                    }
+                ]
+            },
+            "castleObject": {
+                "instanceID": -22256712
+            },
+            "position": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "speed": 0.0,
+            "_population": 408.0,
+            "_wood": 99.2199935913086,
+            "_stone": 152.22000122070313,
+            "_wheat": 82.22000122070313,
+            "_gold": 117.22000122070313,
+            "_water": 0.0,
+            "_taxRate": 45.0,
+            "_happiness": 70.0
+        },
+        {
+            "countryID": 2,
+            "countryName": "d",
+            "tower": {
+                "floors": [
+                    {
+                        "floorNum": 0,
+                        "floorSize": 12,
+                        "buildings": [
+                            {
+                                "buildingID": 24,
+                                "buildingObject": {
+                                    "instanceID": 20882
+                                }
+                            },
+                            {
+                                "buildingID": 25,
+                                "buildingObject": {
+                                    "instanceID": -15588702
+                                }
+                            },
+                            {
+                                "buildingID": 26,
+                                "buildingObject": {
+                                    "instanceID": 20882
+                                }
+                            },
+                            {
+                                "buildingID": 27,
+                                "buildingObject": {
+                                    "instanceID": 20900
+                                }
+                            },
+                            {
+                                "buildingID": 0,
+                                "buildingObject": {
+                                    "instanceID": 0
+                                }
+                            },
+                            {
+                                "buildingID": 0,
+                                "buildingObject": {
+                                    "instanceID": 0
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "floorNum": 1,
+                        "floorSize": 11,
+                        "buildings": [
+                            {
+                                "buildingID": 28,
+                                "buildingObject": {
+                                    "instanceID": 20900
+                                }
+                            },
+                            {
+                                "buildingID": 29,
+                                "buildingObject": {
+                                    "instanceID": 20894
+                                }
+                            },
+                            {
+                                "buildingID": 0,
+                                "buildingObject": {
+                                    "instanceID": 0
+                                }
+                            },
+                            {
                                 "buildingID": 0,
                                 "buildingObject": {
                                     "instanceID": 0
@@ -449,6 +679,36 @@
                                 "buildingID": 0,
                                 "buildingObject": {
                                     "instanceID": 0
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "floorNum": 2,
+                        "floorSize": 10,
+                        "buildings": [
+                            {
+                                "buildingID": 30,
+                                "buildingObject": {
+                                    "instanceID": 20888
+                                }
+                            },
+                            {
+                                "buildingID": 31,
+                                "buildingObject": {
+                                    "instanceID": 20900
+                                }
+                            },
+                            {
+                                "buildingID": 32,
+                                "buildingObject": {
+                                    "instanceID": 20888
+                                }
+                            },
+                            {
+                                "buildingID": 33,
+                                "buildingObject": {
+                                    "instanceID": -15588702
                                 }
                             },
                             {
@@ -470,15 +730,15 @@
                         "floorSize": 9,
                         "buildings": [
                             {
-                                "buildingID": 11,
+                                "buildingID": 34,
                                 "buildingObject": {
-                                    "instanceID": -15588702
+                                    "instanceID": 20894
                                 }
                             },
                             {
-                                "buildingID": 12,
+                                "buildingID": 0,
                                 "buildingObject": {
-                                    "instanceID": 20894
+                                    "instanceID": 0
                                 }
                             },
                             {
@@ -512,15 +772,15 @@
                         "floorSize": 8,
                         "buildings": [
                             {
-                                "buildingID": 13,
+                                "buildingID": 35,
                                 "buildingObject": {
                                     "instanceID": 20888
                                 }
                             },
                             {
-                                "buildingID": 0,
+                                "buildingID": 36,
                                 "buildingObject": {
-                                    "instanceID": 0
+                                    "instanceID": 20882
                                 }
                             },
                             {
@@ -554,27 +814,27 @@
                         "floorSize": 7,
                         "buildings": [
                             {
-                                "buildingID": 14,
+                                "buildingID": 37,
                                 "buildingObject": {
-                                    "instanceID": 20882
+                                    "instanceID": 20894
                                 }
                             },
                             {
-                                "buildingID": 0,
+                                "buildingID": 38,
                                 "buildingObject": {
-                                    "instanceID": 0
+                                    "instanceID": -15588702
                                 }
                             },
                             {
-                                "buildingID": 0,
+                                "buildingID": 39,
                                 "buildingObject": {
-                                    "instanceID": 0
+                                    "instanceID": 20900
                                 }
                             },
                             {
-                                "buildingID": 0,
+                                "buildingID": 40,
                                 "buildingObject": {
-                                    "instanceID": 0
+                                    "instanceID": 20900
                                 }
                             },
                             {
@@ -596,21 +856,21 @@
                         "floorSize": 6,
                         "buildings": [
                             {
-                                "buildingID": 15,
+                                "buildingID": 41,
                                 "buildingObject": {
-                                    "instanceID": 20900
+                                    "instanceID": 20894
                                 }
                             },
                             {
-                                "buildingID": 16,
+                                "buildingID": 42,
                                 "buildingObject": {
-                                    "instanceID": 20900
+                                    "instanceID": -15588702
                                 }
                             },
                             {
-                                "buildingID": 0,
+                                "buildingID": 43,
                                 "buildingObject": {
-                                    "instanceID": 0
+                                    "instanceID": 20888
                                 }
                             },
                             {
@@ -638,84 +898,7 @@
                         "floorSize": 5,
                         "buildings": [
                             {
-                                "buildingID": 17,
-                                "buildingObject": {
-                                    "instanceID": 20888
-                                }
-                            },
-                            {
-                                "buildingID": 18,
-                                "buildingObject": {
-                                    "instanceID": 20900
-                                }
-                            },
-                            {
-                                "buildingID": 19,
-                                "buildingObject": {
-                                    "instanceID": 20894
-                                }
-                            },
-                            {
-                                "buildingID": 20,
-                                "buildingObject": {
-                                    "instanceID": -15588702
-                                }
-                            },
-                            {
-                                "buildingID": 0,
-                                "buildingObject": {
-                                    "instanceID": 0
-                                }
-                            },
-                            {
-                                "buildingID": 0,
-                                "buildingObject": {
-                                    "instanceID": 0
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "floorNum": 0,
-                        "floorSize": 0,
-                        "buildings": []
-                    },
-                    {
-                        "floorNum": 0,
-                        "floorSize": 0,
-                        "buildings": []
-                    }
-                ]
-            },
-            "castleObject": {
-                "instanceID": -22256712
-            },
-            "position": {
-                "x": 1,
-                "y": 1,
-                "z": 0
-            },
-            "speed": 0.0,
-            "_population": 696.0,
-            "_wood": 81.71499633789063,
-            "_stone": 115.71500396728516,
-            "_wheat": 94.7149887084961,
-            "_gold": 46.71500015258789,
-            "_water": 0.0,
-            "_taxRate": 12.0,
-            "_happiness": 76.0
-        },
-        {
-            "countryID": 1,
-            "countryName": "dd",
-            "tower": {
-                "floors": [
-                    {
-                        "floorNum": 0,
-                        "floorSize": 12,
-                        "buildings": [
-                            {
-                                "buildingID": 1,
+                                "buildingID": 44,
                                 "buildingObject": {
                                     "instanceID": 20900
                                 }
@@ -751,486 +934,6 @@
                                 }
                             }
                         ]
-                    },
-                    {
-                        "floorNum": 1,
-                        "floorSize": 11,
-                        "buildings": [
-                            {
-                                "buildingID": 2,
-                                "buildingObject": {
-                                    "instanceID": 20894
-                                }
-                            },
-                            {
-                                "buildingID": 0,
-                                "buildingObject": {
-                                    "instanceID": 0
-                                }
-                            },
-                            {
-                                "buildingID": 0,
-                                "buildingObject": {
-                                    "instanceID": 0
-                                }
-                            },
-                            {
-                                "buildingID": 0,
-                                "buildingObject": {
-                                    "instanceID": 0
-                                }
-                            },
-                            {
-                                "buildingID": 0,
-                                "buildingObject": {
-                                    "instanceID": 0
-                                }
-                            },
-                            {
-                                "buildingID": 0,
-                                "buildingObject": {
-                                    "instanceID": 0
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "floorNum": 2,
-                        "floorSize": 10,
-                        "buildings": [
-                            {
-                                "buildingID": 3,
-                                "buildingObject": {
-                                    "instanceID": 20882
-                                }
-                            },
-                            {
-                                "buildingID": 4,
-                                "buildingObject": {
-                                    "instanceID": 20900
-                                }
-                            },
-                            {
-                                "buildingID": 5,
-                                "buildingObject": {
-                                    "instanceID": 20900
-                                }
-                            },
-                            {
-                                "buildingID": 0,
-                                "buildingObject": {
-                                    "instanceID": 0
-                                }
-                            },
-                            {
-                                "buildingID": 0,
-                                "buildingObject": {
-                                    "instanceID": 0
-                                }
-                            },
-                            {
-                                "buildingID": 0,
-                                "buildingObject": {
-                                    "instanceID": 0
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "floorNum": 3,
-                        "floorSize": 9,
-                        "buildings": [
-                            {
-                                "buildingID": 6,
-                                "buildingObject": {
-                                    "instanceID": 20900
-                                }
-                            },
-                            {
-                                "buildingID": 7,
-                                "buildingObject": {
-                                    "instanceID": -15588702
-                                }
-                            },
-                            {
-                                "buildingID": 8,
-                                "buildingObject": {
-                                    "instanceID": 20900
-                                }
-                            },
-                            {
-                                "buildingID": 0,
-                                "buildingObject": {
-                                    "instanceID": 0
-                                }
-                            },
-                            {
-                                "buildingID": 0,
-                                "buildingObject": {
-                                    "instanceID": 0
-                                }
-                            },
-                            {
-                                "buildingID": 0,
-                                "buildingObject": {
-                                    "instanceID": 0
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "floorNum": 4,
-                        "floorSize": 8,
-                        "buildings": [
-                            {
-                                "buildingID": 9,
-                                "buildingObject": {
-                                    "instanceID": 20888
-                                }
-                            },
-                            {
-                                "buildingID": 0,
-                                "buildingObject": {
-                                    "instanceID": 0
-                                }
-                            },
-                            {
-                                "buildingID": 0,
-                                "buildingObject": {
-                                    "instanceID": 0
-                                }
-                            },
-                            {
-                                "buildingID": 0,
-                                "buildingObject": {
-                                    "instanceID": 0
-                                }
-                            },
-                            {
-                                "buildingID": 0,
-                                "buildingObject": {
-                                    "instanceID": 0
-                                }
-                            },
-                            {
-                                "buildingID": 0,
-                                "buildingObject": {
-                                    "instanceID": 0
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "floorNum": 0,
-                        "floorSize": 0,
-                        "buildings": []
-                    },
-                    {
-                        "floorNum": 0,
-                        "floorSize": 0,
-                        "buildings": []
-                    },
-                    {
-                        "floorNum": 0,
-                        "floorSize": 0,
-                        "buildings": []
-                    },
-                    {
-                        "floorNum": 0,
-                        "floorSize": 0,
-                        "buildings": []
-                    },
-                    {
-                        "floorNum": 0,
-                        "floorSize": 0,
-                        "buildings": []
-                    }
-                ]
-            },
-            "castleObject": {
-                "instanceID": -22256712
-            },
-            "position": {
-                "x": -2,
-                "y": -1,
-                "z": 0
-            },
-            "speed": 0.0,
-            "_population": 412.0,
-            "_wood": 95.38700103759766,
-            "_stone": 42.38699722290039,
-            "_wheat": 18.38699722290039,
-            "_gold": 99.38700103759766,
-            "_water": 0.0,
-            "_taxRate": 83.0,
-            "_happiness": 6.0
-        },
-        {
-            "countryID": 1,
-            "countryName": "5",
-            "tower": {
-                "floors": [
-                    {
-                        "floorNum": 0,
-                        "floorSize": 12,
-                        "buildings": [
-                            {
-                                "buildingID": 1,
-                                "buildingObject": {
-                                    "instanceID": -15588702
-                                }
-                            },
-                            {
-                                "buildingID": 2,
-                                "buildingObject": {
-                                    "instanceID": 20882
-                                }
-                            },
-                            {
-                                "buildingID": 3,
-                                "buildingObject": {
-                                    "instanceID": -15588702
-                                }
-                            },
-                            {
-                                "buildingID": 0,
-                                "buildingObject": {
-                                    "instanceID": 0
-                                }
-                            },
-                            {
-                                "buildingID": 0,
-                                "buildingObject": {
-                                    "instanceID": 0
-                                }
-                            },
-                            {
-                                "buildingID": 0,
-                                "buildingObject": {
-                                    "instanceID": 0
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "floorNum": 1,
-                        "floorSize": 11,
-                        "buildings": [
-                            {
-                                "buildingID": 4,
-                                "buildingObject": {
-                                    "instanceID": 20882
-                                }
-                            },
-                            {
-                                "buildingID": 5,
-                                "buildingObject": {
-                                    "instanceID": 20888
-                                }
-                            },
-                            {
-                                "buildingID": 6,
-                                "buildingObject": {
-                                    "instanceID": 20888
-                                }
-                            },
-                            {
-                                "buildingID": 7,
-                                "buildingObject": {
-                                    "instanceID": 20888
-                                }
-                            },
-                            {
-                                "buildingID": 8,
-                                "buildingObject": {
-                                    "instanceID": 20882
-                                }
-                            },
-                            {
-                                "buildingID": 9,
-                                "buildingObject": {
-                                    "instanceID": 20882
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "floorNum": 2,
-                        "floorSize": 10,
-                        "buildings": [
-                            {
-                                "buildingID": 10,
-                                "buildingObject": {
-                                    "instanceID": 20888
-                                }
-                            },
-                            {
-                                "buildingID": 11,
-                                "buildingObject": {
-                                    "instanceID": 20888
-                                }
-                            },
-                            {
-                                "buildingID": 12,
-                                "buildingObject": {
-                                    "instanceID": 20894
-                                }
-                            },
-                            {
-                                "buildingID": 13,
-                                "buildingObject": {
-                                    "instanceID": 20888
-                                }
-                            },
-                            {
-                                "buildingID": 14,
-                                "buildingObject": {
-                                    "instanceID": 20888
-                                }
-                            },
-                            {
-                                "buildingID": 15,
-                                "buildingObject": {
-                                    "instanceID": 20900
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "floorNum": 3,
-                        "floorSize": 9,
-                        "buildings": [
-                            {
-                                "buildingID": 16,
-                                "buildingObject": {
-                                    "instanceID": 20894
-                                }
-                            },
-                            {
-                                "buildingID": 17,
-                                "buildingObject": {
-                                    "instanceID": 20894
-                                }
-                            },
-                            {
-                                "buildingID": 0,
-                                "buildingObject": {
-                                    "instanceID": 0
-                                }
-                            },
-                            {
-                                "buildingID": 0,
-                                "buildingObject": {
-                                    "instanceID": 0
-                                }
-                            },
-                            {
-                                "buildingID": 0,
-                                "buildingObject": {
-                                    "instanceID": 0
-                                }
-                            },
-                            {
-                                "buildingID": 0,
-                                "buildingObject": {
-                                    "instanceID": 0
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "floorNum": 4,
-                        "floorSize": 8,
-                        "buildings": [
-                            {
-                                "buildingID": 18,
-                                "buildingObject": {
-                                    "instanceID": 20882
-                                }
-                            },
-                            {
-                                "buildingID": 19,
-                                "buildingObject": {
-                                    "instanceID": 20888
-                                }
-                            },
-                            {
-                                "buildingID": 20,
-                                "buildingObject": {
-                                    "instanceID": 20900
-                                }
-                            },
-                            {
-                                "buildingID": 21,
-                                "buildingObject": {
-                                    "instanceID": 20894
-                                }
-                            },
-                            {
-                                "buildingID": 0,
-                                "buildingObject": {
-                                    "instanceID": 0
-                                }
-                            },
-                            {
-                                "buildingID": 0,
-                                "buildingObject": {
-                                    "instanceID": 0
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "floorNum": 5,
-                        "floorSize": 7,
-                        "buildings": [
-                            {
-                                "buildingID": 22,
-                                "buildingObject": {
-                                    "instanceID": 20900
-                                }
-                            },
-                            {
-                                "buildingID": 23,
-                                "buildingObject": {
-                                    "instanceID": 20894
-                                }
-                            },
-                            {
-                                "buildingID": 24,
-                                "buildingObject": {
-                                    "instanceID": 20894
-                                }
-                            },
-                            {
-                                "buildingID": 0,
-                                "buildingObject": {
-                                    "instanceID": 0
-                                }
-                            },
-                            {
-                                "buildingID": 0,
-                                "buildingObject": {
-                                    "instanceID": 0
-                                }
-                            },
-                            {
-                                "buildingID": 0,
-                                "buildingObject": {
-                                    "instanceID": 0
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "floorNum": 0,
-                        "floorSize": 0,
-                        "buildings": []
-                    },
-                    {
-                        "floorNum": 0,
-                        "floorSize": 0,
-                        "buildings": []
                     },
                     {
                         "floorNum": 0,
@@ -1249,20 +952,281 @@
             },
             "position": {
                 "x": 1,
-                "y": -1,
+                "y": -2,
                 "z": 0
             },
             "speed": 0.0,
-            "_population": 701.0,
-            "_wood": 68.0,
-            "_stone": 94.0,
-            "_wheat": 3.0,
-            "_gold": 79.0,
+            "_population": 510.0,
+            "_wood": 195.57498168945313,
+            "_stone": 128.5749969482422,
+            "_wheat": 176.57498168945313,
+            "_gold": 140.5749969482422,
             "_water": 0.0,
-            "_taxRate": 25.0,
-            "_happiness": 33.0
+            "_taxRate": 29.0,
+            "_happiness": 22.0
+        },
+        {
+            "countryID": 3,
+            "countryName": "k",
+            "tower": {
+                "floors": [
+                    {
+                        "floorNum": 0,
+                        "floorSize": 12,
+                        "buildings": [
+                            {
+                                "buildingID": 1,
+                                "buildingObject": {
+                                    "instanceID": 20888
+                                }
+                            },
+                            {
+                                "buildingID": 0,
+                                "buildingObject": {
+                                    "instanceID": 0
+                                }
+                            },
+                            {
+                                "buildingID": 0,
+                                "buildingObject": {
+                                    "instanceID": 0
+                                }
+                            },
+                            {
+                                "buildingID": 0,
+                                "buildingObject": {
+                                    "instanceID": 0
+                                }
+                            },
+                            {
+                                "buildingID": 0,
+                                "buildingObject": {
+                                    "instanceID": 0
+                                }
+                            },
+                            {
+                                "buildingID": 0,
+                                "buildingObject": {
+                                    "instanceID": 0
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "floorNum": 1,
+                        "floorSize": 11,
+                        "buildings": [
+                            {
+                                "buildingID": 2,
+                                "buildingObject": {
+                                    "instanceID": -15588702
+                                }
+                            },
+                            {
+                                "buildingID": 0,
+                                "buildingObject": {
+                                    "instanceID": 0
+                                }
+                            },
+                            {
+                                "buildingID": 0,
+                                "buildingObject": {
+                                    "instanceID": 0
+                                }
+                            },
+                            {
+                                "buildingID": 0,
+                                "buildingObject": {
+                                    "instanceID": 0
+                                }
+                            },
+                            {
+                                "buildingID": 0,
+                                "buildingObject": {
+                                    "instanceID": 0
+                                }
+                            },
+                            {
+                                "buildingID": 0,
+                                "buildingObject": {
+                                    "instanceID": 0
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "floorNum": 2,
+                        "floorSize": 10,
+                        "buildings": [
+                            {
+                                "buildingID": 3,
+                                "buildingObject": {
+                                    "instanceID": -15588702
+                                }
+                            },
+                            {
+                                "buildingID": 4,
+                                "buildingObject": {
+                                    "instanceID": -15588702
+                                }
+                            },
+                            {
+                                "buildingID": 5,
+                                "buildingObject": {
+                                    "instanceID": 20882
+                                }
+                            },
+                            {
+                                "buildingID": 6,
+                                "buildingObject": {
+                                    "instanceID": -15588702
+                                }
+                            },
+                            {
+                                "buildingID": 0,
+                                "buildingObject": {
+                                    "instanceID": 0
+                                }
+                            },
+                            {
+                                "buildingID": 0,
+                                "buildingObject": {
+                                    "instanceID": 0
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "floorNum": 3,
+                        "floorSize": 9,
+                        "buildings": [
+                            {
+                                "buildingID": 7,
+                                "buildingObject": {
+                                    "instanceID": 20900
+                                }
+                            },
+                            {
+                                "buildingID": 8,
+                                "buildingObject": {
+                                    "instanceID": 20888
+                                }
+                            },
+                            {
+                                "buildingID": 9,
+                                "buildingObject": {
+                                    "instanceID": 20900
+                                }
+                            },
+                            {
+                                "buildingID": 10,
+                                "buildingObject": {
+                                    "instanceID": 20900
+                                }
+                            },
+                            {
+                                "buildingID": 11,
+                                "buildingObject": {
+                                    "instanceID": 20900
+                                }
+                            },
+                            {
+                                "buildingID": 0,
+                                "buildingObject": {
+                                    "instanceID": 0
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "floorNum": 4,
+                        "floorSize": 8,
+                        "buildings": [
+                            {
+                                "buildingID": 12,
+                                "buildingObject": {
+                                    "instanceID": 20888
+                                }
+                            },
+                            {
+                                "buildingID": 13,
+                                "buildingObject": {
+                                    "instanceID": 20888
+                                }
+                            },
+                            {
+                                "buildingID": 14,
+                                "buildingObject": {
+                                    "instanceID": -15588702
+                                }
+                            },
+                            {
+                                "buildingID": 0,
+                                "buildingObject": {
+                                    "instanceID": 0
+                                }
+                            },
+                            {
+                                "buildingID": 0,
+                                "buildingObject": {
+                                    "instanceID": 0
+                                }
+                            },
+                            {
+                                "buildingID": 0,
+                                "buildingObject": {
+                                    "instanceID": 0
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "floorNum": 0,
+                        "floorSize": 0,
+                        "buildings": []
+                    },
+                    {
+                        "floorNum": 0,
+                        "floorSize": 0,
+                        "buildings": []
+                    },
+                    {
+                        "floorNum": 0,
+                        "floorSize": 0,
+                        "buildings": []
+                    },
+                    {
+                        "floorNum": 0,
+                        "floorSize": 0,
+                        "buildings": []
+                    },
+                    {
+                        "floorNum": 0,
+                        "floorSize": 0,
+                        "buildings": []
+                    }
+                ]
+            },
+            "castleObject": {
+                "instanceID": -22256712
+            },
+            "position": {
+                "x": -1,
+                "y": 0,
+                "z": 0
+            },
+            "speed": 0.0,
+            "_population": 553.0,
+            "_wood": 170.66500854492188,
+            "_stone": 147.66500854492188,
+            "_wheat": 146.66502380371095,
+            "_gold": 146.66500854492188,
+            "_water": 0.0,
+            "_taxRate": 48.0,
+            "_happiness": 99.0
         }
     ],
     "gold": 0,
-    "gems": 0
+    "gems": 0,
+    "countryCounter": 5
 }

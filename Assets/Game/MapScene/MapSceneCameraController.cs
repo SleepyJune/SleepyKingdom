@@ -17,6 +17,13 @@ public class MapSceneCameraController : MonoBehaviour
 
     bool startDrag = false;
 
+    private Vector3 displacement;
+
+    private void Start()
+    {
+        displacement = Camera.main.transform.position - transform.position;
+    }
+
     private void LateUpdate()
     {
         Zoom();
@@ -49,6 +56,9 @@ public class MapSceneCameraController : MonoBehaviour
             var sensitivity = dragSensitivity * Camera.main.orthographicSize;
 
             Camera.main.transform.Translate(delta.x * sensitivity, delta.y * sensitivity, 0, Space.World);
+
+            transform.position = new Vector3(Camera.main.transform.position.x + displacement.x, 
+                                             Camera.main.transform.position.y + displacement.y, 10);
 
             lastDragPosition = Input.mousePosition;
         }

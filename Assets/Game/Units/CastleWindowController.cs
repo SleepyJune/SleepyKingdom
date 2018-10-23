@@ -48,4 +48,12 @@ public class CastleWindowController : Popup
         newResource.resourceName.text = type.ToString();
         newResource.SetResource(country, type);
     }
+
+    public void DeleteCastle()
+    {
+        if(country != null)
+        {
+            GameManager.instance.globalCountryManager.DeleteCountry(country);
+        }
+    }
 }

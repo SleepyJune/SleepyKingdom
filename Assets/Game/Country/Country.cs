@@ -57,7 +57,7 @@ public class Country
     [SerializeField]
     private float _happiness;
 
-    static int countryCounter = 1;
+    public static int countryCounter = 1;
 
     private Dictionary<CountryResourceType, float> resourcesDictionary = new Dictionary<CountryResourceType, float>();
 

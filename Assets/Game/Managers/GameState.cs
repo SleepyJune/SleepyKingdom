@@ -17,6 +17,8 @@ public class GameState
     [NonSerialized]
     private List<Country> countryList = new List<Country>();
 
+    public int countryCounter = Country.countryCounter;
+
     public void AddCountry(Country newCountry)
     {
         countryList.Add(newCountry);
@@ -24,6 +26,20 @@ public class GameState
         countries = countryList.ToArray();
 
         Save();
+    }
+
+    public void DeleteCountry(Country country)
+    {
+        countryList.Remove(country);
+
+        countries = countryList.ToArray();
+
+        Save();
+    }
+
+    private void SaveCounters()
+    {
+        countryCounter = Country.countryCounter;
     }
 
     public List<Country> GetCountries()
@@ -42,7 +58,9 @@ public class GameState
     }
 
     public void Save()
-    {        
+    {
+        SaveCounters();
+
         string str = JsonUtility.ToJson(this, true);
 
         if (!Directory.Exists(DataPath.savePath))

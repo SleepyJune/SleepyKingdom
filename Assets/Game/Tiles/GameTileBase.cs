@@ -7,5 +7,5 @@ using UnityEngine.Tilemaps;
 
 public class GameTileBase : Tile
 {
-
+    
 }

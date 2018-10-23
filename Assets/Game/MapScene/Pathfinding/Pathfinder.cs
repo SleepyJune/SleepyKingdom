@@ -84,6 +84,19 @@ public class Pathfinder
         }
     }
 
+    public static Vector3Int[] GetShortestPath(Unit unit, Vector3Int start, Vector3Int end)
+    {
+        var startTile = GetGameTile(start);
+        var endTile = GetGameTile(end);
+
+        if(startTile != null && endTile != null)
+        {
+            return GetShortestPath(unit, startTile, endTile);
+        }
+
+        return null;
+    }
+
     public static Vector3Int[] GetShortestPath(Unit unit, GameTile start, GameTile end)
     {
         HashSet<GameTile> closedSet = new HashSet<GameTile>();
