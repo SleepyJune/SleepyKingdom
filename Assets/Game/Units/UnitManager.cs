@@ -21,11 +21,14 @@ public class UnitManager : MonoBehaviour
 
     public CastleWindowController castleWindow;
 
+    public ActionCircleController actionCircle;
+
     public GameTileClickHandler gameTileClickHandler;
 
-    private bool myCountrySelected = false;
-
     private CastleUnit myCastle;
+
+    private UnitCommandType currentCommand = UnitCommandType.None;
+    private CastleUnit currentSelectedUnit = null;
 
     private void Start()
     {
@@ -50,17 +53,44 @@ public class UnitManager : MonoBehaviour
         gameTileClickHandler.OnGameTileClickedEvent -= OnGameTileClickedEvent;
     }
 
-    private void OnGameTileClickedEvent(GameTile tile)
+    public void OnActionCircleButtonClick(CastleUnit castle, UnitCommandType actionType)
     {
-        if (myCountrySelected)
+        currentSelectedUnit = castle;
+        currentCommand = actionType;
+
+        if (actionType == UnitCommandType.Attack)
         {
-            myCastle.SetMovePosition(tile.position);
+            Debug.Log("Attack");
+        }
+        else if (actionType == UnitCommandType.Move)
+        {
+            
+        }
+        else if(actionType == UnitCommandType.Inspect)
+        {
+            castleWindow.SetCountry(castle.country);
         }
     }
 
-    public void DeselectMyCountry()
+    private void ResetCommand()
     {
-        myCountrySelected = false;
+        currentCommand = UnitCommandType.None;
+        currentSelectedUnit = null;
+    }
+
+    private void OnGameTileClickedEvent(GameTile tile)
+    {
+        if(currentCommand == UnitCommandType.Move)
+        {
+            currentSelectedUnit.SetMovePosition(tile.position);
+        }
+
+        ResetCommand();
+
+        /*if (myCountrySelected)
+        {
+            myCastle.SetMovePosition(tile.position);
+        }*/
     }
 
     public void OnUnitMouseClickEvent(Unit unit)
@@ -69,16 +99,16 @@ public class UnitManager : MonoBehaviour
         {
             var castle = unit as CastleUnit;
 
-            castleWindow.SetCountry(castle.country);
+            //castleWindow.SetCountry(castle.country);
 
-            if(castle.country.countryID == 1)
+            if(currentCommand == UnitCommandType.Attack)
             {
-                myCountrySelected = true;
+                ResetCommand();
+                return;
             }
-            else
-            {
-                myCountrySelected = false;
-            }
+
+            actionCircle.SetCastle(castle);
+
         }
     }
 
