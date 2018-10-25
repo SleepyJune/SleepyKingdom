@@ -174,4 +174,19 @@ public class Country
     {
         return countryCounter++;
     }
+
+    public override bool Equals(object obj)
+    {
+        if(obj is Country)
+        {
+            return ((Country)obj).countryID == countryID;
+        }
+
+        return false;
+    }
+
+    public override int GetHashCode()
+    {
+        return countryID;
+    }
 }

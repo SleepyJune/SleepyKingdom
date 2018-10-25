@@ -12,7 +12,6 @@ public enum SceneType
     Tower,
     Country,
     Market,
-    Building
 }
 
 public class SceneChanger : MonoBehaviour
@@ -44,6 +43,27 @@ public class SceneChanger : MonoBehaviour
     public void GoBack()
     {
         ChangeScene((Country)null);
+    }
+
+    public void ChangeScene(SceneType sceneType)
+    {
+        if(currentScene == sceneType)
+        {
+            return;
+        }
+
+        if(sceneType == SceneType.Map)
+        {
+            SceneManager.LoadScene("MapScene");
+        }
+        else if (sceneType == SceneType.Market)
+        {
+            SceneManager.LoadScene("MarketScene");
+        }
+        else if (sceneType == SceneType.Country)
+        {
+            SceneManager.LoadScene("CountryScene");
+        }
     }
 
     public void ChangeScene(Country target)

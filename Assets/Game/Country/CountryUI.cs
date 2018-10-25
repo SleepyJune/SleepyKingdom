@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class CountryUI : MonoBehaviour
 {    
-    [NonSerialized]
+    //[NonSerialized]
     public Country country;
         
     public Text countryPopulation;
@@ -16,29 +16,21 @@ public class CountryUI : MonoBehaviour
 
     private void Start()
     {
-        if (GameManager.instance.sceneChanger)
+        /*if (GameManager.instance.sceneChanger)
         {
             country = GameManager.instance.sceneChanger.targetCountry;
-        }
-
-        var gameState = GameManager.instance.gameStateManager.gameState;
-
-        if (gameState != null)
-        {
-            var list = gameState.GetCountries();
-            if (list.Count > 0)
-            {
-                country = list[0];
-            }
-        }
+        }*/
 
 
-        if (country == null || country.countryID == 0)
+        country = GameManager.instance.globalCountryManager.myCountry;
+
+
+        /*if (country == null || country.countryID == 0)
         {
             country = Country.Generate();
 
             GameManager.instance.globalCountryManager.AddCountry(country);
-        }
+        }*/
 
         castleWindow.SetCountry(country);
     }

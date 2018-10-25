@@ -18,11 +18,13 @@ public class GlobalCountryManager : MonoBehaviour
     public event CountryEventFunction OnAddCountryEvent;
     public event CountryEventFunction OnDeleteCountryEvent;
 
+    public Country myCountry;
+
     private void Start()
     {
         gameState = GameManager.instance.gameStateManager.gameState;
 
-        Invoke("InitiateCountries", .05f);
+        InitiateCountries();
     }
 
     private void InitiateCountries()
@@ -36,6 +38,11 @@ public class GlobalCountryManager : MonoBehaviour
             foreach (var country in countries)
             {
                 AddCountry(country, false);
+
+                if(country.countryID == 1)
+                {
+                    myCountry = country;
+                }
             }
         }
         else

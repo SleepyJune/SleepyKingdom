@@ -35,6 +35,11 @@ public class UnitManager : MonoBehaviour
         gameTileClickHandler.OnGameTileClickedEvent += OnGameTileClickedEvent;
 
         map = Pathfinder.map;
+
+        foreach(var country in GameManager.instance.gameStateManager.gameState.GetCountries())
+        {
+            OnAddCountryEvent(country);
+        }
     }
 
     private void OnDestroy()
