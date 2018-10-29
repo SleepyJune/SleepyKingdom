@@ -158,7 +158,7 @@ GameObject:
   - component: {fileID: 114622029551028862}
   - component: {fileID: 114049399084802318}
   m_Layer: 5
-  m_Name: Crown
+  m_Name: CashShop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -176,7 +176,7 @@ GameObject:
   - component: {fileID: 114239124590186188}
   - component: {fileID: 114071002315022158}
   m_Layer: 5
-  m_Name: Quest
+  m_Name: Country
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -285,7 +285,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114238106579881618}
-        m_MethodName: OnCountrySceneButtonPress
+        m_MethodName: OnTempleButtonPress
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -335,7 +335,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114239124590186188}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114238106579881618}
+        m_MethodName: OnCountrySceneButtonPress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114077480718074630
@@ -841,11 +852,11 @@ RectTransform:
   m_Children:
   - {fileID: 224209437794256030}
   m_Father: {fileID: 224066704834304440}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 243.5, y: -75}
+  m_AnchoredPosition: {x: 81.5, y: -75}
   m_SizeDelta: {x: 55, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224066704834304440
@@ -858,11 +869,11 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 224712056102681128}
-  - {fileID: 224296307329064300}
   - {fileID: 224973223322927268}
-  - {fileID: 224673371700499870}
   - {fileID: 224066054307585772}
+  - {fileID: 224712056102681128}
+  - {fileID: 224673371700499870}
+  - {fileID: 224296307329064300}
   m_Father: {fileID: 224786489397122890}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -901,11 +912,11 @@ RectTransform:
   m_Children:
   - {fileID: 224343113904130466}
   m_Father: {fileID: 224066704834304440}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 81.5, y: -75}
+  m_AnchoredPosition: {x: 243.5, y: -75}
   m_SizeDelta: {x: 55, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224343113904130466
@@ -975,11 +986,11 @@ RectTransform:
   m_Children:
   - {fileID: 224887991273836802}
   m_Father: {fileID: 224066704834304440}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 27.5, y: -75}
+  m_AnchoredPosition: {x: 135.5, y: -75}
   m_SizeDelta: {x: 55, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224727494569447060
@@ -1049,10 +1060,10 @@ RectTransform:
   m_Children:
   - {fileID: 224437507756062030}
   m_Father: {fileID: 224066704834304440}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 135.5, y: -75}
+  m_AnchoredPosition: {x: 27.5, y: -75}
   m_SizeDelta: {x: 55, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}

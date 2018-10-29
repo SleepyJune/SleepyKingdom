@@ -12,6 +12,8 @@ public enum SceneType
     Tower,
     Country,
     Market,
+    CashShop,
+    Temple,
 }
 
 public class SceneChanger : MonoBehaviour
@@ -63,6 +65,14 @@ public class SceneChanger : MonoBehaviour
         else if (sceneType == SceneType.Country)
         {
             SceneManager.LoadScene("CountryScene");
+        }
+        else if (sceneType == SceneType.CashShop)
+        {
+            SceneManager.LoadScene("CashShopScene");
+        }
+        else if (sceneType == SceneType.Temple)
+        {
+            SceneManager.LoadScene("TempleScene");
         }
     }
 

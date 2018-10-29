@@ -27,4 +27,14 @@ public class NavigationButtonController : MonoBehaviour
     {
         sceneChanger.ChangeScene(SceneType.Country);
     }
+
+    public void OnCashShopButtonPress()
+    {
+        sceneChanger.ChangeScene(SceneType.CashShop);
+    }
+
+    public void OnTempleButtonPress()
+    {
+        sceneChanger.ChangeScene(SceneType.Temple);
+    }
 }
