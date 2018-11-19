@@ -20,7 +20,7 @@ public class CastleUnit : Unit
 
         if(castleObject != null)
         {
-            castleSprite.sprite = castleObject.spriteObject.image;
+            castleSprite.sprite = castleObject.image;
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Game/Castle Object")]
-public class CastleObject : GameDataObject
+public class CastleObject : SpriteObject
 {
-    public SpriteObject spriteObject;
+
 }

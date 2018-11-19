@@ -14,6 +14,10 @@ public class GameDatabaseManager : MonoBehaviour
 
     public Dictionary<string, CastleObject> castleObjects = new Dictionary<string, CastleObject>();
 
+    public Dictionary<string, ShopItemObject> shopItemObjects = new Dictionary<string, ShopItemObject>();
+
+    public Dictionary<string, CountryUpgradeObject> countryUpgradeObjects = new Dictionary<string, CountryUpgradeObject>();
+
     private void Awake()
     {
         foreach(var obj in database.allObjects)
@@ -31,6 +35,16 @@ public class GameDatabaseManager : MonoBehaviour
             if (obj is CastleObject)
             {
                 castleObjects.Add(obj.name, obj as CastleObject);
+            }
+
+            if(obj is ShopItemObject)
+            {
+                shopItemObjects.Add(obj.name, obj as ShopItemObject);
+            }
+
+            if(obj is CountryUpgradeObject)
+            {
+                countryUpgradeObjects.Add(obj.name, obj as CountryUpgradeObject);
             }
         }
 

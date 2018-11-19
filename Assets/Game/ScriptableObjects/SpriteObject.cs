@@ -11,6 +11,8 @@ public enum SpriteObjectType
     Resource,
     Building,
     Castle,
+    ShopItem,
+    Upgrade,
 }
 
 [CreateAssetMenu(menuName = "Game/Sprite Object")]

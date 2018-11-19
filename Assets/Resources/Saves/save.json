@@ -12,25 +12,25 @@
                             {
                                 "buildingID": 1,
                                 "buildingObject": {
-                                    "instanceID": -15588702
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 2,
                                 "buildingObject": {
-                                    "instanceID": 20882
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 3,
                                 "buildingObject": {
-                                    "instanceID": 20900
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 4,
                                 "buildingObject": {
-                                    "instanceID": -15588702
+                                    "instanceID": 0
                                 }
                             },
                             {
@@ -54,25 +54,25 @@
                             {
                                 "buildingID": 5,
                                 "buildingObject": {
-                                    "instanceID": 20888
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 6,
                                 "buildingObject": {
-                                    "instanceID": 20888
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 7,
                                 "buildingObject": {
-                                    "instanceID": -15588702
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 8,
                                 "buildingObject": {
-                                    "instanceID": 20882
+                                    "instanceID": 0
                                 }
                             },
                             {
@@ -96,25 +96,25 @@
                             {
                                 "buildingID": 9,
                                 "buildingObject": {
-                                    "instanceID": 20882
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 10,
                                 "buildingObject": {
-                                    "instanceID": 20894
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 11,
                                 "buildingObject": {
-                                    "instanceID": 20894
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 12,
                                 "buildingObject": {
-                                    "instanceID": 20888
+                                    "instanceID": 0
                                 }
                             },
                             {
@@ -138,19 +138,19 @@
                             {
                                 "buildingID": 13,
                                 "buildingObject": {
-                                    "instanceID": 20894
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 14,
                                 "buildingObject": {
-                                    "instanceID": 20900
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 15,
                                 "buildingObject": {
-                                    "instanceID": 20900
+                                    "instanceID": 0
                                 }
                             },
                             {
@@ -180,13 +180,13 @@
                             {
                                 "buildingID": 16,
                                 "buildingObject": {
-                                    "instanceID": -15588702
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 17,
                                 "buildingObject": {
-                                    "instanceID": -15588702
+                                    "instanceID": 0
                                 }
                             },
                             {
@@ -222,31 +222,31 @@
                             {
                                 "buildingID": 18,
                                 "buildingObject": {
-                                    "instanceID": 20900
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 19,
                                 "buildingObject": {
-                                    "instanceID": 20888
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 20,
                                 "buildingObject": {
-                                    "instanceID": 20882
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 21,
                                 "buildingObject": {
-                                    "instanceID": 20900
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 22,
                                 "buildingObject": {
-                                    "instanceID": 20894
+                                    "instanceID": 0
                                 }
                             },
                             {
@@ -264,7 +264,7 @@
                             {
                                 "buildingID": 23,
                                 "buildingObject": {
-                                    "instanceID": 20900
+                                    "instanceID": 0
                                 }
                             },
                             {
@@ -317,7 +317,7 @@
                 ]
             },
             "castleObject": {
-                "instanceID": 112072
+                "instanceID": 0
             },
             "position": {
                 "x": -1,
@@ -325,11 +325,11 @@
                 "z": 0
             },
             "speed": 0.0,
-            "_population": 3810.0,
-            "_wood": 6975.19921875,
-            "_stone": 6889.19970703125,
-            "_wheat": 6924.19921875,
-            "_gold": 6950.2001953125,
+            "_population": 4478.0,
+            "_wood": 9743.720703125,
+            "_stone": 9657.72265625,
+            "_wheat": 9692.7294921875,
+            "_gold": 9718.7216796875,
             "_water": 0.0,
             "_taxRate": 3.0,
             "_happiness": 72.0
@@ -346,19 +346,19 @@
                             {
                                 "buildingID": 1,
                                 "buildingObject": {
-                                    "instanceID": -15588702
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 2,
                                 "buildingObject": {
-                                    "instanceID": 20888
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 3,
                                 "buildingObject": {
-                                    "instanceID": -15588702
+                                    "instanceID": 0
                                 }
                             },
                             {
@@ -388,37 +388,37 @@
                             {
                                 "buildingID": 4,
                                 "buildingObject": {
-                                    "instanceID": 20882
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 5,
                                 "buildingObject": {
-                                    "instanceID": -15588702
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 6,
                                 "buildingObject": {
-                                    "instanceID": 20900
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 7,
                                 "buildingObject": {
-                                    "instanceID": 20900
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 8,
                                 "buildingObject": {
-                                    "instanceID": -15588702
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 9,
                                 "buildingObject": {
-                                    "instanceID": 20882
+                                    "instanceID": 0
                                 }
                             }
                         ]
@@ -430,31 +430,31 @@
                             {
                                 "buildingID": 10,
                                 "buildingObject": {
-                                    "instanceID": 20888
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 11,
                                 "buildingObject": {
-                                    "instanceID": 20900
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 12,
                                 "buildingObject": {
-                                    "instanceID": 20888
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 13,
                                 "buildingObject": {
-                                    "instanceID": -15588702
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 14,
                                 "buildingObject": {
-                                    "instanceID": 20900
+                                    "instanceID": 0
                                 }
                             },
                             {
@@ -472,31 +472,31 @@
                             {
                                 "buildingID": 15,
                                 "buildingObject": {
-                                    "instanceID": 20894
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 16,
                                 "buildingObject": {
-                                    "instanceID": -15588702
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 17,
                                 "buildingObject": {
-                                    "instanceID": 20894
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 18,
                                 "buildingObject": {
-                                    "instanceID": -15588702
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 19,
                                 "buildingObject": {
-                                    "instanceID": 20900
+                                    "instanceID": 0
                                 }
                             },
                             {
@@ -514,25 +514,25 @@
                             {
                                 "buildingID": 20,
                                 "buildingObject": {
-                                    "instanceID": 20894
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 21,
                                 "buildingObject": {
-                                    "instanceID": 20894
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 22,
                                 "buildingObject": {
-                                    "instanceID": 20882
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 23,
                                 "buildingObject": {
-                                    "instanceID": 20882
+                                    "instanceID": 0
                                 }
                             },
                             {
@@ -577,7 +577,7 @@
                 ]
             },
             "castleObject": {
-                "instanceID": -22256712
+                "instanceID": 0
             },
             "position": {
                 "x": 0,
@@ -585,11 +585,11 @@
                 "z": 0
             },
             "speed": 0.0,
-            "_population": 1173.0,
-            "_wood": 704.3350219726563,
-            "_stone": 757.3349609375,
-            "_wheat": 687.3350219726563,
-            "_gold": 722.3350219726563,
+            "_population": 1841.0,
+            "_wood": 1711.3450927734375,
+            "_stone": 1764.3448486328125,
+            "_wheat": 1694.344970703125,
+            "_gold": 1729.344970703125,
             "_water": 0.0,
             "_taxRate": 45.0,
             "_happiness": 70.0
@@ -606,25 +606,25 @@
                             {
                                 "buildingID": 24,
                                 "buildingObject": {
-                                    "instanceID": 20882
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 25,
                                 "buildingObject": {
-                                    "instanceID": -15588702
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 26,
                                 "buildingObject": {
-                                    "instanceID": 20882
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 27,
                                 "buildingObject": {
-                                    "instanceID": 20900
+                                    "instanceID": 0
                                 }
                             },
                             {
@@ -648,13 +648,13 @@
                             {
                                 "buildingID": 28,
                                 "buildingObject": {
-                                    "instanceID": 20900
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 29,
                                 "buildingObject": {
-                                    "instanceID": 20894
+                                    "instanceID": 0
                                 }
                             },
                             {
@@ -690,25 +690,25 @@
                             {
                                 "buildingID": 30,
                                 "buildingObject": {
-                                    "instanceID": 20888
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 31,
                                 "buildingObject": {
-                                    "instanceID": 20900
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 32,
                                 "buildingObject": {
-                                    "instanceID": 20888
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 33,
                                 "buildingObject": {
-                                    "instanceID": -15588702
+                                    "instanceID": 0
                                 }
                             },
                             {
@@ -732,7 +732,7 @@
                             {
                                 "buildingID": 34,
                                 "buildingObject": {
-                                    "instanceID": 20894
+                                    "instanceID": 0
                                 }
                             },
                             {
@@ -774,13 +774,13 @@
                             {
                                 "buildingID": 35,
                                 "buildingObject": {
-                                    "instanceID": 20888
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 36,
                                 "buildingObject": {
-                                    "instanceID": 20882
+                                    "instanceID": 0
                                 }
                             },
                             {
@@ -816,25 +816,25 @@
                             {
                                 "buildingID": 37,
                                 "buildingObject": {
-                                    "instanceID": 20894
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 38,
                                 "buildingObject": {
-                                    "instanceID": -15588702
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 39,
                                 "buildingObject": {
-                                    "instanceID": 20900
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 40,
                                 "buildingObject": {
-                                    "instanceID": 20900
+                                    "instanceID": 0
                                 }
                             },
                             {
@@ -858,19 +858,19 @@
                             {
                                 "buildingID": 41,
                                 "buildingObject": {
-                                    "instanceID": 20894
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 42,
                                 "buildingObject": {
-                                    "instanceID": -15588702
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 43,
                                 "buildingObject": {
-                                    "instanceID": 20888
+                                    "instanceID": 0
                                 }
                             },
                             {
@@ -900,7 +900,7 @@
                             {
                                 "buildingID": 44,
                                 "buildingObject": {
-                                    "instanceID": 20900
+                                    "instanceID": 0
                                 }
                             },
                             {
@@ -948,7 +948,7 @@
                 ]
             },
             "castleObject": {
-                "instanceID": 112084
+                "instanceID": 0
             },
             "position": {
                 "x": 1,
@@ -956,11 +956,11 @@
                 "z": 0
             },
             "speed": 0.0,
-            "_population": 1275.0,
-            "_wood": 878.7199096679688,
-            "_stone": 811.719970703125,
-            "_wheat": 859.7198486328125,
-            "_gold": 823.7200317382813,
+            "_population": 1943.0,
+            "_wood": 1953.86572265625,
+            "_stone": 1886.865966796875,
+            "_wheat": 1934.865966796875,
+            "_gold": 1898.8660888671875,
             "_water": 0.0,
             "_taxRate": 29.0,
             "_happiness": 22.0
@@ -977,7 +977,7 @@
                             {
                                 "buildingID": 1,
                                 "buildingObject": {
-                                    "instanceID": 20888
+                                    "instanceID": 0
                                 }
                             },
                             {
@@ -1019,7 +1019,7 @@
                             {
                                 "buildingID": 2,
                                 "buildingObject": {
-                                    "instanceID": -15588702
+                                    "instanceID": 0
                                 }
                             },
                             {
@@ -1061,25 +1061,25 @@
                             {
                                 "buildingID": 3,
                                 "buildingObject": {
-                                    "instanceID": -15588702
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 4,
                                 "buildingObject": {
-                                    "instanceID": -15588702
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 5,
                                 "buildingObject": {
-                                    "instanceID": 20882
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 6,
                                 "buildingObject": {
-                                    "instanceID": -15588702
+                                    "instanceID": 0
                                 }
                             },
                             {
@@ -1103,31 +1103,31 @@
                             {
                                 "buildingID": 7,
                                 "buildingObject": {
-                                    "instanceID": 20900
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 8,
                                 "buildingObject": {
-                                    "instanceID": 20888
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 9,
                                 "buildingObject": {
-                                    "instanceID": 20900
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 10,
                                 "buildingObject": {
-                                    "instanceID": 20900
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 11,
                                 "buildingObject": {
-                                    "instanceID": 20900
+                                    "instanceID": 0
                                 }
                             },
                             {
@@ -1145,19 +1145,19 @@
                             {
                                 "buildingID": 12,
                                 "buildingObject": {
-                                    "instanceID": 20888
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 13,
                                 "buildingObject": {
-                                    "instanceID": 20888
+                                    "instanceID": 0
                                 }
                             },
                             {
                                 "buildingID": 14,
                                 "buildingObject": {
-                                    "instanceID": -15588702
+                                    "instanceID": 0
                                 }
                             },
                             {
@@ -1208,7 +1208,7 @@
                 ]
             },
             "castleObject": {
-                "instanceID": -22256712
+                "instanceID": 0
             },
             "position": {
                 "x": -1,
@@ -1216,11 +1216,11 @@
                 "z": 0
             },
             "speed": 0.0,
-            "_population": 1318.0,
-            "_wood": 886.705078125,
-            "_stone": 863.705078125,
-            "_wheat": 862.7049560546875,
-            "_gold": 862.7050170898438,
+            "_population": 1986.0,
+            "_wood": 1990.5750732421875,
+            "_stone": 1967.5750732421875,
+            "_wheat": 1966.574951171875,
+            "_gold": 1966.574951171875,
             "_water": 0.0,
             "_taxRate": 48.0,
             "_happiness": 99.0
