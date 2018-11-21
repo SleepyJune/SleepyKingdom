@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-public class CastleUnit : Unit
+public class MapCastleUnit : MapUnit
 {
     [NonSerialized]
     public Country country;

@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.EventSystems;
 
-public class Unit : MonoBehaviour
+public class MapUnit : MonoBehaviour
 {
     public Vector3Int position;
 
@@ -27,7 +27,7 @@ public class Unit : MonoBehaviour
     private Tilemap tilemap;
 
     [NonSerialized]
-    public UnitManager unitManager;
+    public MapUnitManager unitManager;
 
     protected virtual void Start()
     {

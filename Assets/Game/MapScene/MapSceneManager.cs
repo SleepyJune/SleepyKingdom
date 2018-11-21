@@ -11,10 +11,10 @@ public class MapSceneManager : MonoBehaviour
     public Tilemap overlayMap;
 
     [NonSerialized]
-    public UnitManager unitManager;
+    public MapUnitManager unitManager;
         
     private void Start()
     {
-        unitManager = GetComponent<UnitManager>();
+        unitManager = GetComponent<MapUnitManager>();
     }
 }

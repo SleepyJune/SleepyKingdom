@@ -18,6 +18,8 @@ public class GameDatabaseManager : MonoBehaviour
 
     public Dictionary<string, CountryUpgradeObject> countryUpgradeObjects = new Dictionary<string, CountryUpgradeObject>();
 
+    public Dictionary<string, BattleUnitObject> battleUnitObjects = new Dictionary<string, BattleUnitObject>();
+
     private void Awake()
     {
         foreach(var obj in database.allObjects)
@@ -45,6 +47,11 @@ public class GameDatabaseManager : MonoBehaviour
             if(obj is CountryUpgradeObject)
             {
                 countryUpgradeObjects.Add(obj.name, obj as CountryUpgradeObject);
+            }
+
+            if(obj is BattleUnitObject)
+            {
+                battleUnitObjects.Add(obj.name, obj as BattleUnitObject);
             }
         }
 

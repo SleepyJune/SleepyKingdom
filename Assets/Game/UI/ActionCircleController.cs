@@ -19,16 +19,16 @@ public enum UnitCommandType
 public class ActionCircleController : Popup
 {
     [NonSerialized]
-    public CastleUnit castle;
+    public MapCastleUnit castle;
 
-    public UnitManager unitManager;
+    public MapUnitManager unitManager;
 
     private void Start()
     {
         
     }
 
-    public void SetCastle(CastleUnit target)
+    public void SetCastle(MapCastleUnit target)
     {
         castle = target;
 

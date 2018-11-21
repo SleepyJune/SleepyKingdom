@@ -4,13 +4,13 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-public class UnitManager : MonoBehaviour
+public class MapUnitManager : MonoBehaviour
 {
-    public List<Unit> allUnits = new List<Unit>();
+    public List<MapUnit> allUnits = new List<MapUnit>();
         
     public Transform unitParent;
 
-    public CastleUnit castlePrefab;
+    public MapCastleUnit castlePrefab;
 
     private PathfindingManager pathfindingManager;
 
@@ -25,10 +25,10 @@ public class UnitManager : MonoBehaviour
 
     public GameTileClickHandler gameTileClickHandler;
 
-    private CastleUnit myCastle;
+    private MapCastleUnit myCastle;
 
     private UnitCommandType currentCommand = UnitCommandType.None;
-    private CastleUnit currentSelectedUnit = null;
+    private MapCastleUnit currentSelectedUnit = null;
 
     private void Start()
     {
@@ -53,7 +53,7 @@ public class UnitManager : MonoBehaviour
         gameTileClickHandler.OnGameTileClickedEvent -= OnGameTileClickedEvent;
     }
 
-    public void OnActionCircleButtonClick(CastleUnit castle, UnitCommandType actionType)
+    public void OnActionCircleButtonClick(MapCastleUnit castle, UnitCommandType actionType)
     {
         currentSelectedUnit = castle;
         currentCommand = actionType;
@@ -93,11 +93,11 @@ public class UnitManager : MonoBehaviour
         }*/
     }
 
-    public void OnUnitMouseClickEvent(Unit unit)
+    public void OnUnitMouseClickEvent(MapUnit unit)
     {
-        if(unit is CastleUnit)
+        if(unit is MapCastleUnit)
         {
-            var castle = unit as CastleUnit;
+            var castle = unit as MapCastleUnit;
 
             //castleWindow.SetCountry(castle.country);
 
@@ -145,7 +145,7 @@ public class UnitManager : MonoBehaviour
     {        
         foreach(var unit in allUnits)
         {
-            var castle = unit as CastleUnit;
+            var castle = unit as MapCastleUnit;
             if(castle != null)
             {
                 if(castle.country.countryID == country.countryID)
@@ -158,7 +158,7 @@ public class UnitManager : MonoBehaviour
         }
     }
 
-    public void InitializeUnit(Unit unit)
+    public void InitializeUnit(MapUnit unit)
     {
         unit.unitManager = this;
         
