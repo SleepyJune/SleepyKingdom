@@ -9,8 +9,8 @@ public class BattleUnitManager : MonoBehaviour
     public BattleUnit battleUnitPrefab;
     public Transform unitParent;
 
-    public Transform blueCastlePosition;
-    public Transform redCastlePosition;
+    public Transform playerCastlePosition;
+    public Transform enemyCastlePosition;
 
     [NonSerialized]
     public List<BattleUnit> playerUnits = new List<BattleUnit>();
@@ -24,7 +24,7 @@ public class BattleUnitManager : MonoBehaviour
 
     public void CreateUnit(BattleUnitObject unitObj, BattleUnitTeam team)
     {
-        var startPos = team == BattleUnitTeam.Player ? blueCastlePosition.position : redCastlePosition.position;
+        var startPos = team == BattleUnitTeam.Player ? playerCastlePosition.position : enemyCastlePosition.position;
 
         var newUnit = Instantiate(battleUnitPrefab, unitParent);
         newUnit.transform.position = startPos;

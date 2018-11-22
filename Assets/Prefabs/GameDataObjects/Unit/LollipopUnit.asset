@@ -16,5 +16,5 @@ MonoBehaviour:
   health: 10
   attack: 10
   defense: 10
-  speed: 150
-  range: 125
+  speed: 5
+  range: 10

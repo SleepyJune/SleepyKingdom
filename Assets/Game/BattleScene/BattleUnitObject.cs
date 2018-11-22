@@ -14,7 +14,9 @@ public class BattleUnitObject : GameDataObject
     public int attack = 10;
     public int defense = 10;
 
-    public int speed = 100;
+    public int speed = 10;
 
-    public int range = 125;
+    public float atkSpeed = 1;
+
+    public int range = 1;
 }
