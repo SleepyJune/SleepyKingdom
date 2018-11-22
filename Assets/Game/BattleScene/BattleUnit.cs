@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 using UnityEngine;
 
@@ -19,10 +20,12 @@ public class BattleUnit : MonoBehaviour
     public SpriteRenderer teamColor;
 
     public AIPath aiPath;
+    public Seeker seeker;
 
     BattleUnitObject unitObj;
 
     BattleUnitManager unitManager;
+    BattleEffectsManager effectsManager;
 
     int health;
 
@@ -45,13 +48,21 @@ public class BattleUnit : MonoBehaviour
     List<BattleUnit> allies;
     List<BattleUnit> enemies;
 
+    List<BattleUnit> alliesByDistance;
+    List<BattleUnit> enemiesByDistance;
+
+    float lastUnitDistanceUpdate;
+
     bool isAttacking = false;
+    bool isAlive = true;
 
     public new CircleCollider2D collider;
 
     public void Initialize(BattleUnitObject unitObj, BattleUnitTeam team, BattleUnitManager unitManager)
     {
         this.unitObj = unitObj;
+        this.unitManager = unitManager;
+        this.effectsManager = unitManager.effectsManager;
 
         icon.sprite = unitObj.spriteObj.image;
 
@@ -60,7 +71,7 @@ public class BattleUnit : MonoBehaviour
         defense = unitObj.defense;
         speed = unitObj.speed;
         range = unitObj.range;
-        attackSpeed = unitObj.atkSpeed * 1000;
+        attackSpeed = unitObj.atkSpeed;
 
         this.team = team;
         
@@ -80,6 +91,28 @@ public class BattleUnit : MonoBehaviour
         }
 
         aiPath.maxSpeed = speed / 10.0f;
+        
+    }
+
+    public void PreAttack()
+    {
+        if(Time.time > lastUnitDistanceUpdate)
+        {
+            UpdateUnitDistance();
+        }
+
+        if (Time.time > attackAnimationTime)
+        {
+            StopAttack();
+        }
+    }
+
+    private void UpdateUnitDistance()
+    {
+        enemiesByDistance = enemies.OrderBy(unit => Vector3.Distance(unit.transform.position, transform.position)).ToList();
+        alliesByDistance = allies.OrderBy(unit => Vector3.Distance(unit.transform.position, transform.position)).ToList();
+
+        lastUnitDistanceUpdate = Time.time + 2; //2 second update time
     }
 
     public void Attack()
@@ -95,9 +128,9 @@ public class BattleUnit : MonoBehaviour
             return;
         }
 
-        foreach (var unit in enemies)
+        foreach (var unit in enemiesByDistance)
         {
-            if(Vector3.Distance(unit.transform.position, transform.position) <= range / 10.0f)
+            if(unit.isAlive && Vector3.Distance(unit.transform.position, transform.position) <= range / 10.0f)
             {
                 AttackUnit(unit);
                 break;
@@ -111,6 +144,16 @@ public class BattleUnit : MonoBehaviour
         isAttacking = true;
         aiPath.canMove = false;
         SetPathBlockingState(true);
+
+        unit.TakeDamage(attack);
+
+        if(unit.range <= 20)
+        {
+            var dir = (unit.transform.position - transform.position).normalized;
+            var pos = transform.position + dir * .5f;
+
+            effectsManager.CreateMeleeBangPrefab(pos);
+        }
     }
 
     private void StopAttack()
@@ -135,21 +178,38 @@ public class BattleUnit : MonoBehaviour
         {
             return;
         }
-        else
-        {
-            StopAttack();
-        }
 
         //var dir = (targetPosition - transform.position).normalized;
         //transform.position = transform.position + dir * speed * Time.deltaTime;
 
         //rb.velocity = dir * speed;
 
+        foreach (var unit in enemiesByDistance)
+        {
+            if (unit.isAlive && Vector3.Distance(unit.transform.position, transform.position) <= 5 + range / 10.0f)
+            {
+                aiPath.destination = unit.transform.position;
+                return;
+            }
+        }
+
         aiPath.destination = targetPosition;
+    }
+
+    public void TakeDamage(int amount)
+    {
+        health -= amount;
+
+        if (health <= 0)
+        {
+            Death();
+            return;
+        }
     }
 
     public void Death()
     {
+        isAlive = false;
         StopAttack();
         unitManager.removeUnits.Enqueue(this);
     }
@@ -157,16 +217,36 @@ public class BattleUnit : MonoBehaviour
     private void SetPathBlockingState(bool blocking)
     {
         var bounds = collider.bounds;
-        bounds.size += new Vector3(0, 0, 5);
+        bounds.extents += new Vector3(0, 0, 10000);
 
         GraphUpdateObject guo = new GraphUpdateObject(bounds);
 
         int tag = blocking ? 1 : 0;
 
+        //guo.addPenalty = 1000 * tag;
+        
         guo.modifyTag = true;
         guo.setTag = tag;
+        guo.modifyWalkability = true;
+        guo.setWalkability = !blocking;
+
         guo.updatePhysics = false;
 
         AstarPath.active.UpdateGraphs(guo);
+
+        //RecheckUnitPaths();
+    }
+
+    private void RecheckUnitPaths()
+    {
+        foreach(var unit in allies)
+        {
+            var path = unit.seeker.GetCurrentPath();
+            //path.vectorPath
+            if(path != null)
+            {
+                unit.aiPath.SearchPath();
+            }
+        }
     }
 }

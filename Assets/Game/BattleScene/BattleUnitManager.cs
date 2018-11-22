@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class BattleUnitManager : MonoBehaviour
 {
+    public BattleEffectsManager effectsManager;
+
     public BattleUnit battleUnitPrefab;
     public Transform unitParent;
 
@@ -47,7 +49,8 @@ public class BattleUnitManager : MonoBehaviour
         RemoveUnits();
 
         foreach (var unit in allUnits)
-        {            
+        {
+            unit.PreAttack();
             unit.Attack();
             unit.Move();           
         }
@@ -64,6 +67,14 @@ public class BattleUnitManager : MonoBehaviour
             allUnits.Remove(unit);
 
             Destroy(unit.gameObject);
+        }
+    }
+
+    public void Restart()
+    {
+        foreach(var unit in allUnits)
+        {
+            unit.Death();
         }
     }
 }
