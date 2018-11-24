@@ -21,6 +21,7 @@ public class BattleUnit : MonoBehaviour
 
     public AIPath aiPath;
     public Seeker seeker;
+    public Pathfinding.RVO.RVOController rvo;
 
     BattleUnitObject unitObj;
 
@@ -143,6 +144,9 @@ public class BattleUnit : MonoBehaviour
         attackAnimationTime = Time.time + attackSpeed;
         isAttacking = true;
         aiPath.canMove = false;
+
+        //Invoke("SetPathBlockingStateEx", .5f);// (true);
+
         SetPathBlockingState(true);
 
         unit.TakeDamage(attack);
@@ -214,6 +218,11 @@ public class BattleUnit : MonoBehaviour
         unitManager.removeUnits.Enqueue(this);
     }
 
+    private void SetPathBlockingStateEx()
+    {
+        SetPathBlockingState(true);
+    }
+
     private void SetPathBlockingState(bool blocking)
     {
         var bounds = collider.bounds;
@@ -223,12 +232,15 @@ public class BattleUnit : MonoBehaviour
 
         int tag = blocking ? 1 : 0;
 
+        //rvo.priority = blocking ? .1f : .5f;
+
         //guo.addPenalty = 1000 * tag;
-        
+
         guo.modifyTag = true;
         guo.setTag = tag;
-        guo.modifyWalkability = true;
-        guo.setWalkability = !blocking;
+        
+        //guo.modifyWalkability = true;
+        //guo.setWalkability = !blocking;
 
         guo.updatePhysics = false;
 
