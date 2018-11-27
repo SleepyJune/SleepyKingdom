@@ -18,4 +18,4 @@ MonoBehaviour:
   defense: 10
   speed: 15
   atkSpeed: 1
-  range: 8
+  range: 9

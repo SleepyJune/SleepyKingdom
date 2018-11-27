@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4232132080661388}
   - component: {fileID: 212987974790743350}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4124260657172348}
   - component: {fileID: 331921305031266704}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Mask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +52,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4751655907464922}
   - component: {fileID: 212213096612202158}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TeamColor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4822929347727316}
   - component: {fileID: 58604026550309768}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,7 +84,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4480370772605422}
   - component: {fileID: 212140163939595892}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,8 +103,7 @@ GameObject:
   - component: {fileID: 114977655662097114}
   - component: {fileID: 114927532118042910}
   - component: {fileID: 114358070361882392}
-  - component: {fileID: 114799187646300164}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BattleUnitPrefabSmall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -203,12 +202,12 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.25
+  m_Radius: 0.375
 --- !u!114 &114063542083406634
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -261,27 +260,6 @@ MonoBehaviour:
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 1
   constrainInsideGraph: 0
---- !u!114 &114799187646300164
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1891481725383498}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb6a34d769a1e4ac7b0b30e433aa443c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1
-  smoothType: 0
-  subdivisions: 2
-  iterations: 2
-  strength: 0.5
-  uniformLength: 1
-  maxSegmentLength: 0.3
-  bezierTangentLength: 0.4
-  offset: 0.2
-  factor: 0.1
 --- !u!114 &114927532118042910
 MonoBehaviour:
   m_ObjectHideFlags: 1
