@@ -19,7 +19,7 @@ public class BattleUnit : MonoBehaviour
 
     public SpriteRenderer teamColor;
 
-    public AIPath aiPath;
+    public AILerp aiPath;
     public Seeker seeker;
     public Pathfinding.RVO.RVOController rvo;
 
@@ -57,7 +57,7 @@ public class BattleUnit : MonoBehaviour
     bool isAttacking = false;
     bool isAlive = true;
 
-    public new CircleCollider2D collider;
+    public new BoxCollider2D collider;
 
     Dictionary<BattleUnit, GraphUpdateObject> sharedObstacle = new Dictionary<BattleUnit, GraphUpdateObject>();
 
@@ -93,7 +93,7 @@ public class BattleUnit : MonoBehaviour
             teamColor.color = Color.blue;
         }
 
-        aiPath.maxSpeed = speed / 10.0f;
+        aiPath.speed = speed / 10.0f;
         
     }
 
@@ -137,6 +137,22 @@ public class BattleUnit : MonoBehaviour
             {
                 AttackUnit(unit);
                 break;
+
+                /*var samePlace = false;
+                foreach(var otherUnits in unitManager.allUnits)
+                {
+                    if(otherUnits != this && otherUnits.isAttacking 
+                        && Vector3.Distance(otherUnits.transform.position, otherUnits.transform.position) <= .15f)
+                    {
+                        samePlace = true;
+                        break;
+                    }
+                }
+
+                if (!samePlace)
+                {
+                    
+                }*/
             }
         }
     }
@@ -247,8 +263,8 @@ public class BattleUnit : MonoBehaviour
         guo.updatePhysics = false;
 
         AstarPath.active.UpdateGraphs(guo);
-
-        if (blocking == false)
+                
+        /*if (blocking == false)
         {
             foreach (var pair in sharedObstacle)
             {
@@ -282,13 +298,14 @@ public class BattleUnit : MonoBehaviour
                 if (unit != this && unit.isAttacking)
                 {
                     var distance = Vector3.Distance(transform.position, unit.transform.position);
+                    var radius = aiPath.radius;
 
-                    if (distance <= .375f * 4)
+                    if (distance <= radius * 4)
                     {
                         var dir = (unit.transform.position - transform.position).normalized;
                         var pos = transform.position + dir * distance * .5f;
 
-                        Bounds merged = new Bounds(pos, new Vector3(.375f,.375f, 10f));
+                        Bounds merged = new Bounds(pos, new Vector3(radius, radius, 10f));
                         //merged.Encapsulate(unit.collider.bounds);
                         bounds.extents += new Vector3(0, 0, 10000);
 
@@ -310,13 +327,13 @@ public class BattleUnit : MonoBehaviour
                     }
                 }
             }
-        }
+        }*/
 
-        /*AstarPath.active.AddWorkItem(new AstarWorkItem(() => {
+        AstarPath.active.AddWorkItem(new AstarWorkItem(() => {
             // Safe to update graphs here
             var node = AstarPath.active.GetNearest(transform.position).node;
             node.Walkable = !blocking;
-        }));*/
+        }));
 
         //RecheckUnitPaths();
     }
