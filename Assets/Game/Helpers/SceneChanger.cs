@@ -14,6 +14,7 @@ public enum SceneType
     Market,
     CashShop,
     Temple,
+    Upgrade,
 }
 
 public class SceneChanger : MonoBehaviour
@@ -73,6 +74,10 @@ public class SceneChanger : MonoBehaviour
         else if (sceneType == SceneType.Temple)
         {
             SceneManager.LoadScene("TempleScene");
+        }
+        else if (sceneType == SceneType.Upgrade)
+        {
+            SceneManager.LoadScene("UpgradeScene");
         }
     }
 

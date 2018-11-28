@@ -30,7 +30,7 @@ public class TowerSlotController : MonoBehaviour
         if(newBuilding.buildingID != 0)
         {
             building = newBuilding;
-            iconImage.sprite = building.buildingObject.spriteObject.image;
+            iconImage.sprite = building.buildingObject.image;
         }
         else
         {

@@ -51,6 +51,25 @@ class GameDatabasePostProcessor : AssetPostprocessor
         if (databaseModified)
         {
             EditorHelperFunctions.GenerateFromAsset(path, ref collection, database, "*.asset");
+            CheckCollection(database.allObjects);
         }
     }
+
+    static void CheckCollection(GameDataObject[] collection)
+    {
+        HashSet<string> itemNames = new HashSet<string>();
+
+        foreach (var item in collection)
+        {
+            if (itemNames.Contains(item.name))
+            {
+                Debug.Log("GameDataObject with the same name: " + item.name);
+            }
+            else
+            {
+                itemNames.Add(item.name);
+            }
+        }
+    }
+
 }

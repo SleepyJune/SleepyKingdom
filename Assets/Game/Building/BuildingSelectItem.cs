@@ -19,7 +19,7 @@ public class BuildingSelectItem : MonoBehaviour
     {
         building = target;
 
-        icon.sprite = building.spriteObject.image;
+        icon.sprite = building.image;
         buildingName.text = building.name;
 
         popup = parent;

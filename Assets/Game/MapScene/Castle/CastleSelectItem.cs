@@ -19,7 +19,7 @@ public class CastleSelectItem : MonoBehaviour
     {
         castle = target;
 
-        icon.sprite = castle.spriteObject.image;
+        icon.sprite = castle.image;
         buildingName.text = castle.name;
 
         this.parent = parent;

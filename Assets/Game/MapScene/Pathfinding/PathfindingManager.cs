@@ -14,7 +14,7 @@ public class PathfindingManager : MonoBehaviour
 
     public TileBase overlayPrefab;
 
-    public Unit castle;
+    public MapUnit castle;
 
     public Dictionary<Vector3Int, GameTile> map;
 

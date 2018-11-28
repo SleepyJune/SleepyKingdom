@@ -16,11 +16,14 @@ EditorBuildSettings:
     guid: 8d6eb6e801d7e1c4eb698b5b73ce88d1
   - enabled: 1
     path: Assets/Scenes/CountryScene.unity
-    guid: b338f3cd962241a478e89b9f3d2aa00c
+    guid: 9c9d41b5131082e4ca4fe2bafea289d2
   - enabled: 1
     path: Assets/Scenes/MarketScene.unity
     guid: 9fd7720a94bf3a1468316f70f6c3b4c3
   - enabled: 1
-    path: Assets/Scenes/CashShopScene.unity
+    path: Assets/Scenes/UpgradeScene.unity
+    guid: 3bacdb6f4e9db8e47978d868129beaaa
+  - enabled: 1
+    path: Assets/Scenes/TempleScene.unity
     guid: 2ed3305bbae78c44c98b32dc3132d851
   m_configObjects: {}

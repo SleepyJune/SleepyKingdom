@@ -10,7 +10,7 @@ public class GameTile
     public HashSet<GameTile> neighbours;
 
     [NonSerialized]
-    public HashSet<Unit> units;
+    public HashSet<MapUnit> units;
 
     public Vector3Int position;
 
@@ -23,7 +23,7 @@ public class GameTile
     {
         this.position = pos;
 
-        units = new HashSet<Unit>();
+        units = new HashSet<MapUnit>();
     }
 
     public double Distance(GameTile b)
@@ -31,7 +31,7 @@ public class GameTile
         return position.OffsetDistance(b.position);
     }
 
-    public void AddUnit(Unit unit)
+    public void AddUnit(MapUnit unit)
     {
         if (!units.Contains(unit))
         {
@@ -39,7 +39,7 @@ public class GameTile
         }
     }
 
-    public void DeleteUnit(Unit unit)
+    public void DeleteUnit(MapUnit unit)
     {
         units.Remove(unit);
     }

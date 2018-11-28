@@ -37,4 +37,9 @@ public class NavigationButtonController : MonoBehaviour
     {
         sceneChanger.ChangeScene(SceneType.Temple);
     }
+
+    public void OnUpgradeButtonPress()
+    {
+        sceneChanger.ChangeScene(SceneType.Upgrade);
+    }
 }

@@ -5,9 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Game/Building Object")]
-public class BuildingObject : GameDataObject
+public class BuildingObject : SpriteObject
 {
-    public SpriteObject spriteObject;
-
     public int cost;
 }
