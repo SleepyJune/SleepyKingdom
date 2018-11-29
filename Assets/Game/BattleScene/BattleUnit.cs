@@ -21,7 +21,12 @@ public class BattleUnit : MonoBehaviour
 
     public AILerp aiPath;
     public Seeker seeker;
-    public Pathfinding.RVO.RVOController rvo;
+    //public Pathfinding.RVO.RVOController rvo;
+
+    public float radius = .25f;
+
+    [NonSerialized]
+    public GraphNode blockedNode;
 
     BattleUnitObject unitObj;
 
@@ -131,6 +136,15 @@ public class BattleUnit : MonoBehaviour
             return;
         }
 
+        /*var node = AstarPath.active.GetNearest(transform.position).node;
+        foreach (var unit in alliesByDistance)
+        {
+            if(unit.blockedNode == node)
+            {
+                return;
+            }
+        }*/
+
         foreach (var unit in enemiesByDistance)
         {
             if(unit.isAlive && Vector3.Distance(unit.transform.position, transform.position) <= range / 10.0f)
@@ -138,21 +152,6 @@ public class BattleUnit : MonoBehaviour
                 AttackUnit(unit);
                 break;
 
-                /*var samePlace = false;
-                foreach(var otherUnits in unitManager.allUnits)
-                {
-                    if(otherUnits != this && otherUnits.isAttacking 
-                        && Vector3.Distance(otherUnits.transform.position, otherUnits.transform.position) <= .15f)
-                    {
-                        samePlace = true;
-                        break;
-                    }
-                }
-
-                if (!samePlace)
-                {
-                    
-                }*/
             }
         }
     }
@@ -172,7 +171,7 @@ public class BattleUnit : MonoBehaviour
         if(unit.range <= 20)
         {
             var dir = (unit.transform.position - transform.position).normalized;
-            var pos = transform.position + dir * .5f;
+            var pos = transform.position + dir * radius;
 
             effectsManager.CreateMeleeBangPrefab(pos);
         }
@@ -257,83 +256,28 @@ public class BattleUnit : MonoBehaviour
         guo.modifyTag = true;
         guo.setTag = tag;
         
-        guo.modifyWalkability = true;
-        guo.setWalkability = !blocking;
+        //guo.modifyWalkability = true;
+        //guo.setWalkability = !blocking;
 
         guo.updatePhysics = false;
 
         AstarPath.active.UpdateGraphs(guo);
-                
-        /*if (blocking == false)
+
+        var node = AstarPath.active.GetNearest(transform.position).node;
+        if (blocking)
         {
-            foreach (var pair in sharedObstacle)
-            {
-                var obstacle = pair.Value;
-                var unit = pair.Key;
-
-                obstacle.modifyWalkability = true;
-                obstacle.setWalkability = !blocking;
-
-                AstarPath.active.UpdateGraphs(obstacle);
-
-                if (unit.isAttacking)
-                {
-                    GraphUpdateObject newGuo = new GraphUpdateObject(unit.collider.bounds);
-
-                    newGuo.modifyWalkability = true;
-                    newGuo.setWalkability = !blocking;
-
-                    newGuo.updatePhysics = false;
-
-                    AstarPath.active.UpdateGraphs(newGuo);
-                }
-            }
-
-            sharedObstacle = new Dictionary<BattleUnit, GraphUpdateObject>();
+            blockedNode = node;
         }
-        else if(isAttacking == true)
+        else
         {
-            foreach(var unit in unitManager.allUnits)
-            {
-                if (unit != this && unit.isAttacking)
-                {
-                    var distance = Vector3.Distance(transform.position, unit.transform.position);
-                    var radius = aiPath.radius;
+            blockedNode = null;
+        }
 
-                    if (distance <= radius * 4)
-                    {
-                        var dir = (unit.transform.position - transform.position).normalized;
-                        var pos = transform.position + dir * distance * .5f;
-
-                        Bounds merged = new Bounds(pos, new Vector3(radius, radius, 10f));
-                        //merged.Encapsulate(unit.collider.bounds);
-                        bounds.extents += new Vector3(0, 0, 10000);
-
-                        Debug.Log(merged);
-
-                        GraphUpdateObject newGuo = new GraphUpdateObject(merged);
-
-                        newGuo.modifyTag = true;
-                        newGuo.setTag = blocking ? 1 : 0;
-
-                        newGuo.modifyWalkability = true;
-                        newGuo.setWalkability = !blocking;
-
-                        newGuo.updatePhysics = false;
-
-                        AstarPath.active.UpdateGraphs(newGuo);
-
-                        sharedObstacle.Add(unit, newGuo);
-                    }
-                }
-            }
-        }*/
-
-        AstarPath.active.AddWorkItem(new AstarWorkItem(() => {
+        /*AstarPath.active.AddWorkItem(new AstarWorkItem(() => {
             // Safe to update graphs here
             var node = AstarPath.active.GetNearest(transform.position).node;
             node.Walkable = !blocking;
-        }));
+        }));*/
 
         //RecheckUnitPaths();
     }
