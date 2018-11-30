@@ -7,6 +7,7 @@ using UnityEngine;
 public class BattleUnitManager : MonoBehaviour
 {
     public BattleEffectsManager effectsManager;
+    public ProjectileManager projectileManager;
 
     public BattleUnit battleUnitPrefab;
     public Transform unitParent;
@@ -62,11 +63,14 @@ public class BattleUnitManager : MonoBehaviour
         {
             var unit = removeUnits.Dequeue();
 
-            playerUnits.Remove(unit);
-            computerUnits.Remove(unit);
-            allUnits.Remove(unit);
+            if (unit != null)
+            {
+                playerUnits.Remove(unit);
+                computerUnits.Remove(unit);
+                allUnits.Remove(unit);
 
-            Destroy(unit.gameObject);
+                Destroy(unit.gameObject);
+            }
         }
     }
 

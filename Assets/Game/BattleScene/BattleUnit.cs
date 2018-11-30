@@ -32,6 +32,7 @@ public class BattleUnit : MonoBehaviour
 
     BattleUnitManager unitManager;
     BattleEffectsManager effectsManager;
+    ProjectileManager projectileManager;
 
     int health;
 
@@ -71,6 +72,7 @@ public class BattleUnit : MonoBehaviour
         this.unitObj = unitObj;
         this.unitManager = unitManager;
         this.effectsManager = unitManager.effectsManager;
+        this.projectileManager = unitManager.projectileManager;
 
         icon.sprite = unitObj.spriteObj.image;
 
@@ -165,15 +167,18 @@ public class BattleUnit : MonoBehaviour
         //Invoke("SetPathBlockingStateEx", .5f);// (true);
 
         SetPathBlockingState(true);
-
-        unit.TakeDamage(attack);
-
-        if(unit.range <= 20)
+                
+        if(unit.range <= 5)
         {
             var dir = (unit.transform.position - transform.position).normalized;
             var pos = transform.position + dir * radius;
 
             effectsManager.CreateMeleeBangPrefab(pos);
+            unit.TakeDamage(attack);
+        }
+        else
+        {
+            projectileManager.CreateProjectile(this, unit, unitObj.projectileObject);
         }
     }
 

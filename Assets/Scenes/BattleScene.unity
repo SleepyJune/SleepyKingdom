@@ -651,6 +651,7 @@ GameObject:
   - component: {fileID: 643833172}
   - component: {fileID: 643833174}
   - component: {fileID: 643833175}
+  - component: {fileID: 643833176}
   m_Layer: 0
   m_Name: BattleSceneManager
   m_TagString: Untagged
@@ -670,6 +671,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectsManager: {fileID: 643833175}
+  projectileManager: {fileID: 643833176}
   battleUnitPrefab: {fileID: 114063542083406634, guid: b34bf0b799bc06b44b5ab5fc61f63324,
     type: 2}
   unitParent: {fileID: 607617390}
@@ -716,6 +718,20 @@ MonoBehaviour:
   effectsParent: {fileID: 259348768}
   meleeBangPrefab: {fileID: 1863551446501096, guid: d88589fd6a1425344b82164b8303fd17,
     type: 2}
+--- !u!114 &643833176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 643833171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f2075b8986950c49bee6691ef11f0a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 114687304987652546, guid: c8b28907bedf71e49878f65a44a1bd5e,
+    type: 2}
+  unitParent: {fileID: 607617390}
 --- !u!1001 &953987710
 Prefab:
   m_ObjectHideFlags: 0
