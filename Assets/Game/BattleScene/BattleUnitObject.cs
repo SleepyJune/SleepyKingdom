@@ -19,4 +19,6 @@ public class BattleUnitObject : GameDataObject
     public float atkSpeed = 1;
 
     public int range = 1;
+
+    public ProjectileObject projectileObject;
 }

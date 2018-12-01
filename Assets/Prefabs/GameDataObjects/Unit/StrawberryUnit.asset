@@ -17,5 +17,6 @@ MonoBehaviour:
   attack: 5
   defense: 10
   speed: 15
-  atkSpeed: 1
-  range: 7
+  atkSpeed: 3
+  range: 20
+  projectileObject: {fileID: 11400000, guid: 47229c1d15a2ee749888e8775bdabf81, type: 2}

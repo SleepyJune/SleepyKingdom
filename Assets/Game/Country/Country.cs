@@ -39,6 +39,11 @@ public class Country
 
     [SerializeField]
     private float _population;
+    [SerializeField]
+    private float _maxCapacity;
+
+    private float _birthRate;
+    private float _deathRate;
 
     [SerializeField]
     private float _wood;
