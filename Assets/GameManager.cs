@@ -12,6 +12,9 @@ public class GameManager : MonoBehaviour
     public GameDatabaseManager gamedatabaseManager;
 
     [NonSerialized]
+    public GameStateManager gameStateManager;
+
+    [NonSerialized]
     public SceneChanger sceneChanger;
 
     [NonSerialized]
@@ -22,9 +25,6 @@ public class GameManager : MonoBehaviour
 
     [NonSerialized]
     public GlobalCountryManager globalCountryManager;
-
-    [NonSerialized]
-    public GameStateManager gameStateManager;
     
     void Awake()
     {
@@ -39,12 +39,12 @@ public class GameManager : MonoBehaviour
             return;
         }
 
+        gameStateManager = GetComponent<GameStateManager>();
+        gamedatabaseManager = GetComponent<GameDatabaseManager>();
         sceneChanger = GetComponent<SceneChanger>();
         eventManager = GetComponent<EventManager>();
         weatherManager = GetComponent<WeatherManager>();
         globalCountryManager = GetComponent<GlobalCountryManager>();
-        gamedatabaseManager = GetComponent<GameDatabaseManager>();
-        gameStateManager = GetComponent<GameStateManager>();
     }
 
     private void OnApplicationQuit()

@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+using Random = UnityEngine.Random;
+
 public class GlobalCountryManager : MonoBehaviour
 {    
     private float lastUpdateTime;
@@ -18,9 +20,10 @@ public class GlobalCountryManager : MonoBehaviour
     public event CountryEventFunction OnAddCountryEvent;
     public event CountryEventFunction OnDeleteCountryEvent;
 
+    [NonSerialized]
     public Country myCountry;
 
-    private void Start()
+    private void Awake()
     {
         gameState = GameManager.instance.gameStateManager.gameState;
 
@@ -101,26 +104,46 @@ public class GlobalCountryManager : MonoBehaviour
 
     private void Update()
     {
-        if(Time.time - lastUpdateTime >= updateFrequency)
+        UpdateCountryPopulation();
+
+        /*if (Time.time - lastUpdateTime >= updateFrequency)
         {
-            UpdateCountryPopulation();
+            
 
             lastUpdateTime = Time.time;
-        }
+        }*/
     }
 
     private void UpdateCountryPopulation()
     {
         foreach(var country in gameState.GetCountries())
         {
-            country.Population += 1;
+            if (Random.Range(0, 1) <= country.matingRate)
+            {
+                country.population += (.2f * country.population * country.birthRate) * Time.deltaTime;
+            }
 
-            country.Wood += country.Population / 1000.0f;
-            country.Stone += country.Population / 1000.0f;
-            country.Wheat += 2 * country.Population / 1000.0f;
-            country.Gold += country.Population / 1000.0f;
+            if (Random.Range(0, 1) <= country.deathRate)
+            {
+                country.population -= .1f *(country.population) * Time.deltaTime;
+            }
 
-            country.Wheat -= country.Population / 1000.0f;
+            country.wood += country.population / 1000.0f;
+            country.stone += country.population / 1000.0f;
+            country.wheat += 2 * country.population / 1000.0f;
+            country.gold += country.population / 1000.0f;
+            country.water += country.population / 1000.0f;
+
+            //food consumption
+            if(Random.Range(0, 1) <= country.foodConsumptionRate)
+            {
+                country.water -= (country.population / 1000.0f) * Time.deltaTime;
+            }
+
+            if (Random.Range(0, 1) <= country.waterConsumptionRate)
+            {
+                country.wheat -= (country.population / 1000.0f) * Time.deltaTime;
+            }
         }
     }
 }

@@ -51,8 +51,6 @@ public class GameState
     {
         foreach(var country in countries)
         {
-            country.InitializeResources();
-
             countryList.Add(country);
         }
     }
