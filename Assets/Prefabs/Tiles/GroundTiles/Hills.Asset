@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8a59a26b6d40124c8dabda0e45392ba, type: 3}
   m_Name: Hills
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: d0be69819a1b96043aed1109349fd9b4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ff82e10631e5ed542880eebb5bcfed3a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
