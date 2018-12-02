@@ -325,15 +325,15 @@
                 "z": 0
             },
             "speed": 0.0,
-            "_population": 31413.0,
-            "_maxCapacity": 0.0,
-            "_wood": 493119.21875,
-            "_stone": 493033.21875,
-            "_wheat": 493068.1875,
-            "_gold": 493094.25,
-            "_water": 0.0,
-            "_taxRate": 3.0,
-            "_happiness": 72.0
+            "population": 207.0262908935547,
+            "maxCapacity": 0.0,
+            "wood": 3.970494296116562e33,
+            "stone": 3.970494296116562e33,
+            "wheat": 7.875084997331707e33,
+            "gold": 3.970494296116562e33,
+            "water": 3.904590082245126e33,
+            "taxRate": 0.0,
+            "happiness": 0.0
         },
         {
             "countryID": 4,
@@ -586,15 +586,15 @@
                 "z": 0
             },
             "speed": 0.0,
-            "_population": 28776.0,
-            "_maxCapacity": 0.0,
-            "_wood": 414059.28125,
-            "_stone": 414112.3125,
-            "_wheat": 414042.25,
-            "_gold": 414077.3125,
-            "_water": 0.0,
-            "_taxRate": 45.0,
-            "_happiness": 70.0
+            "population": 31625526.0,
+            "maxCapacity": 0.0,
+            "wood": 16720657408.0,
+            "stone": 16720657408.0,
+            "wheat": 33275336704.0,
+            "gold": 16720657408.0,
+            "water": 16377168896.0,
+            "taxRate": 0.0,
+            "happiness": 0.0
         },
         {
             "countryID": 2,
@@ -958,15 +958,15 @@
                 "z": 0
             },
             "speed": 0.0,
-            "_population": 28878.0,
-            "_maxCapacity": 0.0,
-            "_wood": 417049.21875,
-            "_stone": 416982.1875,
-            "_wheat": 417030.09375,
-            "_gold": 416994.1875,
-            "_water": 0.0,
-            "_taxRate": 29.0,
-            "_happiness": 22.0
+            "population": 31625526.0,
+            "maxCapacity": 0.0,
+            "wood": 16720657408.0,
+            "stone": 16720657408.0,
+            "wheat": 33275336704.0,
+            "gold": 16720657408.0,
+            "water": 16377168896.0,
+            "taxRate": 0.0,
+            "happiness": 0.0
         },
         {
             "countryID": 3,
@@ -1219,15 +1219,15 @@
                 "z": 0
             },
             "speed": 0.0,
-            "_population": 28921.0,
-            "_maxCapacity": 0.0,
-            "_wood": 418243.96875,
-            "_stone": 418220.96875,
-            "_wheat": 418220.1875,
-            "_gold": 418219.96875,
-            "_water": 0.0,
-            "_taxRate": 48.0,
-            "_happiness": 99.0
+            "population": 31625526.0,
+            "maxCapacity": 0.0,
+            "wood": 16720657408.0,
+            "stone": 16720657408.0,
+            "wheat": 33275336704.0,
+            "gold": 16720657408.0,
+            "water": 16377168896.0,
+            "taxRate": 0.0,
+            "happiness": 0.0
         }
     ],
     "gold": 0,

@@ -8,18 +8,36 @@ using UnityEngine.UI;
 public class UpgradeItem : MonoBehaviour
 {
     [NonSerialized]
-    public UpgradeObject upgradeObject;
+    public CountryUpgradeObject upgradeObject;
 
     public Image itemIcon;
     public Text itemName;
 
     public Text itemDescription;
 
-    public void SetItem(UpgradeObject item)
+    Country country;
+
+    public void SetItem(CountryUpgradeObject item)
     {
+        country = GameManager.instance.globalCountryManager.myCountry;
+
         upgradeObject = item;
 
+        upgradeObject.Apply(country); //change this later
+
+        RefreshItem();
+    }
+
+    private void RefreshItem()
+    {
         itemIcon.sprite = upgradeObject.image;
-        itemName.text = upgradeObject.name;
+        itemName.text = upgradeObject.name + " Lv." + upgradeObject.GetLevel();
+        itemDescription.text = upgradeObject.upgradeDescription + "\n" + upgradeObject.GetDescription(country);
+    }
+
+    public void OnUpgradeButtonPressed()
+    {
+        upgradeObject.Upgrade(country);
+        RefreshItem();
     }
 }

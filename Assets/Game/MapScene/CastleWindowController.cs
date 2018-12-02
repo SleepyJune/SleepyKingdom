@@ -12,9 +12,10 @@ public class CastleWindowController : Popup
     [NonSerialized]
     public Country country;
 
-    public ResourceButtonUI resourceButtonUIPrefab;
-
-    public Transform resourceParent;
+    public Text woodText;
+    public Text stoneText;
+    public Text wheatText;
+    public Text waterText;
     
     public void SetCountry(Country targetCountry)
     {
@@ -23,30 +24,6 @@ public class CastleWindowController : Popup
         country = targetCountry;
 
         countryName.text = country.countryName;
-
-        //countryPopulation.text = country.Population.ToString();
-        //country.OnResourceChange += OnResourceChange;
-
-        //GenerateResourceUI("Population", country.population);
-        //GenerateResourceUI("Happiness", country.happiness);
-
-        foreach(Transform resource in resourceParent)
-        {
-            Destroy(resource.gameObject);
-        }
-
-        GenerateResourceUI(CountryResourceType.Wood);
-        GenerateResourceUI(CountryResourceType.Stone);
-        GenerateResourceUI(CountryResourceType.Wheat);
-        GenerateResourceUI(CountryResourceType.Gold);
-    }
-
-    public void GenerateResourceUI(CountryResourceType type)
-    {
-        var newResource = Instantiate(resourceButtonUIPrefab, resourceParent);
-
-        newResource.resourceName.text = type.ToString();
-        newResource.SetResource(country, type);
     }
 
     public void DeleteCastle()
@@ -55,5 +32,13 @@ public class CastleWindowController : Popup
         {
             GameManager.instance.globalCountryManager.DeleteCountry(country);
         }
+    }
+
+    private void Update()
+    {
+        woodText.text = NumberTextFormater.FormatNumber(country.wood);
+        stoneText.text = NumberTextFormater.FormatNumber(country.stone);
+        wheatText.text = NumberTextFormater.FormatNumber(country.wheat);
+        waterText.text = NumberTextFormater.FormatNumber(country.water);
     }
 }

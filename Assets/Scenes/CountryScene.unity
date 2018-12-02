@@ -348,14 +348,15 @@ MonoBehaviour:
     castleObject: {fileID: 0}
     position: {x: 0, y: 0, z: 0}
     speed: 0
-    _population: 0
-    _wood: 0
-    _stone: 0
-    _wheat: 0
-    _gold: 0
-    _water: 0
-    _taxRate: 0
-    _happiness: 0
+    population: 0
+    maxCapacity: 0
+    wood: 0
+    stone: 0
+    wheat: 0
+    gold: 0
+    water: 0
+    taxRate: 0
+    happiness: 0
   countryPopulation: {fileID: 1195729238}
   castleWindow: {fileID: 859087034}
 --- !u!224 &856122939 stripped

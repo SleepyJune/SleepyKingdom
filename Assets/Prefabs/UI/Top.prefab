@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 224195491113198536}
   - component: {fileID: 222161054515288514}
   - component: {fileID: 114375033685829774}
-  - component: {fileID: 114801370221696666}
   m_Layer: 5
   m_Name: PopulationText
   m_TagString: Untagged
@@ -54,6 +53,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 224198848184812410}
+  - component: {fileID: 114979227537500810}
   m_Layer: 5
   m_Name: Top
   m_TagString: Untagged
@@ -280,19 +280,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114801370221696666
+--- !u!114 &114979227537500810
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1160416360317594}
+  m_GameObject: {fileID: 1687022152391876}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10f488b88779e174baacd2a619043383, type: 3}
+  m_Script: {fileID: 11500000, guid: ee3085f1f90dc3140ab899bd8231d4de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceType: 0
-  text: {fileID: 114375033685829774}
+  populationText: {fileID: 114375033685829774}
 --- !u!114 &114988948252577608
 MonoBehaviour:
   m_ObjectHideFlags: 1

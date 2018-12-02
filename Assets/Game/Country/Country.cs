@@ -6,18 +6,6 @@ using UnityEngine;
 
 using Random = UnityEngine.Random;
 
-public enum CountryResourceType
-{
-    Population,
-    Wood,
-    Stone,
-    Wheat,
-    Water,
-    Gold,
-    TaxRate,
-    Happiness,
-}
-
 [Serializable]
 public class Country
 {
@@ -36,115 +24,32 @@ public class Country
     //leader
 
     //private resources
+    
+    public float population;
+    public float maxCapacity;
 
-    [SerializeField]
-    private float _population;
-    [SerializeField]
-    private float _maxCapacity;
+    public float wood;
+    public float stone;
+    public float wheat;
+    public float gold;
+    public float water;
 
-    private float _birthRate;
-    private float _deathRate;
+    public float taxRate;
+    public float happiness;
 
-    [SerializeField]
-    private float _wood;
+    [NonSerialized]
+    public float birthRate = .5f;
+    [NonSerialized]
+    public float matingRate = .2f;
+    [NonSerialized]
+    public float deathRate = .05f;
+    [NonSerialized]
+    public float foodConsumptionRate = .2f;
+    [NonSerialized]
+    public float waterConsumptionRate = .2f;
 
-    [SerializeField]
-    private float _stone;
-    [SerializeField]
-    private float _wheat;
-    [SerializeField]
-    private float _gold;
-    [SerializeField]
-    private float _water;
-
-    [SerializeField]
-    private float _taxRate;
-    [SerializeField]
-    private float _happiness;
 
     public static int countryCounter = 1;
-
-    private Dictionary<CountryResourceType, float> resourcesDictionary = new Dictionary<CountryResourceType, float>();
-
-    public float Population
-    {
-        get { return _population; }
-        set { ResourceChange(CountryResourceType.Population, _population, value); _population = value; }
-    }
-
-    public float Water
-    {
-        get { return _water; }
-        set { ResourceChange(CountryResourceType.Water, _water, value); _water = value; }
-    }
-
-    public float Wood
-    {
-        get { return _wood; }
-        set { ResourceChange(CountryResourceType.Wood, _wood, value); _wood = value; }
-    }
-
-    public float Stone
-    {
-        get { return _stone; }
-        set { ResourceChange(CountryResourceType.Stone, _stone, value); _stone = value; }
-    }
-
-    public float Wheat
-    {
-        get { return _wheat; }
-        set { ResourceChange(CountryResourceType.Wheat, _wheat, value); _wheat = value; }
-    }
-
-    public float Gold
-    {
-        get { return _gold; }
-        set { ResourceChange(CountryResourceType.Gold, _gold, value); _gold = value; }
-    }
-
-    public float TaxRate
-    {
-        get { return _taxRate; }
-        set { ResourceChange(CountryResourceType.TaxRate, _taxRate, value); _taxRate = value; }
-    }
-
-    public float Happiness
-    {
-        get { return _happiness; }
-        set { ResourceChange(CountryResourceType.Happiness, _happiness, value); _happiness = value; }
-    }
-
-    public delegate void ProcessResourceEvent(CountryResourceType type, float oldValue, float newValue);
-    public event ProcessResourceEvent OnResourceChange;
-
-    private void ResourceChange(CountryResourceType type, float oldValue, float newValue)
-    {
-        resourcesDictionary[type] = newValue;
-
-        if (OnResourceChange != null)
-        {
-            OnResourceChange(type, oldValue, newValue);
-        }
-    }
-
-    public void InitializeResources()
-    {
-        Population = _population;
-
-        Wood = _wood;
-        Stone = _stone;
-        Wheat = _wheat;
-        Gold = _gold;
-        Water = _water;
-
-        TaxRate = _taxRate;
-        Happiness = _happiness;
-    }
-
-    public float GetResource(CountryResourceType type)
-    {
-        return resourcesDictionary[type];
-    }
 
     public static Country Generate(string countryName = "")
     {
@@ -161,16 +66,16 @@ public class Country
 
         newCountry.tower = Tower.Generate();
 
-        newCountry.Population = Random.Range(100, 1000);
+        newCountry.population = Random.Range(100, 1000);
 
-        newCountry.Wood = Random.Range(1, 100);
-        newCountry.Stone = Random.Range(1, 100);
-        newCountry.Wheat = Random.Range(1, 100);
-        newCountry.Gold = Random.Range(1, 100);
+        newCountry.wood = Random.Range(1, 100);
+        newCountry.stone = Random.Range(1, 100);
+        newCountry.wheat = Random.Range(1, 100);
+        newCountry.gold = Random.Range(1, 100);
 
-        newCountry.TaxRate = Random.Range(0, 100);
+        newCountry.taxRate = Random.Range(0, 100);
 
-        newCountry.Happiness = Random.Range(1, 100);
+        newCountry.happiness = Random.Range(1, 100);
 
         return newCountry;
     }
