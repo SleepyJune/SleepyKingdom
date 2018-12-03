@@ -67,6 +67,7 @@ public class Country
         newCountry.tower = Tower.Generate();
 
         newCountry.population = Random.Range(100, 1000);
+        newCountry.maxCapacity = Random.Range(2000, 10000);
 
         newCountry.wood = Random.Range(1, 100);
         newCountry.stone = Random.Range(1, 100);

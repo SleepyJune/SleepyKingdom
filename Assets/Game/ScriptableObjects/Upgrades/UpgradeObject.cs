@@ -8,6 +8,14 @@ public abstract class UpgradeObject : SpriteObject
 {    
     public string upgradeDescription;
 
+    public enum UpgradeType
+    {
+        Single,
+        Increment,
+    }
+
+    public UpgradeType upgradeType;
+
     public float baseStatValue = 0;
 
     public float valueIncrement = .1f;

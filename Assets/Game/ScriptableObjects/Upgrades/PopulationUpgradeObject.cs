@@ -12,18 +12,16 @@ public class PopulationUpgradeObject : CountryUpgradeObject
         MatingRate,
         BirthRate,
         DeathRate,
+        MaxCapacity,
     }
 
-    public PopulationUpgradeType upgradeType;
+    public PopulationUpgradeType upgradeTarget;
 
     public override bool Upgrade(object obj)
     {
         Revert(obj);
 
-        Country country = obj as Country;
-
         int level = PlayerPrefs.GetInt("Upgrades_" + name, 0);
-
         PlayerPrefs.SetInt("Upgrades_" + name, level + 1);
 
         Apply(obj);
@@ -35,24 +33,37 @@ public class PopulationUpgradeObject : CountryUpgradeObject
     {
         Country country = obj as Country;
 
-        int level = PlayerPrefs.GetInt("Upgrades_" + name, 0);
+        int level = 0;
 
-        if(level == 0)
+        if (upgradeType == UpgradeType.Increment)
         {
-            return false;
+            level = PlayerPrefs.GetInt("Upgrades_" + name, 0);
+
+            if (level == 0)
+            {
+                return false;
+            }
         }
 
-        if(upgradeType == PopulationUpgradeType.MatingRate)
+        if(upgradeTarget == PopulationUpgradeType.MatingRate)
         {
             country.matingRate += (baseStatValue + valueIncrement * level);
         }
-        else if (upgradeType == PopulationUpgradeType.BirthRate)
+        else if (upgradeTarget == PopulationUpgradeType.BirthRate)
         {
             country.birthRate += (baseStatValue + valueIncrement * level);
         }
-        else if (upgradeType == PopulationUpgradeType.DeathRate)
+        else if (upgradeTarget == PopulationUpgradeType.DeathRate)
         {
             country.deathRate += (baseStatValue + valueIncrement * level);
+        }
+
+        if(upgradeType == UpgradeType.Single)
+        {
+            if(upgradeTarget == PopulationUpgradeType.MaxCapacity)
+            {
+                country.maxCapacity += baseStatValue;
+            }
         }
 
         return true;
@@ -60,6 +71,11 @@ public class PopulationUpgradeObject : CountryUpgradeObject
 
     public override bool Revert(object obj)
     {
+        if(upgradeType == UpgradeType.Single)
+        {
+            return false;
+        }
+
         Country country = obj as Country;
 
         int level = PlayerPrefs.GetInt("Upgrades_" + name, 0);
@@ -69,15 +85,15 @@ public class PopulationUpgradeObject : CountryUpgradeObject
             return false;
         }
 
-        if (upgradeType == PopulationUpgradeType.MatingRate)
+        if (upgradeTarget == PopulationUpgradeType.MatingRate)
         {
             country.matingRate -= (baseStatValue + valueIncrement * level);
         }
-        else if (upgradeType == PopulationUpgradeType.BirthRate)
+        else if (upgradeTarget == PopulationUpgradeType.BirthRate)
         {
             country.birthRate -= (baseStatValue + valueIncrement * level);
         }
-        else if (upgradeType == PopulationUpgradeType.DeathRate)
+        else if (upgradeTarget == PopulationUpgradeType.DeathRate)
         {
             country.deathRate -= (baseStatValue + valueIncrement * level);
         }
@@ -91,11 +107,15 @@ public class PopulationUpgradeObject : CountryUpgradeObject
 
         int level = PlayerPrefs.GetInt("Upgrades_" + name, 0);
 
-        if (upgradeType == PopulationUpgradeType.MatingRate ||
-            upgradeType == PopulationUpgradeType.BirthRate ||
-            upgradeType == PopulationUpgradeType.DeathRate)
+        if (upgradeTarget == PopulationUpgradeType.MatingRate ||
+            upgradeTarget == PopulationUpgradeType.BirthRate ||
+            upgradeTarget == PopulationUpgradeType.DeathRate)
         {
             return "Current increase: +" + (baseStatValue + 100 * valueIncrement * level).ToString() + "%";
+        }
+        else if(upgradeTarget == PopulationUpgradeType.MaxCapacity)
+        {
+            return "Current increase: +" + (baseStatValue * level).ToString();
         }
 
         return "";

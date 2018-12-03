@@ -121,11 +121,22 @@ public class GlobalCountryManager : MonoBehaviour
             if (Random.Range(0, 1) <= country.matingRate)
             {
                 country.population += (.2f * country.population * country.birthRate) * Time.deltaTime;
+
+                if(country.population > country.maxCapacity)
+                {
+                    country.population = country.maxCapacity;
+                }
+
             }
 
             if (Random.Range(0, 1) <= country.deathRate)
             {
                 country.population -= .1f *(country.population) * Time.deltaTime;
+
+                if(country.population < 0)
+                {
+                    country.population = 0;
+                }
             }
 
             country.wood += country.population / 1000.0f;

@@ -22,7 +22,7 @@ public class GroundTile : GameTileBase
         tileData.transform = this.transform;
         tileData.gameObject = this.gameObject;
         tileData.flags = this.flags;
-                
+
         int index = Random.Range(0, sprites.Length);
         if (index >= 0 && index < sprites.Length)
         {

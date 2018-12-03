@@ -16,11 +16,12 @@ public static class NumberTextFormater
             {
                 string symbol = "";
 
-                string leading = Math.Round(number / check).ToString();
+                string leading = (number / check).ToString("F");
 
                 switch (i)
                 {
                     case 0:
+                        leading = Math.Round(number / check).ToString();
                         break;
                     case 1:
                         symbol = "K";
