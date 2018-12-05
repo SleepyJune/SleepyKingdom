@@ -118,7 +118,7 @@ public class GlobalCountryManager : MonoBehaviour
     {
         foreach(var country in gameState.GetCountries())
         {
-            if (Random.Range(0, 1) <= country.matingRate)
+            if (Random.Range(0f, 1f) <= country.matingRate)
             {
                 country.population += (.2f * country.population * country.birthRate) * Time.deltaTime;
 
@@ -129,7 +129,7 @@ public class GlobalCountryManager : MonoBehaviour
 
             }
 
-            if (Random.Range(0, 1) <= country.deathRate)
+            if (Random.Range(0f, 1f) <= country.deathRate)
             {
                 country.population -= .1f *(country.population) * Time.deltaTime;
 
@@ -146,12 +146,12 @@ public class GlobalCountryManager : MonoBehaviour
             country.water += country.population / 1000.0f;
 
             //food consumption
-            if(Random.Range(0, 1) <= country.foodConsumptionRate)
+            if(Random.Range(0f, 1f) <= country.foodConsumptionRate)
             {
                 country.water -= (country.population / 1000.0f) * Time.deltaTime;
             }
 
-            if (Random.Range(0, 1) <= country.waterConsumptionRate)
+            if (Random.Range(0f, 1f) <= country.waterConsumptionRate)
             {
                 country.wheat -= (country.population / 1000.0f) * Time.deltaTime;
             }

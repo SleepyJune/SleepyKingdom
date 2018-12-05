@@ -13,6 +13,7 @@ public class PopulationUpgradeObject : CountryUpgradeObject
         BirthRate,
         DeathRate,
         MaxCapacity,
+        Population,
     }
 
     public PopulationUpgradeType upgradeTarget;
@@ -64,6 +65,10 @@ public class PopulationUpgradeObject : CountryUpgradeObject
             {
                 country.maxCapacity += baseStatValue;
             }
+            else if (upgradeTarget == PopulationUpgradeType.Population)
+            {
+                country.population += baseStatValue;
+            }
         }
 
         return true;
@@ -113,7 +118,8 @@ public class PopulationUpgradeObject : CountryUpgradeObject
         {
             return "Current increase: +" + (baseStatValue + 100 * valueIncrement * level).ToString() + "%";
         }
-        else if(upgradeTarget == PopulationUpgradeType.MaxCapacity)
+        else if(upgradeTarget == PopulationUpgradeType.MaxCapacity ||
+                upgradeTarget == PopulationUpgradeType.Population)
         {
             return "Current increase: +" + (baseStatValue * level).ToString();
         }

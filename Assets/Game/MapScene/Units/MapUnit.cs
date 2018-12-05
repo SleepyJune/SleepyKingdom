@@ -38,10 +38,7 @@ public class MapUnit : MonoBehaviour
     
     public virtual void OnMouseDownEvent()
     {
-        if (!EventSystem.current.IsPointerOverGameObject())
-        {
-            unitManager.OnUnitMouseClickEvent(this);
-        }
+        unitManager.OnUnitMouseClickEvent(this);
     }
 
     public void SetMovePosition(Vector3Int pos)

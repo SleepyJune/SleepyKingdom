@@ -11,6 +11,23 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1453001975641716}
   m_IsPrefabAsset: 1
+--- !u!1 &1107016842439598
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4664463174131516}
+  - component: {fileID: 61802407295224964}
+  - component: {fileID: 114735324460587524}
+  m_Layer: 8
+  m_Name: Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1453001975641716
 GameObject:
   m_ObjectHideFlags: 0
@@ -20,7 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4934012315001882}
   - component: {fileID: 114611682643701174}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultCastle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,9 +53,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4434014878868106}
   - component: {fileID: 212691031897427738}
-  - component: {fileID: 61974971455532208}
-  - component: {fileID: 114327453441723356}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpriteRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,6 +73,19 @@ Transform:
   m_Father: {fileID: 4934012315001882}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4664463174131516
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1107016842439598}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4934012315001882}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4934012315001882
 Transform:
   m_ObjectHideFlags: 1
@@ -69,22 +97,23 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4434014878868106}
+  - {fileID: 4664463174131516}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &61974971455532208
+--- !u!61 &61802407295224964
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1567100525321596}
+  m_GameObject: {fileID: 1107016842439598}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1.92}
+  m_Offset: {x: 0, y: 0.38}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -93,22 +122,10 @@ BoxCollider2D:
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
-  m_AutoTiling: 1
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.56, y: 3.84}
+  m_Size: {x: 1.23, y: 1.53}
   m_EdgeRadius: 0
---- !u!114 &114327453441723356
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1567100525321596}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 218ab4954dbe3834cb3fb0fe5aa51abb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unit: {fileID: 114611682643701174}
 --- !u!114 &114611682643701174
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -123,6 +140,36 @@ MonoBehaviour:
   position: {x: 0, y: 0, z: 0}
   speed: 1
   castleSprite: {fileID: 212691031897427738}
+--- !u!114 &114735324460587524
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1107016842439598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114611682643701174}
+          m_MethodName: OnMouseDownEvent
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!212 &212691031897427738
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -5,7 +5,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class UpgradeObject : SpriteObject
-{    
+{
+    public string upgradeName;
+
     public string upgradeDescription;
 
     public enum UpgradeType

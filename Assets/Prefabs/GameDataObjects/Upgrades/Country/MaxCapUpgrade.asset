@@ -13,8 +13,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: MaxCapUpgrade
   spriteType: 5
-  image: {fileID: 21300002, guid: 32f07fc5613b83d4ba049e6bbda9bd8d, type: 3}
+  image: {fileID: 21300026, guid: 2875c255a5eec0246903bfbab4604223, type: 3}
   shortDescription: 
+  upgradeName: House
   upgradeDescription: Increase max population by 200.
   upgradeType: 0
   baseStatValue: 200

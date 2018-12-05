@@ -20,6 +20,8 @@ public class GameDatabaseManager : MonoBehaviour
 
     public Dictionary<string, BattleUnitObject> battleUnitObjects = new Dictionary<string, BattleUnitObject>();
 
+    public Dictionary<string, MapResourceObject> mapResourcesObjects = new Dictionary<string, MapResourceObject>();
+
     private void Awake()
     {
         foreach(var obj in database.allObjects)
@@ -52,6 +54,11 @@ public class GameDatabaseManager : MonoBehaviour
             if(obj is BattleUnitObject)
             {
                 battleUnitObjects.Add(obj.name, obj as BattleUnitObject);
+            }
+
+            if(obj is MapResourceObject)
+            {
+                mapResourcesObjects.Add(obj.name, obj as MapResourceObject);
             }
         }
 

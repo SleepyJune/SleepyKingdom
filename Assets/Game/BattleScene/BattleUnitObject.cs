@@ -20,5 +20,7 @@ public class BattleUnitObject : GameDataObject
 
     public int range = 1;
 
+    public int populationCost = 10;
+
     public ProjectileObject projectileObject;
 }
