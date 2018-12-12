@@ -12,7 +12,20 @@ public class MapSceneManager : MonoBehaviour
 
     [NonSerialized]
     public MapUnitManager unitManager;
-        
+
+    /*void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+    }*/
+
     private void Start()
     {
         unitManager = GetComponent<MapUnitManager>();

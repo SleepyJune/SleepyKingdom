@@ -14,6 +14,8 @@ public class MapResourceManager : MonoBehaviour
 
     public MapResourcePopup collectResourcePopup;
 
+    public MapResourceCollector mapCollectorPrefab;
+
     [NonSerialized]
     public MapResource currentResource;
 
@@ -22,9 +24,6 @@ public class MapResourceManager : MonoBehaviour
     float lastUpdateTime;
 
     List<MapResourceObject> resourceList;
-
-    float collectionSpeed = 1;
-    float nextCollectTime;
 
     Dictionary<MapResource, MapResourceCollector> collectors = new Dictionary<MapResource, MapResourceCollector>();
 
@@ -35,19 +34,16 @@ public class MapResourceManager : MonoBehaviour
 
     private void Update()
     {
-        SpawnResource();
-
-        if (Time.time >= nextCollectTime)
+        if(Time.time - lastUpdateTime > 1)
         {
-            CollectResource();
-
-            nextCollectTime = Time.time + (1 / collectionSpeed);
+            SpawnResource();
+            lastUpdateTime = Time.time;
         }
     }
 
     void SpawnResource()
     {
-        if(resources.Count < 5)
+        while(resources.Count < 5)
         {
             //var newResource = 
             int index = UnityEngine.Random.Range(0, resourceList.Count);
@@ -77,12 +73,20 @@ public class MapResourceManager : MonoBehaviour
     {
         currentResource = resource;
 
-        collectResourcePopup.SetResource(resource, collectionSpeed);
+        MapResourceCollector collector = null;
+        collectors.TryGetValue(resource, out collector);
+
+        collectResourcePopup.SetResource(resource, collector);
     }
 
     public void OnCollectPressed()
     {
-        
+        if (currentResource != null && !collectors.ContainsKey(currentResource))
+        {
+            var newCollector = Instantiate(mapCollectorPrefab, unitParent);
+            unitManager.InitializeUnit(newCollector);
+            newCollector.SetResource(currentResource);
+        }
     }
 
     public void StopCollecting()

@@ -42,7 +42,7 @@ public class MapResourcePopup : Popup
         fill.fillAmount = percent;
     }
 
-    public void SetResource(MapResource resource, float collectionSpeed)
+    public void SetResource(MapResource resource, MapResourceCollector collector)
     {
         targetResource = resource;
 
