@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2615beddcff8ed49a03a1fa9fe27918, type: 3}
+  m_Name: MaxCapUpgrade
+  m_EditorClassIdentifier: 
+  name: MaxCapUpgrade
+  spriteType: 5
+  image: {fileID: 21300026, guid: 2875c255a5eec0246903bfbab4604223, type: 3}
+  shortDescription: 
+  upgradeName: House
+  upgradeDescription: Increase max population by 200.
+  upgradeType: 0
+  baseStatValue: 200
+  valueIncrement: 0.1
+  baseCost: 100
+  costIncreament: 50
+  costIncreamentExponential: 2
+  maxLevel: 50
+  defaultMockLevel: 5
+  upgradeTarget: 3

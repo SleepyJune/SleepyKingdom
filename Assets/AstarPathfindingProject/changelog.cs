@@ -2,6 +2,20 @@
 /// \page changelog Changelog
 /// \order{-10}
 ///
+/// - 4.2.4 (2018-12-03)
+/// 	- Added an option for which dimension of the hexagon to adjust in the grid graph editor when using the hexagonal mode.
+/// 		This significantly helps with making a hexagonal graph line up with your other game elements as previously you might have had to manually calculate some complicated conversion factors in order to do this.
+/// 	- Fixed loading navmesh graphs from a file could be extremely slow if the graph had been saved with the source mesh field set to a mesh with an empty name and your project had a lot of things in its Resources folder.
+/// 	- Fixed a massive performance regression when using RVO together with IL2CPP and .net 4.6 due to changes in how the .net framework handles locking internally.
+/// 	- Made GraphNode.Destroy public again (it was made internal in 4.2) because without that, it is not possible to make custom graph types.
+/// 	- Made Path.PipelineState, Path.duration and Path.pathID public again (they were made internal in 4.2) because those properties are actually useful even for non-internal use.
+/// 		This also fixes some incompatibility issues with the Node Canvas integration package. Thanks jsaracev and Grofit for reporting this.
+///
+/// - 4.2.3 (2018-11-07)
+/// 	- Fixed some compiler warnings in the free version on newer versions of Unity.
+/// 	- Fixed a bug which caused point graphs to interpret the nearest node distance limit as being 1/1000th the actual value in the free version of the package and in the pro version when not using the 'optimize for sparse graph' option.
+/// 		This bug caused the point graph example scene to not work in the free version of the package.
+///
 /// - 4.2.2 (2018-10-25)
 /// 	- Fixed upgrading from an earlier 4.x version to 4.2 could cause compiler errors in some newer versions of Unity because the UnityPackage doesn't import the new directory structure correctly.
 ///

@@ -15,7 +15,9 @@ MonoBehaviour:
   spriteType: 5
   image: {fileID: 21300002, guid: 32f07fc5613b83d4ba049e6bbda9bd8d, type: 3}
   shortDescription: 
+  upgradeName: Birth Rate
   upgradeDescription: Increase birth rate by 10%
+  upgradeType: 1
   baseStatValue: 0
   valueIncrement: 0.1
   baseCost: 100
@@ -23,4 +25,4 @@ MonoBehaviour:
   costIncreamentExponential: 2
   maxLevel: 50
   defaultMockLevel: 5
-  upgradeType: 1
+  upgradeTarget: 1

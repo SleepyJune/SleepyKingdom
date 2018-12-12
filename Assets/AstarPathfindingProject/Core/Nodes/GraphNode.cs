@@ -113,7 +113,7 @@ namespace Pathfinding {
 		///
 		/// Warning: Should only be called by graph classes on their own nodes
 		/// </summary>
-		internal void Destroy () {
+		public void Destroy () {
 			if (Destroyed) return;
 
 			ClearConnections(true);
@@ -342,6 +342,14 @@ namespace Pathfinding {
 		/// </summary>
 		public void SetConnectivityDirty () {
 			AstarPath.active.hierarchicalGraph.AddDirtyNode(this);
+		}
+
+		/// <summary>
+		/// Recalculates a node's connection costs.
+		/// Deprecated: This method is deprecated because it never did anything, you can safely remove any calls to this method.
+		/// </summary>
+		[System.Obsolete("This method is deprecated because it never did anything, you can safely remove any calls to this method")]
+		public void RecalculateConnectionCosts () {
 		}
 
 		public virtual void UpdateRecursiveG (Path path, PathNode pathNode, PathHandler handler) {

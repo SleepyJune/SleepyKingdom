@@ -29,7 +29,13 @@ public class DeployUnitManager : MonoBehaviour
 
     public void OnUnitButtonPressed(BattleUnitObject unit)
     {
-        var team = UnityEngine.Random.Range(0, 100) % 2 == 0 ? BattleUnitTeam.Player : BattleUnitTeam.Computer;
-        battleUnitManager.CreateUnit(unit, team);
+        Country country = GameManager.instance.globalCountryManager.myCountry;
+        if (country.population >= unit.populationCost)
+        {
+            var team = UnityEngine.Random.Range(0, 100) % 2 == 0 ? BattleUnitTeam.Player : BattleUnitTeam.Computer;
+            battleUnitManager.CreateUnit(unit, team);
+
+            country.population -= unit.populationCost;
+        }
     }
 }

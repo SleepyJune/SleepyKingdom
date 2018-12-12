@@ -801,8 +801,13 @@ namespace Pathfinding.RVO {
 		/// <summary>Worker thread for RVO simulation</summary>
 		class Worker {
 			public int start, end;
+#if NET_4_6 || NET_STANDARD_2_0
+			readonly ManualResetEventSlim runFlag = new ManualResetEventSlim(false);
+			readonly ManualResetEventSlim waitFlag = new ManualResetEventSlim(true);
+#else
 			readonly AutoResetEvent runFlag = new AutoResetEvent(false);
 			readonly ManualResetEvent waitFlag = new ManualResetEvent(true);
+#endif
 			readonly Simulator simulator;
 			int task = 0;
 			bool terminate = false;
@@ -823,7 +828,11 @@ namespace Pathfinding.RVO {
 			}
 
 			public void WaitOne () {
+#if NET_4_6 || NET_STANDARD_2_0
+				if (!terminate) waitFlag.Wait();
+#else
 				if (!terminate) waitFlag.WaitOne();
+#endif
 			}
 
 			public void Terminate () {
@@ -833,7 +842,12 @@ namespace Pathfinding.RVO {
 			}
 
 			public void Run () {
+#if NET_4_6 || NET_STANDARD_2_0
+				runFlag.Wait();
+				runFlag.Reset();
+#else
 				runFlag.WaitOne();
+#endif
 
 				while (!terminate) {
 					try {
@@ -857,7 +871,12 @@ namespace Pathfinding.RVO {
 						Debug.LogError(e);
 					}
 					waitFlag.Set();
+#if NET_4_6 || NET_STANDARD_2_0
+					runFlag.Wait();
+					runFlag.Reset();
+#else
 					runFlag.WaitOne();
+#endif
 				}
 			}
 		}

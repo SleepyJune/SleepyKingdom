@@ -20,6 +20,16 @@ public class DevModeManagerEditor : Editor
 
         if (GUILayout.Button("Delete PlayPref"))
         {
+            if (GameManager.instance != null)
+            {
+                var list = GameManager.instance.gamedatabaseManager.countryUpgradeObjects;
+
+                foreach (var item in list.Values)
+                {
+                    item.Revert(GameManager.instance.globalCountryManager.myCountry);
+                }
+            }
+
             PlayerPrefs.DeleteAll();
         }
 

@@ -23,7 +23,10 @@ public class UpgradeItem : MonoBehaviour
 
         upgradeObject = item;
 
-        upgradeObject.Apply(country); //change this later
+        if (upgradeObject.upgradeType == UpgradeObject.UpgradeType.Increment)
+        {
+            upgradeObject.Apply(country); //change this later
+        }
 
         RefreshItem();
     }

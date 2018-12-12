@@ -22,6 +22,8 @@ public class MapUnit : MonoBehaviour
     [NonSerialized]
     public float startMovingTime;
 
+    public bool canMove = true;
+
     public float speed = 1.0f;
 
     private Tilemap tilemap;
@@ -38,10 +40,7 @@ public class MapUnit : MonoBehaviour
     
     public virtual void OnMouseDownEvent()
     {
-        if (!EventSystem.current.IsPointerOverGameObject())
-        {
-            unitManager.OnUnitMouseClickEvent(this);
-        }
+        unitManager.OnUnitMouseClickEvent(this);
     }
 
     public void SetMovePosition(Vector3Int pos)
@@ -58,39 +57,59 @@ public class MapUnit : MonoBehaviour
         }
     }
 
-    private void Update()
+    void GetPosition()
     {
-        if(path != null && path.Length > 1)
+        var movingTime = Time.time - startMovingTime;
+        var distance = movingTime * speed;
+
+        var nextPosIndex = (int)Math.Ceiling(distance);
+        var currentPosIndex = (int)Math.Floor(distance);
+
+        if(path.Length >= nextPosIndex + 1)
         {
-            var nextPos = path[1];
+            var currentPos = tilemap.CellToWorld(path[currentPosIndex]);
+            var nextPos = tilemap.CellToWorld(path[nextPosIndex]);
+            
+            var dir = (nextPos - currentPos).normalized;
+            var distanceBetween = Vector3.Distance(currentPos, nextPos);
 
-            var nextPosWorld = tilemap.CellToWorld(nextPos);
-            //var positionWorld = GameManager.instance.pathfindingManager.CellToWorldPosition(position);
+            var distLeft = distance - (float)Math.Truncate(distance);
 
-            var movingTime = Time.time - startMovingTime;
+            var pos = currentPos + dir * distanceBetween * distLeft;
 
-            if (Vector3.Distance(nextPosWorld, transform.position) >= .01f && movingTime * speed < 1f)
-            {
-                var previousPosWorld = tilemap.CellToWorld(path[0]);
-
-                Vector3 dir = (nextPosWorld - previousPosWorld).normalized;
-
-                transform.position = previousPosWorld + dir * speed * movingTime;
-
-                //position += dir * speed * Time.deltaTime;
-
-
-                //transform.position = GameManager.instance.pathfindingManager.CellToWorldPosition(position);
-            }
-            else
-            {                
-                path = path.Skip(1).ToArray();
-
-                SetPosition(nextPos);
-
-                startMovingTime = Time.time;
-            }
+            transform.position = pos;
+            position = path[currentPosIndex];
         }
+        else
+        {
+            var lastPos = path.Last();
+            var currentPos = tilemap.CellToWorld(lastPos);
+
+            transform.position = currentPos;
+            position = lastPos;
+
+            path = null;
+
+            OnDestinationReached();
+        }
+    }
+
+    protected virtual void Update()
+    {
+        if(canMove && path != null && path.Length > 1)
+        {
+            GetPosition();
+        }
+    }
+
+    protected virtual void OnDestinationReached()
+    {
+
+    }
+
+    public virtual void Death()
+    {
+        Destroy(gameObject);
     }
 
     public void SetPosition(Vector3Int nextPosition)
