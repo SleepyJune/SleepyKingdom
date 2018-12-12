@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class MapResourceManager : MonoBehaviour
 {
+    public MapUnitManager unitManager;
     public MapResource resourcePrefab;
 
     public Transform unitParent;
@@ -16,13 +17,16 @@ public class MapResourceManager : MonoBehaviour
     [NonSerialized]
     public MapResource currentResource;
 
-    bool isCollecting = false;
-
     List<MapResource> resources = new List<MapResource>();
 
     float lastUpdateTime;
 
     List<MapResourceObject> resourceList;
+
+    float collectionSpeed = 1;
+    float nextCollectTime;
+
+    Dictionary<MapResource, MapResourceCollector> collectors = new Dictionary<MapResource, MapResourceCollector>();
 
     private void Start()
     {
@@ -31,11 +35,13 @@ public class MapResourceManager : MonoBehaviour
 
     private void Update()
     {
-        if(Time.time >= lastUpdateTime)
+        SpawnResource();
+
+        if (Time.time >= nextCollectTime)
         {
-            SpawnResource();
             CollectResource();
-            lastUpdateTime = Time.time + 1;
+
+            nextCollectTime = Time.time + (1 / collectionSpeed);
         }
     }
 
@@ -47,7 +53,11 @@ public class MapResourceManager : MonoBehaviour
             int index = UnityEngine.Random.Range(0, resourceList.Count);
             var newResource = Instantiate(resourcePrefab, unitParent);
 
-            newResource.SetItem(resourceList[index], 5000, this);
+            unitManager.InitializeUnit(newResource);
+
+            var amount = UnityEngine.Random.Range(100, 5000);
+
+            newResource.SetItem(resourceList[index], amount, this);
 
             resources.Add(newResource);
         }
@@ -55,9 +65,11 @@ public class MapResourceManager : MonoBehaviour
 
     void CollectResource()
     {
-        if(isCollecting && currentResource != null)
+        if(currentResource != null && !collectors.ContainsKey(currentResource))
         {
-            currentResource.CollectResource(100);
+            var amountLeft = currentResource.CollectResource(100);
+            collectResourcePopup.SetAmount(amountLeft);
+            collectResourcePopup.ResetFill();
         }
     }
 
@@ -65,17 +77,16 @@ public class MapResourceManager : MonoBehaviour
     {
         currentResource = resource;
 
-        collectResourcePopup.SetResource(resource);
+        collectResourcePopup.SetResource(resource, collectionSpeed);
     }
 
     public void OnCollectPressed()
     {
-        isCollecting = true;
+        
     }
 
     public void StopCollecting()
     {
         currentResource = null;
-        isCollecting = false;
     }
 }

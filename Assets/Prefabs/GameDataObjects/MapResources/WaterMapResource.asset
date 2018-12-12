@@ -13,6 +13,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: WaterMapResource
   spriteType: 1
-  image: {fileID: 21300006, guid: 32f07fc5613b83d4ba049e6bbda9bd8d, type: 3}
+  image: {fileID: 21300004, guid: 32f07fc5613b83d4ba049e6bbda9bd8d, type: 3}
   shortDescription: 
   resourceType: 0

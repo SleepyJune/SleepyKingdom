@@ -22,6 +22,8 @@ public class MapUnit : MonoBehaviour
     [NonSerialized]
     public float startMovingTime;
 
+    public bool canMove = true;
+
     public float speed = 1.0f;
 
     private Tilemap tilemap;
@@ -57,7 +59,7 @@ public class MapUnit : MonoBehaviour
 
     private void Update()
     {
-        if(path != null && path.Length > 1)
+        if(canMove && path != null && path.Length > 1)
         {
             var nextPos = path[1];
 
@@ -88,6 +90,11 @@ public class MapUnit : MonoBehaviour
                 startMovingTime = Time.time;
             }
         }
+    }
+
+    public virtual void Death()
+    {
+        Destroy(gameObject);
     }
 
     public void SetPosition(Vector3Int nextPosition)

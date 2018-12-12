@@ -184,9 +184,13 @@ namespace Pathfinding {
 				// Move the center so that the pivot point stays at the same point in the world
 				graph.center += worldPoint - newWorldPoint;
 				graph.center = RoundVector3(graph.center);
-				graph.UpdateTransform();
-				AutoScan();
 			}
+
+            if (nodeSizeChanged)
+            {
+                graph.UpdateTransform();
+                AutoScan();
+            }
 
 			if ((nodeSizeChanged && !locked)) {
 				graph.nodeSize = newNodeSize;
@@ -208,7 +212,9 @@ namespace Pathfinding {
 				angle = EditorGUILayout.FloatField("Rotation", angle);
 				if (EditorGUI.EndChangeCheck()) {
 					graph.rotation = RoundVector3(new Vector3(-90 + angle, 270, 90));
-				}
+                    graph.UpdateTransform();
+                    AutoScan();
+                }
 			} else {
 				graph.rotation = RoundVector3(EditorGUILayout.Vector3Field("Rotation", graph.rotation));
 			}
@@ -298,11 +304,18 @@ namespace Pathfinding {
 			GUILayout.BeginHorizontal();
 			var normalizedPivotPoint = NormalizedPivotPoint(graph, pivot);
 			var worldPoint = RoundVector3(graph.CalculateTransform().Transform(normalizedPivotPoint));
-			var newWorldPoint = EditorGUILayout.Vector3Field(ObjectNames.NicifyVariableName(pivot.ToString()), worldPoint);
+            EditorGUI.BeginChangeCheck();
+            var newWorldPoint = EditorGUILayout.Vector3Field(ObjectNames.NicifyVariableName(pivot.ToString()), worldPoint);
 			var delta = newWorldPoint - worldPoint;
 			if (delta.magnitude > 0.001f) {
 				graph.center += delta;
-			}
+
+                if (EditorGUI.EndChangeCheck())
+                {
+                    graph.UpdateTransform();
+                    AutoScan();
+                }
+            }
 
 			pivot = PivotPointSelector(pivot);
 			GUILayout.EndHorizontal();

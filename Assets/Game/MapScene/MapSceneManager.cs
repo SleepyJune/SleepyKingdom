@@ -16,5 +16,7 @@ public class MapSceneManager : MonoBehaviour
     private void Start()
     {
         unitManager = GetComponent<MapUnitManager>();
+
+        Pathfinder.Initialize(terrainMap);
     }
 }

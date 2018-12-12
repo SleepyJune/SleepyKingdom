@@ -12,8 +12,6 @@ public class MapUnitManager : MonoBehaviour
 
     public MapCastleUnit castlePrefab;
 
-    private PathfindingManager pathfindingManager;
-
     public static Dictionary<Vector3Int, GameTile> map;
 
     //public delegate void OnMouseClickFunction(Unit unit);
@@ -25,7 +23,7 @@ public class MapUnitManager : MonoBehaviour
 
     public GameTileClickHandler gameTileClickHandler;
 
-    private MapCastleUnit myCastle;
+    public MapCastleUnit myCastle;
 
     private UnitCommandType currentCommand = UnitCommandType.None;
     private MapCastleUnit currentSelectedUnit = null;
