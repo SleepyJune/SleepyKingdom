@@ -1,53 +1,39 @@
 fileFormatVersion: 2
-guid: 256ebeea05fcee74494dd7350e6af91e
-labels:
-- Terrain
+guid: 07dbc81f8e69e8e41b01d6c9f3d5806d
 TextureImporter:
   fileIDToRecycleName:
-    21300000: plains00
-    21300002: plains01
-    21300004: plains02
-    21300006: plains03
-    21300008: ocean00
-    21300010: ocean01
-    21300012: ocean02
-    21300014: ocean03
-    21300016: mountains00
-    21300018: mountains01
-    21300020: mountains02
-    21300022: mountains03
-    21300024: desertDunes00
-    21300026: desertDunes01
-    21300028: desertDunes02
-    21300030: desertDunes03
-    21300032: forestBroadleaf00
-    21300034: forestBroadleaf01
-    21300036: forestBroadleaf02
-    21300038: forestBroadleaf03
-    21300040: marsh00
-    21300042: marsh01
-    21300044: marsh02
-    21300046: marsh03
-    21300048: water00
-    21300050: water01
-    21300052: water02
-    21300054: water03
-    21300056: dirt00
-    21300058: dirt01
-    21300060: dirt02
-    21300062: dirt03
-    21300064: void00
-    21300066: void01
-    21300068: void02
-    21300070: void03
-    21300072: hill00
-    21300074: hill01
-    21300076: hill02
-    21300078: hill03
-    21300080: base00
-    21300082: base01
-    21300084: base02
-    21300086: base03
+    21300000: Grass_F_00
+    21300002: Grass_F_01
+    21300004: Grass_F_02
+    21300006: Grass_F_04
+    21300008: Grass_S_00
+    21300010: Grass_S_01
+    21300012: Grass_S_02
+    21300014: Grass_S_03
+    21300016: Grass_A_00
+    21300018: Grass_A_01
+    21300020: Grass_A_02
+    21300022: Grass_A_03
+    21300024: Grass_R_00
+    21300026: Grass_R_01
+    21300028: Grass_R_02
+    21300030: Grass_R_03
+    21300032: Grass_D_00
+    21300034: Grass_D_01
+    21300036: Grass_D_02
+    21300038: Grass_D_03
+    21300040: Grass_W_00
+    21300042: Grass_W_01
+    21300044: Grass_W_02
+    21300046: Grass_W_03
+    21300048: Snow_00
+    21300050: Snow_01
+    21300052: Snow_02
+    21300054: Snow_03
+    21300056: Snow Mountain 00
+    21300058: Snow Mountain 01
+    21300060: Snow Mountain 02
+    21300062: Grass_32
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -73,7 +59,7 @@ TextureImporter:
   generateCubemap: 6
   cubemapConvolution: 0
   seamlessCubemap: 0
-  textureFormat: -1
+  textureFormat: 1
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
@@ -126,33 +112,11 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-  - serializedVersion: 2
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: plains00
+      name: Grass_F_00
       rect:
         serializedVersion: 2
         x: 0
@@ -164,15 +128,15 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: d9e3d9bd6b3d64f408219a7ae8a7ab94
+      spriteID: 93c490e783c77354ebee846f551500c7
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: plains01
+      name: Grass_F_01
       rect:
         serializedVersion: 2
         x: 256
@@ -184,18 +148,18 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 7e8e1ddbe6d7941408d42fea5a18bb58
+      spriteID: b2d1980e76f4e0e4e8373f0dffb28fef
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: plains02
+      name: Grass_F_02
       rect:
         serializedVersion: 2
-        x: 515
+        x: 512
         y: 1664
         width: 256
         height: 384
@@ -204,15 +168,15 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: a67a37ed0e1e68e43a178854171da37b
+      spriteID: 2c1732157f6aa8a4991961e7064deea5
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: plains03
+      name: Grass_F_04
       rect:
         serializedVersion: 2
         x: 768
@@ -224,15 +188,15 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: bf664013eba19e849afe1dd72545c2fe
+      spriteID: 70d2ea6beae6d8146a383359a8b29f49
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: water00
+      name: Grass_S_00
       rect:
         serializedVersion: 2
         x: 1024
@@ -244,15 +208,15 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: cf4553ecfb7a0e842853e3b99adadd81
+      spriteID: 7c366a2791aa6ac42b82ec2a65a9e092
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: water01
+      name: Grass_S_01
       rect:
         serializedVersion: 2
         x: 1280
@@ -264,15 +228,15 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 0567c2e26f2c0754da94eadda03e336d
+      spriteID: 629b9b8c20dae8147b6826dff9f5cfad
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: water02
+      name: Grass_S_02
       rect:
         serializedVersion: 2
         x: 1536
@@ -284,15 +248,15 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 75fca70d29700ea4c8252409caa1d74e
+      spriteID: c138d1fe89af06d4083f63ef3233a234
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: water03
+      name: Grass_S_03
       rect:
         serializedVersion: 2
         x: 1792
@@ -304,15 +268,15 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 5a60a893b798871488971551665ed29e
+      spriteID: 207d6fb26db9b5d448e6330373f31af4
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mountains00
+      name: Grass_A_00
       rect:
         serializedVersion: 2
         x: 0
@@ -324,15 +288,15 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: f32fcf4e8a390ce4791db7acea7ed6a6
+      spriteID: 32d937d0c9d1b5f4a84002804b34157e
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mountains01
+      name: Grass_A_01
       rect:
         serializedVersion: 2
         x: 256
@@ -344,15 +308,15 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: f2b74ba99e6091e49b0af44e108145b1
+      spriteID: 4d7641504f5dab64d972f7c4fae0b975
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mountains02
+      name: Grass_A_02
       rect:
         serializedVersion: 2
         x: 512
@@ -364,15 +328,15 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: cec7b49af1ebdad42a880bee6b031c12
+      spriteID: c26d356c87354d74abdf1fe25ffcd8ae
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mountains03
+      name: Grass_A_03
       rect:
         serializedVersion: 2
         x: 768
@@ -384,19 +348,19 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 73e091c0b34ce714f81ab4f733e5e9c4
+      spriteID: 6f1c004da3bff104eb80c5b25f37f984
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: desertDunes00
+      name: Grass_R_00
       rect:
         serializedVersion: 2
         x: 1024
-        y: 1280
+        y: 1283
         width: 256
         height: 384
       alignment: 7
@@ -404,15 +368,15 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 18279ac830dbdb74297da0c949f1f76b
+      spriteID: 3cd5308ca41400d40bb732b0c5c382f3
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: desertDunes01
+      name: Grass_R_01
       rect:
         serializedVersion: 2
         x: 1280
@@ -424,15 +388,15 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 9fde7cd118948c74daac421a45fc6543
+      spriteID: 920b3f80e5886de4eb1e90b5e2cdad59
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: desertDunes02
+      name: Grass_R_02
       rect:
         serializedVersion: 2
         x: 1536
@@ -444,15 +408,15 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: d6b0e42cb36fcbb4684aeb79bd64fd7d
+      spriteID: e8a11b0a1c09f844e8db59876f7d595c
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: desertDunes03
+      name: Grass_R_03
       rect:
         serializedVersion: 2
         x: 1792
@@ -464,15 +428,15 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 229500982cfdcf24d8416b4826593839
+      spriteID: cad7c739d987cdc46adac6b0f7870d8a
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: forestBroadleaf00
+      name: Grass_D_00
       rect:
         serializedVersion: 2
         x: 0
@@ -484,15 +448,15 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 9155334ca516e6a4f9129f4684edb3f5
+      spriteID: c5b2e3d9ba071a44b985245a80956ac7
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: forestBroadleaf01
+      name: Grass_D_01
       rect:
         serializedVersion: 2
         x: 256
@@ -504,15 +468,15 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 0a423fb41a21a774cb3a3bcd95e0a1d5
+      spriteID: 6a46b56f8578d934293990738b197a14
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: forestBroadleaf02
+      name: Grass_D_02
       rect:
         serializedVersion: 2
         x: 512
@@ -524,15 +488,15 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 44aecc78bf8249249ae9ef58d8c4ccba
+      spriteID: 505385c78a6e2c142aa7fc39a9cb44fa
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: forestBroadleaf03
+      name: Grass_D_03
       rect:
         serializedVersion: 2
         x: 768
@@ -544,18 +508,18 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 45ebd7501294c3649bf6235ea914c5da
+      spriteID: 3bccc30d8b3bd0d409cc7554bfddb8c6
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: marsh00
+      name: Grass_W_00
       rect:
         serializedVersion: 2
-        x: 1024
+        x: 1027
         y: 896
         width: 256
         height: 384
@@ -564,15 +528,15 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: fc2fb8b21ed3c8348bcaf9da53e147da
+      spriteID: c65b7d8dc9855cd46a96839dfed82793
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: marsh01
+      name: Grass_W_01
       rect:
         serializedVersion: 2
         x: 1280
@@ -584,15 +548,15 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: ea6cda5d80e679e4ba1d160af202d8d3
+      spriteID: ae18d81d9c5826b438bc23c762e56627
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: marsh02
+      name: Grass_W_02
       rect:
         serializedVersion: 2
         x: 1536
@@ -604,15 +568,15 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: e26a1ebe2ed67e147a8bd83319709d95
+      spriteID: 20c47d106c6b9bd4088bf8406e084a83
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: marsh03
+      name: Grass_W_03
       rect:
         serializedVersion: 2
         x: 1792
@@ -624,15 +588,15 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: ce1811dfc429a9b40ba64cf53e1e9e58
+      spriteID: 9bafbda99ea7724408304b4f22199ef7
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dirt00
+      name: Snow_00
       rect:
         serializedVersion: 2
         x: 0
@@ -644,179 +608,19 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: b46ff80493d38f44995df6c205651689
+      spriteID: 40b25ae22a2cea2448062c58acf30568
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dirt01
-      rect:
-        serializedVersion: 2
-        x: 259
-        y: 512
-        width: 256
-        height: 384
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0f4e258db6ece1f4ab29d93b0585d0ef
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dirt02
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 512
-        width: 256
-        height: 384
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9081ee802b472124e8773eae7ebee45c
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dirt03
-      rect:
-        serializedVersion: 2
-        x: 768
-        y: 512
-        width: 256
-        height: 384
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b869fe3e7d3955e4ea61cad10dadcc6b
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: void00
-      rect:
-        serializedVersion: 2
-        x: 1024
-        y: 512
-        width: 256
-        height: 384
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0e72acb84d26bab45915248a6e6b3653
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: void01
-      rect:
-        serializedVersion: 2
-        x: 1280
-        y: 512
-        width: 256
-        height: 384
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fd5a8bc9ad4f75441bacef36a3b53eb9
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: void02
-      rect:
-        serializedVersion: 2
-        x: 1536
-        y: 512
-        width: 256
-        height: 384
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a5bc701d75336bc409857e53268808e4
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: void03
-      rect:
-        serializedVersion: 2
-        x: 1792
-        y: 512
-        width: 256
-        height: 384
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e3d97175e2d17d443a25790402826d93
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: hill00
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 128
-        width: 256
-        height: 384
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c09815e32e29beb48a047aabe7e16617
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: hill01
+      name: Snow_01
       rect:
         serializedVersion: 2
         x: 256
-        y: 128
+        y: 512
         width: 256
         height: 384
       alignment: 7
@@ -824,19 +628,19 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 588e17d2fb604224d83980dd40208bdc
+      spriteID: f50688475ae20a643b051df958b0a2ca
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hill02
+      name: Snow_02
       rect:
         serializedVersion: 2
         x: 512
-        y: 128
+        y: 512
         width: 256
         height: 384
       alignment: 7
@@ -844,19 +648,19 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 0f11d86a6508ff64ba8fdfebb419893a
+      spriteID: 662c70ed48a0f25408e21b528363ee0c
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hill03
+      name: Snow_03
       rect:
         serializedVersion: 2
         x: 768
-        y: 128
+        y: 512
         width: 256
         height: 384
       alignment: 7
@@ -864,75 +668,75 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 87e7710c9294d6d4cb74613d9fb5c55d
+      spriteID: b56772fa7994ff24ba03f0046e13e110
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: base00
+      name: Snow Mountain 00
       rect:
         serializedVersion: 2
         x: 1024
         y: 128
         width: 256
-        height: 384
+        height: 400
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: a32736b5d5949a9448146191ccc3ed63
+      spriteID: d6800e3935b4a8841acc5e3a2e1c6459
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: base01
+      name: Snow Mountain 01
       rect:
         serializedVersion: 2
         x: 1280
         y: 128
         width: 256
-        height: 384
+        height: 400
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 8238ded3903b1e04dbc512eaf5223d88
+      spriteID: bc262dba30715014f95ad6db9f2f8695
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: base02
+      name: Snow Mountain 02
       rect:
         serializedVersion: 2
         x: 1536
         y: 128
         width: 256
-        height: 384
+        height: 400
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 0175ea4e06a4dd649af886c01956ddeb
+      spriteID: 3993e8bf923d64740a0dc8a192245131
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: base03
+      name: Grass_32
       rect:
         serializedVersion: 2
         x: 1792
@@ -944,9 +748,9 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: dfcaf77fdc7725d45bb4038b8c9b2409
+      spriteID: 5ded00445b848324a8e7e323f2eeb735
       vertices: []
       indices: 
       edges: []
@@ -954,7 +758,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 1214a48b99e7741408d46af5dbda19db
+    spriteID: f8d69c6398d7345499165f82eb12b066
     vertices: []
     indices: 
     edges: []

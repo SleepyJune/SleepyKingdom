@@ -34,7 +34,7 @@ MonoBehaviour:
   m_Flags: 1
   m_ColliderType: 2
   sprites:
-  - {fileID: 21300000, guid: c0cc93cce6b27744e85f7ccc6b3db00a, type: 3}
-  - {fileID: 21300000, guid: 930869bc0c618d446a525c196a58129d, type: 3}
-  - {fileID: 21300000, guid: a574bb28797e67646805085db5d5c8b0, type: 3}
-  - {fileID: 21300000, guid: e811ff7d176db66489a5e51e09524082, type: 3}
+  - {fileID: 21300016, guid: 256ebeea05fcee74494dd7350e6af91e, type: 3}
+  - {fileID: 21300018, guid: 256ebeea05fcee74494dd7350e6af91e, type: 3}
+  - {fileID: 21300020, guid: 256ebeea05fcee74494dd7350e6af91e, type: 3}
+  - {fileID: 21300022, guid: 256ebeea05fcee74494dd7350e6af91e, type: 3}
