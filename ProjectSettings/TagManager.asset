@@ -41,3 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Castles
+    uniqueID: 961599813
+    locked: 0
+  - name: Units
+    uniqueID: 2415246447
+    locked: 0

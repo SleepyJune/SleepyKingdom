@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Name: StrawberryUnit
   m_EditorClassIdentifier: 
   name: StrawberryUnit
-  spriteObj: {fileID: 11400000, guid: 0c890ae2c2b025d45b799e506c518e83, type: 2}
+  image: {fileID: 21300000, guid: 807041c866d849d47b491ce9e7d0408d, type: 3}
   health: 10
   attack: 5
   defense: 10
   speed: 15
   atkSpeed: 3
   range: 20
+  populationCost: 10
   projectileObject: {fileID: 11400000, guid: 47229c1d15a2ee749888e8775bdabf81, type: 2}

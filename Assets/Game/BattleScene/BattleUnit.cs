@@ -17,6 +17,8 @@ public class BattleUnit : MonoBehaviour
 {
     public SpriteRenderer icon;
 
+    public SpriteRenderer weapon;
+
     public SpriteRenderer teamColor;
 
     public AILerp aiPath;
@@ -33,6 +35,8 @@ public class BattleUnit : MonoBehaviour
     BattleUnitManager unitManager;
     BattleEffectsManager effectsManager;
     ProjectileManager projectileManager;
+
+    Animator anim;
 
     int health;
 
@@ -67,6 +71,8 @@ public class BattleUnit : MonoBehaviour
 
     Dictionary<BattleUnit, GraphUpdateObject> sharedObstacle = new Dictionary<BattleUnit, GraphUpdateObject>();
 
+    Transform handTransform;
+
     public void Initialize(BattleUnitObject unitObj, BattleUnitTeam team, BattleUnitManager unitManager)
     {
         this.unitObj = unitObj;
@@ -74,7 +80,7 @@ public class BattleUnit : MonoBehaviour
         this.effectsManager = unitManager.effectsManager;
         this.projectileManager = unitManager.projectileManager;
 
-        icon.sprite = unitObj.spriteObj.image;
+        icon.sprite = unitObj.image;
 
         health = unitObj.health;
         attack = unitObj.attack;
@@ -98,10 +104,15 @@ public class BattleUnit : MonoBehaviour
             enemies = unitManager.playerUnits;
             targetPosition = unitManager.playerCastlePosition.position;
             teamColor.color = Color.blue;
+
+            transform.Rotate(0, -180, 0, Space.Self);
         }
 
         aiPath.speed = speed / 10.0f;
-        
+
+        anim = GetComponent<Animator>();
+
+        handTransform = weapon.transform.Find("Hand");
     }
 
     public void PreAttack()
@@ -168,18 +179,29 @@ public class BattleUnit : MonoBehaviour
 
         SetPathBlockingState(true);
                 
-        if(unit.range <= 5)
+        if(unit.range <= 10)
         {
             var dir = (unit.transform.position - transform.position).normalized;
             var pos = transform.position + dir * radius;
 
             effectsManager.CreateMeleeBangPrefab(pos);
             unit.TakeDamage(attack);
+
+            var direction = (unit.transform.position - handTransform.position);
+
+            if (direction != Vector3.zero)
+            {
+                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;
+                weapon.transform.parent.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            }
+
         }
         else
         {
             projectileManager.CreateProjectile(this, unit, unitObj.projectileObject);
         }
+
+        anim.SetBool("isAttacking", true);
     }
 
     private void StopAttack()
@@ -189,6 +211,8 @@ public class BattleUnit : MonoBehaviour
             isAttacking = false;
             aiPath.canMove = true;
             SetPathBlockingState(false);
+
+            anim.SetBool("isAttacking", false);
         }
     }
 
