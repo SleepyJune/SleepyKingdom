@@ -19,7 +19,7 @@ public class WeatherImageController : MonoBehaviour
         GameManager.instance.eventManager.OnNewWeatherEvent -= OnNewWeatherEvent;
     }
 
-    private void OnNewWeatherEvent(Event gameEvent)
+    private void OnNewWeatherEvent(GameEvent gameEvent)
     {
         WeatherEvent newWeather = gameEvent as WeatherEvent;
 

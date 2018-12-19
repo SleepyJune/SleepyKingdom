@@ -18,7 +18,7 @@ public class DeployUnitButton : MonoBehaviour
         this.unitObj = unitObj;
         unitManager = manager;
 
-        icon.sprite = unitObj.spriteObj.image;
+        icon.sprite = unitObj.image;
     }
 
     public void OnButtonPressed()

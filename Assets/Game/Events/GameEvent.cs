@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-public class Event
+public class GameEvent
 {
     public string eventName;
 
@@ -14,7 +14,7 @@ public class Event
 
     public string shortDescription;
 
-    public Event(SpriteObject eventObject)
+    public GameEvent(SpriteObject eventObject)
     {
         SetValues(eventObject);
     }

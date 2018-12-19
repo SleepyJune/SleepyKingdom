@@ -7,7 +7,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Game/Unit Object")]
 public class BattleUnitObject : GameDataObject
 {
-    public SpriteObject spriteObj;
+    public Sprite image;
 
     public int health = 10;
 

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-public class WeatherEvent : Event
+public class WeatherEvent : GameEvent
 {
     public WeatherEvent(SpriteObject eventObject) : base(eventObject)
     {

@@ -11,6 +11,8 @@ public class DeployUnitManager : MonoBehaviour
     public DeployUnitButton buttonPrefab;
     public Transform buttonList;
 
+    int deployCounter = 0;
+
     private void Start()
     {
         battleUnitManager = GetComponent<BattleUnitManager>();
@@ -32,10 +34,12 @@ public class DeployUnitManager : MonoBehaviour
         Country country = GameManager.instance.globalCountryManager.myCountry;
         if (country.population >= unit.populationCost)
         {
-            var team = UnityEngine.Random.Range(0, 100) % 2 == 0 ? BattleUnitTeam.Player : BattleUnitTeam.Computer;
+            var team = deployCounter % 2 == 0 ? BattleUnitTeam.Player : BattleUnitTeam.Computer;
             battleUnitManager.CreateUnit(unit, team);
 
             country.population -= unit.populationCost;
+
+            deployCounter += 1;
         }
     }
 }

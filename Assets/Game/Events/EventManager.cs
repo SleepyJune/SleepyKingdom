@@ -14,7 +14,7 @@ public class EventManager : MonoBehaviour
     [NonSerialized]
     public List<SpriteObject> defaultResourceObjects = new List<SpriteObject>();
 
-    public delegate void ProcessGameEvent(Event gameEvent);
+    public delegate void ProcessGameEvent(GameEvent gameEvent);
     public event ProcessGameEvent OnNewWeatherEvent;
 
     private void Start()
