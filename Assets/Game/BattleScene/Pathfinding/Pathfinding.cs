@@ -100,10 +100,59 @@ namespace BattlePathfinding
             return null;
         }
 
+        public static HashSet<GameTile> GetNearestGoal(GameTile start)
+        {
+            HashSet<GameTile> goals = new HashSet<GameTile>();
+
+            if (!start.isBlocked)
+            {
+                goals.Add(start);
+                return goals;
+            }
+
+            HashSet<GameTile> visited = new HashSet<GameTile>();
+
+            Queue<GameTile> queue = new Queue<GameTile>();
+
+            visited.Add(start);
+            queue.Enqueue(start);
+
+            while (queue.Count > 0)
+            {
+                var tile = queue.Dequeue();
+
+                if (!tile.isBlocked)
+                {
+                    goals.Add(tile);
+                }
+
+                if (queue.Count == 0)
+                {
+                    if(goals.Count > 0)
+                    {
+                        return goals;
+                    }
+                }
+
+                foreach (var neighbour in tile.neighbours)
+                {
+                    if (!visited.Contains(neighbour))
+                    {
+                        visited.Add(neighbour);
+                        queue.Enqueue(neighbour);
+                    }
+                }
+            }
+
+            return goals;
+        }
+
         public static Vector3Int[] GetShortestPath(MapUnit unit, GameTile start, GameTile end)
         {
             HashSet<GameTile> closedSet = new HashSet<GameTile>();
             HashSet<GameTile> openSet = new HashSet<GameTile>();
+
+            HashSet<GameTile> goals = GetNearestGoal(end);
 
             GameTile closestSquare = null;
             double closestDistance = 9999;
@@ -121,7 +170,7 @@ namespace BattlePathfinding
             {
                 var current = openSet.OrderBy(n => n.fScore).FirstOrDefault();
 
-                if (current == end)
+                if (goals.Contains(current))
                 {
                     return GenerateWaypoints(start, current);
                 }
@@ -134,9 +183,8 @@ namespace BattlePathfinding
                     //var neighbourInfo = pair.Value;
                     //var neighbour = neighbourInfo.neighbour;
                     var distance = 1;// neighbourInfo.distance;
-
-
-                    if (closedSet.Contains(neighbour))
+                    
+                    if (closedSet.Contains(neighbour) || neighbour.isBlocked)
                     {
                         continue;
                     }

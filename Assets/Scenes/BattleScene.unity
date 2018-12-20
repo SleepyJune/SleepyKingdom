@@ -472,8 +472,9 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1891481725383498, guid: b34bf0b799bc06b44b5ab5fc61f63324, type: 2}
-      propertyPath: m_IsActive
+    - target: {fileID: 114444119578707424, guid: b34bf0b799bc06b44b5ab5fc61f63324,
+        type: 2}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -819,7 +820,7 @@ MonoBehaviour:
     cacheStartup: 0
   showNavGraphs: 1
   showUnwalkableNodes: 1
-  debugMode: 0
+  debugMode: 6
   debugFloor: 0
   debugRoof: 1
   manualDebugFloorRoof: 0

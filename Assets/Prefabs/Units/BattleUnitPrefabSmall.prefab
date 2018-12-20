@@ -98,7 +98,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4822929347727316}
-  - component: {fileID: 61090059401332020}
+  - component: {fileID: 58582748236743904}
   m_Layer: 8
   m_Name: Collider
   m_TagString: Untagged
@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 114109801140316456}
   - component: {fileID: 95358821867063682}
   - component: {fileID: 210098526327601468}
+  - component: {fileID: 114444119578707424}
   m_Layer: 8
   m_Name: BattleUnitPrefabSmall
   m_TagString: Untagged
@@ -283,8 +284,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &61090059401332020
-BoxCollider2D:
+--- !u!58 &58582748236743904
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -295,19 +296,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.25}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: 0, y: 0.2}
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.5}
-  m_EdgeRadius: 0
+  m_Radius: 0.25
 --- !u!95 &95358821867063682
 Animator:
   serializedVersion: 3
@@ -342,15 +333,15 @@ MonoBehaviour:
   teamColor: {fileID: 212213096612202158}
   aiPath: {fileID: 114109801140316456}
   seeker: {fileID: 114977655662097114}
-  radius: 0.25
-  collider: {fileID: 61090059401332020}
+  radius: 0.2
+  collider: {fileID: 0}
 --- !u!114 &114109801140316456
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1891481725383498}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 847a14d4dc9cc43679ab34fc78e0182f, type: 3}
   m_Name: 
@@ -360,6 +351,29 @@ MonoBehaviour:
   canSearch: 1
   canMove: 1
   speed: 3
+  orientation: 1
+  enableRotation: 0
+  rotationSpeed: 10
+  interpolatePathSwitches: 1
+  switchPathInterpolationSpeed: 5
+  targetCompatibility: {fileID: 0}
+--- !u!114 &114444119578707424
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1891481725383498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a164f4f775af6a4887c9e03e65a07b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 2
+  repathRate: 0.5
+  canSearch: 1
+  canMove: 1
+  speed: 3
+  collider: {fileID: 58582748236743904}
   orientation: 1
   enableRotation: 0
   rotationSpeed: 10
