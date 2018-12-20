@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Name: Sword
   m_EditorClassIdentifier: 
   name: Sword
-  image: {fileID: 21300056, guid: 16fd3a4f22ccaf64e824dcf38c377ac7, type: 3}
+  image: {fileID: 21300056, guid: b6b55a77ce6d91346b5d7e51b932b6a7, type: 3}
   range: 8
   attack: 5

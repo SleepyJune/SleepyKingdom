@@ -15,6 +15,8 @@ namespace BattlePathfinding
 
         public GameTile parent = null;
 
+        public bool isBlocked = false;
+
         public HashSet<GameTile> neighbours;
         public HashSet<BattleUnit> units;
 

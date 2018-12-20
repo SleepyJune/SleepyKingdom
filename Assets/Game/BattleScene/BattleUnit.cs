@@ -38,6 +38,8 @@ public class BattleUnit : MonoBehaviour
 
     Animator anim;
 
+    Vector3 targetPosition;
+
     int health;
 
     int attack;
@@ -51,7 +53,7 @@ public class BattleUnit : MonoBehaviour
 
     BattleUnitTeam team;
 
-    Vector3 targetPosition;
+    Vector3 targetGoal;
 
     float attackAnimationTime;
     float attackSpeed;
@@ -67,7 +69,7 @@ public class BattleUnit : MonoBehaviour
     bool isAttacking = false;
     bool isAlive = true;
 
-    public new BoxCollider2D collider;
+    public new CircleCollider2D collider;
 
     Dictionary<BattleUnit, GraphUpdateObject> sharedObstacle = new Dictionary<BattleUnit, GraphUpdateObject>();
 
@@ -95,14 +97,14 @@ public class BattleUnit : MonoBehaviour
         {
             allies = unitManager.playerUnits;
             enemies = unitManager.computerUnits;
-            targetPosition = unitManager.enemyCastlePosition.position;
+            targetGoal = unitManager.enemyCastlePosition.position;
             teamColor.color = Color.red;
         }
         else
         {
             allies = unitManager.computerUnits;
             enemies = unitManager.playerUnits;
-            targetPosition = unitManager.playerCastlePosition.position;
+            targetGoal = unitManager.playerCastlePosition.position;
             teamColor.color = Color.blue;
 
             transform.Rotate(0, -180, 0, Space.Self);
@@ -115,6 +117,8 @@ public class BattleUnit : MonoBehaviour
         handTransform = weapon.transform.Find("Hand");
 
         weapon.sprite = unitObj.weaponObject.image;
+
+        collider = transform.Find("Collider").GetComponent<CircleCollider2D>();
     }
 
     public void PreAttack()
@@ -230,21 +234,54 @@ public class BattleUnit : MonoBehaviour
             return;
         }
 
-        //var dir = (targetPosition - transform.position).normalized;
-        //transform.position = transform.position + dir * speed * Time.deltaTime;
+        var unitMask = collider.gameObject.layer;
+        collider.gameObject.layer = 31;//LayerMask.NameToLayer("Ghost");
 
+        var layerMask = LayerMask.GetMask("Unit");
+
+        var dir = (targetPosition - transform.position).normalized;
+        var distance = (speed/10.0f) * Time.deltaTime;
+        
+        var collision = Physics2D.CircleCast(transform.position, radius, dir, distance, layerMask);
+        if (collision)
+        {
+            /*if(Time.time > nextDirectionChangeTime)
+            {
+
+            }*/
+
+            Debug.Log(collision.transform.name);
+
+            dir = new Vector3(-dir.y, dir.x);
+
+            var collision2 = Physics2D.CircleCast(transform.position, radius, dir, distance, layerMask);
+            if(!collision2)
+            {
+                transform.position = transform.position + dir * distance;
+            }
+
+
+        }
+        else
+        {
+            transform.position = transform.position + dir * distance;
+        }
         //rb.velocity = dir * speed;
+
+        collider.gameObject.layer = unitMask; //change layer back
 
         foreach (var unit in enemiesByDistance)
         {
             if (unit.isAlive && Vector3.Distance(unit.transform.position, transform.position) <= 5 + range / 10.0f)
             {
                 aiPath.destination = unit.transform.position;
+                targetPosition = unit.transform.position;
                 return;
             }
         }
 
-        aiPath.destination = targetPosition;
+        targetPosition = targetGoal;
+        aiPath.destination = targetGoal;
     }
 
     public void TakeDamage(int amount)
@@ -272,6 +309,8 @@ public class BattleUnit : MonoBehaviour
 
     private void SetPathBlockingState(bool blocking)
     {
+        return;
+
         var bounds = collider.bounds;
         bounds.extents += new Vector3(0, 0, 10000);
 
