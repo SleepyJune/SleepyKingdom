@@ -113,6 +113,8 @@ public class BattleUnit : MonoBehaviour
         anim = GetComponent<Animator>();
 
         handTransform = weapon.transform.Find("Hand");
+
+        weapon.sprite = unitObj.weaponObject.image;
     }
 
     public void PreAttack()
@@ -160,7 +162,7 @@ public class BattleUnit : MonoBehaviour
 
         foreach (var unit in enemiesByDistance)
         {
-            if(unit.isAlive && Vector3.Distance(unit.transform.position, transform.position) <= range / 10.0f)
+            if(unit.isAlive && Vector3.Distance(unit.transform.position, transform.position) <= unitObj.weaponObject.range / 10.0f)
             {
                 AttackUnit(unit);
                 break;
@@ -179,26 +181,25 @@ public class BattleUnit : MonoBehaviour
 
         SetPathBlockingState(true);
                 
-        if(unit.range <= 10)
+        if(unitObj.weaponObject.range <= 10)
         {
             var dir = (unit.transform.position - transform.position).normalized;
             var pos = transform.position + dir * radius;
 
             effectsManager.CreateMeleeBangPrefab(pos);
             unit.TakeDamage(attack);
-
-            var direction = (unit.transform.position - handTransform.position);
-
-            if (direction != Vector3.zero)
-            {
-                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;
-                weapon.transform.parent.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-            }
-
         }
         else
         {
             projectileManager.CreateProjectile(this, unit, unitObj.projectileObject);
+        }
+
+        var direction = (unit.transform.position - handTransform.position);
+
+        if (direction != Vector3.zero)
+        {
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;
+            weapon.transform.parent.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
 
         anim.SetBool("isAttacking", true);
@@ -301,14 +302,14 @@ public class BattleUnit : MonoBehaviour
         {
             blockedNode = null;
         }
-
+                
         /*AstarPath.active.AddWorkItem(new AstarWorkItem(() => {
             // Safe to update graphs here
             var node = AstarPath.active.GetNearest(transform.position).node;
             node.Walkable = !blocking;
         }));*/
 
-        //RecheckUnitPaths();
+        RecheckUnitPaths();
     }
 
     private void RecheckUnitPaths()
