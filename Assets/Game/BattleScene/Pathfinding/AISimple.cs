@@ -36,6 +36,7 @@ namespace Pathfinding
     /// \ingroup movementscripts
     /// </summary>
     [RequireComponent(typeof(Seeker))]
+    [RequireComponent(typeof(BattleUnit))]
     [AddComponentMenu("Pathfinding/AI/AISimple (2D,3D)")]
     [HelpURL("http://arongranberg.com/astar/docs/class_pathfinding_1_1_a_i_lerp.php")]
     public class AISimple : VersionedMonoBehaviour, IAstarAI
@@ -55,8 +56,9 @@ namespace Pathfinding
 
         /// <summary>Speed in world units</summary>
         public float speed = 3;
-
+        
         public new CircleCollider2D collider;
+        private BattleUnit unit;
 
         /// <summary>
         /// Determines which direction the agent moves in.
@@ -338,6 +340,7 @@ namespace Pathfinding
             tr = transform;
 
             seeker = GetComponent<Seeker>();
+            unit = GetComponent<BattleUnit>();
 
             // Tell the StartEndModifier to ask for our exact position when post processing the path This
             // is important if we are using prediction and requesting a path from some point slightly ahead
@@ -613,6 +616,21 @@ namespace Pathfinding
             Vector3 direction;
 
             nextPosition = CalculateNextPosition(out direction, isStopped ? 0f : deltaTime);
+
+            /*var unitMask = collider.gameObject.layer;
+            collider.gameObject.layer = 31;//LayerMask.NameToLayer("Ghost");
+
+            var layerMask = LayerMask.GetMask("Unit");
+
+            var dir = (nextPosition - transform.position).normalized;
+            var distance = (unit.speed / 10.0f) * Time.deltaTime;
+
+            var collision = Physics2D.CircleCast(transform.position, unit.radius, dir, distance, layerMask);
+            if (collision)
+            {
+                nextPosition = tr.position;
+            }
+            collider.gameObject.layer = unitMask; //change layer back*/
 
             if (enableRotation) nextRotation = SimulateRotationTowards(direction, deltaTime);
             else nextRotation = simulatedRotation;

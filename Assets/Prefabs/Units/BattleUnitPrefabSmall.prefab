@@ -135,7 +135,6 @@ GameObject:
   - component: {fileID: 114109801140316456}
   - component: {fileID: 95358821867063682}
   - component: {fileID: 210098526327601468}
-  - component: {fileID: 114444119578707424}
   m_Layer: 8
   m_Name: BattleUnitPrefabSmall
   m_TagString: Untagged
@@ -341,7 +340,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1891481725383498}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 847a14d4dc9cc43679ab34fc78e0182f, type: 3}
   m_Name: 
@@ -351,29 +350,6 @@ MonoBehaviour:
   canSearch: 1
   canMove: 1
   speed: 3
-  orientation: 1
-  enableRotation: 0
-  rotationSpeed: 10
-  interpolatePathSwitches: 1
-  switchPathInterpolationSpeed: 5
-  targetCompatibility: {fileID: 0}
---- !u!114 &114444119578707424
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1891481725383498}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a164f4f775af6a4887c9e03e65a07b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 2
-  repathRate: 0.5
-  canSearch: 1
-  canMove: 1
-  speed: 3
-  collider: {fileID: 58582748236743904}
   orientation: 1
   enableRotation: 0
   rotationSpeed: 10

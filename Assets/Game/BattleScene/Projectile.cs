@@ -48,7 +48,13 @@ public class Projectile : MonoBehaviour
         var dist = speed * Time.deltaTime;
         var distLeft = Vector3.Distance(transform.position, lastTargetPosition);
 
-        if(dist >= distLeft)
+        if (dir != Vector3.zero)
+        {
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        }
+
+        if (dist >= distLeft)
         {
             dist = distLeft;
             DealDamage();

@@ -45,9 +45,11 @@ public class BattleUnit : MonoBehaviour
     int attack;
     int defense;
 
-    int speed;
+    [NonSerialized]
+    public int speed;
 
-    int range;
+    [NonSerialized]
+    public int range;
 
     BattleUnit attackTarget;
 
@@ -217,6 +219,8 @@ public class BattleUnit : MonoBehaviour
             aiPath.canMove = true;
             SetPathBlockingState(false);
 
+            weapon.transform.parent.rotation = Quaternion.identity;
+
             anim.SetBool("isAttacking", false);
         }
     }
@@ -233,42 +237,6 @@ public class BattleUnit : MonoBehaviour
         {
             return;
         }
-
-        var unitMask = collider.gameObject.layer;
-        collider.gameObject.layer = 31;//LayerMask.NameToLayer("Ghost");
-
-        var layerMask = LayerMask.GetMask("Unit");
-
-        var dir = (targetPosition - transform.position).normalized;
-        var distance = (speed/10.0f) * Time.deltaTime;
-        
-        var collision = Physics2D.CircleCast(transform.position, radius, dir, distance, layerMask);
-        if (collision)
-        {
-            /*if(Time.time > nextDirectionChangeTime)
-            {
-
-            }*/
-
-            Debug.Log(collision.transform.name);
-
-            dir = new Vector3(-dir.y, dir.x);
-
-            var collision2 = Physics2D.CircleCast(transform.position, radius, dir, distance, layerMask);
-            if(!collision2)
-            {
-                transform.position = transform.position + dir * distance;
-            }
-
-
-        }
-        else
-        {
-            transform.position = transform.position + dir * distance;
-        }
-        //rb.velocity = dir * speed;
-
-        collider.gameObject.layer = unitMask; //change layer back
 
         foreach (var unit in enemiesByDistance)
         {
@@ -308,9 +276,7 @@ public class BattleUnit : MonoBehaviour
     }
 
     private void SetPathBlockingState(bool blocking)
-    {
-        return;
-
+    {        
         var bounds = collider.bounds;
         bounds.extents += new Vector3(0, 0, 10000);
 
@@ -332,7 +298,7 @@ public class BattleUnit : MonoBehaviour
 
         AstarPath.active.UpdateGraphs(guo);
 
-        var node = AstarPath.active.GetNearest(transform.position).node;
+        /*var node = AstarPath.active.GetNearest(transform.position).node;
         if (blocking)
         {
             blockedNode = node;
@@ -340,7 +306,7 @@ public class BattleUnit : MonoBehaviour
         else
         {
             blockedNode = null;
-        }
+        }*/
                 
         /*AstarPath.active.AddWorkItem(new AstarWorkItem(() => {
             // Safe to update graphs here
@@ -356,10 +322,18 @@ public class BattleUnit : MonoBehaviour
         foreach(var unit in allies)
         {
             var path = unit.seeker.GetCurrentPath();
-            //path.vectorPath
-            if(path != null)
+            
+            if(path != null && path.IsDone())
             {
-                unit.aiPath.SearchPath();
+                foreach(var node in path.vectorPath)
+                {
+                    var dist = Vector2.Distance(node, transform.position);
+
+                    if(dist <= radius * 2)
+                    {
+                        unit.aiPath.SearchPath();
+                    }
+                }                
             }
         }
     }
