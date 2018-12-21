@@ -21,4 +21,5 @@ MonoBehaviour:
   range: 8
   populationCost: 10
   weaponObject: {fileID: 11400000, guid: 2ccca5ba55919754e9871f64aa05780d, type: 2}
+  helmetObject: {fileID: 11400000, guid: 42ebef174040b46449064b4f63d68e0d, type: 2}
   projectileObject: {fileID: 0}

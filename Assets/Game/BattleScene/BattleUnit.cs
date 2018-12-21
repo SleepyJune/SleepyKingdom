@@ -15,18 +15,20 @@ public enum BattleUnitTeam
 
 public class BattleUnit : MonoBehaviour
 {
-    public SpriteRenderer icon;
+    public SpriteRenderer mainImage;
 
-    public SpriteRenderer weapon;
+    public SpriteRenderer weaponImage;
 
     public SpriteRenderer teamColor;
 
+    public SpriteRenderer helmetImage;
+    
     public AILerp aiPath;
     public Seeker seeker;
     //public Pathfinding.RVO.RVOController rvo;
 
     public float radius = .25f;
-
+    
     [NonSerialized]
     public GraphNode blockedNode;
 
@@ -71,6 +73,7 @@ public class BattleUnit : MonoBehaviour
     bool isAttacking = false;
     bool isAlive = true;
 
+    [NonSerialized]
     public new CircleCollider2D collider;
 
     Dictionary<BattleUnit, GraphUpdateObject> sharedObstacle = new Dictionary<BattleUnit, GraphUpdateObject>();
@@ -84,7 +87,16 @@ public class BattleUnit : MonoBehaviour
         this.effectsManager = unitManager.effectsManager;
         this.projectileManager = unitManager.projectileManager;
 
-        icon.sprite = unitObj.image;
+        mainImage.sprite = unitObj.image;
+
+        if(unitObj.helmetObject != null)
+        {
+            helmetImage.sprite = unitObj.helmetObject.image;
+        }
+        else
+        {
+            helmetImage.sprite = null;
+        }
 
         health = unitObj.health;
         attack = unitObj.attack;
@@ -116,11 +128,19 @@ public class BattleUnit : MonoBehaviour
 
         anim = GetComponent<Animator>();
 
-        handTransform = weapon.transform.Find("Hand");
+        handTransform = weaponImage.transform.Find("Hand");
 
-        weapon.sprite = unitObj.weaponObject.image;
+        weaponImage.sprite = unitObj.weaponObject.image;
 
         collider = transform.Find("Collider").GetComponent<CircleCollider2D>();
+    }
+
+    private void UpdateUnitDistance()
+    {
+        enemiesByDistance = enemies.OrderBy(unit => Vector3.Distance(unit.transform.position, transform.position)).ToList();
+        alliesByDistance = allies.OrderBy(unit => Vector3.Distance(unit.transform.position, transform.position)).ToList();
+
+        lastUnitDistanceUpdate = Time.time + 2; //2 second update time
     }
 
     public void PreAttack()
@@ -136,14 +156,6 @@ public class BattleUnit : MonoBehaviour
         }
     }
 
-    private void UpdateUnitDistance()
-    {
-        enemiesByDistance = enemies.OrderBy(unit => Vector3.Distance(unit.transform.position, transform.position)).ToList();
-        alliesByDistance = allies.OrderBy(unit => Vector3.Distance(unit.transform.position, transform.position)).ToList();
-
-        lastUnitDistanceUpdate = Time.time + 2; //2 second update time
-    }
-
     public void Attack()
     {
         if(health <= 0)
@@ -156,15 +168,6 @@ public class BattleUnit : MonoBehaviour
         {
             return;
         }
-
-        /*var node = AstarPath.active.GetNearest(transform.position).node;
-        foreach (var unit in alliesByDistance)
-        {
-            if(unit.blockedNode == node)
-            {
-                return;
-            }
-        }*/
 
         foreach (var unit in enemiesByDistance)
         {
@@ -205,7 +208,7 @@ public class BattleUnit : MonoBehaviour
         if (direction != Vector3.zero)
         {
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;
-            weapon.transform.parent.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            weaponImage.transform.parent.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
 
         anim.SetBool("isAttacking", true);
@@ -219,7 +222,7 @@ public class BattleUnit : MonoBehaviour
             aiPath.canMove = true;
             SetPathBlockingState(false);
 
-            weapon.transform.parent.rotation = Quaternion.identity;
+            weaponImage.transform.parent.rotation = Quaternion.identity;
 
             anim.SetBool("isAttacking", false);
         }
@@ -254,6 +257,8 @@ public class BattleUnit : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
+        anim.SetTrigger("onTakeDamage");
+
         health -= amount;
 
         if (health <= 0)
@@ -298,22 +303,6 @@ public class BattleUnit : MonoBehaviour
 
         AstarPath.active.UpdateGraphs(guo);
 
-        /*var node = AstarPath.active.GetNearest(transform.position).node;
-        if (blocking)
-        {
-            blockedNode = node;
-        }
-        else
-        {
-            blockedNode = null;
-        }*/
-                
-        /*AstarPath.active.AddWorkItem(new AstarWorkItem(() => {
-            // Safe to update graphs here
-            var node = AstarPath.active.GetNearest(transform.position).node;
-            node.Walkable = !blocking;
-        }));*/
-
         RecheckUnitPaths();
     }
 
@@ -321,6 +310,11 @@ public class BattleUnit : MonoBehaviour
     {
         foreach(var unit in allies)
         {
+            if(unit == this)
+            {
+                continue;
+            }
+
             var path = unit.seeker.GetCurrentPath();
             
             if(path != null && path.IsDone())

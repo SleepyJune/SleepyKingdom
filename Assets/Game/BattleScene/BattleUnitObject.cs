@@ -24,5 +24,7 @@ public class BattleUnitObject : GameDataObject
 
     public WeaponObject weaponObject;
 
+    public HelmetObject helmetObject;
+
     public ProjectileObject projectileObject;
 }
