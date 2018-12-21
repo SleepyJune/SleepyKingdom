@@ -55,6 +55,8 @@ public class BattleUnitManager : MonoBehaviour
             unit.Attack();
             unit.Move();           
         }
+
+        RemoveUnits();
     }
 
     public void RemoveUnits()

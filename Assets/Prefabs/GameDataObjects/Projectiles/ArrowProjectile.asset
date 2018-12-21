@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Name: ArrowProjectile
   m_EditorClassIdentifier: 
   name: ArrowProjectile
-  image: {fileID: 21300028, guid: b6b55a77ce6d91346b5d7e51b932b6a7, type: 3}
+  image: {fileID: 21300004, guid: 94726153c51175c4caeca3ac742a66c3, type: 3}
   damage: 1
   speed: 1
+  range: 20

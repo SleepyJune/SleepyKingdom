@@ -55,7 +55,8 @@ public class BattleUnit : MonoBehaviour
 
     BattleUnit attackTarget;
 
-    BattleUnitTeam team;
+    [NonSerialized]
+    public BattleUnitTeam team;
 
     Vector3 targetGoal;
 
@@ -99,11 +100,11 @@ public class BattleUnit : MonoBehaviour
         }
 
         health = unitObj.health;
-        attack = unitObj.attack;
-        defense = unitObj.defense;
+        attack = unitObj.weaponObject.attack;
+        defense = 0;//unitObj.defense;
         speed = unitObj.speed;
-        range = unitObj.range;
-        attackSpeed = unitObj.atkSpeed;
+        range = unitObj.weaponObject.range;
+        attackSpeed = unitObj.weaponObject.atkSpeed;
 
         this.team = team;
         
@@ -171,7 +172,7 @@ public class BattleUnit : MonoBehaviour
 
         foreach (var unit in enemiesByDistance)
         {
-            if(unit.isAlive && Vector3.Distance(unit.transform.position, transform.position) <= unitObj.weaponObject.range / 10.0f)
+            if(unit.isAlive && Vector3.Distance(unit.transform.position, transform.position) <= range / 10.0f)
             {
                 AttackUnit(unit);
                 break;
@@ -190,7 +191,7 @@ public class BattleUnit : MonoBehaviour
 
         SetPathBlockingState(true);
                 
-        if(unitObj.weaponObject.range <= 10)
+        if(range <= 10)
         {
             var dir = (unit.transform.position - transform.position).normalized;
             var pos = transform.position + dir * radius;
@@ -211,7 +212,9 @@ public class BattleUnit : MonoBehaviour
             weaponImage.transform.parent.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
 
-        anim.SetBool("isAttacking", true);
+        //anim.SetBool("isAttacking", true);
+
+        anim.SetTrigger("onAttack");
     }
 
     private void StopAttack()
@@ -224,7 +227,7 @@ public class BattleUnit : MonoBehaviour
 
             weaponImage.transform.parent.rotation = Quaternion.identity;
 
-            anim.SetBool("isAttacking", false);
+            //anim.SetBool("isAttacking", false);
         }
     }
 
@@ -257,6 +260,11 @@ public class BattleUnit : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
+        if (!isAlive)
+        {
+            return;
+        }
+
         anim.SetTrigger("onTakeDamage");
 
         health -= amount;

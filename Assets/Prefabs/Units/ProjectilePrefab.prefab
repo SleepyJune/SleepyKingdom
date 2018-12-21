@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4122119853972226}
   - component: {fileID: 114687304987652546}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ProjectilePrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4487368974153830}
   - component: {fileID: 212623922911271274}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,7 +114,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: 1700495797
   m_SortingLayer: 0
   m_SortingOrder: 5
   m_Sprite: {fileID: 21300008, guid: 32f07fc5613b83d4ba049e6bbda9bd8d, type: 3}
