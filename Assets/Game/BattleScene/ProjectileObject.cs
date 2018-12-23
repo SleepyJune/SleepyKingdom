@@ -11,4 +11,6 @@ public class ProjectileObject : GameDataObject
 
     public int damage = 5;
     public int speed = 1;
+
+    public int range = 20;
 }

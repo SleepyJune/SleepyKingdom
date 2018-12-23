@@ -9,4 +9,6 @@ public class WeaponObject : GameDataObject
     public int range = 8;
 
     public int attack = 5;
+
+    public float atkSpeed = 1;
 }

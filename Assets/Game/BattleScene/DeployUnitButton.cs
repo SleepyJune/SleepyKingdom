@@ -12,6 +12,8 @@ public class DeployUnitButton : MonoBehaviour
     DeployUnitManager unitManager;
 
     public Image icon;
+    public Image weaponImage;
+    public Image handImage;
 
     public void Initialize(BattleUnitObject unitObj, DeployUnitManager manager)
     {
@@ -19,6 +21,8 @@ public class DeployUnitButton : MonoBehaviour
         unitManager = manager;
 
         icon.sprite = unitObj.image;
+
+        weaponImage.sprite = unitObj.weaponObject.image;
     }
 
     public void OnButtonPressed()

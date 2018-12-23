@@ -11,18 +11,13 @@ public class BattleUnitObject : GameDataObject
 
     public int health = 10;
 
-    public int attack = 10;
-    public int defense = 10;
-
-    public int speed = 10;
-
-    public float atkSpeed = 1;
-
-    public int range = 1;
+    public int speed = 10;    
 
     public int populationCost = 10;
 
     public WeaponObject weaponObject;
+
+    public HelmetObject helmetObject;
 
     public ProjectileObject projectileObject;
 }

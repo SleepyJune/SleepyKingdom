@@ -14,4 +14,5 @@ MonoBehaviour:
   name: Sword
   image: {fileID: 21300008, guid: a4424ad9d1670774280762429cda9342, type: 3}
   range: 8
-  attack: 5
+  attack: 2
+  atkSpeed: 2
