@@ -15,6 +15,8 @@ public class BattleUnitObject : GameDataObject
 
     public int populationCost = 10;
 
+    public float populationMultiplier = .5f;
+        
     public WeaponObject weaponObject;
 
     public HelmetObject helmetObject;

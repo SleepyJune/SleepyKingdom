@@ -4,23 +4,27 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
+using System.Linq;
+
 public class GameDatabaseManager : MonoBehaviour
 {
     public GameDatabase database;
 
-    public Dictionary<string, SpriteObject> spriteObjects = new Dictionary<string, SpriteObject>();
+    public Dictionary<int, GameDataObject> allObjects = new Dictionary<int, GameDataObject>();
 
-    public Dictionary<string, BuildingObject> buildingObjects = new Dictionary<string, BuildingObject>();
+    public Dictionary<int, SpriteObject> spriteObjects = new Dictionary<int, SpriteObject>();
 
-    public Dictionary<string, CastleObject> castleObjects = new Dictionary<string, CastleObject>();
+    public Dictionary<int, BuildingObject> buildingObjects = new Dictionary<int, BuildingObject>();
 
-    public Dictionary<string, ShopItemObject> shopItemObjects = new Dictionary<string, ShopItemObject>();
+    public Dictionary<int, CastleObject> castleObjects = new Dictionary<int, CastleObject>();
 
-    public Dictionary<string, CountryUpgradeObject> countryUpgradeObjects = new Dictionary<string, CountryUpgradeObject>();
+    public Dictionary<int, ShopItemObject> shopItemObjects = new Dictionary<int, ShopItemObject>();
 
-    public Dictionary<string, BattleUnitObject> battleUnitObjects = new Dictionary<string, BattleUnitObject>();
+    public Dictionary<int, CountryUpgradeObject> countryUpgradeObjects = new Dictionary<int, CountryUpgradeObject>();
 
-    public Dictionary<string, MapResourceObject> mapResourcesObjects = new Dictionary<string, MapResourceObject>();
+    public Dictionary<int, BattleUnitObject> battleUnitObjects = new Dictionary<int, BattleUnitObject>();
+
+    public Dictionary<int, MapResourceObject> mapResourcesObjects = new Dictionary<int, MapResourceObject>();
 
     private void Awake()
     {
@@ -28,38 +32,40 @@ public class GameDatabaseManager : MonoBehaviour
         {
             if(obj is SpriteObject)
             {                
-                spriteObjects.Add(obj.name, obj as SpriteObject);
+                spriteObjects.Add(obj.id, obj as SpriteObject);
             }
 
             if (obj is BuildingObject)
             {
-                buildingObjects.Add(obj.name, obj as BuildingObject);
+                buildingObjects.Add(obj.id, obj as BuildingObject);
             }
 
             if (obj is CastleObject)
             {
-                castleObjects.Add(obj.name, obj as CastleObject);
+                castleObjects.Add(obj.id, obj as CastleObject);
             }
 
             if(obj is ShopItemObject)
             {
-                shopItemObjects.Add(obj.name, obj as ShopItemObject);
+                shopItemObjects.Add(obj.id, obj as ShopItemObject);
             }
 
             if(obj is CountryUpgradeObject)
             {
-                countryUpgradeObjects.Add(obj.name, obj as CountryUpgradeObject);
+                countryUpgradeObjects.Add(obj.id, obj as CountryUpgradeObject);
             }
 
             if(obj is BattleUnitObject)
             {
-                battleUnitObjects.Add(obj.name, obj as BattleUnitObject);
+                battleUnitObjects.Add(obj.id, obj as BattleUnitObject);
             }
 
             if(obj is MapResourceObject)
             {
-                mapResourcesObjects.Add(obj.name, obj as MapResourceObject);
+                mapResourcesObjects.Add(obj.id, obj as MapResourceObject);
             }
+
+            allObjects.Add(obj.id, obj);
         }
 
         /*foreach (var obj in database.allBuildings)
@@ -73,10 +79,17 @@ public class GameDatabaseManager : MonoBehaviour
         }*/
     }
 
-    public SpriteObject GetSpriteObject(string name)
+    public List<T> GetAllObjects<T>(int id) where T : GameDataObject
     {
-        SpriteObject obj;
-        if(spriteObjects.TryGetValue(name, out obj))
+        List<int> blah = new List<int>();
+        
+        return allObjects.Values.OfType<T>().ToList();
+    }
+
+    public GameDataObject GetObject(int id)
+    {
+        GameDataObject obj;
+        if (allObjects.TryGetValue(id, out obj))
         {
             return obj;
         }
@@ -84,10 +97,21 @@ public class GameDatabaseManager : MonoBehaviour
         return null;
     }
 
-    public BuildingObject GetBuildingObject(string name)
+    public SpriteObject GetSpriteObject(int id)
+    {
+        SpriteObject obj;
+        if(spriteObjects.TryGetValue(id, out obj))
+        {
+            return obj;
+        }
+
+        return null;
+    }
+
+    public BuildingObject GetBuildingObject(int id)
     {
         BuildingObject obj;
-        if (buildingObjects.TryGetValue(name, out obj))
+        if (buildingObjects.TryGetValue(id, out obj))
         {
             return obj;
         }

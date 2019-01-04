@@ -9,6 +9,8 @@ using UnityEngine.EventSystems;
 
 public class MapUnit : MonoBehaviour
 {
+    public int unitId;
+
     public Vector3Int position;
 
     public GameTile gameTile;

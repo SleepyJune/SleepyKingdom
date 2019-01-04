@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Name: Rainy
   m_EditorClassIdentifier: 
   name: Rainy
+  id: 40
   spriteType: 0
   image: {fileID: 21300020, guid: ef9355d2e1884ca43a9041d2b180c742, type: 3}
   shortDescription: Rainy

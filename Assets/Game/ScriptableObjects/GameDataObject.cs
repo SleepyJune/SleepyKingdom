@@ -7,4 +7,6 @@ using UnityEngine;
 public class GameDataObject : ScriptableObject
 {
     public new string name;
+
+    public int id;
 }

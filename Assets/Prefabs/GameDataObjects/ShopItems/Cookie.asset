@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Name: Cookie
   m_EditorClassIdentifier: 
   name: Cookie
+  id: 26
   spriteType: 4
   image: {fileID: 21300008, guid: 807041c866d849d47b491ce9e7d0408d, type: 3}
   shortDescription: 

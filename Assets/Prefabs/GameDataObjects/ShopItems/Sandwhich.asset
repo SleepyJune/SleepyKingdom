@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Name: Sandwhich
   m_EditorClassIdentifier: 
   name: Sandwhich
+  id: 28
   spriteType: 4
   image: {fileID: 21300010, guid: 807041c866d849d47b491ce9e7d0408d, type: 3}
   shortDescription: 

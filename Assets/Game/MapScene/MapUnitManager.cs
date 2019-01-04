@@ -6,49 +6,37 @@ using UnityEngine;
 
 public class MapUnitManager : MonoBehaviour
 {
-    public List<MapUnit> allUnits = new List<MapUnit>();
-        
+    [NonSerialized]
+    public Dictionary<int, MapUnit> allUnits = new Dictionary<int, MapUnit>();
+
+    private int unitCounter = 0;
+
     public Transform unitParent;
 
-    public MapCastleUnit castlePrefab;
-
     public static Dictionary<Vector3Int, GameTile> map;
-
-    //public delegate void OnMouseClickFunction(Unit unit);
-    //public event OnMouseClickFunction OnUnitClickEvent;
+        
+    public ActionCircleController actionCircle;
 
     public CastleWindowController castleWindow;
 
-    public ActionCircleController actionCircle;
-
     public GameTileClickHandler gameTileClickHandler;
-
-    public MapCastleUnit myCastle;
 
     private UnitCommandType currentCommand = UnitCommandType.None;
     private MapCastleUnit currentSelectedUnit = null;
 
-    private void Start()
-    {
-        GameManager.instance.globalCountryManager.OnAddCountryEvent += OnAddCountryEvent;
-        GameManager.instance.globalCountryManager.OnDeleteCountryEvent += OnDeleteCountryEvent;
+    [NonSerialized]
+    public MapCastleUnit myCastle;
 
+    private void Start()
+    {      
         gameTileClickHandler.OnGameTileClickedEvent += OnGameTileClickedEvent;
 
         map = Pathfinder.map;
-
-        foreach(var country in GameManager.instance.gameStateManager.gameState.GetCountries())
-        {
-            OnAddCountryEvent(country);
-        }
     }
 
     private void OnDestroy()
     {
-        GameManager.instance.globalCountryManager.OnAddCountryEvent -= OnAddCountryEvent;
-        GameManager.instance.globalCountryManager.OnDeleteCountryEvent -= OnDeleteCountryEvent;
-
-        gameTileClickHandler.OnGameTileClickedEvent -= OnGameTileClickedEvent;
+         gameTileClickHandler.OnGameTileClickedEvent -= OnGameTileClickedEvent;        
     }
 
     public void OnActionCircleButtonClick(MapCastleUnit castle, UnitCommandType actionType)
@@ -78,7 +66,7 @@ public class MapUnitManager : MonoBehaviour
 
     private void OnGameTileClickedEvent(GameTile tile)
     {
-        if(currentCommand == UnitCommandType.Move)
+        if (currentCommand == UnitCommandType.Move)
         {
             currentSelectedUnit.SetMovePosition(tile.position);
         }
@@ -93,13 +81,13 @@ public class MapUnitManager : MonoBehaviour
 
     public void OnUnitMouseClickEvent(MapUnit unit)
     {
-        if(unit is MapCastleUnit)
+        if (unit is MapCastleUnit)
         {
             var castle = unit as MapCastleUnit;
 
             //castleWindow.SetCountry(castle.country);
 
-            if(currentCommand == UnitCommandType.Attack)
+            if (currentCommand == UnitCommandType.Attack)
             {
                 ResetCommand();
                 return;
@@ -110,56 +98,20 @@ public class MapUnitManager : MonoBehaviour
         }
     }
 
-    private void OnAddCountryEvent(Country country)
+    public void DeleteUnit(MapUnit unit)
     {
-        AddCastleUnit(country);
-    }
+        allUnits.Remove(unit.unitId);
 
-    public void AddCastleUnit(Country country)
-    {
-        var newCastle = Instantiate(castlePrefab, unitParent);
-        newCastle.country = country;
-        newCastle.position = country.position;
-
-        if(country.castleObject != null)
-        {
-            newCastle.castleObject = country.castleObject;
-        }
-
-        if(country.countryID == 1)
-        {
-            myCastle = newCastle;
-        }
-
-        InitializeUnit(newCastle);
-    }
-
-    private void OnDeleteCountryEvent(Country country)
-    {
-        DeleteCastleUnit(country);
-    }
-
-    public void DeleteCastleUnit(Country country)
-    {        
-        foreach(var unit in allUnits)
-        {
-            var castle = unit as MapCastleUnit;
-            if(castle != null)
-            {
-                if(castle.country.countryID == country.countryID)
-                {
-                    allUnits.Remove(unit);
-                    Destroy(castle.gameObject);
-                    break;
-                }
-            }
-        }
+        Destroy(unit.gameObject);
     }
 
     public void InitializeUnit(MapUnit unit)
     {
         unit.unitManager = this;
-        
-        allUnits.Add(unit);
+        unit.unitId = unitCounter;
+
+        allUnits.Add(unitCounter, unit);
+
+        unitCounter += 1;
     }
 }

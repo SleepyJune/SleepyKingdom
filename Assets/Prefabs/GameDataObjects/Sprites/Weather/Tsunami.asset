@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Name: Tsunami
   m_EditorClassIdentifier: 
   name: Tsunami
+  id: 45
   spriteType: 0
   image: {fileID: 21300012, guid: ef9355d2e1884ca43a9041d2b180c742, type: 3}
   shortDescription: Tsunami

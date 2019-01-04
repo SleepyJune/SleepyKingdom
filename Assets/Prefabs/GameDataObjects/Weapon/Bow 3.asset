@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43f62d40e170f754fbbb6db043028c89, type: 3}
+  m_Name: Bow 3
+  m_EditorClassIdentifier: 
+  name: Bow 3
+  id: 56
+  image: {fileID: 21300004, guid: 3620e9ca67ac2b344921b01552c9bdfd, type: 3}
+  range: 20
+  attack: 0
+  defense: 0
+  atkSpeed: 5
+  projectile: {fileID: 11400000, guid: 94f35df8c375b5c48864e1fee611373a, type: 2}

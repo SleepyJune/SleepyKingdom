@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Name: Gold
   m_EditorClassIdentifier: 
   name: Gold
+  id: 31
   spriteType: 1
   image: {fileID: 21300004, guid: 32f07fc5613b83d4ba049e6bbda9bd8d, type: 3}
   shortDescription: For buying other resources.

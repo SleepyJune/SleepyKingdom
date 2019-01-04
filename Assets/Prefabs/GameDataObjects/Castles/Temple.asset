@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Name: Temple
   m_EditorClassIdentifier: 
   name: Temple
+  id: 7
   spriteType: 3
   image: {fileID: 21300000, guid: 9d1bf93b0eedc2b4090cfea016a9378d, type: 3}
   shortDescription: 

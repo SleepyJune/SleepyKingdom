@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Name: DirtWallCity
   m_EditorClassIdentifier: 
   name: DirtWallCity
+  id: 5
   spriteType: 3
   image: {fileID: 21300000, guid: aa4da2ce1a6f8e94ab8b03da8ca83ff2, type: 3}
   shortDescription: 

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Name: SmallVillage
   m_EditorClassIdentifier: 
   name: SmallVillage
+  id: 6
   spriteType: 3
   image: {fileID: 21300000, guid: 9f0a49ac78a9daa43b57af2ad219da0b, type: 3}
   shortDescription: 

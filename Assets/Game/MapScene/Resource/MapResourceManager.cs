@@ -7,7 +7,9 @@ using UnityEngine;
 
 public class MapResourceManager : MonoBehaviour
 {
+    [NonSerialized]
     public MapUnitManager unitManager;
+
     public MapResource resourcePrefab;
 
     public Transform unitParent;
@@ -19,7 +21,8 @@ public class MapResourceManager : MonoBehaviour
     [NonSerialized]
     public MapResource currentResource;
 
-    List<MapResource> resources = new List<MapResource>();
+    [NonSerialized]
+    public List<MapResource> resources = new List<MapResource>();
 
     float lastUpdateTime;
 
@@ -30,11 +33,24 @@ public class MapResourceManager : MonoBehaviour
     private void Start()
     {
         resourceList = GameManager.instance.gamedatabaseManager.mapResourcesObjects.Values.ToList();
+
+        unitManager = GetComponent<MapUnitManager>();
+
+        Initialize();
+    }
+
+    private void Initialize()
+    {
+        foreach (var save in GameManager.instance.gameStateManager.gameState.mapResources)
+        {
+            //unitManager.InitializeUnit(unit);
+            Load(save);
+        }
     }
 
     private void Update()
     {
-        if(Time.time - lastUpdateTime > 1)
+        if (Time.time - lastUpdateTime > 1)
         {
             SpawnResource();
             lastUpdateTime = Time.time;
@@ -43,25 +59,53 @@ public class MapResourceManager : MonoBehaviour
 
     void SpawnResource()
     {
-        while(resources.Count < 5)
+        var castle = unitManager.myCastle;
+        if (castle == null)
         {
-            //var newResource = 
-            int index = UnityEngine.Random.Range(0, resourceList.Count);
-            var newResource = Instantiate(resourcePrefab, unitParent);
+            return;
+        }
 
-            unitManager.InitializeUnit(newResource);
+        int tries = 0;
+        while (resources.Count < 5 && tries < 50)
+        {
+            var dist = UnityEngine.Random.Range(1, 5);
+            var angle = UnityEngine.Random.Range(0, 360);
+            var dir = VectorExtensions.DegreeToVector(angle);
+
+            var pos = castle.position + dir * dist;
+
+            int index = UnityEngine.Random.Range(0, resourceList.Count);
 
             var amount = UnityEngine.Random.Range(100, 5000);
 
-            newResource.SetItem(resourceList[index], amount, this);
+            var posInt = Pathfinder.tilemap.WorldToCell(pos);
 
-            resources.Add(newResource);
+            if (!resources.Any(resource => resource.position == posInt))
+            {
+                var newResource = Instantiate(resourcePrefab, unitParent);
+                newResource.SetItem(resourceList[index], amount, amount, posInt, this);
+            }
+
+            tries += 1;
+        }
+    }
+
+    void Load(MapResourceSave save)
+    {
+        var resourceObject = GameManager.instance.gamedatabaseManager.GetObject(save.resourceID) as MapResourceObject;
+
+        if (resourceObject != null)
+        {
+            var newResource = Instantiate(resourcePrefab, unitParent);
+            unitManager.InitializeUnit(newResource);
+
+            newResource.SetItem(resourceObject, save.amount, save.maxCapacity, save.position, this);
         }
     }
 
     void CollectResource()
     {
-        if(currentResource != null && !collectors.ContainsKey(currentResource))
+        if (currentResource != null && !collectors.ContainsKey(currentResource))
         {
             var amountLeft = currentResource.CollectResource(100);
             collectResourcePopup.SetAmount(amountLeft);

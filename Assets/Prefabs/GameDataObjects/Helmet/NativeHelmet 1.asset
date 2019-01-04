@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Name: NativeHelmet 1
   m_EditorClassIdentifier: 
   name: NativeHelmet 1
+  id: 8
   image: {fileID: 21300000, guid: a46eb40a7db04f9459d792ff5ef5ac8a, type: 3}
+  imageBack: {fileID: 0}
   defense: 1

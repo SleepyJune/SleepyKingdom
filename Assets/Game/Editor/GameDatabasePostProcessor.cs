@@ -50,24 +50,32 @@ class GameDatabasePostProcessor : AssetPostprocessor
 
         if (databaseModified)
         {
-            EditorHelperFunctions.GenerateFromAsset(path, ref collection, database, "*.asset");
             CheckCollection(database.allObjects);
+            EditorHelperFunctions.GenerateFromAsset(path, ref collection, database, "*.asset");
         }
     }
 
     static void CheckCollection(GameDataObject[] collection)
     {
-        HashSet<string> itemNames = new HashSet<string>();
+        int counter = collection.Max(i => i.id) + 1;               
+
+        HashSet<int> itemID = new HashSet<int>();
 
         foreach (var item in collection)
         {
-            if (itemNames.Contains(item.name))
+            if (itemID.Contains(item.id))
             {
-                Debug.Log("GameDataObject with the same name: " + item.name);
+                item.id = counter;
+
+                //Debug.Log("GameDataObject with the same id: " + item.name);
+
+                counter += 1;
+
+                EditorUtility.SetDirty(item);
             }
             else
             {
-                itemNames.Add(item.name);
+                itemID.Add(item.id);
             }
         }
     }

@@ -12,13 +12,12 @@ MonoBehaviour:
   m_Name: PigArcherUnit
   m_EditorClassIdentifier: 
   name: PigArcherUnit
+  id: 48
   image: {fileID: 21300000, guid: 626038157065fa44f92faf8b811d96a6, type: 3}
   health: 5
-  attack: 1
-  defense: 10
   speed: 10
-  atkSpeed: 1
-  range: 8
   populationCost: 10
+  populationMultiplier: 0.5
   weaponObject: {fileID: 11400000, guid: 8912d3642f427c64da14bd9bca71ca51, type: 2}
+  helmetObject: {fileID: 0}
   projectileObject: {fileID: 11400000, guid: 94f35df8c375b5c48864e1fee611373a, type: 2}

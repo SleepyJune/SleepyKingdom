@@ -13,6 +13,12 @@ public class MapSceneManager : MonoBehaviour
     [NonSerialized]
     public MapUnitManager unitManager;
 
+    [NonSerialized]
+    public MapCastleManager castleManager;
+
+    [NonSerialized]
+    public MapResourceManager resourceManager;
+
     /*void Awake()
     {
         if (instance == null)
@@ -29,7 +35,14 @@ public class MapSceneManager : MonoBehaviour
     private void Start()
     {
         unitManager = GetComponent<MapUnitManager>();
+        resourceManager = GetComponent<MapResourceManager>();
+        castleManager = GetComponent<MapCastleManager>();
 
         Pathfinder.Initialize(terrainMap);
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.instance.gameStateManager.gameState.SaveMapUnits(this);
     }
 }

@@ -13,6 +13,7 @@ public class DeployUnitButton : MonoBehaviour
 
     public Image icon;
     public Image weaponImage;
+    public Image helmetImage;
     public Image handImage;
 
     public void Initialize(BattleUnitObject unitObj, DeployUnitManager manager)
@@ -23,6 +24,12 @@ public class DeployUnitButton : MonoBehaviour
         icon.sprite = unitObj.image;
 
         weaponImage.sprite = unitObj.weaponObject.image;
+
+        if(unitObj.helmetObject != null)
+        {
+            helmetImage.gameObject.SetActive(true);
+            helmetImage.sprite = unitObj.helmetObject.image;
+        }
     }
 
     public void OnButtonPressed()

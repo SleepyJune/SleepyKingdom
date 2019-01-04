@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
+[Serializable]
 public class MapCastleUnit : MapUnit
 {
     [NonSerialized]
@@ -22,5 +23,31 @@ public class MapCastleUnit : MapUnit
         {
             castleSprite.sprite = castleObject.image;
         }
+    }
+
+    protected override void OnDestinationReached()
+    {
+        country.position = position;
+    }
+
+    public MapCastleSave Save()
+    {
+        MapCastleSave save = new MapCastleSave
+        {
+            countryID = country.countryID,
+            position = country.position,
+
+        };
+
+        return save;
+    }
+
+    public void Load(MapCastleSave save, Country country)
+    {
+        position = save.position;
+
+        this.country = country;
+
+        castleObject = country.castleObject;
     }
 }

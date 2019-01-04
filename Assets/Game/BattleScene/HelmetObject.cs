@@ -6,5 +6,7 @@ public class HelmetObject : GameDataObject
 {
     public Sprite image;
 
+    public Sprite imageBack;
+
     public int defense = 1;
 }

@@ -77,6 +77,11 @@ public class GlobalCountryManager : MonoBehaviour
         }
     }
 
+    public Country GetCountry(int countryID)
+    {
+        return GameManager.instance.gameStateManager.gameState.GetCountry(countryID);
+    }
+
     public void DeleteCountry(Country country)
     {
         GameManager.instance.gameStateManager.gameState.DeleteCountry(country);

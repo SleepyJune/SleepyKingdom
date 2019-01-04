@@ -42,6 +42,6 @@ public class CountryUI : MonoBehaviour
         
     public void OnTowerButtonPress()
     {
-        GameManager.instance.sceneChanger.ChangeScene(country.tower);
+        //GameManager.instance.sceneChanger.ChangeScene(country.tower);
     }
 }

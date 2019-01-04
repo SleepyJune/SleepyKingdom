@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Name: PopulationUpgrade
   m_EditorClassIdentifier: 
   name: PopulationUpgrade
+  id: 53
   spriteType: 5
   image: {fileID: 21300008, guid: 32f07fc5613b83d4ba049e6bbda9bd8d, type: 3}
   shortDescription: 

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Name: Pie
   m_EditorClassIdentifier: 
   name: Pie
+  id: 27
   spriteType: 4
   image: {fileID: 21300012, guid: 807041c866d849d47b491ce9e7d0408d, type: 3}
   shortDescription: 

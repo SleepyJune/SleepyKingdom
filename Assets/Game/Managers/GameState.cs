@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 
+using System.Linq;
+
 using UnityEngine;
 
 [Serializable]
@@ -10,6 +12,9 @@ public class GameState
 {
     [SerializeField]
     private Country[] countries = new Country[0];
+
+    public MapCastleSave[] mapCastles = new MapCastleSave[0];
+    public MapResourceSave[] mapResources = new MapResourceSave[0];
 
     public int gold;
     public int gems;
@@ -37,9 +42,31 @@ public class GameState
         Save();
     }
 
+    public Country GetCountry(int countryID)
+    {
+        return countryList.Find(c => c.countryID == countryID);
+    }
+
     private void SaveCounters()
     {
         countryCounter = Country.countryCounter;
+    }
+
+    public void SaveMapUnits(MapSceneManager manager)
+    {
+        List<MapUnit> castleSaveUnits = new List<MapUnit>();
+
+        foreach(var unit in manager.castleManager.castles.Values)
+        {
+            //if unit is in range of the castle
+            castleSaveUnits.Add(unit);
+        }
+
+        mapCastles = manager.castleManager.castles.Values.Select(castle => castle.Save()).ToArray();
+
+        mapResources = manager.resourceManager.resources.Select(resource=> resource.Save()).ToArray();
+
+        Save();
     }
 
     public List<Country> GetCountries()

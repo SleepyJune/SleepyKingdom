@@ -18,10 +18,8 @@ public class MapResource : MapUnit
 
     public SpriteRenderer icon;
 
-    [NonSerialized]
     public int amount;
 
-    [NonSerialized]
     public int maxCapacity;
 
     MapResourceManager manager;
@@ -29,34 +27,31 @@ public class MapResource : MapUnit
     [NonSerialized]
     public MapResourceObject resourceObject;
 
+    public int resourceID = -1;
+
     Country myCountry;
             
-    public void SetItem(MapResourceObject resourceObject, int amount, MapResourceManager manager)
+    public void SetItem(MapResourceObject resourceObject, int amount, int max, Vector3Int pos, MapResourceManager manager)
     {
         canMove = false;
 
         this.resourceObject = resourceObject;
         this.amount = amount;
-        this.maxCapacity = amount;
+        this.maxCapacity = max;
         this.manager = manager;
 
         icon.sprite = resourceObject.image;
         resourceType = resourceObject.resourceType;
-        
+
+        resourceID = resourceObject.id;
+
         myCountry = myCountry = GameManager.instance.globalCountryManager.myCountry;
 
-        var castle = unitManager.myCastle;
-        if(castle != null)
-        {
-            var dist = UnityEngine.Random.Range(1, 5);
-            var angle = UnityEngine.Random.Range(0, 360);
-            var dir = VectorExtensions.DegreeToVector(angle);
+        position = pos;
 
-            var pos = castle.position + dir * dist;
+        manager.resources.Add(this);
 
-            position = Pathfinder.tilemap.WorldToCell(pos);
-        }
-
+        manager.unitManager.InitializeUnit(this);
     }
 
     public int CollectResource(int num)
@@ -94,5 +89,35 @@ public class MapResource : MapUnit
     public override void OnMouseDownEvent()
     {
         manager.OnSelectResource(this);
+    }
+
+    public MapResourceSave Save()
+    {
+        MapResourceSave save = new MapResourceSave()
+        {
+            position = position,
+            amount = amount,
+            maxCapacity = maxCapacity,
+            resourceID = resourceID,
+        };
+
+        return save;
+    }
+        
+    public void OnAfterDeserialize()
+    {
+        if (resourceID != -1 && GameManager.instance)
+        {
+            resourceObject = GameManager.instance.gamedatabaseManager.GetObject(resourceID) as MapResourceObject;
+
+            if (resourceObject == null)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                
+            }
+        }
     }
 }

@@ -7,16 +7,17 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 [Serializable]
-public class Country
+public class Country : ISerializationCallbackReceiver
 {
     public int countryID;
 
     public string countryName;
 
-    public Tower tower;
+    //public Tower tower;
         
+    [NonSerialized]
     public CastleObject castleObject;
-
+    public int castleObjectID;
     public Vector3Int position;
 
     public float speed;
@@ -64,7 +65,7 @@ public class Country
             newCountry.countryName = countryName;
         }
 
-        newCountry.tower = Tower.Generate();
+        //newCountry.tower = Tower.Generate();
 
         newCountry.population = Random.Range(100, 1000);
         newCountry.maxCapacity = Random.Range(2000, 10000);
@@ -99,5 +100,21 @@ public class Country
     public override int GetHashCode()
     {
         return countryID;
+    }
+
+    public void OnBeforeSerialize()
+    {
+        if (castleObject)
+        {
+            castleObjectID = castleObject.id;
+        }
+    }
+
+    public void OnAfterDeserialize()
+    {
+        if (castleObjectID != 0 && GameManager.instance)
+        {
+            castleObject = GameManager.instance.gamedatabaseManager.GetObject(castleObjectID) as CastleObject;
+        }
     }
 }

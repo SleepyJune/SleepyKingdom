@@ -10,5 +10,9 @@ public class WeaponObject : GameDataObject
 
     public int attack = 5;
 
+    public int defense = 0;
+
     public float atkSpeed = 1;
+
+    public ProjectileObject projectile;
 }

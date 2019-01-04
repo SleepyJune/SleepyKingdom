@@ -8,10 +8,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dac4112f8b44c6f4dac9dc3c1f9ecf2e, type: 3}
-  m_Name: CatFaceProjectile
+  m_Script: {fileID: 11500000, guid: 0e5720c245331b24e8647a0004ee4460, type: 3}
+  m_Name: NobleHelmet 2
   m_EditorClassIdentifier: 
-  name: CatFaceProjectile
-  image: {fileID: 21300000, guid: 32f07fc5613b83d4ba049e6bbda9bd8d, type: 3}
-  damage: 1
-  speed: 1
+  name: NobleHelmet 1
+  id: 14
+  image: {fileID: 21300022, guid: a46eb40a7db04f9459d792ff5ef5ac8a, type: 3}
+  imageBack: {fileID: 0}
+  defense: 1

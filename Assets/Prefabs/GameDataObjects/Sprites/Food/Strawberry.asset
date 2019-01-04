@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Name: Strawberry
   m_EditorClassIdentifier: 
   name: Strawberry
+  id: 30
   spriteType: 6
   image: {fileID: 21300000, guid: 807041c866d849d47b491ce9e7d0408d, type: 3}
   shortDescription: 
