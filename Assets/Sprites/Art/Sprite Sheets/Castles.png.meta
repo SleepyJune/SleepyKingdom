@@ -1,7 +1,24 @@
 fileFormatVersion: 2
 guid: d39f8dcf51612f546b46a16c5383e66e
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Castles_Charlottetown
+    21300002: Castles_Fredericton
+    21300004: Edmon
+    21300006: Castles_Victoria
+    21300008: Castles_St John
+    21300010: Castles_5
+    21300012: Castles_Whitehorse
+    21300014: Castles_Dog
+    21300016: Castles_Halifax
+    21300018: Castles_Quebec
+    21300020: Castles_10
+    21300022: Castles_11
+    21300024: Castles_Toronto
+    21300026: Castles_Christmas
+    21300028: Castles_Iqaluit
+    21300030: Castles_Yellowknife
+    21300032: Castles_Ottawa
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -40,7 +57,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -69,9 +86,360 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Castles_Charlottetown
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 982.6666
+        width: 256.33334
+        height: 491.33334
+      alignment: 9
+      pivot: {x: 0.5, y: -0.07}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52271868a482a0b4d92057b3a65b50a7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Castles_Fredericton
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 982.6666
+        width: 256.33334
+        height: 491.33334
+      alignment: 9
+      pivot: {x: 0.5, y: -0.08}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65f17b9e41b3a3b4a9bb4cb90c6ae076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Edmon
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 982.6666
+        width: 256.33334
+        height: 491.33334
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d270967209c0924f9f2575120888465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Castles_Victoria
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 983
+        width: 256
+        height: 491
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fecc717aeb5196247b06bbff2312e747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Castles_St John
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 982.6666
+        width: 256.33334
+        height: 491.33334
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 119db1e99f6b4da4db505e6a61075dfb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Castles_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 491.66666
+        width: 256.33334
+        height: 491.33334
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 742903f365769404392e5b1a1de57bb2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Castles_Whitehorse
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 491.66666
+        width: 256.33334
+        height: 491.33334
+      alignment: 9
+      pivot: {x: 0.5, y: -0.09}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4db076aa3336784daaa1fccb28a0840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Castles_Dog
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 490
+        width: 256
+        height: 491
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08321af03ce095d4fba839289644dc47
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Castles_Halifax
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 491.66666
+        width: 256.33334
+        height: 491.33334
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19636190b886f264fbefa027ed464b54
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Castles_Quebec
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 491.66666
+        width: 256.33334
+        height: 491.33334
+      alignment: 9
+      pivot: {x: 0.5, y: -0.06}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fad3b412e6e5a74fb4e765674889be1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Castles_10
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 491.66666
+        width: 256.33334
+        height: 491.33334
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d8b6e6a6efb13b4bb52c71d1c660bfe
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Castles_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0.6666565
+        width: 256.33334
+        height: 491.33334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce20e4a0bb6061b4fba3d60734502515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Castles_Toronto
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 491
+      alignment: 9
+      pivot: {x: 0.5, y: -0.0669797}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3cf3f3bdc48c754ea0b9af0ab0f4c62
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Castles_Christmas
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0.6666565
+        width: 256.33334
+        height: 491.33334
+      alignment: 9
+      pivot: {x: 0.5, y: -0.06}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a05c1ff450c6af640a05ea6253d7ef64
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Castles_Iqaluit
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 256
+        height: 491
+      alignment: 9
+      pivot: {x: 0.5, y: -0.07}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ac2d3b969960064bb24815b240face3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Castles_Yellowknife
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0.6666565
+        width: 256.33334
+        height: 491.33334
+      alignment: 9
+      pivot: {x: 0.5, y: -0.09}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfa2890fa0c556a469d4ee805f6d4544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Castles_Ottawa
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0.6666565
+        width: 256.33334
+        height: 491.33334
+      alignment: 9
+      pivot: {x: 0.5, y: -0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8eb4b4dba309b64f8a25e26a8742ef0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

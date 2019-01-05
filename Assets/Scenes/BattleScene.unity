@@ -628,6 +628,24 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212987974790743350, guid: b34bf0b799bc06b44b5ab5fc61f63324,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300018, guid: 42ce449417039b74691af905198fd738,
+        type: 3}
+    - target: {fileID: 212455186037835904, guid: b34bf0b799bc06b44b5ab5fc61f63324,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300030, guid: a46eb40a7db04f9459d792ff5ef5ac8a,
+        type: 3}
+    - target: {fileID: 212209497119537278, guid: b34bf0b799bc06b44b5ab5fc61f63324,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300002, guid: a4424ad9d1670774280762429cda9342,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b34bf0b799bc06b44b5ab5fc61f63324, type: 2}
   m_IsPrefabAsset: 0
