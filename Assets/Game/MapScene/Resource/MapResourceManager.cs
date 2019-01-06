@@ -94,7 +94,7 @@ public class MapResourceManager : MonoBehaviour
     {
         var resourceObject = GameManager.instance.gamedatabaseManager.GetObject(save.resourceID) as MapResourceObject;
 
-        if (resourceObject != null)
+        if (resourceObject != null && save.amount > 0)
         {
             var newResource = Instantiate(resourcePrefab, unitParent);
             unitManager.InitializeUnit(newResource);

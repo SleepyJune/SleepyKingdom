@@ -12,6 +12,8 @@ class GameDatabasePostProcessor : AssetPostprocessor
 {
     static GameDatabase database;
 
+    static MapDatabase mapDatabase;
+
     static void OnPostprocessAllAssets(string[] importedAssets, string[] deletedAssets, string[] movedAssets, string[] movedFromAssetPaths)
     {
         if (database == null)
@@ -20,6 +22,13 @@ class GameDatabasePostProcessor : AssetPostprocessor
         }
 
         CheckModified("/Prefabs/GameDataObjects/", ref database.allObjects, importedAssets, deletedAssets);
+
+        if (mapDatabase == null)
+        {
+            mapDatabase = (MapDatabase)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/MapDataObjects/MapDatabase.asset", typeof(MapDatabase));
+        }
+
+        CheckModified("/Prefabs/MapDataObjects/", ref mapDatabase.allObjects, importedAssets, deletedAssets);
     }
 
     static void CheckModified<T>(string path, ref T[] collection, string[] importedAssets, string[] deletedAssets)

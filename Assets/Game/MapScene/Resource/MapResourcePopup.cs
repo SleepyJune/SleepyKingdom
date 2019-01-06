@@ -18,10 +18,12 @@ public class MapResourcePopup : Popup
     {
         if(targetResource != null)
         {
+            SetAmount(targetResource.amount);
             SetFill((float)targetResource.amount / targetResource.maxCapacity);
         }
         else
         {
+            SetAmount(0);
             SetFill(0);
         }
     }

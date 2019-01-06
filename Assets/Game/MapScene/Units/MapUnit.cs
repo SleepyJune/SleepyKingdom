@@ -109,8 +109,14 @@ public class MapUnit : MonoBehaviour
 
     }
 
+    protected virtual void OnDragEvent()
+    {
+
+    }
+
     public virtual void Death()
     {
+        unitManager.allUnits.Remove(unitId);
         Destroy(gameObject);
     }
 

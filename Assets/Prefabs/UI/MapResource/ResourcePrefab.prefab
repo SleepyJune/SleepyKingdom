@@ -187,12 +187,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ce81cee9f7a9e0478086a115cc3245f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unitId: 0
   position: {x: 0, y: 0, z: 0}
   canMove: 1
   speed: 1
   resourceType: 0
   icon: {fileID: 212969019455349552}
   amount: 100
+  maxCapacity: 0
+  resourceID: -1
 --- !u!212 &212670632606844080
 SpriteRenderer:
   m_ObjectHideFlags: 1

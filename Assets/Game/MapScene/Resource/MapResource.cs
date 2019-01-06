@@ -54,8 +54,19 @@ public class MapResource : MapUnit
         manager.unitManager.InitializeUnit(this);
     }
 
+    public override void Death()
+    {
+        manager.resources.Remove(this);
+        base.Death();
+    }
+
     public int CollectResource(int num)
     {
+        if(amount <= 0)
+        {
+            return 0;
+        }
+
         if(amount - num >= 0)
         {
             switch (resourceType)
@@ -77,12 +88,15 @@ public class MapResource : MapUnit
             }            
 
             amount -= num;
-            return amount;
+            return num;
         }
         else
         {
+            var collected = amount;
+            amount -= amount;
+
             Death();
-            return 0;
+            return collected;
         }
     }
 

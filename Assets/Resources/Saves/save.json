@@ -5,8 +5,8 @@
             "countryName": "bbb",
             "castleObjectID": 5,
             "position": {
-                "x": -1,
-                "y": 2,
+                "x": 0,
+                "y": 4,
                 "z": 0
             },
             "speed": 0.0,
@@ -30,13 +30,13 @@
                 "z": 0
             },
             "speed": 0.0,
-            "population": 6031.9912109375,
+            "population": 6042.0,
             "maxCapacity": 6042.0,
-            "wood": 490362.90625,
-            "stone": 490409.8125,
-            "wheat": 978931.0,
-            "gold": 490391.84375,
-            "water": 488781.15625,
+            "wood": 1332059.25,
+            "stone": 1332106.0,
+            "wheat": 2660033.0,
+            "gold": 1332088.0,
+            "water": 1327046.0,
             "taxRate": 83.0,
             "happiness": 94.0
         }
@@ -44,8 +44,8 @@
     "mapCastles": [
         {
             "position": {
-                "x": -1,
-                "y": 2,
+                "x": 0,
+                "y": 4,
                 "z": 0
             },
             "countryID": 1
@@ -66,29 +66,9 @@
                 "y": 2,
                 "z": 0
             },
-            "amount": 3038,
+            "amount": 1438,
             "maxCapacity": 3038,
             "resourceID": 18
-        },
-        {
-            "position": {
-                "x": -2,
-                "y": 1,
-                "z": 0
-            },
-            "amount": 2247,
-            "maxCapacity": 2247,
-            "resourceID": 20
-        },
-        {
-            "position": {
-                "x": 2,
-                "y": 3,
-                "z": 0
-            },
-            "amount": 1067,
-            "maxCapacity": 1067,
-            "resourceID": 20
         },
         {
             "position": {
@@ -103,11 +83,31 @@
         {
             "position": {
                 "x": 0,
-                "y": 2,
+                "y": -1,
                 "z": 0
             },
-            "amount": 1131,
-            "maxCapacity": 1131,
+            "amount": 2596,
+            "maxCapacity": 2596,
+            "resourceID": 19
+        },
+        {
+            "position": {
+                "x": 1,
+                "y": 3,
+                "z": 0
+            },
+            "amount": 3359,
+            "maxCapacity": 3359,
+            "resourceID": 18
+        },
+        {
+            "position": {
+                "x": -1,
+                "y": 6,
+                "z": 0
+            },
+            "amount": 2066,
+            "maxCapacity": 2066,
             "resourceID": 19
         }
     ],
