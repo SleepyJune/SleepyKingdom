@@ -9,9 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3b0fc9b68af171344a007622ecbfdeff, type: 3}
-  m_Name: DirtCity
+  m_Name: Castle_St John
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: aa4da2ce1a6f8e94ab8b03da8ca83ff2, type: 3}
+  m_Sprite: {fileID: 21300008, guid: d39f8dcf51612f546b46a16c5383e66e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
