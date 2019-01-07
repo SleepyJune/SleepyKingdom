@@ -7,5 +7,5 @@ using UnityEngine.Tilemaps;
 
 public class SpawnTile : GameTileBase
 {
-
+    public Vector3Int position;
 }

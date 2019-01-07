@@ -32,13 +32,16 @@ public class MapSceneManager : MonoBehaviour
         }
     }*/
 
+    private void Awake()
+    {
+        Pathfinder.Initialize(terrainMap);
+    }
+
     private void Start()
     {
         unitManager = GetComponent<MapUnitManager>();
         resourceManager = GetComponent<MapResourceManager>();
         castleManager = GetComponent<MapCastleManager>();
-
-        Pathfinder.Initialize(terrainMap);
     }
 
     private void OnDestroy()

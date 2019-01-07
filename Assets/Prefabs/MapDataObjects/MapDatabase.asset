@@ -11,4 +11,195 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba193209e70cf241b81408b746e4ca0, type: 3}
   m_Name: MapDatabase
   m_EditorClassIdentifier: 
-  allObjects: []
+  countryDataObjects:
+  - {fileID: 114552861293023046}
+  - {fileID: 114231148754108684}
+  - {fileID: 114841226925570026}
+  castleSpawnTiles:
+  - {fileID: 114327654466735864}
+  - {fileID: 114026570240807012}
+  - {fileID: 114606732458096696}
+  countryCounter: 19
+--- !u!114 &114026570240807012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12dfb1152f065754baf8039e84f49e9d, type: 3}
+  m_Name: Country 16 SpawnTile
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 21300000, guid: aa4da2ce1a6f8e94ab8b03da8ca83ff2, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 1
+  m_ColliderType: 1
+  position: {x: 1, y: -23, z: 0}
+  countryData: {fileID: 114231148754108684}
+--- !u!114 &114231148754108684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70a61b8322cb70241b72bab650d5fddf, type: 3}
+  m_Name: Country 16 Data
+  m_EditorClassIdentifier: 
+  country:
+    countryID: 0
+    countryName: Country 16
+    castleObjectID: 5
+    position: {x: 1, y: -23, z: 0}
+    speed: 0
+    population: 0
+    maxCapacity: 0
+    wood: 0
+    stone: 0
+    wheat: 0
+    gold: 0
+    water: 0
+    taxRate: 0
+    happiness: 0
+--- !u!114 &114327654466735864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12dfb1152f065754baf8039e84f49e9d, type: 3}
+  m_Name: Country 18 SpawnTile
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 21300000, guid: 9d1bf93b0eedc2b4090cfea016a9378d, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 1
+  m_ColliderType: 1
+  position: {x: 2, y: -24, z: 0}
+  countryData: {fileID: 114552861293023046}
+--- !u!114 &114552861293023046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70a61b8322cb70241b72bab650d5fddf, type: 3}
+  m_Name: Country 18 Data
+  m_EditorClassIdentifier: 
+  country:
+    countryID: 18
+    countryName: Country 18
+    castleObjectID: 7
+    position: {x: 2, y: -24, z: 0}
+    speed: 0
+    population: 0
+    maxCapacity: 0
+    wood: 0
+    stone: 0
+    wheat: 0
+    gold: 0
+    water: 0
+    taxRate: 0
+    happiness: 0
+--- !u!114 &114606732458096696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12dfb1152f065754baf8039e84f49e9d, type: 3}
+  m_Name: Country 17 SpawnTile
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 21300000, guid: 9f0a49ac78a9daa43b57af2ad219da0b, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 1
+  m_ColliderType: 1
+  position: {x: 2, y: -23, z: 0}
+  countryData: {fileID: 114841226925570026}
+--- !u!114 &114841226925570026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70a61b8322cb70241b72bab650d5fddf, type: 3}
+  m_Name: Country 17 Data
+  m_EditorClassIdentifier: 
+  country:
+    countryID: 17
+    countryName: Country 17
+    castleObjectID: 6
+    position: {x: 2, y: -23, z: 0}
+    speed: 0
+    population: 0
+    maxCapacity: 0
+    wood: 0
+    stone: 0
+    wheat: 0
+    gold: 0
+    water: 0
+    taxRate: 0
+    happiness: 0

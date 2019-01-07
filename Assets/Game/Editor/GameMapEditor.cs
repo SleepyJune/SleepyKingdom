@@ -9,28 +9,61 @@ using UnityEditor;
 
 public class GameMapEditor : EditorWindow
 {
-    static GameDatabase database;
+    enum MapDataType
+    {
+        None,
+        Country,
+        Animal,
+        Interactable,
+    }
+
+    GameDatabase database;
+    MapDatabase mapDatabase;
+        
     Tilemap spawnMap;
     CastleSpawnTile selectedCastle;
+
+    Editor subEditor;
+
+    MapDataType selectedCreateType = MapDataType.None;
 
     Vector3Int lastClickedTilePosition;
 
     [MenuItem("Game/Map Editor")]
     static void Init()
     {
-        database = (GameDatabase)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/GameDataObjects/GameDatabase.asset", typeof(GameDatabase));
-
-        EditorWindow.GetWindow(typeof(GameMapEditor)).Show();        
+        EditorWindow.GetWindow(typeof(GameMapEditor)).Show();
     }
 
     private void OnEnable()
     {
+        database = (GameDatabase)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/GameDataObjects/GameDatabase.asset", typeof(GameDatabase));
+        mapDatabase = (MapDatabase)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/MapDataObjects/MapDatabase.asset", typeof(MapDatabase));
+
+        if (database == null)
+        {
+            Debug.Log("Cannot find GameDatabase");
+        }
+
+        if(mapDatabase == null)
+        {
+            Debug.Log("Cannot find MapDatabase");
+        }
+        else
+        {
+            mapDatabase.InitDictionary();
+        }
+
         SceneView.onSceneGUIDelegate += OnSceneGUI;
 
         var map = GameObject.Find("SpawnMap");
         if (map != null)
         {
-            spawnMap = map.transform.Find("Spawn").GetComponent<Tilemap>();            
+            spawnMap = map.transform.Find("Spawn").GetComponent<Tilemap>();
+        }
+        else
+        {
+            Debug.Log("Cannot find SpawnMap");
         }
     }
 
@@ -58,10 +91,10 @@ public class GameMapEditor : EditorWindow
 
             if(tile != selectedCastle)
             {
-                selectedCastle = tile;
-                Repaint();
+                SetNewCastle(tile);
             }
 
+            Repaint();
         }
     }
 
@@ -98,6 +131,80 @@ public class GameMapEditor : EditorWindow
 
     }
 
+    void SetNewCastle(CastleSpawnTile newTile)
+    {
+        selectedCastle = newTile;
+
+        if(subEditor != null)
+        {
+            DestroyImmediate(subEditor);
+        }
+
+        if(newTile != null && newTile.countryData != null && newTile.countryData.country != null)
+        {
+            subEditor = Editor.CreateEditor(newTile.countryData);
+        }
+    }
+
+    void ShowCreateCastleMenu()
+    {
+        if (GUILayout.Button("Back"))
+        {
+            selectedCreateType = MapDataType.None;
+        }
+
+        if (mapDatabase.castleSpawnTileDictionary.ContainsKey(lastClickedTilePosition))
+        {
+            EditorGUILayout.LabelField("Tile already contains a castle.", EditorStyles.boldLabel);
+            return;
+        }
+
+        foreach (var obj in database.allObjects)
+        {
+            var castleObject = obj as CastleObject;
+            if (castleObject == null)
+            {
+                continue;
+            }
+
+            var texture = AssetPreview.GetAssetPreview(castleObject.image);
+
+            GUIContent content = new GUIContent(texture, castleObject.name);
+            if (GUILayout.Button(content))
+            {
+                var newCountryData = CreateInstance(typeof(CountryDataObject)) as CountryDataObject;
+                var newCountry = new Country();
+                newCountryData.country = newCountry;
+                newCountryData.country.countryID = mapDatabase.countryCounter;
+                newCountryData.country.countryName = "Country " + newCountryData.country.countryID;
+                newCountryData.country.castleObjectID = castleObject.id;
+                newCountryData.country.position = lastClickedTilePosition;
+                newCountryData.name = newCountry.countryName + " Data";
+
+                mapDatabase.countryDataObjectDictionary.Add(mapDatabase.countryCounter, newCountryData);
+                mapDatabase.countryCounter += 1;
+
+                var newTile = CreateInstance(typeof(CastleSpawnTile)) as CastleSpawnTile;
+                newTile.name = newCountry.countryName +" SpawnTile";
+                newTile.countryData = newCountryData;
+                newTile.position = lastClickedTilePosition;
+                newTile.sprite = castleObject.image;
+
+                mapDatabase.castleSpawnTileDictionary.Add(newTile.position, newTile);                                
+
+                AssetDatabase.AddObjectToAsset(newTile, mapDatabase);
+                AssetDatabase.AddObjectToAsset(newCountryData, mapDatabase);
+
+                spawnMap.SetTile(lastClickedTilePosition, newTile);
+
+                mapDatabase.Save();
+
+                SetNewCastle(newTile);
+            }
+        }
+
+    }
+
     void ShowCountry()
     {
         if(selectedCastle != null)
@@ -108,23 +215,54 @@ public class GameMapEditor : EditorWindow
                 return;
             }
 
-            EditorGUILayout.LabelField("Name: " + selectedCastle.countryData.country.countryName, EditorStyles.boldLabel);
+            EditorGUILayout.Vector3IntField("Position: ", lastClickedTilePosition);
+            EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
 
+            EditorGUILayout.LabelField("Name: " + selectedCastle.countryData.country.countryName, EditorStyles.boldLabel);
+            EditorGUILayout.Separator();
+
+            if(subEditor != null)
+            {
+                subEditor.DrawDefaultInspector();
+            }
+
+            if (GUILayout.Button("Remove"))
+            {
+                spawnMap.SetTile(selectedCastle.position, null);
+
+                mapDatabase.countryDataObjectDictionary.Remove(selectedCastle.countryData.country.countryID);
+                mapDatabase.castleSpawnTileDictionary.Remove(selectedCastle.position);
+
+                mapDatabase.Save();
+
+                DestroyImmediate(selectedCastle.countryData, true);
+                DestroyImmediate(selectedCastle, true);
+            }
         }
         else
         {
+            EditorGUILayout.Vector3IntField("Position: ", lastClickedTilePosition);
+            EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
+
+            if (selectedCreateType != MapDataType.None)
+            {
+                ShowCreateCastleMenu();
+                return;
+            }
 
             if (GUILayout.Button("Create Castle"))
             {
+                selectedCreateType = MapDataType.Country;
             }
 
             if (GUILayout.Button("Create Animal"))
             {
+                selectedCreateType = MapDataType.Animal;
             }
 
-
-            if (GUILayout.Button("Create Sparklies"))
+            if (GUILayout.Button("Create Interactable"))
             {
+                selectedCreateType = MapDataType.Interactable;
             }
         }
     }
