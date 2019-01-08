@@ -21,7 +21,7 @@ public class GameMapEditor : EditorWindow
     MapDatabase mapDatabase;
         
     Tilemap spawnMap;
-    CastleSpawnTile selectedCastle;
+    SpawnTile selectedTile;
 
     Editor subEditor;
 
@@ -74,24 +74,76 @@ public class GameMapEditor : EditorWindow
 
     void OnGUI()
     {
-        ShowCountryEditor();
+        EditorGUILayout.Vector3IntField("Position: ", lastClickedTilePosition);
+        EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
+
+        if(selectedTile != null)
+        {
+            if(selectedTile is CastleSpawnTile)
+            {
+                ShowCountry();
+            }
+            else if(selectedTile is InteractableSpawnTile)
+            {
+                ShowInteractable();
+            }
+
+            return;
+        }
+
+        if (selectedCreateType != MapDataType.None)
+        {
+            if (GUILayout.Button("Back"))
+            {
+                selectedCreateType = MapDataType.None;
+            }
+
+            if (selectedCreateType == MapDataType.Country)
+            {
+                ShowCreateCastleMenu();
+            }
+            else if (selectedCreateType == MapDataType.Interactable)
+            {
+                ShowCreateInteractableMenu();
+            }
+
+            return;
+        }
+
+        if (GUILayout.Button("Create Castle"))
+        {
+            selectedCreateType = MapDataType.Country;
+        }
+
+        if (GUILayout.Button("Create Animal"))
+        {
+            selectedCreateType = MapDataType.Animal;
+        }
+
+        if (GUILayout.Button("Create Interactable"))
+        {
+            selectedCreateType = MapDataType.Interactable;
+        }
     }
 
     void OnSceneGUI(SceneView sceneView)
     {
         if (Event.current.type == EventType.MouseDown)
         {
-            //Debug.Log("TEST");
-            /*if(GridSelection.active && GridSelection.target.name == "Spawn")
-            {
-                Debug.Log(GridSelection.position);
-            }*/
+            var tile = GetMousePositionTile<SpawnTile>();
 
-            var tile = GetMousePositionTile<CastleSpawnTile>();
+            selectedTile = tile;
 
-            if(tile != selectedCastle)
+            if (tile != selectedTile)
             {
-                SetNewCastle(tile);
+                if(tile is CastleSpawnTile)
+                {
+                    SetNewCastle(tile as CastleSpawnTile);
+                }
+                else if(tile is InteractableSpawnTile)
+                {
+                    SetNewInteractable(tile as InteractableSpawnTile);
+                }
             }
 
             Repaint();
@@ -124,16 +176,9 @@ public class GameMapEditor : EditorWindow
         return null;
     }
 
-    void ShowCountryEditor()
-    {
-        ShowCountry();
-
-
-    }
-
     void SetNewCastle(CastleSpawnTile newTile)
     {
-        selectedCastle = newTile;
+        selectedTile = newTile;
 
         if(subEditor != null)
         {
@@ -146,13 +191,85 @@ public class GameMapEditor : EditorWindow
         }
     }
 
-    void ShowCreateCastleMenu()
+    void SetNewInteractable(InteractableSpawnTile newTile)
     {
-        if (GUILayout.Button("Back"))
+        selectedTile = newTile;
+    }
+
+    void ShowCreateInteractableMenu()
+    {
+        if (mapDatabase.interactableSpawnTileDictionary.ContainsKey(lastClickedTilePosition))
         {
-            selectedCreateType = MapDataType.None;
+            EditorGUILayout.LabelField("Tile already contains a castle.", EditorStyles.boldLabel);
+            return;
         }
 
+        foreach (var obj in database.allPrefabs)
+        {
+            var interactable = obj as MapInteractableUnit;
+            if (interactable == null)
+            {
+                continue;
+            }
+
+            var texture = AssetPreview.GetAssetPreview(interactable.image);
+
+            GUIContent content = new GUIContent(texture);
+            if (GUILayout.Button(content))
+            {
+                var newTile = CreateInstance(typeof(InteractableSpawnTile)) as InteractableSpawnTile;
+                newTile.name = "Interactable SpawnTile";
+                newTile.position = lastClickedTilePosition;
+                newTile.sprite = interactable.image;
+                newTile.flags = TileFlags.LockTransform;
+
+                var matrix = Matrix4x4.Scale(new Vector3(.5f, .5f, 1f));
+                matrix.m33 = 0;
+                newTile.transform = matrix;
+
+
+                mapDatabase.interactableSpawnTileDictionary.Add(newTile.position, newTile);
+
+                AssetDatabase.AddObjectToAsset(newTile, mapDatabase);
+
+                spawnMap.SetTile(lastClickedTilePosition, newTile);
+
+                mapDatabase.Save();
+
+                SetNewInteractable(newTile);
+            }
+        }
+    }
+
+    void ShowInteractable()
+    {
+        var selectedInteractable = selectedTile as InteractableSpawnTile;
+
+        if (selectedInteractable != null)
+        {
+            EditorGUILayout.LabelField("Interactable", EditorStyles.boldLabel);
+            EditorGUILayout.Separator();
+
+            /*if (subEditor != null)
+            {
+                subEditor.DrawDefaultInspector();
+            }*/
+
+            if (GUILayout.Button("Remove"))
+            {
+                spawnMap.SetTile(selectedInteractable.position, null);
+                                
+                mapDatabase.interactableSpawnTileDictionary.Remove(selectedInteractable.position);
+
+                mapDatabase.Save();
+
+                DestroyImmediate(selectedInteractable, true);
+            }
+        }
+    }
+
+    void ShowCreateCastleMenu()
+    {
         if (mapDatabase.castleSpawnTileDictionary.ContainsKey(lastClickedTilePosition))
         {
             EditorGUILayout.LabelField("Tile already contains a castle.", EditorStyles.boldLabel);
@@ -207,16 +324,15 @@ public class GameMapEditor : EditorWindow
 
     void ShowCountry()
     {
-        if(selectedCastle != null)
+        var selectedCastle = selectedTile as CastleSpawnTile;
+
+        if (selectedCastle != null)
         {
             if(selectedCastle.countryData == null)
             {
                 EditorGUILayout.LabelField("Country Data not found.", EditorStyles.boldLabel);
                 return;
             }
-
-            EditorGUILayout.Vector3IntField("Position: ", lastClickedTilePosition);
-            EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
 
             EditorGUILayout.LabelField("Name: " + selectedCastle.countryData.country.countryName, EditorStyles.boldLabel);
             EditorGUILayout.Separator();
@@ -239,37 +355,6 @@ public class GameMapEditor : EditorWindow
                 DestroyImmediate(selectedCastle, true);
             }
         }
-        else
-        {
-            EditorGUILayout.Vector3IntField("Position: ", lastClickedTilePosition);
-            EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
-
-            if (selectedCreateType != MapDataType.None)
-            {
-                ShowCreateCastleMenu();
-                return;
-            }
-
-            if (GUILayout.Button("Create Castle"))
-            {
-                selectedCreateType = MapDataType.Country;
-            }
-
-            if (GUILayout.Button("Create Animal"))
-            {
-                selectedCreateType = MapDataType.Animal;
-            }
-
-            if (GUILayout.Button("Create Interactable"))
-            {
-                selectedCreateType = MapDataType.Interactable;
-            }
-        }
-    }
-
-    void ShowCountryList()
-    {
-
     }
 
 }

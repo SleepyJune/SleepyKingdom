@@ -10,6 +10,6 @@ public class UnitClickHandler : MonoBehaviour
 
     private void OnMouseDown()
     {
-        unit.OnMouseDownEvent();
+        unit.OnClickEvent();
     }
 }

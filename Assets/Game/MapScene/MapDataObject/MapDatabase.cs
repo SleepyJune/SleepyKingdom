@@ -12,9 +12,11 @@ public class MapDatabase : ScriptableObject
 
     public CountryDataObject[] countryDataObjects = new CountryDataObject[0];
     public CastleSpawnTile[] castleSpawnTiles = new CastleSpawnTile[0];
+    public InteractableSpawnTile[] interactableSpawnTiles = new InteractableSpawnTile[0];
 
     public Dictionary<int, CountryDataObject> countryDataObjectDictionary = new Dictionary<int, CountryDataObject>();
     public Dictionary<Vector3Int, CastleSpawnTile> castleSpawnTileDictionary = new Dictionary<Vector3Int, CastleSpawnTile>();
+    public Dictionary<Vector3Int, InteractableSpawnTile> interactableSpawnTileDictionary = new Dictionary<Vector3Int, InteractableSpawnTile>();
 
     public int countryCounter = 0;
 
@@ -22,12 +24,25 @@ public class MapDatabase : ScriptableObject
     {
         MakeCountryDictionary();
         MakeCastleDictionary();
+        MakeInteractableDictionary();
     }
 
     public void Save()
     {
         countryDataObjects = countryDataObjectDictionary.Values.ToArray();
         castleSpawnTiles = castleSpawnTileDictionary.Values.ToArray();
+        interactableSpawnTiles = interactableSpawnTileDictionary.Values.ToArray();
+    }
+
+    void MakeInteractableDictionary()
+    {
+        Dictionary<Vector3Int, InteractableSpawnTile> ret = new Dictionary<Vector3Int, InteractableSpawnTile>();
+        foreach (var data in interactableSpawnTiles)
+        {
+            ret.Add(data.position, data);
+        }
+
+        interactableSpawnTileDictionary = ret;
     }
 
     void MakeCountryDictionary()

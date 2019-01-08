@@ -100,7 +100,7 @@ public class MapResource : MapUnit
         }
     }
 
-    public override void OnMouseDownEvent()
+    public override void OnClickEvent()
     {
         manager.OnSelectResource(this);
     }

@@ -9,4 +9,6 @@ using UnityEngine;
 public class GameDatabase : ScriptableObject
 {
     public GameDataObject[] allObjects = new GameDataObject[0];
+
+    public MapUnit[] allPrefabs = new MapUnit[0];
 }

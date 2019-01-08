@@ -19,7 +19,9 @@ class GameDatabasePostProcessor : AssetPostprocessor
             database = (GameDatabase)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/GameDataObjects/GameDatabase.asset", typeof(GameDatabase));
         }
 
-        CheckModified("/Prefabs/GameDataObjects/", ref database.allObjects, importedAssets, deletedAssets);
+        CheckModified("/Prefabs/GameDataObjects/", ref database.allObjects, "*.asset", importedAssets, deletedAssets);
+
+        CheckModified("/Prefabs/Interactables/", ref database.allPrefabs, "*.prefab", importedAssets, deletedAssets);
 
         /*if (mapDatabase == null)
         {
@@ -29,7 +31,7 @@ class GameDatabasePostProcessor : AssetPostprocessor
         CheckModified("/Prefabs/MapDataObjects/", ref mapDatabase.allObjects, importedAssets, deletedAssets);*/
     }
 
-    static void CheckModified<T>(string path, ref T[] collection, string[] importedAssets, string[] deletedAssets)
+    static void CheckModified<T>(string path, ref T[] collection, string searchPattern, string[] importedAssets, string[] deletedAssets)
     {
         bool databaseModified = false;
 
@@ -58,7 +60,7 @@ class GameDatabasePostProcessor : AssetPostprocessor
         if (databaseModified)
         {
             CheckCollection(database.allObjects);
-            EditorHelperFunctions.GenerateFromAsset(path, ref collection, database, "*.asset");
+            EditorHelperFunctions.GenerateFromAsset(path, ref collection, database, searchPattern);
         }
     }
 

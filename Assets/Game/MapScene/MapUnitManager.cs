@@ -9,6 +9,8 @@ public class MapUnitManager : MonoBehaviour
     [NonSerialized]
     public Dictionary<int, MapUnit> allUnits = new Dictionary<int, MapUnit>();
 
+    public Transform popupParent;
+
     private int unitCounter = 0;
 
     public Transform unitParent;

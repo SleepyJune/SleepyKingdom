@@ -80,3 +80,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 49509a0b32d343d448ea67769ed92f5d, type: 2}
   - {fileID: 11400000, guid: 43de69a3d2c685a47b292e0b892868fa, type: 2}
   - {fileID: 11400000, guid: f22cc31023ec41d4888eb8cf74d336a2, type: 2}
+  allPrefabs:
+  - {fileID: 114505358365408646, guid: 3a213645604131744a500ca19c4edb55, type: 2}
