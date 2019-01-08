@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -6,6 +7,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 using UnityEditor;
+
 
 public class GameMapEditor : EditorWindow
 {
@@ -28,6 +30,16 @@ public class GameMapEditor : EditorWindow
     MapDataType selectedCreateType = MapDataType.None;
 
     Vector3Int lastClickedTilePosition;
+
+    Vector2 scrollPos;
+
+    CastleObject[] castleObjects = new CastleObject[0];
+    Texture[] castleTextures = new Texture[0];
+
+    MapInteractableUnit[] interactables = new MapInteractableUnit[0];
+    Texture[] interactableTextures = new Texture[0];
+
+    int selectionGridIndex = 0;
 
     [MenuItem("Game/Map Editor")]
     static void Init()
@@ -54,6 +66,8 @@ public class GameMapEditor : EditorWindow
             mapDatabase.InitDictionary();
         }
 
+        InitTextures();
+
         SceneView.onSceneGUIDelegate += OnSceneGUI;
 
         var map = GameObject.Find("SpawnMap");
@@ -70,6 +84,54 @@ public class GameMapEditor : EditorWindow
     private void OnDisable()
     {
         SceneView.onSceneGUIDelegate -= OnSceneGUI;
+    }
+
+    private void InitTextures()
+    {
+        List<Texture> castleTexturesList = new List<Texture>();
+        List<CastleObject> castleObjectsList = new List<CastleObject>();
+
+        foreach (var obj in database.allObjects)
+        {
+            var castleObject = obj as CastleObject;
+            if (castleObject == null)
+            {
+                continue;
+            }
+
+            var texture = AssetPreview.GetAssetPreview(castleObject.image);
+
+            castleTexturesList.Add(texture);
+            castleObjectsList.Add(castleObject);
+        }
+
+        castleTextures = castleTexturesList.ToArray();
+        castleObjects = castleObjectsList.ToArray();
+
+        List<Texture> interactableTextureList = new List<Texture>();
+        List<MapInteractableUnit> interactableList = new List<MapInteractableUnit>();
+
+        foreach (var obj in database.allPrefabs)
+        {
+            var interactable = obj as MapInteractableUnit;
+            if (interactable == null)
+            {
+                continue;
+            }
+
+            var texture = AssetPreview.GetAssetPreview(interactable.image);
+
+            interactableTextureList.Add(texture);
+            interactableList.Add(interactable);
+        }
+
+        interactableTextures = interactableTextureList.ToArray();
+        interactables = interactableList.ToArray();
+    }
+
+    private void RefreshDatabase()
+    {
+        InitTextures();
     }
 
     void OnGUI()
@@ -112,17 +174,25 @@ public class GameMapEditor : EditorWindow
 
         if (GUILayout.Button("Create Castle"))
         {
+            selectionGridIndex = 0;
             selectedCreateType = MapDataType.Country;
         }
 
         if (GUILayout.Button("Create Animal"))
         {
+            selectionGridIndex = 0;
             selectedCreateType = MapDataType.Animal;
         }
 
         if (GUILayout.Button("Create Interactable"))
         {
+            selectionGridIndex = 0;
             selectedCreateType = MapDataType.Interactable;
+        }
+
+        if (GUILayout.Button("Refresh Database"))
+        {
+            RefreshDatabase();
         }
     }
 
@@ -200,45 +270,43 @@ public class GameMapEditor : EditorWindow
     {
         if (mapDatabase.interactableSpawnTileDictionary.ContainsKey(lastClickedTilePosition))
         {
-            EditorGUILayout.LabelField("Tile already contains a castle.", EditorStyles.boldLabel);
+            EditorGUILayout.LabelField("Tile already contains an interactable.", EditorStyles.boldLabel);
             return;
         }
 
-        foreach (var obj in database.allPrefabs)
+        scrollPos = GUILayout.BeginScrollView(scrollPos, false, true);
+
+        int columns = (int)Math.Floor(Screen.width / 256.0f);
+
+        selectionGridIndex = GUILayout.SelectionGrid(selectionGridIndex, interactableTextures, columns, GUI.skin.button);
+
+        EditorGUILayout.Space();
+
+        if (GUILayout.Button("Add"))
         {
-            var interactable = obj as MapInteractableUnit;
-            if (interactable == null)
-            {
-                continue;
-            }
+            var interactable = interactables[selectionGridIndex];
 
-            var texture = AssetPreview.GetAssetPreview(interactable.image);
+            var newTile = CreateInstance(typeof(InteractableSpawnTile)) as InteractableSpawnTile;
+            newTile.name = "Interactable SpawnTile";
+            newTile.position = lastClickedTilePosition;
+            newTile.sprite = interactable.image;
+            newTile.flags = TileFlags.LockTransform;
 
-            GUIContent content = new GUIContent(texture);
-            if (GUILayout.Button(content))
-            {
-                var newTile = CreateInstance(typeof(InteractableSpawnTile)) as InteractableSpawnTile;
-                newTile.name = "Interactable SpawnTile";
-                newTile.position = lastClickedTilePosition;
-                newTile.sprite = interactable.image;
-                newTile.flags = TileFlags.LockTransform;
+            var matrix = Matrix4x4.Scale(new Vector3(.5f, .5f, 1f));
+            matrix.m33 = 0;
+            newTile.transform = matrix;
 
-                var matrix = Matrix4x4.Scale(new Vector3(.5f, .5f, 1f));
-                matrix.m33 = 0;
-                newTile.transform = matrix;
+            mapDatabase.interactableSpawnTileDictionary.Add(newTile.position, newTile);
 
+            AssetDatabase.AddObjectToAsset(newTile, mapDatabase);
 
-                mapDatabase.interactableSpawnTileDictionary.Add(newTile.position, newTile);
+            spawnMap.SetTile(lastClickedTilePosition, newTile);
 
-                AssetDatabase.AddObjectToAsset(newTile, mapDatabase);
+            mapDatabase.Save();
 
-                spawnMap.SetTile(lastClickedTilePosition, newTile);
-
-                mapDatabase.Save();
-
-                SetNewInteractable(newTile);
-            }
+            SetNewInteractable(newTile);
         }
+        GUILayout.EndScrollView();
     }
 
     void ShowInteractable()
@@ -276,50 +344,49 @@ public class GameMapEditor : EditorWindow
             return;
         }
 
-        foreach (var obj in database.allObjects)
+        scrollPos = GUILayout.BeginScrollView(scrollPos, false, true);
+
+        int columns = (int)Math.Floor(Screen.width / 256.0f);
+
+        selectionGridIndex = GUILayout.SelectionGrid(selectionGridIndex, castleTextures, columns, GUI.skin.button);
+
+        EditorGUILayout.Space();
+
+        if (GUILayout.Button("Add"))
         {
-            var castleObject = obj as CastleObject;
-            if (castleObject == null)
-            {
-                continue;
-            }
+            var castleObject = castleObjects[selectionGridIndex];
 
-            var texture = AssetPreview.GetAssetPreview(castleObject.image);
+            var newCountryData = CreateInstance(typeof(CountryDataObject)) as CountryDataObject;
+            var newCountry = new Country();
+            newCountryData.country = newCountry;
+            newCountryData.country.countryID = mapDatabase.countryCounter;
+            newCountryData.country.countryName = "Country " + newCountryData.country.countryID;
+            newCountryData.country.castleObjectID = castleObject.id;
+            newCountryData.country.position = lastClickedTilePosition;
+            newCountryData.name = newCountry.countryName + " Data";
 
-            GUIContent content = new GUIContent(texture, castleObject.name);
-            if (GUILayout.Button(content))
-            {
-                var newCountryData = CreateInstance(typeof(CountryDataObject)) as CountryDataObject;
-                var newCountry = new Country();
-                newCountryData.country = newCountry;
-                newCountryData.country.countryID = mapDatabase.countryCounter;
-                newCountryData.country.countryName = "Country " + newCountryData.country.countryID;
-                newCountryData.country.castleObjectID = castleObject.id;
-                newCountryData.country.position = lastClickedTilePosition;
-                newCountryData.name = newCountry.countryName + " Data";
+            mapDatabase.countryDataObjectDictionary.Add(mapDatabase.countryCounter, newCountryData);
+            mapDatabase.countryCounter += 1;
 
-                mapDatabase.countryDataObjectDictionary.Add(mapDatabase.countryCounter, newCountryData);
-                mapDatabase.countryCounter += 1;
+            var newTile = CreateInstance(typeof(CastleSpawnTile)) as CastleSpawnTile;
+            newTile.name = newCountry.countryName + " SpawnTile";
+            newTile.countryData = newCountryData;
+            newTile.position = lastClickedTilePosition;
+            newTile.sprite = castleObject.image;
 
-                var newTile = CreateInstance(typeof(CastleSpawnTile)) as CastleSpawnTile;
-                newTile.name = newCountry.countryName +" SpawnTile";
-                newTile.countryData = newCountryData;
-                newTile.position = lastClickedTilePosition;
-                newTile.sprite = castleObject.image;
+            mapDatabase.castleSpawnTileDictionary.Add(newTile.position, newTile);
 
-                mapDatabase.castleSpawnTileDictionary.Add(newTile.position, newTile);                                
+            AssetDatabase.AddObjectToAsset(newTile, mapDatabase);
+            AssetDatabase.AddObjectToAsset(newCountryData, mapDatabase);
 
-                AssetDatabase.AddObjectToAsset(newTile, mapDatabase);
-                AssetDatabase.AddObjectToAsset(newCountryData, mapDatabase);
+            spawnMap.SetTile(lastClickedTilePosition, newTile);
 
-                spawnMap.SetTile(lastClickedTilePosition, newTile);
+            mapDatabase.Save();
 
-                mapDatabase.Save();
-
-                SetNewCastle(newTile);
-            }
+            SetNewCastle(newTile);
         }
 
+        GUILayout.EndScrollView();
     }
 
     void ShowCountry()
