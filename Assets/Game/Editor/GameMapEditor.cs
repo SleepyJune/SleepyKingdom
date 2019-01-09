@@ -288,6 +288,7 @@ public class GameMapEditor : EditorWindow
 
             var newTile = CreateInstance(typeof(InteractableSpawnTile)) as InteractableSpawnTile;
             newTile.name = "Interactable SpawnTile";
+            newTile.prefab = interactable;
             newTile.position = lastClickedTilePosition;
             newTile.sprite = interactable.image;
             newTile.flags = TileFlags.LockTransform;

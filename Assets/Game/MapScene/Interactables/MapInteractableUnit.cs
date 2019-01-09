@@ -10,6 +10,18 @@ public class MapInteractableUnit : MapUnit
 
     public InteractablePopup popup;
 
+    public SpriteRenderer render;
+
+    protected override void Start()
+    {
+        if (render != null)
+        {
+            render.sprite = image;
+        }
+
+        base.Start();
+    }
+
     public override void OnClickEvent()
     {
         if(popup != null)

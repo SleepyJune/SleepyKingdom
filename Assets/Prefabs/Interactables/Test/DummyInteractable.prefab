@@ -163,6 +163,7 @@ MonoBehaviour:
   speed: 1
   image: {fileID: 21300014, guid: 807041c866d849d47b491ce9e7d0408d, type: 3}
   popup: {fileID: 114390949385556856, guid: 3c3cfc67bebeb11499030c7d0f46b2c1, type: 2}
+  render: {fileID: 212679466389861432}
 --- !u!212 &212679466389861432
 SpriteRenderer:
   m_ObjectHideFlags: 1

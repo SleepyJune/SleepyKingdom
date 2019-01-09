@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class MapUnitManager : MonoBehaviour
 {
+    public MapDatabase mapDatabase;
+
     [NonSerialized]
     public Dictionary<int, MapUnit> allUnits = new Dictionary<int, MapUnit>();
 
@@ -28,6 +30,11 @@ public class MapUnitManager : MonoBehaviour
 
     [NonSerialized]
     public MapCastleUnit myCastle;
+
+    private void Awake()
+    {
+        mapDatabase.InitDictionary();
+    }
 
     private void Start()
     {      
