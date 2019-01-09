@@ -30,13 +30,13 @@
                 "z": 0
             },
             "speed": 0.0,
-            "population": 6042.0,
+            "population": 6021.98046875,
             "maxCapacity": 6042.0,
-            "wood": 1566353.25,
-            "stone": 1566400.0,
-            "wheat": 3128612.75,
-            "gold": 1566382.0,
-            "water": 1560367.125,
+            "wood": 3045713.25,
+            "stone": 3045760.0,
+            "wheat": 6087312.0,
+            "gold": 3045742.0,
+            "water": 3037468.5,
             "taxRate": 83.0,
             "happiness": 94.0
         }

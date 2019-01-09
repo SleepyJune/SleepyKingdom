@@ -34,8 +34,6 @@ public class MapInteractableManager : MonoBehaviour
     {        
         if (save.prefab != null)
         {
-            Debug.Log("spawn");
-
             var newInteractable = Instantiate(save.prefab, unitManager.unitParent);
             newInteractable.position = save.position;
 
