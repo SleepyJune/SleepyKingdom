@@ -81,7 +81,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1962777317010096}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.021, y: -0.694, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 4941913740042184}
@@ -93,8 +93,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1778786280012684}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 33.284, y: -28.846, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4344420291009906}
@@ -162,7 +162,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 114421490022104948}
-          m_MethodName: OnMouseDownEvent
+          m_MethodName: OnClickEvent
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -186,11 +186,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cf9a8830dfbe8c45b06123d5798be81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: Quebec
+  id: 14
   unitId: 0
   position: {x: 0, y: 0, z: 0}
   canMove: 1
   speed: 1
-  castleSprite: {fileID: 212294970666330960}
+  image: {fileID: 21300018, guid: d39f8dcf51612f546b46a16c5383e66e, type: 3}
+  render: {fileID: 212294970666330960}
 --- !u!212 &212294970666330960
 SpriteRenderer:
   m_ObjectHideFlags: 1

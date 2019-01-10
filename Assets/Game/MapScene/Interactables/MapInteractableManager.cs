@@ -37,8 +37,6 @@ public class MapInteractableManager : MonoBehaviour
             var newInteractable = Instantiate(save.prefab, unitManager.unitParent);
             newInteractable.position = save.position;
 
-            unitManager.InitializeUnit(newInteractable);
-
             interactables.Add(save.position, newInteractable);
         }
     }

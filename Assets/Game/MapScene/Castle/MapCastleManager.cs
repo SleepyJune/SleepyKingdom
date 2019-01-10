@@ -6,15 +6,16 @@ using UnityEngine;
 
 public class MapCastleManager : MonoBehaviour
 {
+    public MapCastleUnit defaultCastleUnit;
+
     [NonSerialized]
     public Dictionary<int, MapCastleUnit> castles = new Dictionary<int, MapCastleUnit>();
-
-    public MapCastleUnit castlePrefab;
-    
+           
     [NonSerialized]
     public MapCastleUnit myCastle;
 
     MapUnitManager unitManager;
+
 
     private void Start()
     {
@@ -35,8 +36,6 @@ public class MapCastleManager : MonoBehaviour
 
         foreach (var save in GameManager.instance.gameStateManager.gameState.mapCastles)
         {
-            //unitManager.InitializeUnit(unit);
-
             if (!castles.ContainsKey(save.countryID))
             {
                 Load(save);
@@ -56,9 +55,14 @@ public class MapCastleManager : MonoBehaviour
 
         if (country != null)
         {
-            var newCastle = Instantiate(castlePrefab, unitManager.unitParent);
+            var castlePrefab = defaultCastleUnit;
 
-            unitManager.InitializeUnit(newCastle);
+            if (country.castlePrefabId != 0)
+            {
+                castlePrefab = GameManager.instance.gamedatabaseManager.GetPrefab<MapCastleUnit>(country.castlePrefabId);
+            }
+
+            var newCastle = Instantiate(castlePrefab, unitManager.unitParent);
 
             newCastle.Load(save, country);
 
@@ -73,22 +77,22 @@ public class MapCastleManager : MonoBehaviour
 
     public void AddCastleUnit(Country country)
     {
+        var castlePrefab = defaultCastleUnit;
+
+        if (country.castlePrefabId != 0)
+        {
+            castlePrefab = GameManager.instance.gamedatabaseManager.GetPrefab<MapCastleUnit>(country.castlePrefabId);
+        }
+
         var newCastle = Instantiate(castlePrefab, unitManager.unitParent);
         newCastle.country = country;
         newCastle.position = country.position;
-
-        if (country.castleObject != null)
-        {
-            newCastle.castleObject = country.castleObject;
-        }
 
         if (country.countryID == 1)
         {
             myCastle = newCastle;
             unitManager.myCastle = newCastle;
         }
-
-        unitManager.InitializeUnit(newCastle);
 
         castles.Add(country.countryID, newCastle);
     }

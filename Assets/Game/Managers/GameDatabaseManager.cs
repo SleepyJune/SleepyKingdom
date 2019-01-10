@@ -11,6 +11,7 @@ public class GameDatabaseManager : MonoBehaviour
     public GameDatabase database;
 
     public Dictionary<int, GameDataObject> allObjects = new Dictionary<int, GameDataObject>();
+    public Dictionary<int, GameDataPrefab> allPrefabs = new Dictionary<int, GameDataPrefab>();
 
     public Dictionary<int, SpriteObject> spriteObjects = new Dictionary<int, SpriteObject>();
 
@@ -28,10 +29,24 @@ public class GameDatabaseManager : MonoBehaviour
 
     private void Awake()
     {
-        foreach(var obj in database.allObjects)
+        InitializeObjectDictionary();
+        InitializePrefabDictionary();
+    }
+
+    void InitializePrefabDictionary()
+    {
+        foreach (var prefab in database.allPrefabs)
         {
-            if(obj is SpriteObject)
-            {                
+            allPrefabs.Add(prefab.id, prefab);
+        }
+    }
+
+    void InitializeObjectDictionary()
+    {
+        foreach (var obj in database.allObjects)
+        {
+            if (obj is SpriteObject)
+            {
                 spriteObjects.Add(obj.id, obj as SpriteObject);
             }
 
@@ -45,38 +60,28 @@ public class GameDatabaseManager : MonoBehaviour
                 castleObjects.Add(obj.id, obj as CastleObject);
             }
 
-            if(obj is ShopItemObject)
+            if (obj is ShopItemObject)
             {
                 shopItemObjects.Add(obj.id, obj as ShopItemObject);
             }
 
-            if(obj is CountryUpgradeObject)
+            if (obj is CountryUpgradeObject)
             {
                 countryUpgradeObjects.Add(obj.id, obj as CountryUpgradeObject);
             }
 
-            if(obj is BattleUnitObject)
+            if (obj is BattleUnitObject)
             {
                 battleUnitObjects.Add(obj.id, obj as BattleUnitObject);
             }
 
-            if(obj is MapResourceObject)
+            if (obj is MapResourceObject)
             {
                 mapResourcesObjects.Add(obj.id, obj as MapResourceObject);
             }
 
             allObjects.Add(obj.id, obj);
         }
-
-        /*foreach (var obj in database.allBuildings)
-        {
-            buildingObjects.Add(obj.buildingName, obj);
-        }
-
-        foreach (var obj in database.allCastles)
-        {
-            castleObjects.Add(obj.castleName, obj);
-        }*/
     }
 
     public List<T> GetAllObjects<T>(int id) where T : GameDataObject
@@ -86,12 +91,33 @@ public class GameDatabaseManager : MonoBehaviour
         return allObjects.Values.OfType<T>().ToList();
     }
 
-    public GameDataObject GetObject(int id)
+    public T GetPrefab<T>(int id) where T : GameDataPrefab
+    {
+        GameDataPrefab prefab;
+        if (allPrefabs.TryGetValue(id, out prefab))
+        {
+            var ret = prefab as T;
+
+            if(ret != null)
+            {
+                return ret;
+            }
+        }
+
+        return null;
+    }
+
+    public T GetObject<T>(int id) where T : GameDataObject
     {
         GameDataObject obj;
         if (allObjects.TryGetValue(id, out obj))
         {
-            return obj;
+            var ret = obj as T;
+
+            if (ret != null)
+            {
+                return ret;
+            }
         }
 
         return null;

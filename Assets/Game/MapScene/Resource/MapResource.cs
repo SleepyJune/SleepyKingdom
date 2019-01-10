@@ -50,8 +50,6 @@ public class MapResource : MapUnit
         position = pos;
 
         manager.resources.Add(this);
-
-        manager.unitManager.InitializeUnit(this);
     }
 
     public override void Death()
@@ -122,7 +120,7 @@ public class MapResource : MapUnit
     {
         if (resourceID != -1 && GameManager.instance)
         {
-            resourceObject = GameManager.instance.gamedatabaseManager.GetObject(resourceID) as MapResourceObject;
+            resourceObject = GameManager.instance.gamedatabaseManager.GetObject<MapResourceObject>(resourceID);
 
             if (resourceObject == null)
             {

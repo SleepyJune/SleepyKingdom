@@ -37,7 +37,7 @@ class GameDatabasePostProcessor : AssetPostprocessor
 
         CheckModified("/Prefabs/GameDataObjects/", ref database.allObjects, "*.asset", info);
 
-        CheckModified("/Prefabs/Interactables/", ref database.allPrefabs, "*.prefab", info);
+        CheckModified("/Prefabs/Units/", ref database.allPrefabs, "*.prefab", info);
 
         /*if (mapDatabase == null)
         {
@@ -47,7 +47,7 @@ class GameDatabasePostProcessor : AssetPostprocessor
         CheckModified("/Prefabs/MapDataObjects/", ref mapDatabase.allObjects, importedAssets, deletedAssets);*/
     }
 
-    static void CheckModified<T>(string path, ref T[] collection, string searchPattern, AssetInfo info)
+    static void CheckModified<T>(string path, ref T[] collection, string searchPattern, AssetInfo info) where T : UnityEngine.Object, IGameDataObject
     {
         bool databaseModified = false;
 
@@ -81,16 +81,17 @@ class GameDatabasePostProcessor : AssetPostprocessor
         if (databaseModified)
         {
             EditorHelperFunctions.GenerateFromAsset(path, ref collection, database, searchPattern);
-            CheckCollection(database.allObjects, info);
+
+            CheckCollection(collection, info);
         }
     }
 
-    static void CheckCollection(GameDataObject[] collection, AssetInfo info)
+    static void CheckCollection<T>(T[] collection, AssetInfo info) where T : UnityEngine.Object, IGameDataObject
     {
-        int counter = collection.Max(i => i.id) + 1;               
+        int counter = collection.Max(i => i.GetID()) + 1;               
 
         HashSet<int> itemID = new HashSet<int>();
-        HashSet<GameDataObject> checkItems = new HashSet<GameDataObject>();
+        HashSet<T> checkItems = new HashSet<T>();
 
         for(int i = collection.Length - 1; i >= 0; i--)
         {
@@ -108,17 +109,15 @@ class GameDatabasePostProcessor : AssetPostprocessor
         {
             foreach(var checkItem in checkItems)
             {
-                if(item.id == checkItem.id)
+                if(item.GetID() == checkItem.GetID() || item.GetID() == 0)
                 {
                     var path = AssetDatabase.GetAssetPath(item);
                     var path2 = AssetDatabase.GetAssetPath(checkItem);
 
                     if(path != path2)
                     {
-                        checkItem.id = counter;
-
+                        checkItem.SetID(counter);
                         counter += 1;
-
                         EditorUtility.SetDirty(checkItem);
 
                         Debug.Log("Changed id: " + checkItem.name);
@@ -126,13 +125,24 @@ class GameDatabasePostProcessor : AssetPostprocessor
                 }
             }
 
-            if (itemID.Contains(item.id))
+            if (itemID.Contains(item.GetID()) || item.GetID() == 0)
             {
-                Debug.Log("GameDataObject with the same id: " + item.name);                
+                if(item.GetID() == 0)
+                {
+                    item.SetID(counter);
+                    counter += 1;
+                    EditorUtility.SetDirty(item);
+
+                    Debug.Log("Changed id: " + item.name);
+                }
+                else
+                {
+                    Debug.Log("GameDataObject with the same id: " + item.name);                
+                }
             }
             else
             {
-                itemID.Add(item.id);
+                itemID.Add(item.GetID());
             }
         }
     }

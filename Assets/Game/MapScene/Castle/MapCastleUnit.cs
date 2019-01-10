@@ -10,18 +10,17 @@ public class MapCastleUnit : MapUnit
     [NonSerialized]
     public Country country;
 
-    [NonSerialized]
-    public CastleObject castleObject;
+    public Sprite image;
 
-    public SpriteRenderer castleSprite;
+    public SpriteRenderer render;
 
     protected override void Start()
     {
         base.Start();
 
-        if(castleObject != null)
+        if(render != null)
         {
-            castleSprite.sprite = castleObject.image;
+            render.sprite = image;
         }
     }
 
@@ -36,7 +35,6 @@ public class MapCastleUnit : MapUnit
         {
             countryID = country.countryID,
             position = country.position,
-
         };
 
         return save;
@@ -47,7 +45,5 @@ public class MapCastleUnit : MapUnit
         position = save.position;
 
         this.country = country;
-
-        castleObject = country.castleObject;
     }
 }

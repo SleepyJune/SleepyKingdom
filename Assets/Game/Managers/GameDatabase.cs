@@ -10,5 +10,5 @@ public class GameDatabase : ScriptableObject
 {
     public GameDataObject[] allObjects = new GameDataObject[0];
 
-    public MapUnit[] allPrefabs = new MapUnit[0];
+    public GameDataPrefab[] allPrefabs = new GameDataPrefab[0];
 }

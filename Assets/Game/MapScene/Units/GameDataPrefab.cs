@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-public class GameDataObject : ScriptableObject, IGameDataObject
+public class GameDataPrefab : MonoBehaviour, IGameDataObject
 {
     public new string name;
 

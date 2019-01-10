@@ -98,15 +98,6 @@ public class GlobalCountryManager : MonoBehaviour
         AddCountry(country);
     }
 
-    public void OnCreateCountry(string name, CastleObject castle, Vector3Int position)
-    {
-        var country = Country.Generate(name);
-        country.castleObject = castle;
-        country.position = position;
-
-        AddCountry(country);
-    }
-
     private void Update()
     {
         UpdateCountryPopulation();

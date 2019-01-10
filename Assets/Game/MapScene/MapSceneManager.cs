@@ -7,6 +7,8 @@ using UnityEngine.Tilemaps;
 
 public class MapSceneManager : MonoBehaviour
 {
+    public static MapSceneManager instance;
+
     public Tilemap terrainMap;
     public Tilemap overlayMap;
 
@@ -19,7 +21,7 @@ public class MapSceneManager : MonoBehaviour
     [NonSerialized]
     public MapResourceManager resourceManager;
 
-    /*void Awake()
+    void Awake()
     {
         if (instance == null)
         {
@@ -30,19 +32,14 @@ public class MapSceneManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-    }*/
 
-    private void Awake()
-    {
         Pathfinder.Initialize(terrainMap);
-    }
 
-    private void Start()
-    {
         unitManager = GetComponent<MapUnitManager>();
         resourceManager = GetComponent<MapResourceManager>();
         castleManager = GetComponent<MapCastleManager>();
     }
+   
 
     private void OnDestroy()
     {

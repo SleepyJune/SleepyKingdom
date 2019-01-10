@@ -3,14 +3,14 @@
         {
             "countryID": 1,
             "countryName": "bbb",
-            "castleObjectID": 5,
+            "castlePrefabId": 14,
             "position": {
-                "x": 0,
-                "y": 4,
+                "x": -1,
+                "y": 2,
                 "z": 0
             },
             "speed": 0.0,
-            "population": 11400.0,
+            "population": 11381.115234375,
             "maxCapacity": 11400.0,
             "wood": 3.970494296116562e33,
             "stone": 3.970494296116562e33,
@@ -23,20 +23,20 @@
         {
             "countryID": 4,
             "countryName": "aaa",
-            "castleObjectID": 6,
+            "castlePrefabId": 5,
             "position": {
-                "x": 1,
-                "y": -2,
+                "x": -1,
+                "y": -3,
                 "z": 0
             },
             "speed": 0.0,
-            "population": 6021.98046875,
+            "population": 6041.98291015625,
             "maxCapacity": 6042.0,
-            "wood": 3045713.25,
-            "stone": 3045760.0,
-            "wheat": 6087312.0,
-            "gold": 3045742.0,
-            "water": 3037468.5,
+            "wood": 3206783.25,
+            "stone": 3206830.0,
+            "wheat": 6409448.5,
+            "gold": 3206812.0,
+            "water": 3198534.5,
             "taxRate": 83.0,
             "happiness": 94.0
         }
@@ -44,16 +44,16 @@
     "mapCastles": [
         {
             "position": {
-                "x": 0,
-                "y": 4,
+                "x": -1,
+                "y": 2,
                 "z": 0
             },
             "countryID": 1
         },
         {
             "position": {
-                "x": 1,
-                "y": -2,
+                "x": -1,
+                "y": -3,
                 "z": 0
             },
             "countryID": 4

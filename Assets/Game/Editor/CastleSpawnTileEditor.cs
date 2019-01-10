@@ -54,12 +54,12 @@ public class CastleSpawnTileEditor : Editor
     {
         Debug.Log("validate");
 
-        if(tile.countryData != null && tile.countryData.country.castleObjectID != 0)
+        if(tile.countryData != null && tile.countryData.country.castlePrefabId != 0)
         {
-            var castleObj = database.allObjects.FirstOrDefault(obj => obj.id == tile.countryData.country.castleObjectID) as CastleObject;
-            if(castleObj != null)
+            var castlePrefab = database.allPrefabs.FirstOrDefault(prefab => prefab.id == tile.countryData.country.castlePrefabId) as MapCastleUnit;
+            if(castlePrefab != null)
             {
-                tile.sprite = castleObj.image;
+                tile.sprite = castlePrefab.image;
             }
         }
         else

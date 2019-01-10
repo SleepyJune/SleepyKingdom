@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.EventSystems;
 
-public class MapUnit : MonoBehaviour
+public class MapUnit : GameDataPrefab
 {
     public int unitId;
 
@@ -35,6 +35,8 @@ public class MapUnit : MonoBehaviour
 
     protected virtual void Start()
     {
+        MapSceneManager.instance.unitManager.InitializeUnit(this);
+
         tilemap = Pathfinder.tilemap;
 
         SetPosition(position);

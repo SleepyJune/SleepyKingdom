@@ -33,7 +33,7 @@ public class GameMapEditor : EditorWindow
 
     Vector2 scrollPos;
 
-    CastleObject[] castleObjects = new CastleObject[0];
+    MapCastleUnit[] castlePrefabs = new MapCastleUnit[0];
     Texture[] castleTextures = new Texture[0];
 
     MapInteractableUnit[] interactables = new MapInteractableUnit[0];
@@ -88,45 +88,43 @@ public class GameMapEditor : EditorWindow
 
     private void InitTextures()
     {
-        List<Texture> castleTexturesList = new List<Texture>();
-        List<CastleObject> castleObjectsList = new List<CastleObject>();
-
         foreach (var obj in database.allObjects)
         {
-            var castleObject = obj as CastleObject;
-            if (castleObject == null)
-            {
-                continue;
-            }
-
-            var texture = AssetPreview.GetAssetPreview(castleObject.image);
-
-            castleTexturesList.Add(texture);
-            castleObjectsList.Add(castleObject);
+                       
         }
-
-        castleTextures = castleTexturesList.ToArray();
-        castleObjects = castleObjectsList.ToArray();
 
         List<Texture> interactableTextureList = new List<Texture>();
         List<MapInteractableUnit> interactableList = new List<MapInteractableUnit>();
 
+        List<Texture> castleTexturesList = new List<Texture>();
+        List<MapCastleUnit> castleObjectsList = new List<MapCastleUnit>();
+
         foreach (var obj in database.allPrefabs)
         {
             var interactable = obj as MapInteractableUnit;
-            if (interactable == null)
+            if (interactable != null)
             {
-                continue;
+                var texture = AssetPreview.GetAssetPreview(interactable.image);
+
+                interactableTextureList.Add(texture);
+                interactableList.Add(interactable);
+            }            
+
+            var castleObject = obj as MapCastleUnit;
+            if (castleObject != null)
+            {
+                var texture = AssetPreview.GetAssetPreview(castleObject.image);
+
+                castleTexturesList.Add(texture);
+                castleObjectsList.Add(castleObject);
             }
-
-            var texture = AssetPreview.GetAssetPreview(interactable.image);
-
-            interactableTextureList.Add(texture);
-            interactableList.Add(interactable);
         }
 
         interactableTextures = interactableTextureList.ToArray();
         interactables = interactableList.ToArray();
+
+        castleTextures = castleTexturesList.ToArray();
+        castlePrefabs = castleObjectsList.ToArray();
     }
 
     private void RefreshDatabase()
@@ -355,14 +353,14 @@ public class GameMapEditor : EditorWindow
 
         if (GUILayout.Button("Add"))
         {
-            var castleObject = castleObjects[selectionGridIndex];
+            var castleObject = castlePrefabs[selectionGridIndex];
 
             var newCountryData = CreateInstance(typeof(CountryDataObject)) as CountryDataObject;
             var newCountry = new Country();
             newCountryData.country = newCountry;
             newCountryData.country.countryID = mapDatabase.countryCounter;
             newCountryData.country.countryName = "Country " + newCountryData.country.countryID;
-            newCountryData.country.castleObjectID = castleObject.id;
+            newCountryData.country.castlePrefabId = castleObject.id;
             newCountryData.country.position = lastClickedTilePosition;
             newCountryData.name = newCountry.countryName + " Data";
 

@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class MapResourceCollector : MapUnit
 {
-    MapResource resource;
+    public MapResource resource;
 
     MapCastleUnit castle;
 
@@ -28,12 +28,13 @@ public class MapResourceCollector : MapUnit
     {
         anim = GetComponent<Animator>();
         base.Start();
+
+        SetResource();
     }
 
-    public void SetResource(MapResource resource)
+    void SetResource()
     {
         castle = unitManager.myCastle;
-        this.resource = resource;
 
         position = castle.position;
         SetMovePosition(resource.position);

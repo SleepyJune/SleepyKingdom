@@ -7,17 +7,15 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 [Serializable]
-public class Country : ISerializationCallbackReceiver
+public class Country
 {
     public int countryID;
 
     public string countryName;
 
     //public Tower tower;
-        
-    [NonSerialized]
-    public CastleObject castleObject;
-    public int castleObjectID;
+    
+    public int castlePrefabId;
     public Vector3Int position;
 
     public float speed;
@@ -100,21 +98,5 @@ public class Country : ISerializationCallbackReceiver
     public override int GetHashCode()
     {
         return countryID;
-    }
-
-    public void OnBeforeSerialize()
-    {
-        if (castleObject)
-        {
-            castleObjectID = castleObject.id;
-        }
-    }
-
-    public void OnAfterDeserialize()
-    {
-        if (castleObjectID != 0 && GameManager.instance)
-        {
-            castleObject = GameManager.instance.gamedatabaseManager.GetObject(castleObjectID) as CastleObject;
-        }
     }
 }

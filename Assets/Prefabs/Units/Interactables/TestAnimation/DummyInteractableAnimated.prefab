@@ -176,6 +176,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fefa51a2a0e04c468e0f84127c6f472, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: 
+  id: 11
   unitId: 0
   position: {x: 0, y: 0, z: 0}
   canMove: 1
