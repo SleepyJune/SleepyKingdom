@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class MapUnitManager : MonoBehaviour
 {
+    [NonSerialized]
     public MapDatabase mapDatabase;
 
     [NonSerialized]
@@ -30,16 +31,12 @@ public class MapUnitManager : MonoBehaviour
 
     [NonSerialized]
     public MapCastleUnit myCastle;
-
-    private void Awake()
-    {
-        mapDatabase.InitDictionary();
-    }
-
+        
     private void Start()
     {      
         gameTileClickHandler.OnGameTileClickedEvent += OnGameTileClickedEvent;
 
+        mapDatabase = GameManager.instance.gamedatabaseManager.mapDatabase;
         map = Pathfinder.map;
     }
 

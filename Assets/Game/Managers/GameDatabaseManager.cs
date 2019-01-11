@@ -10,6 +10,8 @@ public class GameDatabaseManager : MonoBehaviour
 {
     public GameDatabase database;
 
+    public MapDatabase mapDatabase;
+
     public Dictionary<int, GameDataObject> allObjects = new Dictionary<int, GameDataObject>();
     public Dictionary<int, GameDataPrefab> allPrefabs = new Dictionary<int, GameDataPrefab>();
 
@@ -31,6 +33,8 @@ public class GameDatabaseManager : MonoBehaviour
     {
         InitializeObjectDictionary();
         InitializePrefabDictionary();
+
+        mapDatabase.InitDictionary();
     }
 
     void InitializePrefabDictionary()

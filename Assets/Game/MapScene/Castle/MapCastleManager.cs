@@ -81,7 +81,11 @@ public class MapCastleManager : MonoBehaviour
 
         if (country.castlePrefabId != 0)
         {
-            castlePrefab = GameManager.instance.gamedatabaseManager.GetPrefab<MapCastleUnit>(country.castlePrefabId);
+            var prefab = GameManager.instance.gamedatabaseManager.GetPrefab<MapCastleUnit>(country.castlePrefabId);
+            if(prefab != null)
+            {
+                castlePrefab = prefab;
+            }
         }
 
         var newCastle = Instantiate(castlePrefab, unitManager.unitParent);

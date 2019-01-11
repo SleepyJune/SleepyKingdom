@@ -2,61 +2,61 @@
     "countries": [
         {
             "countryID": 1,
-            "countryName": "bbb",
-            "castlePrefabId": 14,
+            "countryName": "MyCountry",
+            "castlePrefabId": 5,
             "position": {
                 "x": -1,
-                "y": 2,
+                "y": 0,
                 "z": 0
             },
             "speed": 0.0,
-            "population": 11381.115234375,
-            "maxCapacity": 11400.0,
-            "wood": 3.970494296116562e33,
-            "stone": 3.970494296116562e33,
-            "wheat": 7.875084997331707e33,
-            "gold": 3.970494296116562e33,
-            "water": 3.904590082245126e33,
+            "population": 0.0,
+            "maxCapacity": 0.0,
+            "wood": 0.0,
+            "stone": 0.0,
+            "wheat": 0.0,
+            "gold": 0.0,
+            "water": 0.0,
             "taxRate": 0.0,
             "happiness": 0.0
         },
         {
-            "countryID": 4,
-            "countryName": "aaa",
-            "castlePrefabId": 5,
+            "countryID": 186,
+            "countryName": "Country 186",
+            "castlePrefabId": 14,
             "position": {
-                "x": -1,
-                "y": -3,
+                "x": 0,
+                "y": -23,
                 "z": 0
             },
             "speed": 0.0,
-            "population": 6041.98291015625,
-            "maxCapacity": 6042.0,
-            "wood": 3206783.25,
-            "stone": 3206830.0,
-            "wheat": 6409448.5,
-            "gold": 3206812.0,
-            "water": 3198534.5,
-            "taxRate": 83.0,
-            "happiness": 94.0
+            "population": 0.0,
+            "maxCapacity": 0.0,
+            "wood": 0.0,
+            "stone": 0.0,
+            "wheat": 0.0,
+            "gold": 0.0,
+            "water": 0.0,
+            "taxRate": 0.0,
+            "happiness": 0.0
         }
     ],
     "mapCastles": [
         {
             "position": {
                 "x": -1,
-                "y": 2,
+                "y": 0,
                 "z": 0
             },
             "countryID": 1
         },
         {
             "position": {
-                "x": -1,
-                "y": -3,
+                "x": 0,
+                "y": -23,
                 "z": 0
             },
-            "countryID": 4
+            "countryID": 186
         }
     ],
     "mapResources": [

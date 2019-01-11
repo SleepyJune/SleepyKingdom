@@ -199,9 +199,7 @@ public class GameMapEditor : EditorWindow
         if (Event.current.type == EventType.MouseDown)
         {
             var tile = GetMousePositionTile<SpawnTile>();
-
-            selectedTile = tile;
-
+                        
             if (tile != selectedTile)
             {
                 if(tile is CastleSpawnTile)
@@ -213,6 +211,8 @@ public class GameMapEditor : EditorWindow
                     SetNewInteractable(tile as InteractableSpawnTile);
                 }
             }
+
+            selectedTile = tile;
 
             Repaint();
         }

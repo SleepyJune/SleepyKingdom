@@ -20,31 +20,32 @@ public class GameState
     public int gems;
 
     [NonSerialized]
-    private List<Country> countryList = new List<Country>();
+    private Dictionary<int, Country> countryDictionary = new Dictionary<int, Country>();
 
     public int countryCounter = Country.countryCounter;
 
     public void AddCountry(Country newCountry)
     {
-        countryList.Add(newCountry);
+        if (countryDictionary.ContainsKey(newCountry.countryID))
+        {
+            Debug.Log("Duplicate country id: " + newCountry.countryID);
+            return;
+        }
 
-        countries = countryList.ToArray();
+        countryDictionary.Add(newCountry.countryID, newCountry);
+
+        countries = countryDictionary.Values.ToArray();
 
         Save();
     }
 
     public void DeleteCountry(Country country)
     {
-        countryList.Remove(country);
+        countryDictionary.Remove(country.countryID);
 
-        countries = countryList.ToArray();
+        countries = countryDictionary.Values.ToArray();
 
         Save();
-    }
-
-    public Country GetCountry(int countryID)
-    {
-        return countryList.Find(c => c.countryID == countryID);
     }
 
     private void SaveCounters()
@@ -69,16 +70,32 @@ public class GameState
         Save();
     }
 
-    public List<Country> GetCountries()
+    public ICollection<Country> GetCountries()
     {
-        return countryList;
+        return countryDictionary.Values;
+    }
+
+    public Country GetCountry(int id)
+    {
+        return countryDictionary.GetObject(id);
+    }
+
+    public bool CountryExists(int id)
+    {
+        return countryDictionary.ContainsKey(id);
     }
 
     private void Initialize()
     {
         foreach(var country in countries)
         {
-            countryList.Add(country);
+            if (countryDictionary.ContainsKey(country.countryID))
+            {
+                Debug.Log("Duplicate country id: " + country.countryID);
+                continue;
+            }
+
+            countryDictionary.Add(country.countryID, country);
         }
     }
 
