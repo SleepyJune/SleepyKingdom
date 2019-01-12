@@ -17,12 +17,22 @@ public class MapSceneInputManager : MonoBehaviour
     {
         cameraController = GetComponent<MapSceneCameraController>();
 
-        inputManager = GameManager.instance.inputManager;
+        inputManager = GetComponent<TouchInputManager>();
         inputManager.touchStart += TouchStart;
         inputManager.touchMove += TouchMove;
         inputManager.touchEnd += TouchEnd;
 
         mapUnitMask = LayerMask.GetMask("Unit");
+    }
+
+    private void OnDestroy()
+    {
+        if (inputManager)
+        {
+            inputManager.touchStart -= TouchStart;
+            inputManager.touchMove -= TouchMove;
+            inputManager.touchEnd -= TouchEnd;
+        }
     }
 
     public bool isMultiTouch()

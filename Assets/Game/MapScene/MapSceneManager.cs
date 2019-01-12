@@ -26,15 +26,9 @@ public class MapSceneManager : MonoBehaviour
 
     void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else if (instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
+        instance = this;
+
+        terrainMap = TerrainMapController.instance.tilemap;
 
         Pathfinder.Initialize(terrainMap);
 

@@ -11,7 +11,7 @@ public class TouchInputManager : MonoBehaviour
 {
     //public static TouchInputManager instance = null;
 
-    GraphicRaycaster graphicRaycaster;
+    public GraphicRaycaster graphicRaycaster;
 
     public Dictionary<int, TouchInput> inputs;
 
@@ -47,17 +47,6 @@ public class TouchInputManager : MonoBehaviour
         }
 
         inputs = new Dictionary<int, TouchInput>();
-    }
-
-    private void OnEnable()
-    {
-        graphicRaycaster = null;
-
-        var canvas = GameObject.Find("Canvas");
-        if(canvas != null)
-        {
-            graphicRaycaster = canvas.GetComponent<GraphicRaycaster>();
-        }
     }
 
     void Update()
