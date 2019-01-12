@@ -23,18 +23,20 @@ public class MapUnitManager : MonoBehaviour
     public ActionCircleController actionCircle;
 
     public CastleWindowController castleWindow;
-
-    public GameTileClickHandler gameTileClickHandler;
-
+    
     private UnitCommandType currentCommand = UnitCommandType.None;
     private MapCastleUnit currentSelectedUnit = null;
 
     [NonSerialized]
     public MapCastleUnit myCastle;
-        
+
+    [NonSerialized]
+    public MapSceneInputManager inputManager;
+
     private void Start()
-    {      
-        gameTileClickHandler.OnGameTileClickedEvent += OnGameTileClickedEvent;
+    {
+        //gameTileClickHandler.OnGameTileClickedEvent += OnGameTileClickedEvent;
+        inputManager = GetComponent<MapSceneInputManager>();
 
         mapDatabase = GameManager.instance.gamedatabaseManager.mapDatabase;
         map = Pathfinder.map;
@@ -42,7 +44,7 @@ public class MapUnitManager : MonoBehaviour
 
     private void OnDestroy()
     {
-         gameTileClickHandler.OnGameTileClickedEvent -= OnGameTileClickedEvent;        
+
     }
 
     public void OnActionCircleButtonClick(MapCastleUnit castle, UnitCommandType actionType)

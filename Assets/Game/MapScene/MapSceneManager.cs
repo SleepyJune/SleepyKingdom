@@ -13,6 +13,9 @@ public class MapSceneManager : MonoBehaviour
     public Tilemap overlayMap;
 
     [NonSerialized]
+    public MapSceneCameraController cameraController;
+
+    [NonSerialized]
     public MapUnitManager unitManager;
 
     [NonSerialized]
@@ -38,6 +41,7 @@ public class MapSceneManager : MonoBehaviour
         unitManager = GetComponent<MapUnitManager>();
         resourceManager = GetComponent<MapResourceManager>();
         castleManager = GetComponent<MapCastleManager>();
+        cameraController = GetComponent<MapSceneCameraController>();
     }
    
 

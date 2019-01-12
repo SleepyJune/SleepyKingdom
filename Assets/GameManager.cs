@@ -25,6 +25,9 @@ public class GameManager : MonoBehaviour
 
     [NonSerialized]
     public GlobalCountryManager globalCountryManager;
+
+    [NonSerialized]
+    public TouchInputManager inputManager;
     
     void Awake()
     {
@@ -45,6 +48,7 @@ public class GameManager : MonoBehaviour
         eventManager = GetComponent<EventManager>();
         weatherManager = GetComponent<WeatherManager>();
         globalCountryManager = GetComponent<GlobalCountryManager>();
+        inputManager = GetComponent<TouchInputManager>();
     }
 
     private void OnApplicationQuit()
