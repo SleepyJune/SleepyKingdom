@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.EventSystems;
 
-public class MapUnit : MonoBehaviour
+public class MapUnit : GameDataPrefab
 {
     public int unitId;
 
@@ -35,16 +35,13 @@ public class MapUnit : MonoBehaviour
 
     protected virtual void Start()
     {
+        MapSceneManager.instance.unitManager.InitializeUnit(this);
+
         tilemap = Pathfinder.tilemap;
 
         SetPosition(position);
     }
     
-    public virtual void OnMouseDownEvent()
-    {
-        unitManager.OnUnitMouseClickEvent(this);
-    }
-
     public void SetMovePosition(Vector3Int pos)
     {                
         var tempPath = Pathfinder.GetShortestPath(this, position, pos);
@@ -109,8 +106,22 @@ public class MapUnit : MonoBehaviour
 
     }
 
+    public virtual void OnDragEvent()
+    {
+
+    }
+
+    public virtual void OnClickEvent()
+    {
+        if (!unitManager.inputManager.isMultiTouch())
+        {
+            unitManager.OnUnitMouseClickEvent(this);
+        }
+    }
+
     public virtual void Death()
     {
+        unitManager.allUnits.Remove(unitId);
         Destroy(gameObject);
     }
 

@@ -36,21 +36,42 @@ public class GlobalCountryManager : MonoBehaviour
 
         var countries = gameState.GetCountries();
 
-        if (countries.Count > 0)
-        {
-            foreach (var country in countries)
-            {
-                AddCountry(country, false);
+        List<Country> countryToDelete = new List<Country>();
 
-                if(country.countryID == 1)
-                {
-                    myCountry = country;
-                }
+        foreach (var country in countries)
+        {
+            if (!GameManager.instance.gamedatabaseManager.mapDatabase.countryDataObjectDictionary.ContainsKey(country.countryID))
+            {
+                //country never existed in the first place, remove it
+                countryToDelete.Add(country);                
+                continue;
+            }
+
+            AddCountry(country, false);
+
+            if (country.countryID == 1)
+            {
+                myCountry = country;
             }
         }
-        else
+
+        foreach(var country in countryToDelete)
         {
-            //CreateCountryPopup();
+            DeleteCountry(country);
+        }
+
+        AddMapDataCountries();
+    }
+
+    void AddMapDataCountries()
+    {
+        foreach (var tile in GameManager.instance.gamedatabaseManager.mapDatabase.castleSpawnTileDictionary.Values)
+        {            
+            var country = tile.countryData.country;
+            if (!gameState.CountryExists(country.countryID))
+            {
+                AddCountry(country);
+            }
         }
     }
 
@@ -62,6 +83,11 @@ public class GlobalCountryManager : MonoBehaviour
         {
             var newPopup = Instantiate(createCountryPrefab, canvas.transform);
         }
+    }
+
+    public Country GetCountry(int countryID)
+    {
+        return GameManager.instance.gameStateManager.gameState.GetCountry(countryID);
     }
 
     public void AddCountry(Country newCountry, bool addToState = true)
@@ -77,11 +103,6 @@ public class GlobalCountryManager : MonoBehaviour
         }
     }
 
-    public Country GetCountry(int countryID)
-    {
-        return GameManager.instance.gameStateManager.gameState.GetCountry(countryID);
-    }
-
     public void DeleteCountry(Country country)
     {
         GameManager.instance.gameStateManager.gameState.DeleteCountry(country);
@@ -95,15 +116,6 @@ public class GlobalCountryManager : MonoBehaviour
     public void OnCreateCountry(string name)
     {
         var country = Country.Generate(name);
-        AddCountry(country);
-    }
-
-    public void OnCreateCountry(string name, CastleObject castle, Vector3Int position)
-    {
-        var country = Country.Generate(name);
-        country.castleObject = castle;
-        country.position = position;
-
         AddCountry(country);
     }
 

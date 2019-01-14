@@ -43,7 +43,6 @@ public class MapResourceManager : MonoBehaviour
     {
         foreach (var save in GameManager.instance.gameStateManager.gameState.mapResources)
         {
-            //unitManager.InitializeUnit(unit);
             Load(save);
         }
     }
@@ -92,13 +91,12 @@ public class MapResourceManager : MonoBehaviour
 
     void Load(MapResourceSave save)
     {
-        var resourceObject = GameManager.instance.gamedatabaseManager.GetObject(save.resourceID) as MapResourceObject;
+        var resourceObject = GameManager.instance.gamedatabaseManager.GetObject<MapResourceObject>(save.resourceID);
 
-        if (resourceObject != null)
+        if (resourceObject != null && save.amount > 0)
         {
             var newResource = Instantiate(resourcePrefab, unitParent);
-            unitManager.InitializeUnit(newResource);
-
+            
             newResource.SetItem(resourceObject, save.amount, save.maxCapacity, save.position, this);
         }
     }
@@ -128,8 +126,7 @@ public class MapResourceManager : MonoBehaviour
         if (currentResource != null && !collectors.ContainsKey(currentResource))
         {
             var newCollector = Instantiate(mapCollectorPrefab, unitParent);
-            unitManager.InitializeUnit(newCollector);
-            newCollector.SetResource(currentResource);
+            newCollector.resource = currentResource;                        
         }
     }
 

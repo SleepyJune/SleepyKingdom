@@ -11,8 +11,6 @@ using UnityEditor;
 
 public class MapSceneCameraController : MonoBehaviour
 {
-    private Vector3 lastDragPosition;
-
     public float dragSensitivity = .001f;
     public float zoomSensitivity = 5f;
 
@@ -52,11 +50,11 @@ public class MapSceneCameraController : MonoBehaviour
         Zoom();
     }
 
-    private void OnMouseDown()
+    public void OnMouseDown()
     {
         if (!EventSystem.current.IsPointerOverGameObject())
         {
-            lastDragPosition = Input.mousePosition;
+            //lastDragPosition = Input.mousePosition;
             startDrag = true;
         }
         else
@@ -65,26 +63,18 @@ public class MapSceneCameraController : MonoBehaviour
         }
     }
 
-    private void OnMouseUp()
+    public void OnMouseUp()
     {
         startDrag = false;
     }
 
-    private void OnMouseDrag()
+    public void OnMouseDragEvent(TouchInput input)
     {
-        if (startDrag)
-        {
-            Vector3 delta = lastDragPosition - Input.mousePosition;
+        Vector3 delta = input.previousPosition - input.position;
 
-            var sensitivity = dragSensitivity * Camera.main.orthographicSize;
+        var sensitivity = dragSensitivity * Camera.main.orthographicSize;
 
-            Camera.main.transform.Translate(delta.x * sensitivity, delta.y * sensitivity, 0, Space.World);
-
-            transform.position = new Vector3(Camera.main.transform.position.x + displacement.x,
-                                             Camera.main.transform.position.y + displacement.y, 10);
-
-            lastDragPosition = Input.mousePosition;
-        }
+        Camera.main.transform.Translate(delta.x * sensitivity, delta.y * sensitivity, 0, Space.World);
     }
 
     private void Zoom()

@@ -13,8 +13,10 @@ using UnityEditor;
 
 public class GroundTile : GameTileBase
 {
-    public Sprite[] sprites;
+    public bool isBlocked;
 
+    public Sprite[] sprites;
+    
     public override void GetTileData(Vector3Int location, ITilemap tilemap, ref TileData tileData)
     {
         tileData.sprite = this.sprite;

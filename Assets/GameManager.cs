@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
 
     [NonSerialized]
     public GlobalCountryManager globalCountryManager;
-    
+        
     void Awake()
     {
         if (instance == null)

@@ -50,12 +50,21 @@ public class MapResource : MapUnit
         position = pos;
 
         manager.resources.Add(this);
+    }
 
-        manager.unitManager.InitializeUnit(this);
+    public override void Death()
+    {
+        manager.resources.Remove(this);
+        base.Death();
     }
 
     public int CollectResource(int num)
     {
+        if(amount <= 0)
+        {
+            return 0;
+        }
+
         if(amount - num >= 0)
         {
             switch (resourceType)
@@ -77,16 +86,19 @@ public class MapResource : MapUnit
             }            
 
             amount -= num;
-            return amount;
+            return num;
         }
         else
         {
+            var collected = amount;
+            amount -= amount;
+
             Death();
-            return 0;
+            return collected;
         }
     }
 
-    public override void OnMouseDownEvent()
+    public override void OnClickEvent()
     {
         manager.OnSelectResource(this);
     }
@@ -108,7 +120,7 @@ public class MapResource : MapUnit
     {
         if (resourceID != -1 && GameManager.instance)
         {
-            resourceObject = GameManager.instance.gamedatabaseManager.GetObject(resourceID) as MapResourceObject;
+            resourceObject = GameManager.instance.gamedatabaseManager.GetObject<MapResourceObject>(resourceID);
 
             if (resourceObject == null)
             {

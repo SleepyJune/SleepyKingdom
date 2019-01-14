@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class MapResourceCollector : MapUnit
 {
-    MapResource resource;
+    public MapResource resource;
 
     MapCastleUnit castle;
 
@@ -22,16 +22,19 @@ public class MapResourceCollector : MapUnit
 
     float harvestStartTime;
 
+    float lastHarvestUpdateTime;
+
     protected override void Start()
     {
         anim = GetComponent<Animator>();
         base.Start();
+
+        SetResource();
     }
 
-    public void SetResource(MapResource resource)
+    void SetResource()
     {
         castle = unitManager.myCastle;
-        this.resource = resource;
 
         position = castle.position;
         SetMovePosition(resource.position);
@@ -43,7 +46,11 @@ public class MapResourceCollector : MapUnit
     {
         base.Update();
 
-        Harvest();
+        if(Time.time - lastHarvestUpdateTime > 1f)
+        {
+            Harvest();
+            lastHarvestUpdateTime = Time.time;
+        }
     }
 
     protected override void OnDestinationReached()
@@ -113,7 +120,15 @@ public class MapResourceCollector : MapUnit
                 icon.sprite = resource.icon.sprite;
             }
 
-            amountCollected += 100;
+            var collected = resource.CollectResource(100);
+
+            amountCollected += collected;
+
+            if(collected == 0)
+            {
+                StopHarvest();
+                return;
+            }
         }
     }
 
