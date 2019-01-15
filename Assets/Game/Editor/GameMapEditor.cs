@@ -17,13 +17,20 @@ public class GameMapEditor : EditorWindow
         Country,
         Animal,
         Interactable,
+        Territory,
     }
 
     GameDatabase database;
     MapDatabase mapDatabase;
-        
+
+    TerritoryTile territoryTile;
+
     Tilemap spawnMap;
+    Tilemap territoryMap;
+
     SpawnTile selectedTile;
+    SpawnTile previousSelectedTile;
+    CountryDataObject selectedCountry;
 
     Editor subEditor;
 
@@ -52,6 +59,13 @@ public class GameMapEditor : EditorWindow
         database = (GameDatabase)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/GameDataObjects/GameDatabase.asset", typeof(GameDatabase));
         mapDatabase = (MapDatabase)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/MapDataObjects/MapDatabase.asset", typeof(MapDatabase));
 
+        territoryTile = (TerritoryTile)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Tiles/TerritoryTiles/TerritoryTile.asset", typeof(TerritoryTile));
+
+        if (territoryTile == null)
+        {
+            Debug.Log("Cannot find TerritoryTile");
+        }
+
         if (database == null)
         {
             Debug.Log("Cannot find GameDatabase");
@@ -79,20 +93,35 @@ public class GameMapEditor : EditorWindow
         {
             Debug.Log("Cannot find SpawnMap");
         }
+
+        map = GameObject.Find("TerritoryMap");
+        if (map != null)
+        {
+            territoryMap = map.transform.Find("Territory").GetComponent<Tilemap>();
+        }
+        else
+        {
+            Debug.Log("Cannot find TerritoryMap");
+        }
+
+        selectedCountry = null;
+        selectedCreateType = MapDataType.None;
+        ShowTerritory(false);
+
+        Tools.current = Tool.None;
+        Tools.hidden = true;
     }
 
     private void OnDisable()
     {
         SceneView.onSceneGUIDelegate -= OnSceneGUI;
+
+        Tools.current = Tool.Move;
+        Tools.hidden = false;
     }
 
     private void InitTextures()
     {
-        foreach (var obj in database.allObjects)
-        {
-                       
-        }
-
         List<Texture> interactableTextureList = new List<Texture>();
         List<MapInteractableUnit> interactableList = new List<MapInteractableUnit>();
 
@@ -127,6 +156,26 @@ public class GameMapEditor : EditorWindow
         castlePrefabs = castleObjectsList.ToArray();
     }
 
+    private void RefreshMap()
+    {
+        if (spawnMap != null)
+        {
+            spawnMap.ClearAllTiles();
+            
+            foreach (var spawnTile in mapDatabase.castleSpawnTiles)
+            {
+                spawnMap.SetTile(spawnTile.position, spawnTile);
+            }
+
+            foreach (var spawnTile in mapDatabase.interactableSpawnTiles)
+            {
+                spawnMap.SetTile(spawnTile.position, spawnTile);
+            }
+
+            EditorUtility.SetDirty(spawnMap);
+        }
+    }
+
     private void RefreshDatabase()
     {
         InitTextures();
@@ -136,6 +185,20 @@ public class GameMapEditor : EditorWindow
     {
         EditorGUILayout.Vector3IntField("Position: ", lastClickedTilePosition);
         EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
+
+        if (selectedCountry != null)
+        {
+            if (selectedCreateType == MapDataType.Territory)
+            {
+                ShowEditTerritoryMenu();
+                return;
+            }
+        }
+
+        if(!(selectedTile is CastleSpawnTile))
+        {
+            ShowTerritory(false);
+        }
 
         if(selectedTile != null)
         {
@@ -150,7 +213,7 @@ public class GameMapEditor : EditorWindow
 
             return;
         }
-
+        
         if (selectedCreateType != MapDataType.None)
         {
             if (GUILayout.Button("Back"))
@@ -188,37 +251,53 @@ public class GameMapEditor : EditorWindow
             selectedCreateType = MapDataType.Interactable;
         }
 
+        GUILayout.Space(25);
+
         if (GUILayout.Button("Refresh Database"))
         {
             RefreshDatabase();
+        }
+
+        if (GUILayout.Button("Refresh Map"))
+        {
+            RefreshMap();
         }
     }
 
     void OnSceneGUI(SceneView sceneView)
     {
-        if (Event.current.type == EventType.MouseDown)
+        HandleUtility.AddDefaultControl(GUIUtility.GetControlID(FocusType.Passive));
+
+        if (Event.current.button == 0)
         {
-            var tile = GetMousePositionTile<SpawnTile>();
-                        
-            if (tile != selectedTile)
+            if (Event.current.type == EventType.MouseDown)
             {
-                if(tile is CastleSpawnTile)
+                var tile = GetMousePositionTile<SpawnTile>();
+
+                if (tile != selectedTile)
                 {
-                    SetNewCastle(tile as CastleSpawnTile);
+                    if (tile is CastleSpawnTile)
+                    {
+                        SetNewCastle(tile as CastleSpawnTile);
+                    }
+                    else if (tile is InteractableSpawnTile)
+                    {
+                        SetNewInteractable(tile as InteractableSpawnTile);
+                    }
                 }
-                else if(tile is InteractableSpawnTile)
-                {
-                    SetNewInteractable(tile as InteractableSpawnTile);
-                }
+
+                selectedTile = tile;
+                Repaint();
             }
-
-            selectedTile = tile;
-
-            Repaint();
+            else if(Event.current.type == EventType.MouseDrag)
+            {
+                SetTerritoryTile(GetMousePosition());
+                Repaint();
+            }            
         }
     }
 
-    T GetMousePositionTile<T>() where T : TileBase
+    Vector3Int GetMousePosition()
     {
         if (spawnMap != null)
         {
@@ -228,8 +307,18 @@ public class GameMapEditor : EditorWindow
             mousePos.x *= ppp;
 
             Vector3 worldPos = SceneView.currentDrawingSceneView.camera.ScreenToWorldPoint(mousePos);
-            
-            var cellPos = spawnMap.WorldToCell(worldPos);
+
+            return spawnMap.WorldToCell(worldPos);
+        }
+
+        return new Vector3Int(0, 0, 0);
+    }
+
+    T GetMousePositionTile<T>() where T : TileBase
+    {
+        if (spawnMap != null)
+        {
+            var cellPos = GetMousePosition();
 
             lastClickedTilePosition = cellPos;
 
@@ -304,6 +393,8 @@ public class GameMapEditor : EditorWindow
             mapDatabase.Save();
 
             SetNewInteractable(newTile);
+
+            EditorUtility.SetDirty(mapDatabase);
         }
         GUILayout.EndScrollView();
     }
@@ -383,11 +474,15 @@ public class GameMapEditor : EditorWindow
             mapDatabase.Save();
 
             SetNewCastle(newTile);
+
+            EditorUtility.SetDirty(mapDatabase);
         }
 
         GUILayout.EndScrollView();
     }
 
+    bool removeCountryConfirmation = false;
+    bool isShowingTerritory = false;
     void ShowCountry()
     {
         var selectedCastle = selectedTile as CastleSpawnTile;
@@ -400,6 +495,11 @@ public class GameMapEditor : EditorWindow
                 return;
             }
 
+            if(selectedCountry != selectedCastle.countryData)
+            {
+                selectedCountry = selectedCastle.countryData;
+            }
+
             EditorGUILayout.LabelField("Name: " + selectedCastle.countryData.country.countryName, EditorStyles.boldLabel);
             EditorGUILayout.Separator();
 
@@ -408,18 +508,138 @@ public class GameMapEditor : EditorWindow
                 subEditor.DrawDefaultInspector();
             }
 
-            if (GUILayout.Button("Remove"))
+            isShowingTerritory = EditorGUILayout.Toggle("Show Territory", isShowingTerritory);
+            ShowTerritory(isShowingTerritory);
+
+            if (GUILayout.Button("Edit Territory"))
             {
-                spawnMap.SetTile(selectedCastle.position, null);
-
-                mapDatabase.countryDataObjectDictionary.Remove(selectedCastle.countryData.country.countryID);
-                mapDatabase.castleSpawnTileDictionary.Remove(selectedCastle.position);
-
-                mapDatabase.Save();
-
-                DestroyImmediate(selectedCastle.countryData, true);
-                DestroyImmediate(selectedCastle, true);
+                previousSelectedTile = selectedTile;
+                selectedCreateType = MapDataType.Territory;
+                ShowTerritory(true);
             }
+
+            if (!removeCountryConfirmation && GUILayout.Button("Remove"))
+            {
+                removeCountryConfirmation = true;
+            }
+
+            if (removeCountryConfirmation)
+            {
+                GUILayout.BeginHorizontal();
+                if (GUILayout.Button("Confirm"))
+                {
+                    removeCountryConfirmation = false;
+
+                    spawnMap.SetTile(selectedCastle.position, null);
+
+                    mapDatabase.countryDataObjectDictionary.Remove(selectedCastle.countryData.country.countryID);
+                    mapDatabase.castleSpawnTileDictionary.Remove(selectedCastle.position);
+
+                    mapDatabase.Save();
+
+                    DestroyImmediate(selectedCastle.countryData, true);
+                    DestroyImmediate(selectedCastle, true);
+                }
+
+                if (GUILayout.Button("Cancel"))
+                {
+                    removeCountryConfirmation = false;
+                }
+                GUILayout.EndHorizontal();
+            }
+        }
+    }
+
+    void ShowEditTerritoryMenu()
+    {
+        if (GUILayout.Button("Back"))
+        {
+            selectedCountry = null;
+            selectedCreateType = MapDataType.None;
+
+            ShowTerritory(false);
+
+            selectedTile = previousSelectedTile;
+        }
+
+        if (selectedCountry == null)
+        {
+            selectedCreateType = MapDataType.None;
+            return;
+        }
+
+        string[] selectionString = {"Add","Delete"};
+                
+        EditorGUILayout.Space();
+        selectionGridIndex = GUILayout.SelectionGrid(selectionGridIndex, selectionString, 2, GUI.skin.button, GUILayout.Height(50));
+
+    }
+
+    void SetTerritoryTile(Vector3Int position)
+    {
+        if(selectedCreateType == MapDataType.Territory && selectedCountry != null)
+        {
+            if(selectionGridIndex == 0)
+            {
+                selectedCountry.country.territory.pointsHashset.Add(position);
+                territoryMap.SetTile(position, territoryTile);
+            }
+            else
+            {
+                selectedCountry.country.territory.pointsHashset.Remove(position);
+                territoryMap.SetTile(position, null);
+            }
+
+            selectedCountry.country.territory.Save();
+            
+            EditorUtility.SetDirty(selectedCountry);
+        }
+    }
+
+    CountryDataObject lastShownTerritoryCountry;
+    void ShowTerritory(bool show)
+    {
+        if (show)
+        {
+            if (selectedCountry != null)
+            {
+                if(lastShownTerritoryCountry != selectedCountry)
+                {                    
+                    DrawTerritoryMap();
+                }
+            }
+        }
+        else
+        {
+            if (territoryMap.gameObject.activeInHierarchy)
+            {
+                lastShownTerritoryCountry = null;
+                territoryMap.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    void DrawTerritoryMap()
+    {
+        if (selectedCountry != null)
+        {
+            if(selectedCountry.country.territory == null)
+            {
+                Debug.Log("Territory not found");
+                return;
+            }
+
+            territoryMap.ClearAllTiles();
+
+            selectedCountry.country.territory.InitDictionary();
+
+            foreach(var point in selectedCountry.country.territory.points)
+            {
+                territoryMap.SetTile(point, territoryTile);
+            }
+
+            lastShownTerritoryCountry = selectedCountry;
+            territoryMap.gameObject.SetActive(true);
         }
     }
 
