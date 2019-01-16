@@ -47,6 +47,7 @@ public class Country
     [NonSerialized]
     public float waterConsumptionRate = .2f;
 
+    public Territory territory;
 
     public static int countryCounter = 1;
 
