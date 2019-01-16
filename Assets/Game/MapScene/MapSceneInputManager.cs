@@ -7,6 +7,9 @@ using UnityEngine.EventSystems;
 
 public class MapSceneInputManager : MonoBehaviour
 {
+    public delegate void OnGameTileClickDelegate(GameTile tile);
+    public event OnGameTileClickDelegate OnGameTileClickEvent;
+
     MapSceneCameraController cameraController;
 
     TouchInputManager inputManager;
@@ -83,21 +86,23 @@ public class MapSceneInputManager : MonoBehaviour
                     unit.OnClickEvent();
                 }
             }
+
+            ClickTile(input);
         }
     }
 
     private void ClickTile(TouchInput input)
     {
-        if (!EventSystem.current.IsPointerOverGameObject())
+        var worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        var tilePos = Pathfinder.tilemap.WorldToCell(worldPos);
+
+        var gameTile = Pathfinder.GetGameTile(tilePos);
+
+        if (gameTile != null)
         {
-            var worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            var tilePos = Pathfinder.tilemap.WorldToCell(worldPos);
-
-            var gameTile = Pathfinder.GetGameTile(tilePos);
-
-            if (gameTile != null)
+            if(OnGameTileClickEvent != null)
             {
-                
+                OnGameTileClickEvent(gameTile);
             }
         }
     }

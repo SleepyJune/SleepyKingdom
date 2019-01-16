@@ -29,6 +29,14 @@ public class MapCastleUnit : MapUnit
         country.position = position;
     }
 
+    public override void OnClickEvent()
+    {
+        if (!unitManager.inputManager.isMultiTouch())
+        {
+            unitManager.actionBar.OnCastleClick(this);
+        }
+    }
+
     public MapCastleSave Save()
     {
         MapCastleSave save = new MapCastleSave

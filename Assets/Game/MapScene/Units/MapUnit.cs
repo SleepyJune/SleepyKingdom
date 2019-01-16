@@ -113,10 +113,7 @@ public class MapUnit : GameDataPrefab
 
     public virtual void OnClickEvent()
     {
-        if (!unitManager.inputManager.isMultiTouch())
-        {
-            unitManager.OnUnitMouseClickEvent(this);
-        }
+
     }
 
     public virtual void Death()
