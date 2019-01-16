@@ -4,9 +4,11 @@ using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 
 using UnityEditor;
+using UnityEditor.SceneManagement;
 
 
 public class GameMapEditor : EditorWindow
@@ -41,12 +43,16 @@ public class GameMapEditor : EditorWindow
     Vector2 scrollPos;
 
     MapCastleUnit[] castlePrefabs = new MapCastleUnit[0];
-    Texture[] castleTextures = new Texture[0];
+    GUIContent[] castleContents = new GUIContent[0];
 
     MapInteractableUnit[] interactables = new MapInteractableUnit[0];
-    Texture[] interactableTextures = new Texture[0];
+    GUIContent[] interactableContents = new GUIContent[0];
 
     int selectionGridIndex = 0;
+
+    bool initSuccessful = false;
+
+    Scene currentScene;
 
     [MenuItem("Game/Map Editor")]
     static void Init()
@@ -56,6 +62,35 @@ public class GameMapEditor : EditorWindow
 
     private void OnEnable()
     {
+        EditorSceneManager.activeSceneChangedInEditMode += ActiveSceneChanged;
+        currentScene = SceneManager.GetActiveScene();
+
+        Initialize();
+    }
+
+    private void OnDisable()
+    {
+        EditorSceneManager.activeSceneChangedInEditMode -= ActiveSceneChanged;
+    }
+
+    private void ActiveSceneChanged(Scene current, Scene next)
+    {
+        currentScene = next;
+
+        if(currentScene.name != "MapScene")
+        {
+            CleanUpOnSceneChange();
+        }
+        else
+        {
+            Initialize();
+        }
+    }
+
+    private void Initialize()
+    {
+        initSuccessful = true;
+
         database = (GameDatabase)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/GameDataObjects/GameDatabase.asset", typeof(GameDatabase));
         mapDatabase = (MapDatabase)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/MapDataObjects/MapDatabase.asset", typeof(MapDatabase));
 
@@ -63,16 +98,19 @@ public class GameMapEditor : EditorWindow
 
         if (territoryTile == null)
         {
+            initSuccessful = false;
             Debug.Log("Cannot find TerritoryTile");
         }
 
         if (database == null)
         {
+            initSuccessful = false;
             Debug.Log("Cannot find GameDatabase");
         }
 
-        if(mapDatabase == null)
+        if (mapDatabase == null)
         {
+            initSuccessful = false;
             Debug.Log("Cannot find MapDatabase");
         }
         else
@@ -91,6 +129,7 @@ public class GameMapEditor : EditorWindow
         }
         else
         {
+            initSuccessful = false;
             Debug.Log("Cannot find SpawnMap");
         }
 
@@ -101,6 +140,7 @@ public class GameMapEditor : EditorWindow
         }
         else
         {
+            initSuccessful = false;
             Debug.Log("Cannot find TerritoryMap");
         }
 
@@ -112,7 +152,7 @@ public class GameMapEditor : EditorWindow
         Tools.hidden = true;
     }
 
-    private void OnDisable()
+    private void CleanUpOnSceneChange()
     {
         SceneView.onSceneGUIDelegate -= OnSceneGUI;
 
@@ -122,10 +162,10 @@ public class GameMapEditor : EditorWindow
 
     private void InitTextures()
     {
-        List<Texture> interactableTextureList = new List<Texture>();
+        List<GUIContent> interactableContentsList = new List<GUIContent>();
         List<MapInteractableUnit> interactableList = new List<MapInteractableUnit>();
 
-        List<Texture> castleTexturesList = new List<Texture>();
+        List<GUIContent> castleContentsList = new List<GUIContent>();
         List<MapCastleUnit> castleObjectsList = new List<MapCastleUnit>();
 
         foreach (var obj in database.allPrefabs)
@@ -135,7 +175,9 @@ public class GameMapEditor : EditorWindow
             {
                 var texture = AssetPreview.GetAssetPreview(interactable.image);
 
-                interactableTextureList.Add(texture);
+                GUIContent content = new GUIContent(texture, interactable.name);
+
+                interactableContentsList.Add(content);
                 interactableList.Add(interactable);
             }            
 
@@ -144,15 +186,17 @@ public class GameMapEditor : EditorWindow
             {
                 var texture = AssetPreview.GetAssetPreview(castleObject.image);
 
-                castleTexturesList.Add(texture);
+                GUIContent content = new GUIContent(texture, castleObject.name);
+
+                castleContentsList.Add(content);
                 castleObjectsList.Add(castleObject);
             }
         }
 
-        interactableTextures = interactableTextureList.ToArray();
+        interactableContents = interactableContentsList.ToArray();
         interactables = interactableList.ToArray();
 
-        castleTextures = castleTexturesList.ToArray();
+        castleContents = castleContentsList.ToArray();
         castlePrefabs = castleObjectsList.ToArray();
     }
 
@@ -183,6 +227,24 @@ public class GameMapEditor : EditorWindow
 
     void OnGUI()
     {
+        if (!initSuccessful)
+        {
+            EditorGUILayout.LabelField("Initialization failed.", EditorStyles.boldLabel);
+            return;
+        }
+
+        if (!Application.isEditor || Application.isPlaying)
+        {
+            EditorGUILayout.LabelField("GameMapEditor only works during edit mode.", EditorStyles.boldLabel);
+            return;
+        }
+
+        if (currentScene.name != "MapScene")
+        {
+            EditorGUILayout.LabelField("GameMapEditor only works in MapScene.", EditorStyles.boldLabel);
+            return;
+        }
+
         EditorGUILayout.Vector3IntField("Position: ", lastClickedTilePosition);
         EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
 
@@ -266,6 +328,11 @@ public class GameMapEditor : EditorWindow
 
     void OnSceneGUI(SceneView sceneView)
     {
+        if (!Application.isEditor || Application.isPlaying || !initSuccessful || currentScene.name != "MapScene")
+        {
+            return;
+        }
+
         HandleUtility.AddDefaultControl(GUIUtility.GetControlID(FocusType.Passive));
 
         if (Event.current.button == 0)
@@ -365,7 +432,7 @@ public class GameMapEditor : EditorWindow
 
         int columns = (int)Math.Floor(Screen.width / 256.0f);
 
-        selectionGridIndex = GUILayout.SelectionGrid(selectionGridIndex, interactableTextures, columns, GUI.skin.button);
+        selectionGridIndex = GUILayout.SelectionGrid(selectionGridIndex, interactableContents, columns, GUI.skin.button);
 
         EditorGUILayout.Space();
 
@@ -438,7 +505,7 @@ public class GameMapEditor : EditorWindow
 
         int columns = (int)Math.Floor(Screen.width / 256.0f);
 
-        selectionGridIndex = GUILayout.SelectionGrid(selectionGridIndex, castleTextures, columns, GUI.skin.button);
+        selectionGridIndex = GUILayout.SelectionGrid(selectionGridIndex, castleContents, columns, GUI.skin.button);
 
         EditorGUILayout.Space();
 
