@@ -28,7 +28,7 @@ public class MapUnit : GameDataPrefab
 
     public float speed = 1.0f;
 
-    private Tilemap tilemap;
+    protected Tilemap tilemap;
 
     [NonSerialized]
     public MapUnitManager unitManager;
@@ -42,7 +42,7 @@ public class MapUnit : GameDataPrefab
         SetPosition(position);
     }
     
-    public void SetMovePosition(Vector3Int pos)
+    public virtual bool SetMovePosition(Vector3Int pos)
     {                
         var tempPath = Pathfinder.GetShortestPath(this, position, pos);
 
@@ -53,7 +53,11 @@ public class MapUnit : GameDataPrefab
             targetPos = pos;
 
             startMovingTime = Time.time;
+
+            return true;
         }
+
+        return false;
     }
 
     void GetPosition()

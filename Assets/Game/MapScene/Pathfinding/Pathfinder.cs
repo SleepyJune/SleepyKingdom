@@ -35,11 +35,11 @@ public class Pathfinder
             {
                 Vector3Int pos = new Vector3Int(x, y, 0);
 
-                var tile = tilemap.GetTile(pos);
+                var tile = tilemap.GetTile(pos) as GroundTile;
 
                 if (tile != null)
                 {
-                    var newTile = new GameTile(new Vector3Int(x, y, 0));
+                    var newTile = new GameTile(new Vector3Int(x, y, 0), tile.isBlocked);
 
                     if (!map.ContainsKey(newTile.position))
                     {
@@ -99,6 +99,11 @@ public class Pathfinder
 
     public static Vector3Int[] GetShortestPath(MapUnit unit, GameTile start, GameTile end)
     {
+        if (end.isBlocked)
+        {
+            return null;
+        }
+
         HashSet<GameTile> closedSet = new HashSet<GameTile>();
         HashSet<GameTile> openSet = new HashSet<GameTile>();
 
@@ -138,10 +143,10 @@ public class Pathfinder
                     continue;
                 }
 
-                /*if (!CanWalkToSquare(unit, neighbourInfo))
+                if (neighbour.isBlocked)
                 {
                     continue;
-                }*/
+                }
 
                 var alternativeDistance = current.gScore + distance;
 

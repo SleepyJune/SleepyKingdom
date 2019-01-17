@@ -25,6 +25,12 @@ public class ActionBarController : Popup
 
     public MapCastleOverlay castleOverlay;
 
+    public GameObject flagPrefab;
+    public GameObject xMarkPrefab;
+
+    [NonSerialized]
+    public GameObject myDestinationFlag;
+
     MapUnitManager unitManager;
 
     private UnitCommandType currentCommand = UnitCommandType.None;

@@ -5,18 +5,18 @@
             "countryName": "MyCountry",
             "castlePrefabId": 5,
             "position": {
-                "x": 1,
-                "y": -4,
+                "x": 24,
+                "y": -25,
                 "z": 0
             },
             "speed": 0.0,
             "population": 0.0,
             "maxCapacity": 0.0,
             "wood": 0.0,
-            "stone": 0.0,
+            "stone": 2000.0,
             "wheat": 0.0,
             "gold": 0.0,
-            "water": 0.0,
+            "water": 1000.0,
             "taxRate": 0.0,
             "happiness": 0.0,
             "territory": {
@@ -28,8 +28,8 @@
             "countryName": "Country 186",
             "castlePrefabId": 14,
             "position": {
-                "x": 0,
-                "y": -23,
+                "x": 3,
+                "y": -19,
                 "z": 0
             },
             "speed": 0.0,
@@ -204,16 +204,16 @@
     "mapCastles": [
         {
             "position": {
-                "x": 1,
-                "y": -4,
+                "x": 24,
+                "y": -25,
                 "z": 0
             },
             "countryID": 1
         },
         {
             "position": {
-                "x": 0,
-                "y": -23,
+                "x": 3,
+                "y": -19,
                 "z": 0
             },
             "countryID": 186
@@ -234,7 +234,7 @@
                 "y": 2,
                 "z": 0
             },
-            "amount": 1438,
+            "amount": 438,
             "maxCapacity": 3038,
             "resourceID": 18
         },
@@ -254,7 +254,7 @@
                 "y": -1,
                 "z": 0
             },
-            "amount": 2596,
+            "amount": 1596,
             "maxCapacity": 2596,
             "resourceID": 19
         },
@@ -264,7 +264,7 @@
                 "y": 3,
                 "z": 0
             },
-            "amount": 3359,
+            "amount": 2359,
             "maxCapacity": 3359,
             "resourceID": 18
         },

@@ -24,9 +24,46 @@ public class MapCastleUnit : MapUnit
         }
     }
 
+    public override bool SetMovePosition(Vector3Int pos)
+    {
+        var hasPath = base.SetMovePosition(pos);
+
+        if (this == unitManager.myCastle)
+        {
+            var worldPos = tilemap.CellToWorld(pos);
+
+            if (hasPath)
+            {
+                if (unitManager.actionBar.myDestinationFlag != null)
+                {
+                    Destroy(unitManager.actionBar.myDestinationFlag);
+                }
+                                
+                unitManager.actionBar.myDestinationFlag = Instantiate(unitManager.actionBar.flagPrefab, MapSceneManager.instance.overlayMap.transform);
+                unitManager.actionBar.myDestinationFlag.transform.position = worldPos;
+            }
+            else
+            {
+                var xMark = Instantiate(unitManager.actionBar.xMarkPrefab, MapSceneManager.instance.overlayMap.transform);
+                xMark.transform.position = worldPos;
+            }
+        }
+
+        return hasPath;
+    }
+
     protected override void OnDestinationReached()
     {
         country.position = position;
+
+
+        if (this == unitManager.myCastle)
+        {
+            if (unitManager.actionBar.myDestinationFlag != null)
+            {
+                Destroy(unitManager.actionBar.myDestinationFlag);
+            }
+        }
     }
 
     public override void OnClickEvent()

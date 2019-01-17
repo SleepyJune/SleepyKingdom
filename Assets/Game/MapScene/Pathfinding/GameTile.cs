@@ -19,9 +19,12 @@ public class GameTile
 
     public GameTile parent = null;
 
-    public GameTile(Vector3Int pos)
+    public bool isBlocked = false;
+
+    public GameTile(Vector3Int pos, bool isBlocked = false)
     {
         this.position = pos;
+        this.isBlocked = isBlocked;
 
         units = new HashSet<MapUnit>();
     }
