@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 
 public class MapSceneInputManager : MonoBehaviour
 {
-    public delegate void OnGameTileClickDelegate(GameTile tile);
+    public delegate void OnGameTileClickDelegate(GameTile tile, GameClickEventData eventData);
     public event OnGameTileClickDelegate OnGameTileClickEvent;
 
     MapSceneCameraController cameraController;
@@ -65,44 +65,52 @@ public class MapSceneInputManager : MonoBehaviour
 
     private void TouchEnd(TouchInput input)
     {
-        ClickUnit(input);
+        var clickEventData = new GameClickEventData(input);
+
+        ClickTile(clickEventData);
+        ClickUnit(clickEventData);
     }
 
-    private void ClickUnit(TouchInput input)
+    private void ClickUnit(GameClickEventData clickEventData)
     {
-        if (!input.isUIInteraction && !input.isDrag)
+        var input = clickEventData.input;
+
+        if (!input.isUIInteraction && !input.isDrag && !clickEventData.isUsed)
         {
             var worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             var mouse2D = new Vector2(worldPos.x, worldPos.y);
-                        
+
             //var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
             var hit = Physics2D.Raycast(mouse2D, Vector2.zero, 100);
             if (hit.collider != null && hit.collider.transform.parent != null)
             {
                 var unit = hit.collider.transform.parent.GetComponent<MapUnit>();
-                if(unit != null)
+                if (unit != null)
                 {
                     unit.OnClickEvent();
                 }
             }
-
-            ClickTile(input);
         }
     }
 
-    private void ClickTile(TouchInput input)
+    private void ClickTile(GameClickEventData clickEventData)
     {
-        var worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        var tilePos = Pathfinder.tilemap.WorldToCell(worldPos);
+        var input = clickEventData.input;
 
-        var gameTile = Pathfinder.GetGameTile(tilePos);
-
-        if (gameTile != null)
+        if (!input.isUIInteraction && !input.isDrag && !clickEventData.isUsed)
         {
-            if(OnGameTileClickEvent != null)
+            var worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            var tilePos = Pathfinder.tilemap.WorldToCell(worldPos);
+
+            var gameTile = Pathfinder.GetGameTile(tilePos);
+
+            if (gameTile != null)
             {
-                OnGameTileClickEvent(gameTile);
+                if (OnGameTileClickEvent != null)
+                {
+                    OnGameTileClickEvent(gameTile, clickEventData);
+                }
             }
         }
     }

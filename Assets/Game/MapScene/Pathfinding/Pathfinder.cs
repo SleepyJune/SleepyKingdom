@@ -182,6 +182,21 @@ public class Pathfinder
         return GetShortestPath(unit, start, end);
     }
 
+    static bool IsGameTileReachable(GameTile tile)
+    {
+        if (tile.isUnitBlocked())
+        {
+            return false;
+        }
+
+        if (tile.isBlocked)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
     public static Vector3Int[] GetShortestPath(MapUnit unit, GameTile start, GameTile end, bool findClosest = false)
     {
         /*if (end.isBlocked)
@@ -232,7 +247,7 @@ public class Pathfinder
                     continue;
                 }
 
-                if (neighbour.isBlocked)
+                if (!IsGameTileReachable(neighbour))
                 {
                     continue;
                 }

@@ -22,6 +22,11 @@ public class MapCastleUnit : MapUnit
         {
             render.sprite = image;
         }
+
+        if (this != unitManager.myCastle)
+        {
+            gameObject.AddComponent<CastleAIUnit>();
+        }
     }
 
     public override bool SetMovePosition(Vector3Int pos)
@@ -30,20 +35,22 @@ public class MapCastleUnit : MapUnit
 
         if (this == unitManager.myCastle)
         {
-            var worldPos = tilemap.CellToWorld(pos);
-
             if (hasPath)
             {
                 if (unitManager.actionBar.myDestinationFlag != null)
                 {
                     Destroy(unitManager.actionBar.myDestinationFlag);
                 }
-                                
+
+                var worldPos = tilemap.CellToWorld(targetPos);
+
                 unitManager.actionBar.myDestinationFlag = Instantiate(unitManager.actionBar.flagPrefab, MapSceneManager.instance.overlayMap.transform);
                 unitManager.actionBar.myDestinationFlag.transform.position = worldPos;
             }
             else
             {
+                var worldPos = tilemap.CellToWorld(pos);
+
                 var xMark = Instantiate(unitManager.actionBar.xMarkPrefab, MapSceneManager.instance.overlayMap.transform);
                 xMark.transform.position = worldPos;
             }

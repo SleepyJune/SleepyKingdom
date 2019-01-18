@@ -36,7 +36,7 @@ public class Country
     public float taxRate;
     public float happiness;
 
-    public int detectionRadius = 2;
+    public int detectionRadius = 5;
 
     [NonSerialized]
     public float birthRate = .5f;

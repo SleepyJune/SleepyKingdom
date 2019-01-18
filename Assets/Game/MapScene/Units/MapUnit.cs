@@ -50,9 +50,11 @@ public class MapUnit : GameDataPrefab
         {
             path = tempPath;
 
-            targetPos = pos;
+            targetPos = path.Last();
 
             startMovingTime = Time.time;
+
+            SetGameTilePosition(targetPos);
 
             return true;
         }
@@ -132,16 +134,26 @@ public class MapUnit : GameDataPrefab
 
         transform.position = tilemap.CellToWorld(position);
 
+        SetGameTilePosition(nextPosition);
+    }
+
+    void SetGameTilePosition(Vector3Int nextPosition)
+    {
         if (gameTile != null)
         {
             gameTile.DeleteUnit(this);
         }
 
         var newGameTile = Pathfinder.GetGameTile(nextPosition);
-        if(newGameTile != null)
+        if (newGameTile != null)
         {
             newGameTile.AddUnit(this);
             gameTile = newGameTile;
         }
+    }
+
+    public float Distance(MapUnit unit)
+    {
+        return Vector3.Distance(position, unit.position);
     }
 }
