@@ -14,7 +14,7 @@ public class Country
     public string countryName;
 
     //public Tower tower;
-    
+
     public int castlePrefabId;
     public Vector3Int position;
 
@@ -23,7 +23,7 @@ public class Country
     //leader
 
     //private resources
-    
+
     public float population;
     public float maxCapacity;
 
@@ -49,9 +49,19 @@ public class Country
     [NonSerialized]
     public float waterConsumptionRate = .2f;
 
+    [NonSerialized]
     public Territory territory;
 
     public static int countryCounter = 1;
+
+    public void Initialize(CountryDataObject countryData)
+    {
+        if (countryData.territory != null && countryData.territory.points.Length > 0)
+        {
+            territory = countryData.territory;
+            territory.InitDictionary();
+        }
+    }
 
     public static Country Generate(string countryName = "")
     {
@@ -90,7 +100,7 @@ public class Country
 
     public override bool Equals(object obj)
     {
-        if(obj is Country)
+        if (obj is Country)
         {
             return ((Country)obj).countryID == countryID;
         }

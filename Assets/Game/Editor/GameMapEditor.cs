@@ -648,16 +648,16 @@ public class GameMapEditor : EditorWindow
         {
             if(selectionGridIndex == 0)
             {
-                selectedCountry.country.territory.pointsHashset.Add(position);
+                selectedCountry.territory.pointsHashset.Add(position);
                 territoryMap.SetTile(position, territoryTile);
             }
             else
             {
-                selectedCountry.country.territory.pointsHashset.Remove(position);
+                selectedCountry.territory.pointsHashset.Remove(position);
                 territoryMap.SetTile(position, null);
             }
 
-            selectedCountry.country.territory.Save();
+            selectedCountry.territory.Save();
             
             EditorUtility.SetDirty(selectedCountry);
         }
@@ -690,7 +690,7 @@ public class GameMapEditor : EditorWindow
     {
         if (selectedCountry != null)
         {
-            if(selectedCountry.country.territory == null)
+            if(selectedCountry.territory == null)
             {
                 Debug.Log("Territory not found");
                 return;
@@ -698,9 +698,9 @@ public class GameMapEditor : EditorWindow
 
             territoryMap.ClearAllTiles();
 
-            selectedCountry.country.territory.InitDictionary();
+            selectedCountry.territory.InitDictionary();
 
-            foreach(var point in selectedCountry.country.territory.points)
+            foreach(var point in selectedCountry.territory.points)
             {
                 territoryMap.SetTile(point, territoryTile);
             }

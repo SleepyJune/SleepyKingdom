@@ -46,7 +46,7 @@ public class MapDatabase : ScriptableObject
     }
 
     void MakeCountryDictionary()
-    {
+    {        
         Dictionary<int, CountryDataObject> ret = new Dictionary<int, CountryDataObject>();
         foreach (var data in countryDataObjects)
         {

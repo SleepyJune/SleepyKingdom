@@ -33,6 +33,9 @@ public class MapUnit : GameDataPrefab
     [NonSerialized]
     public MapUnitManager unitManager;
 
+    [NonSerialized]
+    public Territory territory;
+
     protected virtual void Start()
     {
         MapSceneManager.instance.unitManager.InitializeUnit(this);

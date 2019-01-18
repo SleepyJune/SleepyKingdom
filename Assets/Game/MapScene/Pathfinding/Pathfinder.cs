@@ -97,92 +97,7 @@ public class Pathfinder
         return null;
     }
 
-    static GameTile FindClosestTile(GameTile start, GameTile end)
-    {
-        int maxRadius = 2;
-        int radius = 0;
-
-        int loops = 0;
-        
-        Queue<GameTile> openSet = new Queue<GameTile>();
-        HashSet<GameTile> nextSet = new HashSet<GameTile>();
-        HashSet<GameTile> closedSet = new HashSet<GameTile>();
-
-        openSet.Enqueue(end);
-
-        while (radius < maxRadius)
-        {
-            HashSet<GameTile> candidates = new HashSet<GameTile>();
-
-            while (openSet.Count > 0)
-            {
-                var current = openSet.Dequeue();
-
-                closedSet.Add(current);
-
-                foreach (var neighbour in current.neighbours)
-                {
-                    if (closedSet.Contains(neighbour))
-                    {
-                        continue;
-                    }
-
-                    if (!neighbour.isBlocked)
-                    {
-                        if (!candidates.Contains(neighbour))
-                        {
-                            candidates.Add(neighbour);
-                        }
-                    }
-                    else
-                    {
-                        if (!nextSet.Contains(neighbour))
-                        {
-                            nextSet.Add(neighbour);
-                        }
-                    }
-                }
-            }
-
-            if (candidates.Count > 0)
-            {
-                return candidates.OrderBy(c => start.Distance(c)).FirstOrDefault();
-            }
-
-            radius += 1;
-
-            openSet = new Queue<GameTile>(nextSet);
-        }
-
-        return null;
-    }
-
-    Vector3Int[] tempGetShortestPath(MapUnit unit, GameTile start, GameTile end, bool findClosest = false)
-    {
-        if (end.isBlocked)
-        {
-            if (findClosest)
-            {
-                var alternativeEnd = FindClosestTile(start, end);
-                if(alternativeEnd != null)
-                {
-                    return GetShortestPath(unit, start, alternativeEnd);
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        return GetShortestPath(unit, start, end);
-    }
-
-    static bool IsGameTileReachable(GameTile tile)
+    static bool IsGameTileReachable(MapUnit unit, GameTile tile)
     {
         if (tile.isUnitBlocked())
         {
@@ -194,16 +109,23 @@ public class Pathfinder
             return false;
         }
 
+        if(unit.territory != null)
+        {
+            if (!unit.territory.pointsHashset.Contains(tile.position))
+            {
+                return false;
+            }
+        }
+
         return true;
     }
 
     public static Vector3Int[] GetShortestPath(MapUnit unit, GameTile start, GameTile end, bool findClosest = false)
     {
-        /*if (end.isBlocked)
+        if (!findClosest && end.isBlocked)
         {
             return null;
-        }*/
-
+        }
 
         HashSet<GameTile> closedSet = new HashSet<GameTile>();
         HashSet<GameTile> openSet = new HashSet<GameTile>();
@@ -247,7 +169,7 @@ public class Pathfinder
                     continue;
                 }
 
-                if (!IsGameTileReachable(neighbour))
+                if (!IsGameTileReachable(unit, neighbour))
                 {
                     continue;
                 }

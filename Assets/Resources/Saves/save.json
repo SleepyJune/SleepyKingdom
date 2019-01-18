@@ -5,8 +5,8 @@
             "countryName": "MyCountry",
             "castlePrefabId": 5,
             "position": {
-                "x": 6,
-                "y": -25,
+                "x": 12,
+                "y": -24,
                 "z": 0
             },
             "speed": 0.0,
@@ -19,17 +19,14 @@
             "water": 1000.0,
             "taxRate": 0.0,
             "happiness": 0.0,
-            "detectionRadius": 5,
-            "territory": {
-                "points": []
-            }
+            "detectionRadius": 5
         },
         {
             "countryID": 186,
             "countryName": "Country 186",
             "castlePrefabId": 14,
             "position": {
-                "x": 6,
+                "x": 10,
                 "y": -24,
                 "z": 0
             },
@@ -43,18 +40,15 @@
             "water": 0.0,
             "taxRate": 0.0,
             "happiness": 0.0,
-            "detectionRadius": 5,
-            "territory": {
-                "points": []
-            }
+            "detectionRadius": 5
         },
         {
             "countryID": 415,
             "countryName": "Country 415",
             "castlePrefabId": 16,
             "position": {
-                "x": 5,
-                "y": -25,
+                "x": 4,
+                "y": -20,
                 "z": 0
             },
             "speed": 0.0,
@@ -67,155 +61,21 @@
             "water": 0.0,
             "taxRate": 0.0,
             "happiness": 0.0,
-            "detectionRadius": 5,
-            "territory": {
-                "points": [
-                    {
-                        "x": 1,
-                        "y": -17,
-                        "z": 0
-                    },
-                    {
-                        "x": 0,
-                        "y": -17,
-                        "z": 0
-                    },
-                    {
-                        "x": 0,
-                        "y": -18,
-                        "z": 0
-                    },
-                    {
-                        "x": 1,
-                        "y": -18,
-                        "z": 0
-                    },
-                    {
-                        "x": 2,
-                        "y": -18,
-                        "z": 0
-                    },
-                    {
-                        "x": 2,
-                        "y": -17,
-                        "z": 0
-                    },
-                    {
-                        "x": 2,
-                        "y": -16,
-                        "z": 0
-                    },
-                    {
-                        "x": 1,
-                        "y": -16,
-                        "z": 0
-                    },
-                    {
-                        "x": 3,
-                        "y": -16,
-                        "z": 0
-                    },
-                    {
-                        "x": 1,
-                        "y": -19,
-                        "z": 0
-                    },
-                    {
-                        "x": 0,
-                        "y": -19,
-                        "z": 0
-                    },
-                    {
-                        "x": 0,
-                        "y": -16,
-                        "z": 0
-                    },
-                    {
-                        "x": -1,
-                        "y": -19,
-                        "z": 0
-                    },
-                    {
-                        "x": -1,
-                        "y": -18,
-                        "z": 0
-                    },
-                    {
-                        "x": -1,
-                        "y": -17,
-                        "z": 0
-                    },
-                    {
-                        "x": 0,
-                        "y": -15,
-                        "z": 0
-                    },
-                    {
-                        "x": 1,
-                        "y": -15,
-                        "z": 0
-                    },
-                    {
-                        "x": 2,
-                        "y": -15,
-                        "z": 0
-                    },
-                    {
-                        "x": 4,
-                        "y": -16,
-                        "z": 0
-                    },
-                    {
-                        "x": 3,
-                        "y": -17,
-                        "z": 0
-                    },
-                    {
-                        "x": 3,
-                        "y": -15,
-                        "z": 0
-                    },
-                    {
-                        "x": 3,
-                        "y": -18,
-                        "z": 0
-                    },
-                    {
-                        "x": 2,
-                        "y": -19,
-                        "z": 0
-                    },
-                    {
-                        "x": 4,
-                        "y": -17,
-                        "z": 0
-                    },
-                    {
-                        "x": 4,
-                        "y": -18,
-                        "z": 0
-                    },
-                    {
-                        "x": 3,
-                        "y": -19,
-                        "z": 0
-                    }
-                ]
-            }
+            "detectionRadius": 5
         }
     ],
     "mapCastles": [
         {
             "position": {
-                "x": 6,
-                "y": -25,
+                "x": 12,
+                "y": -24,
                 "z": 0
             },
             "countryID": 1
         },
         {
             "position": {
-                "x": 6,
+                "x": 10,
                 "y": -24,
                 "z": 0
             },
@@ -223,8 +83,8 @@
         },
         {
             "position": {
-                "x": 5,
-                "y": -25,
+                "x": 4,
+                "y": -20,
                 "z": 0
             },
             "countryID": 415

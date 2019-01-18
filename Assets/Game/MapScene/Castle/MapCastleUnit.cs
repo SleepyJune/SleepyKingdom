@@ -27,6 +27,11 @@ public class MapCastleUnit : MapUnit
         {
             gameObject.AddComponent<CastleAIUnit>();
         }
+
+        if(country.territory != null && country.territory.points.Length > 0)
+        {
+            territory = country.territory;
+        }
     }
 
     public override bool SetMovePosition(Vector3Int pos)
