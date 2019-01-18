@@ -44,7 +44,7 @@ public class MapUnit : GameDataPrefab
     
     public virtual bool SetMovePosition(Vector3Int pos)
     {                
-        var tempPath = Pathfinder.GetShortestPath(this, position, pos);
+        var tempPath = Pathfinder.GetShortestPath(this, position, pos, true);
 
         if(tempPath != null && tempPath.Length > 1)
         {

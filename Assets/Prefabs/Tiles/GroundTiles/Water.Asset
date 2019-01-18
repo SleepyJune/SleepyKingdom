@@ -33,6 +33,7 @@ MonoBehaviour:
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 1
   m_ColliderType: 2
+  isBlocked: 1
   sprites:
   - {fileID: 21300008, guid: e505b4a145a5c5346a35d02734f83664, type: 3}
   - {fileID: 21300010, guid: e505b4a145a5c5346a35d02734f83664, type: 3}

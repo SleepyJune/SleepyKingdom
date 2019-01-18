@@ -84,31 +84,120 @@ public class Pathfinder
         }
     }
 
-    public static Vector3Int[] GetShortestPath(MapUnit unit, Vector3Int start, Vector3Int end)
+    public static Vector3Int[] GetShortestPath(MapUnit unit, Vector3Int start, Vector3Int end, bool findClosest = false)
     {
         var startTile = GetGameTile(start);
         var endTile = GetGameTile(end);
 
         if(startTile != null && endTile != null)
         {
-            return GetShortestPath(unit, startTile, endTile);
+            return GetShortestPath(unit, startTile, endTile, findClosest);
         }
 
         return null;
     }
 
-    public static Vector3Int[] GetShortestPath(MapUnit unit, GameTile start, GameTile end)
+    static GameTile FindClosestTile(GameTile start, GameTile end)
+    {
+        int maxRadius = 2;
+        int radius = 0;
+
+        int loops = 0;
+        
+        Queue<GameTile> openSet = new Queue<GameTile>();
+        HashSet<GameTile> nextSet = new HashSet<GameTile>();
+        HashSet<GameTile> closedSet = new HashSet<GameTile>();
+
+        openSet.Enqueue(end);
+
+        while (radius < maxRadius)
+        {
+            HashSet<GameTile> candidates = new HashSet<GameTile>();
+
+            while (openSet.Count > 0)
+            {
+                var current = openSet.Dequeue();
+
+                closedSet.Add(current);
+
+                foreach (var neighbour in current.neighbours)
+                {
+                    if (closedSet.Contains(neighbour))
+                    {
+                        continue;
+                    }
+
+                    if (!neighbour.isBlocked)
+                    {
+                        if (!candidates.Contains(neighbour))
+                        {
+                            candidates.Add(neighbour);
+                        }
+                    }
+                    else
+                    {
+                        if (!nextSet.Contains(neighbour))
+                        {
+                            nextSet.Add(neighbour);
+                        }
+                    }
+                }
+            }
+
+            if (candidates.Count > 0)
+            {
+                return candidates.OrderBy(c => start.Distance(c)).FirstOrDefault();
+            }
+
+            radius += 1;
+
+            openSet = new Queue<GameTile>(nextSet);
+        }
+
+        return null;
+    }
+
+    Vector3Int[] tempGetShortestPath(MapUnit unit, GameTile start, GameTile end, bool findClosest = false)
     {
         if (end.isBlocked)
         {
-            return null;
+            if (findClosest)
+            {
+                var alternativeEnd = FindClosestTile(start, end);
+                if(alternativeEnd != null)
+                {
+                    return GetShortestPath(unit, start, alternativeEnd);
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                return null;
+            }
         }
+
+        return GetShortestPath(unit, start, end);
+    }
+
+    public static Vector3Int[] GetShortestPath(MapUnit unit, GameTile start, GameTile end, bool findClosest = false)
+    {
+        /*if (end.isBlocked)
+        {
+            return null;
+        }*/
+
 
         HashSet<GameTile> closedSet = new HashSet<GameTile>();
         HashSet<GameTile> openSet = new HashSet<GameTile>();
 
         GameTile closestSquare = null;
         double closestDistance = 9999;
+
+        int maxLoops = 500;
+        int loops = 0;
 
         openSet.Add(start);
 
@@ -172,26 +261,30 @@ public class Pathfinder
                 }
 
             }
+
+            if (loops > maxLoops)
+            {
+                break;
+            }
+
+            loops += 1;
         }
 
-        /*if (closestSquare == null)
+        if (closestSquare == null)
         {
             return null;
         }
 
-        if (closestSquare.Distance(end) < start.Distance(end))
+        if (findClosest && closestSquare.Distance(end) < start.Distance(end))
         {
-            var path = PathInfo.GenerateWaypoints(start, closestSquare);
-            path.reachable = false;
-
-            return path;
+            return GenerateWaypoints(start, closestSquare);
         }
         else
         {
             return null;
-        }*/
+        }
 
-        return null;
+        //return null;
     }
 
     public static Vector3Int[] GenerateWaypoints(GameTile start, GameTile end)

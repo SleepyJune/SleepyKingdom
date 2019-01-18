@@ -5,8 +5,8 @@
             "countryName": "MyCountry",
             "castlePrefabId": 5,
             "position": {
-                "x": 24,
-                "y": -25,
+                "x": 14,
+                "y": -36,
                 "z": 0
             },
             "speed": 0.0,
@@ -19,6 +19,7 @@
             "water": 1000.0,
             "taxRate": 0.0,
             "happiness": 0.0,
+            "detectionRadius": 2,
             "territory": {
                 "points": []
             }
@@ -42,6 +43,7 @@
             "water": 0.0,
             "taxRate": 0.0,
             "happiness": 0.0,
+            "detectionRadius": 2,
             "territory": {
                 "points": []
             }
@@ -65,6 +67,7 @@
             "water": 0.0,
             "taxRate": 0.0,
             "happiness": 0.0,
+            "detectionRadius": 2,
             "territory": {
                 "points": [
                     {
@@ -204,8 +207,8 @@
     "mapCastles": [
         {
             "position": {
-                "x": 24,
-                "y": -25,
+                "x": 14,
+                "y": -36,
                 "z": 0
             },
             "countryID": 1
