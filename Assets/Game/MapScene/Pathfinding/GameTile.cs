@@ -19,9 +19,12 @@ public class GameTile
 
     public GameTile parent = null;
 
-    public GameTile(Vector3Int pos)
+    public bool isBlocked = false;
+    
+    public GameTile(Vector3Int pos, bool isBlocked = false)
     {
         this.position = pos;
+        this.isBlocked = isBlocked;
 
         units = new HashSet<MapUnit>();
     }
@@ -29,6 +32,11 @@ public class GameTile
     public double Distance(GameTile b)
     {
         return position.OffsetDistance(b.position);
+    }
+
+    public bool isUnitBlocked()
+    {
+        return units.Count > 0;
     }
 
     public void AddUnit(MapUnit unit)

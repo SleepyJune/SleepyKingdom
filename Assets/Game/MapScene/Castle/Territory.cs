@@ -10,11 +10,15 @@ public class Territory
 {
     public Vector3Int[] points = new Vector3Int[0];
 
-    public HashSet<Vector3Int> pointsHashset = new HashSet<Vector3Int>();
-
+    [NonSerialized]
+    public HashSet<Vector3Int> pointsHashset;
+    
     public void InitDictionary()
     {
-        MakeHashset();
+        if (pointsHashset == null)
+        {
+            MakeHashset();
+        }
     }
 
     void MakeHashset()

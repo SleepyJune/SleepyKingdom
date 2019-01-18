@@ -9,7 +9,7 @@ public class MapCastleOverlay : Popup
 {
     MapCastleUnit castle;
 
-    public Text populationText;
+    public Text nameText;
 
     RectTransform topBar;
 
@@ -42,7 +42,7 @@ public class MapCastleOverlay : Popup
         
         topBar.anchoredPosition = new Vector2(topBar.anchoredPosition.x, height);
 
-        populationText.text = NumberTextFormater.FormatNumber(castle.country.population);
+        nameText.text = castle.country.countryName;
 
         transform.position = castle.transform.position;
 

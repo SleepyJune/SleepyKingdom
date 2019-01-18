@@ -35,11 +35,11 @@ public class Pathfinder
             {
                 Vector3Int pos = new Vector3Int(x, y, 0);
 
-                var tile = tilemap.GetTile(pos);
+                var tile = tilemap.GetTile(pos) as GroundTile;
 
                 if (tile != null)
                 {
-                    var newTile = new GameTile(new Vector3Int(x, y, 0));
+                    var newTile = new GameTile(new Vector3Int(x, y, 0), tile.isBlocked);
 
                     if (!map.ContainsKey(newTile.position))
                     {
@@ -84,26 +84,57 @@ public class Pathfinder
         }
     }
 
-    public static Vector3Int[] GetShortestPath(MapUnit unit, Vector3Int start, Vector3Int end)
+    public static Vector3Int[] GetShortestPath(MapUnit unit, Vector3Int start, Vector3Int end, bool findClosest = false)
     {
         var startTile = GetGameTile(start);
         var endTile = GetGameTile(end);
 
         if(startTile != null && endTile != null)
         {
-            return GetShortestPath(unit, startTile, endTile);
+            return GetShortestPath(unit, startTile, endTile, findClosest);
         }
 
         return null;
     }
 
-    public static Vector3Int[] GetShortestPath(MapUnit unit, GameTile start, GameTile end)
+    static bool IsGameTileReachable(MapUnit unit, GameTile tile)
     {
+        if (tile.isUnitBlocked())
+        {
+            return false;
+        }
+
+        if (tile.isBlocked)
+        {
+            return false;
+        }
+
+        if(unit.territory != null)
+        {
+            if (!unit.territory.pointsHashset.Contains(tile.position))
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public static Vector3Int[] GetShortestPath(MapUnit unit, GameTile start, GameTile end, bool findClosest = false)
+    {
+        if (!findClosest && end.isBlocked)
+        {
+            return null;
+        }
+
         HashSet<GameTile> closedSet = new HashSet<GameTile>();
         HashSet<GameTile> openSet = new HashSet<GameTile>();
 
         GameTile closestSquare = null;
         double closestDistance = 9999;
+
+        int maxLoops = 500;
+        int loops = 0;
 
         openSet.Add(start);
 
@@ -138,10 +169,10 @@ public class Pathfinder
                     continue;
                 }
 
-                /*if (!CanWalkToSquare(unit, neighbourInfo))
+                if (!IsGameTileReachable(unit, neighbour))
                 {
                     continue;
-                }*/
+                }
 
                 var alternativeDistance = current.gScore + distance;
 
@@ -167,26 +198,30 @@ public class Pathfinder
                 }
 
             }
+
+            if (loops > maxLoops)
+            {
+                break;
+            }
+
+            loops += 1;
         }
 
-        /*if (closestSquare == null)
+        if (closestSquare == null)
         {
             return null;
         }
 
-        if (closestSquare.Distance(end) < start.Distance(end))
+        if (findClosest && closestSquare.Distance(end) < start.Distance(end))
         {
-            var path = PathInfo.GenerateWaypoints(start, closestSquare);
-            path.reachable = false;
-
-            return path;
+            return GenerateWaypoints(start, closestSquare);
         }
         else
         {
             return null;
-        }*/
+        }
 
-        return null;
+        //return null;
     }
 
     public static Vector3Int[] GenerateWaypoints(GameTile start, GameTile end)

@@ -25,6 +25,12 @@ public class ActionBarController : Popup
 
     public MapCastleOverlay castleOverlay;
 
+    public GameObject flagPrefab;
+    public GameObject xMarkPrefab;
+
+    [NonSerialized]
+    public GameObject myDestinationFlag;
+
     MapUnitManager unitManager;
 
     private UnitCommandType currentCommand = UnitCommandType.None;
@@ -63,7 +69,7 @@ public class ActionBarController : Popup
         }
         else if (actionType == UnitCommandType.Move)
         {
-
+            
         }
         else if (actionType == UnitCommandType.Inspect)
         {
@@ -79,11 +85,12 @@ public class ActionBarController : Popup
         selectedCastle = null;
     }
 
-    private void OnGameTileClickedEvent(GameTile tile)
+    private void OnGameTileClickedEvent(GameTile tile, GameClickEventData clickEventData)
     {
         if (currentCommand == UnitCommandType.Move && selectedCastle != null)
         {
-            selectedCastle.SetMovePosition(tile.position);            
+            selectedCastle.SetMovePosition(tile.position);
+            clickEventData.isUsed = true;
         }
 
         currentCommand = UnitCommandType.None;

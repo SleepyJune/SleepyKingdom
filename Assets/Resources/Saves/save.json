@@ -5,31 +5,29 @@
             "countryName": "MyCountry",
             "castlePrefabId": 5,
             "position": {
-                "x": 1,
-                "y": -4,
+                "x": 12,
+                "y": -24,
                 "z": 0
             },
             "speed": 0.0,
             "population": 0.0,
             "maxCapacity": 0.0,
             "wood": 0.0,
-            "stone": 0.0,
+            "stone": 2000.0,
             "wheat": 0.0,
             "gold": 0.0,
-            "water": 0.0,
+            "water": 1000.0,
             "taxRate": 0.0,
             "happiness": 0.0,
-            "territory": {
-                "points": []
-            }
+            "detectionRadius": 5
         },
         {
             "countryID": 186,
             "countryName": "Country 186",
             "castlePrefabId": 14,
             "position": {
-                "x": 0,
-                "y": -23,
+                "x": 10,
+                "y": -24,
                 "z": 0
             },
             "speed": 0.0,
@@ -42,16 +40,14 @@
             "water": 0.0,
             "taxRate": 0.0,
             "happiness": 0.0,
-            "territory": {
-                "points": []
-            }
+            "detectionRadius": 5
         },
         {
             "countryID": 415,
             "countryName": "Country 415",
             "castlePrefabId": 16,
             "position": {
-                "x": 1,
+                "x": 4,
                 "y": -20,
                 "z": 0
             },
@@ -65,162 +61,29 @@
             "water": 0.0,
             "taxRate": 0.0,
             "happiness": 0.0,
-            "territory": {
-                "points": [
-                    {
-                        "x": 1,
-                        "y": -17,
-                        "z": 0
-                    },
-                    {
-                        "x": 0,
-                        "y": -17,
-                        "z": 0
-                    },
-                    {
-                        "x": 0,
-                        "y": -18,
-                        "z": 0
-                    },
-                    {
-                        "x": 1,
-                        "y": -18,
-                        "z": 0
-                    },
-                    {
-                        "x": 2,
-                        "y": -18,
-                        "z": 0
-                    },
-                    {
-                        "x": 2,
-                        "y": -17,
-                        "z": 0
-                    },
-                    {
-                        "x": 2,
-                        "y": -16,
-                        "z": 0
-                    },
-                    {
-                        "x": 1,
-                        "y": -16,
-                        "z": 0
-                    },
-                    {
-                        "x": 3,
-                        "y": -16,
-                        "z": 0
-                    },
-                    {
-                        "x": 1,
-                        "y": -19,
-                        "z": 0
-                    },
-                    {
-                        "x": 0,
-                        "y": -19,
-                        "z": 0
-                    },
-                    {
-                        "x": 0,
-                        "y": -16,
-                        "z": 0
-                    },
-                    {
-                        "x": -1,
-                        "y": -19,
-                        "z": 0
-                    },
-                    {
-                        "x": -1,
-                        "y": -18,
-                        "z": 0
-                    },
-                    {
-                        "x": -1,
-                        "y": -17,
-                        "z": 0
-                    },
-                    {
-                        "x": 0,
-                        "y": -15,
-                        "z": 0
-                    },
-                    {
-                        "x": 1,
-                        "y": -15,
-                        "z": 0
-                    },
-                    {
-                        "x": 2,
-                        "y": -15,
-                        "z": 0
-                    },
-                    {
-                        "x": 4,
-                        "y": -16,
-                        "z": 0
-                    },
-                    {
-                        "x": 3,
-                        "y": -17,
-                        "z": 0
-                    },
-                    {
-                        "x": 3,
-                        "y": -15,
-                        "z": 0
-                    },
-                    {
-                        "x": 3,
-                        "y": -18,
-                        "z": 0
-                    },
-                    {
-                        "x": 2,
-                        "y": -19,
-                        "z": 0
-                    },
-                    {
-                        "x": 4,
-                        "y": -17,
-                        "z": 0
-                    },
-                    {
-                        "x": 4,
-                        "y": -18,
-                        "z": 0
-                    },
-                    {
-                        "x": 3,
-                        "y": -19,
-                        "z": 0
-                    }
-                ]
-            }
+            "detectionRadius": 5
         }
     ],
     "mapCastles": [
         {
             "position": {
-                "x": 1,
-                "y": -4,
+                "x": 12,
+                "y": -24,
                 "z": 0
             },
             "countryID": 1
         },
         {
             "position": {
-                "x": 0,
-                "y": -23,
+                "x": 10,
+                "y": -24,
                 "z": 0
             },
             "countryID": 186
         },
         {
             "position": {
-                "x": 1,
+                "x": 4,
                 "y": -20,
                 "z": 0
             },
@@ -234,7 +97,7 @@
                 "y": 2,
                 "z": 0
             },
-            "amount": 1438,
+            "amount": 438,
             "maxCapacity": 3038,
             "resourceID": 18
         },
@@ -254,7 +117,7 @@
                 "y": -1,
                 "z": 0
             },
-            "amount": 2596,
+            "amount": 1596,
             "maxCapacity": 2596,
             "resourceID": 19
         },
@@ -264,7 +127,7 @@
                 "y": 3,
                 "z": 0
             },
-            "amount": 3359,
+            "amount": 2359,
             "maxCapacity": 3359,
             "resourceID": 18
         },

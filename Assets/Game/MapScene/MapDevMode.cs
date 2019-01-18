@@ -5,8 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MapDevMode : MonoBehaviour
-{
-
+{    
     [NonSerialized]
     public Transform canvas;
 

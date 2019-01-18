@@ -28,10 +28,13 @@ public class MapUnit : GameDataPrefab
 
     public float speed = 1.0f;
 
-    private Tilemap tilemap;
+    protected Tilemap tilemap;
 
     [NonSerialized]
     public MapUnitManager unitManager;
+
+    [NonSerialized]
+    public Territory territory;
 
     protected virtual void Start()
     {
@@ -42,18 +45,24 @@ public class MapUnit : GameDataPrefab
         SetPosition(position);
     }
     
-    public void SetMovePosition(Vector3Int pos)
+    public virtual bool SetMovePosition(Vector3Int pos)
     {                
-        var tempPath = Pathfinder.GetShortestPath(this, position, pos);
+        var tempPath = Pathfinder.GetShortestPath(this, position, pos, true);
 
         if(tempPath != null && tempPath.Length > 1)
         {
             path = tempPath;
 
-            targetPos = pos;
+            targetPos = path.Last();
 
             startMovingTime = Time.time;
+
+            SetGameTilePosition(targetPos);
+
+            return true;
         }
+
+        return false;
     }
 
     void GetPosition()
@@ -128,16 +137,26 @@ public class MapUnit : GameDataPrefab
 
         transform.position = tilemap.CellToWorld(position);
 
+        SetGameTilePosition(nextPosition);
+    }
+
+    void SetGameTilePosition(Vector3Int nextPosition)
+    {
         if (gameTile != null)
         {
             gameTile.DeleteUnit(this);
         }
 
         var newGameTile = Pathfinder.GetGameTile(nextPosition);
-        if(newGameTile != null)
+        if (newGameTile != null)
         {
             newGameTile.AddUnit(this);
             gameTile = newGameTile;
         }
+    }
+
+    public float Distance(MapUnit unit)
+    {
+        return Vector3.Distance(position, unit.position);
     }
 }

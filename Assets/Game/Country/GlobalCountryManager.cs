@@ -97,7 +97,14 @@ public class GlobalCountryManager : MonoBehaviour
             GameManager.instance.gameStateManager.gameState.AddCountry(newCountry);
         }
 
-        if(OnAddCountryEvent != null)
+        CountryDataObject countryData;
+
+        if (GameManager.instance.gamedatabaseManager.mapDatabase.countryDataObjectDictionary.TryGetValue(newCountry.countryID, out countryData))
+        {
+            newCountry.Initialize(countryData);
+        }
+
+        if (OnAddCountryEvent != null)
         {
             OnAddCountryEvent(newCountry);
         }

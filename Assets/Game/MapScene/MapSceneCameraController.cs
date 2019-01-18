@@ -70,6 +70,15 @@ public class MapSceneCameraController : MonoBehaviour
 
     public void OnMouseDragEvent(TouchInput input)
     {
+        Vector3 delta = Camera.main.ScreenToWorldPoint(input.previousPosition) - Camera.main.ScreenToWorldPoint(input.position);
+
+        //var sensitivity = dragSensitivity * Camera.main.orthographicSize;
+
+        Camera.main.transform.Translate(delta.x, delta.y, 0, Space.World);
+    }
+
+    public void OnMouseDragEvent2(TouchInput input)
+    {
         Vector3 delta = input.previousPosition - input.position;
 
         var sensitivity = dragSensitivity * Camera.main.orthographicSize;
@@ -90,5 +99,17 @@ public class MapSceneCameraController : MonoBehaviour
             size = Mathf.Clamp(size, minSize, maxSize);
             Camera.main.orthographicSize = size;
         }
+    }
+
+    public void CenterMyCastle()
+    {
+        CenterOn(MapSceneManager.instance.unitManager.myCastle);
+    }
+
+    public void CenterOn(MapUnit unit)
+    {
+        var pos = unit.transform.position;
+
+        Camera.main.transform.position = new Vector3(pos.x, pos.y, Camera.main.transform.position.z);
     }
 }
