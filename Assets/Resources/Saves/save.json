@@ -5,8 +5,8 @@
             "countryName": "MyCountry",
             "castlePrefabId": 5,
             "position": {
-                "x": 12,
-                "y": -24,
+                "x": 4,
+                "y": -27,
                 "z": 0
             },
             "speed": 0.0,
@@ -26,8 +26,8 @@
             "countryName": "Country 186",
             "castlePrefabId": 14,
             "position": {
-                "x": 10,
-                "y": -24,
+                "x": 4,
+                "y": -26,
                 "z": 0
             },
             "speed": 0.0,
@@ -47,7 +47,7 @@
             "countryName": "Country 415",
             "castlePrefabId": 16,
             "position": {
-                "x": 4,
+                "x": 3,
                 "y": -20,
                 "z": 0
             },
@@ -67,23 +67,23 @@
     "mapCastles": [
         {
             "position": {
-                "x": 12,
-                "y": -24,
+                "x": 4,
+                "y": -27,
                 "z": 0
             },
             "countryID": 1
         },
         {
             "position": {
-                "x": 10,
-                "y": -24,
+                "x": 4,
+                "y": -26,
                 "z": 0
             },
             "countryID": 186
         },
         {
             "position": {
-                "x": 4,
+                "x": 3,
                 "y": -20,
                 "z": 0
             },

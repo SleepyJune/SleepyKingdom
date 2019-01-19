@@ -86,6 +86,9 @@ public class MapUnit : GameDataPrefab
             var pos = currentPos + dir * distanceBetween * distLeft;
 
             transform.position = pos;
+
+            OnPositionChanged(position, path[currentPosIndex]);
+
             position = path[currentPosIndex];
         }
         else
@@ -94,6 +97,9 @@ public class MapUnit : GameDataPrefab
             var currentPos = tilemap.CellToWorld(lastPos);
 
             transform.position = currentPos;
+
+            OnPositionChanged(position, lastPos);
+
             position = lastPos;
 
             path = null;
@@ -108,6 +114,11 @@ public class MapUnit : GameDataPrefab
         {
             GetPosition();
         }
+    }
+
+    protected virtual void OnPositionChanged(Vector3Int oldPos, Vector3Int newPos)
+    {
+
     }
 
     protected virtual void OnDestinationReached()

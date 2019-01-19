@@ -14,6 +14,8 @@ public class MapCastleUnit : MapUnit
 
     public SpriteRenderer render;
 
+    public bool isInsideTerritory = false;
+
     protected override void Start()
     {
         base.Start();
@@ -74,6 +76,38 @@ public class MapCastleUnit : MapUnit
             if (unitManager.actionBar.myDestinationFlag != null)
             {
                 Destroy(unitManager.actionBar.myDestinationFlag);
+            }
+        }
+    }
+
+    protected override void OnPositionChanged(Vector3Int oldPos, Vector3Int newPos)
+    {
+        if(this == unitManager.myCastle)
+        {
+            var manager = MapSceneManager.instance.castleManager;
+            var castles = manager.castles;
+
+            foreach(var castle in castles.Values)
+            {
+                if(castle != null && castle.territory != null && castle.territory.pointsHashset != null)
+                {
+                    if (castle.isInsideTerritory)
+                    {
+                        if (!castle.territory.pointsHashset.Contains(newPos))
+                        {
+                            manager.territoryOverlay.RemoveTerritoryOverlay(castle);
+                            castle.isInsideTerritory = false;
+                        }
+                    }
+                    else
+                    {
+                        if (castle.territory.pointsHashset.Contains(newPos))
+                        {
+                            manager.territoryOverlay.CreateTerritoryOverlay(castle);
+                            castle.isInsideTerritory = true;
+                        }
+                    }
+                }
             }
         }
     }

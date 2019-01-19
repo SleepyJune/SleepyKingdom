@@ -14,6 +14,9 @@ public class MapCastleManager : MonoBehaviour
     [NonSerialized]
     public MapCastleUnit myCastle;
 
+    [NonSerialized]
+    public MapCastleTerritoryOverlay territoryOverlay;
+
     MapUnitManager unitManager;
 
 
@@ -23,6 +26,7 @@ public class MapCastleManager : MonoBehaviour
         GameManager.instance.globalCountryManager.OnDeleteCountryEvent += OnDeleteCountryEvent;
 
         unitManager = GetComponent<MapUnitManager>();
+        territoryOverlay = GetComponent<MapCastleTerritoryOverlay>();
 
         Initialize();
     }
