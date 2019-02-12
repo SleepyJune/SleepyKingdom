@@ -9,9 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d8a59a26b6d40124c8dabda0e45392ba, type: 3}
-  m_Name: Plains
+  m_Name: Farm
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 3ab743219f8f109488840c282c9dc7f3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f63bdac46a532cc489c54627c8f51dda, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
@@ -35,7 +35,7 @@ MonoBehaviour:
   m_ColliderType: 2
   isBlocked: 0
   sprites:
-  - {fileID: 21300000, guid: 3ab743219f8f109488840c282c9dc7f3, type: 3}
-  - {fileID: 21300002, guid: 3ab743219f8f109488840c282c9dc7f3, type: 3}
-  - {fileID: 21300004, guid: 3ab743219f8f109488840c282c9dc7f3, type: 3}
-  - {fileID: 21300006, guid: 3ab743219f8f109488840c282c9dc7f3, type: 3}
+  - {fileID: 21300000, guid: f63bdac46a532cc489c54627c8f51dda, type: 3}
+  - {fileID: 21300000, guid: 0e663f298dc18f242ab9f86a778a8c4d, type: 3}
+  - {fileID: 21300000, guid: a300c1e66934b5743aabed2bd70c29df, type: 3}
+  - {fileID: 21300000, guid: b2bf8f0be63790d4e89316159ae5493b, type: 3}

@@ -9,9 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d8a59a26b6d40124c8dabda0e45392ba, type: 3}
-  m_Name: Plains
+  m_Name: Village Small
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 3ab743219f8f109488840c282c9dc7f3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9f0a49ac78a9daa43b57af2ad219da0b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
@@ -35,7 +35,7 @@ MonoBehaviour:
   m_ColliderType: 2
   isBlocked: 0
   sprites:
-  - {fileID: 21300000, guid: 3ab743219f8f109488840c282c9dc7f3, type: 3}
-  - {fileID: 21300002, guid: 3ab743219f8f109488840c282c9dc7f3, type: 3}
-  - {fileID: 21300004, guid: 3ab743219f8f109488840c282c9dc7f3, type: 3}
-  - {fileID: 21300006, guid: 3ab743219f8f109488840c282c9dc7f3, type: 3}
+  - {fileID: 21300000, guid: 9f0a49ac78a9daa43b57af2ad219da0b, type: 3}
+  - {fileID: 21300000, guid: 24543cab64c82f24d983f5e2fca88fc7, type: 3}
+  - {fileID: 21300000, guid: 844c74d007fe3af44829839c95e40bf4, type: 3}
+  - {fileID: 21300000, guid: 8a1c16c9382f51f41b4c4441cec18ffd, type: 3}
