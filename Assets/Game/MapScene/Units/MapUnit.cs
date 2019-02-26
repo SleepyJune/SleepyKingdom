@@ -36,6 +36,9 @@ public class MapUnit : GameDataPrefab
     [NonSerialized]
     public Territory territory;
 
+    public bool rotateMovingUnit = false;
+    public bool negativeRotation = true;
+
     protected virtual void Start()
     {
         MapSceneManager.instance.unitManager.InitializeUnit(this);
@@ -86,6 +89,33 @@ public class MapUnit : GameDataPrefab
             var pos = currentPos + dir * distanceBetween * distLeft;
 
             transform.position = pos;
+            
+            if (rotateMovingUnit && dir != Vector3.zero)
+            {
+                float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90;
+                                
+                if(angle > 180)
+                {
+                    angle -= 360;
+                }
+                else if(angle < -180)
+                {
+                    angle += 360;
+                }
+
+                transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+                if (!negativeRotation)
+                {
+                    var scale = transform.localScale;
+                    var mult = angle < 0 ? -1 : 1;
+
+                    Debug.Log(angle);
+
+                    transform.localScale = new Vector3(mult * Math.Abs(scale.x), scale.y, scale.z);
+                }
+
+            }
 
             OnPositionChanged(position, path[currentPosIndex]);
 
