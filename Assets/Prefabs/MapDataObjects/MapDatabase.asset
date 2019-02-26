@@ -24,7 +24,7 @@ MonoBehaviour:
   interactableSpawnTiles:
   - {fileID: 114266126331880416}
   - {fileID: 114128453510007014}
-  countryCounter: 569
+  countryCounter: 570
 --- !u!114 &114118455340595592
 MonoBehaviour:
   m_ObjectHideFlags: 0

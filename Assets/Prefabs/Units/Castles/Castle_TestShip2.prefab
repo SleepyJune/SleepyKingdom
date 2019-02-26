@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 114775461884145734}
   - component: {fileID: 95972554835740404}
   m_Layer: 8
-  m_Name: Castle_TestShip
+  m_Name: Castle_TestShip2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -217,12 +217,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Ottawa
-  id: 17
+  id: 18
   unitId: 0
   position: {x: 0, y: 0, z: 0}
   canMove: 1
   speed: 1
   rotateMovingUnit: 1
+  negativeRotation: 1
   image: {fileID: 21300000, guid: 823730b51f150ba4da4bfb8c8ae405f6, type: 3}
   render: {fileID: 212382804202330068}
   isInsideTerritory: 0
