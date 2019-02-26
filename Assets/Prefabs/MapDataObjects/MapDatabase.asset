@@ -15,14 +15,45 @@ MonoBehaviour:
   - {fileID: 114125874415950362}
   - {fileID: 114729429792636102}
   - {fileID: 114570225612997300}
+  - {fileID: 114118455340595592}
   castleSpawnTiles:
   - {fileID: 114639985450982846}
   - {fileID: 114680108962072486}
   - {fileID: 114249455352603430}
+  - {fileID: 114382652872650938}
   interactableSpawnTiles:
   - {fileID: 114266126331880416}
   - {fileID: 114128453510007014}
-  countryCounter: 550
+  countryCounter: 569
+--- !u!114 &114118455340595592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70a61b8322cb70241b72bab650d5fddf, type: 3}
+  m_Name: Country 555 Data
+  m_EditorClassIdentifier: 
+  country:
+    countryID: 555
+    countryName: Country 555
+    castlePrefabId: 17
+    position: {x: 4, y: -17, z: 0}
+    speed: 0
+    population: 0
+    maxCapacity: 0
+    wood: 0
+    stone: 0
+    wheat: 0
+    gold: 0
+    water: 0
+    taxRate: 0
+    happiness: 0
+    detectionRadius: 5
+  territory:
+    points: []
 --- !u!114 &114125874415950362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,6 +268,41 @@ MonoBehaviour:
   m_ColliderType: 1
   position: {x: 2, y: -25, z: 0}
   prefab: {fileID: 114505358365408646, guid: 3a213645604131744a500ca19c4edb55, type: 2}
+--- !u!114 &114382652872650938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12dfb1152f065754baf8039e84f49e9d, type: 3}
+  m_Name: Country 555 SpawnTile
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 21300000, guid: 823730b51f150ba4da4bfb8c8ae405f6, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 1
+  m_ColliderType: 1
+  position: {x: 4, y: -17, z: 0}
+  countryData: {fileID: 114118455340595592}
 --- !u!114 &114570225612997300
 MonoBehaviour:
   m_ObjectHideFlags: 0
