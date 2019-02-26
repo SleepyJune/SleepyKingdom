@@ -1,47 +1,31 @@
 fileFormatVersion: 2
-guid: 383d2b38af0c59c40b9037ea92f2ac5d
+guid: a5ad7154291a5ed4d9182848c86d0a73
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Hex_Specials_0
-    21300002: Hex_Specials_1
-    21300004: Hex_Specials_2
-    21300006: Hex_Specials_3
-    21300008: Hex_Specials_4
-    21300010: Hex_Specials_5
-    21300012: Hex_Specials_6
-    21300014: Hex_Specials_7
-    21300016: Hex_Specials_8
-    21300018: Hex_Specials_9
-    21300020: Hex_Specials_10
-    21300022: Hex_Specials_11
-    21300024: Hex_Specials_12
-    21300026: Hex_Specials_13
-    21300028: Hex_Specials_14
-    21300030: Hex_Specials_15
-    21300032: Hex_Specials_16
-    21300034: Hex_Specials_17
-    21300036: Hex_Specials_18
-    21300038: Hex_Specials_19
-    21300040: Hex_Specials_20
-    21300042: Hex_Specials_21
-    21300044: Hex_Specials_22
-    21300046: Hex_Specials_23
-    21300048: Hex_Specials_24
-    21300050: Hex_Specials_25
-    21300052: Hex_Specials_26
-    21300054: Hex_Specials_27
-    21300056: Hex_Specials_28
-    21300058: Hex_Specials_29
-    21300060: Hex_Specials_30
-    21300062: Hex_Specials_31
-    21300064: Hex_Specials_32
-    21300066: Hex_Specials_33
-    21300068: Hex_Specials_34
-    21300070: Hex_Specials_35
-    21300072: Hex_Specials_36
-    21300074: Hex_Specials_37
-    21300076: Hex_Specials_38
-    21300078: Hex_Specials_39
+    21300000: Forest_hue_0
+    21300002: Forest_hue_1
+    21300004: Forest_hue_2
+    21300006: Forest_hue_3
+    21300008: Forest_hue_4
+    21300010: Forest_hue_5
+    21300012: Forest_hue_6
+    21300014: Forest_hue_7
+    21300016: Forest_hue_8
+    21300018: Forest_hue_9
+    21300020: Forest_hue_10
+    21300022: Forest_hue_11
+    21300024: Forest_hue_12
+    21300026: Forest_hue_13
+    21300028: Forest_hue_14
+    21300030: Forest_hue_15
+    21300032: Forest_hue_16
+    21300034: Forest_hue_17
+    21300036: Forest_hue_18
+    21300038: Forest_hue_19
+    21300040: Forest_hue_20
+    21300042: Forest_hue_21
+    21300044: Forest_hue_22
+    21300046: Forest_hue_23
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -124,7 +108,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Hex_Specials_0
+      name: Forest_hue_0
       rect:
         serializedVersion: 2
         x: 0
@@ -138,13 +122,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7e3c1bcacf96e65499df8419214a184d
+      spriteID: 3496bace6b100704e838cb6778ae08c6
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hex_Specials_1
+      name: Forest_hue_1
       rect:
         serializedVersion: 2
         x: 256
@@ -158,13 +142,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1117877320ec30d4099899bad2e2eefc
+      spriteID: 9ac07421394aaa048a5579fb2fb61a89
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hex_Specials_2
+      name: Forest_hue_2
       rect:
         serializedVersion: 2
         x: 512
@@ -178,13 +162,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7840422b98c1c364a82fc3dca17f422f
+      spriteID: 7cfe21f45e6a1a24cb4504ef2a1bad6b
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hex_Specials_3
+      name: Forest_hue_3
       rect:
         serializedVersion: 2
         x: 768
@@ -198,13 +182,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dd18357190f15cf438b2f931842b06b6
+      spriteID: 90e4af519e4b5c54dac70be1eb45e2d4
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hex_Specials_4
+      name: Forest_hue_4
       rect:
         serializedVersion: 2
         x: 1024
@@ -218,13 +202,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 784981bccc45cb045b42420c7a673f7b
+      spriteID: 56301000147ba384b9dfdae621fe602d
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hex_Specials_5
+      name: Forest_hue_5
       rect:
         serializedVersion: 2
         x: 1280
@@ -238,13 +222,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b3d941d693d48e0449894764ee2b1a6f
+      spriteID: 9e2fdf754f17a61498772699b42d69be
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hex_Specials_6
+      name: Forest_hue_6
       rect:
         serializedVersion: 2
         x: 1536
@@ -258,13 +242,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b80739ad53be00e409295b6dbff619f4
+      spriteID: 58b1c736fcdf338469d70447a0c15bdb
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hex_Specials_7
+      name: Forest_hue_7
       rect:
         serializedVersion: 2
         x: 1792
@@ -278,13 +262,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 89b05f78615652c48a489c3bf33c028d
+      spriteID: 4492ea8d78cd28642b99fefbf12a4402
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hex_Specials_8
+      name: Forest_hue_8
       rect:
         serializedVersion: 2
         x: 0
@@ -298,13 +282,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 205c587e19cbbb94cb790b3e41b7471f
+      spriteID: 75635b5e81884fa4680bf467b6294849
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hex_Specials_9
+      name: Forest_hue_9
       rect:
         serializedVersion: 2
         x: 256
@@ -318,13 +302,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1584daba474ed75418814b95da47e084
+      spriteID: dd3ec0cbcd2248144a206ab692658e51
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hex_Specials_10
+      name: Forest_hue_10
       rect:
         serializedVersion: 2
         x: 512
@@ -338,13 +322,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed26411f2b6d8c9449419f6f3f7a6d15
+      spriteID: 29de58d7853625d4ba494b0b1f06a073
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hex_Specials_11
+      name: Forest_hue_11
       rect:
         serializedVersion: 2
         x: 768
@@ -358,13 +342,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 401b08e70be5b0d43895a424a92ed9d4
+      spriteID: 86b5792ec4563174790b56848fd425d3
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hex_Specials_12
+      name: Forest_hue_12
       rect:
         serializedVersion: 2
         x: 1024
@@ -378,13 +362,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 04ac569c88d36ef4ea9088adc52a3e2c
+      spriteID: 90e4ec783cf655b438f23edd7d06bc18
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hex_Specials_13
+      name: Forest_hue_13
       rect:
         serializedVersion: 2
         x: 1280
@@ -398,13 +382,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 75264321ab2d99641ad5662809bee4fc
+      spriteID: 29bdacc13e21d7842b4d1cab14a7485c
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hex_Specials_14
+      name: Forest_hue_14
       rect:
         serializedVersion: 2
         x: 1536
@@ -418,13 +402,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d6733aefe26b74e40895daff6f82d147
+      spriteID: f521cc7e9f8385c4eb80960ecc964682
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hex_Specials_15
+      name: Forest_hue_15
       rect:
         serializedVersion: 2
         x: 1792
@@ -438,13 +422,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5d1a42f8752351a418a726275c9bee9d
+      spriteID: a93b94d1f334208419046f5b02307a5f
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hex_Specials_16
+      name: Forest_hue_16
       rect:
         serializedVersion: 2
         x: 0
@@ -458,13 +442,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: be5fb8b2b51dfea4c8ebae518f15ef8e
+      spriteID: 9694a62a0d6195e4e962a5dd94ea8bcf
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hex_Specials_17
+      name: Forest_hue_17
       rect:
         serializedVersion: 2
         x: 256
@@ -478,13 +462,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1f38f08141c7fb4449910091089841bc
+      spriteID: 20c77ac1b83859843bf4072f0a44867a
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hex_Specials_18
+      name: Forest_hue_18
       rect:
         serializedVersion: 2
         x: 512
@@ -498,13 +482,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 374a8182359219345905f14feefc17c8
+      spriteID: 9f08f4712e84ca043aed6b3b324a95d4
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hex_Specials_19
+      name: Forest_hue_19
       rect:
         serializedVersion: 2
         x: 768
@@ -518,13 +502,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 079110628028a284cb9bb081f1f8863f
+      spriteID: 3674fcf00953b0c4c952bf08f64f1a84
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hex_Specials_20
+      name: Forest_hue_20
       rect:
         serializedVersion: 2
         x: 1024
@@ -538,13 +522,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b650fb0cd7c35344db887c79dc4aa427
+      spriteID: 355f05265421670478ec2891a9888495
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hex_Specials_21
+      name: Forest_hue_21
       rect:
         serializedVersion: 2
         x: 1280
@@ -558,13 +542,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 53ff240ad3a81da49bf9a52a2fa5e9d9
+      spriteID: 5827437fd3f257b4b908bb80a42a100a
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hex_Specials_22
+      name: Forest_hue_22
       rect:
         serializedVersion: 2
         x: 1536
@@ -578,13 +562,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 077726fb3aa78904c8cfe7bff2447880
+      spriteID: 1a2b2d6d7315cac4d8f564c2f19e7c75
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hex_Specials_23
+      name: Forest_hue_23
       rect:
         serializedVersion: 2
         x: 1792
@@ -598,327 +582,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bfa11cb0542ecf24ea6c2879979d3aa9
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hex_Specials_24
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 512
-        width: 256
-        height: 384
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 387dbdaf041c03a47af0d77d01a4070f
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hex_Specials_25
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 512
-        width: 256
-        height: 384
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5befee2ddb53638479f8ecb4dbd1aaff
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hex_Specials_26
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 512
-        width: 256
-        height: 384
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a904e1bf6d5c5e144a5922a19e89a660
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hex_Specials_27
-      rect:
-        serializedVersion: 2
-        x: 768
-        y: 512
-        width: 256
-        height: 384
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: addbc3862eebd7d4885f8f9a1b3d3a54
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hex_Specials_28
-      rect:
-        serializedVersion: 2
-        x: 1024
-        y: 512
-        width: 256
-        height: 384
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 475dd84e4cf37da47b5b345062140d0a
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hex_Specials_29
-      rect:
-        serializedVersion: 2
-        x: 1280
-        y: 512
-        width: 256
-        height: 384
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 44a5e14229ae07540b9165ea87ba8ab8
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hex_Specials_30
-      rect:
-        serializedVersion: 2
-        x: 1536
-        y: 512
-        width: 256
-        height: 384
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ab949ec3f5314e7498ddc9a060e68824
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hex_Specials_31
-      rect:
-        serializedVersion: 2
-        x: 1792
-        y: 512
-        width: 256
-        height: 384
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 197fd153319dd1440ac5a21073c3aeb8
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hex_Specials_32
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 128
-        width: 256
-        height: 384
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b9fb358c14665494aaf59309edf4f7c5
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hex_Specials_33
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 128
-        width: 256
-        height: 384
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9d5b2426dea901f47a5acc23b256bffc
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hex_Specials_34
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 128
-        width: 256
-        height: 384
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: db89ebe99b1bc3c4ca74199b346b9dae
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hex_Specials_35
-      rect:
-        serializedVersion: 2
-        x: 768
-        y: 128
-        width: 256
-        height: 384
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7528c1317e850914db31a0159ccaac05
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hex_Specials_36
-      rect:
-        serializedVersion: 2
-        x: 1024
-        y: 128
-        width: 256
-        height: 384
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 24f7cfe720228bc4a8dc962b6542770d
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hex_Specials_37
-      rect:
-        serializedVersion: 2
-        x: 1280
-        y: 128
-        width: 256
-        height: 384
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 31afb0ded1ea2074e9c3febd122056dd
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hex_Specials_38
-      rect:
-        serializedVersion: 2
-        x: 1536
-        y: 128
-        width: 256
-        height: 384
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7e5074181d82833478c095edd65d1d02
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hex_Specials_39
-      rect:
-        serializedVersion: 2
-        x: 1792
-        y: 128
-        width: 256
-        height: 384
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e989a25d53c44d24f9a2cc5e53293490
+      spriteID: 79b59f97becbd964eaa54bdc535ea0da
       vertices: []
       indices: 
       edges: []
@@ -926,7 +590,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 735ffd5c97a6f46429ccbc9ffd32d3ea
+    spriteID: 8726108ae3bb39b4c8f0d3712d56a1e0
     vertices: []
     indices: 
     edges: []
