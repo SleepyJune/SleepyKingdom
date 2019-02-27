@@ -10,6 +10,10 @@ TextureImporter:
     21300010: Sign Tiles_5
     21300012: Sign Tiles_6
     21300014: Sign Tiles_7
+    21300016: Sign Tiles_8
+    21300018: Sign Tiles_9
+    21300020: Sign Tiles_10
+    21300022: Sign Tiles_11
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -95,10 +99,10 @@ TextureImporter:
       name: Sign Tiles_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 416
-        width: 256
-        height: 384
+        x: 22
+        y: 467
+        width: 215
+        height: 205
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -106,7 +110,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1c80d919f25756644966ae6523dbadc3
+      spriteID: 74d11f629fa777548abbfa71ca2b8793
       vertices: []
       indices: 
       edges: []
@@ -116,9 +120,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 256
-        y: 416
-        width: 256
-        height: 384
+        y: 462
+        width: 253
+        height: 214
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -126,27 +130,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ea29777b86c38b94883c16df1aadd2f8
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sign Tiles_2
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 416
-        width: 256
-        height: 384
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 76d29ac613c1be345a79f3bf9394e3ec
+      spriteID: 3ac5baa7a800aed449141bcefe40269d
       vertices: []
       indices: 
       edges: []
@@ -155,10 +139,10 @@ TextureImporter:
       name: Sign Tiles_3
       rect:
         serializedVersion: 2
-        x: 768
-        y: 416
-        width: 256
-        height: 384
+        x: 544
+        y: 464
+        width: 232
+        height: 214
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,7 +150,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0c5b3ca949d14c14b8bb248dae7238c5
+      spriteID: b0f2bc09d6da01f4f8095aa97bfc1c71
       vertices: []
       indices: 
       edges: []
@@ -175,10 +159,10 @@ TextureImporter:
       name: Sign Tiles_4
       rect:
         serializedVersion: 2
-        x: 1024
-        y: 416
-        width: 256
-        height: 384
+        x: 812
+        y: 467
+        width: 216
+        height: 210
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -186,7 +170,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0127b3aa1353f4e42b791a257393e28b
+      spriteID: eccad2df93e2bf14a875ba7999aae807
       vertices: []
       indices: 
       edges: []
@@ -195,10 +179,10 @@ TextureImporter:
       name: Sign Tiles_5
       rect:
         serializedVersion: 2
-        x: 1280
-        y: 416
-        width: 256
-        height: 384
+        x: 1031
+        y: 462
+        width: 243
+        height: 214
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -206,7 +190,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f52a5e044c786f642bac75020be57976
+      spriteID: 6fe96796a67f1094a904e30b2a37175c
       vertices: []
       indices: 
       edges: []
@@ -215,10 +199,10 @@ TextureImporter:
       name: Sign Tiles_6
       rect:
         serializedVersion: 2
-        x: 0
-        y: 32
-        width: 256
-        height: 384
+        x: 1299
+        y: 464
+        width: 225
+        height: 214
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -226,7 +210,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 874bc85e139e44249be79a56a76ce921
+      spriteID: a98dc0ad5a14318449761f9780c9fbf5
       vertices: []
       indices: 
       edges: []
@@ -235,10 +219,10 @@ TextureImporter:
       name: Sign Tiles_7
       rect:
         serializedVersion: 2
-        x: 256
-        y: 32
-        width: 256
-        height: 384
+        x: 22
+        y: 67
+        width: 215
+        height: 205
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -246,7 +230,27 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9bf3a9cd22bfdd243a70cbc206e21d88
+      spriteID: 019e232a06b9a024ea3a04a51cc667e8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sign Tiles_8
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 66
+        width: 216
+        height: 210
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11a8c8cc70da5194481255464528887a
       vertices: []
       indices: 
       edges: []

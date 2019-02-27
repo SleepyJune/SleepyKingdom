@@ -11,159 +11,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba193209e70cf241b81408b746e4ca0, type: 3}
   m_Name: MapDatabase
   m_EditorClassIdentifier: 
-  countryDataObjects:
-  - {fileID: 114125874415950362}
-  - {fileID: 114729429792636102}
-  - {fileID: 114570225612997300}
-  - {fileID: 114118455340595592}
-  castleSpawnTiles:
-  - {fileID: 114639985450982846}
-  - {fileID: 114680108962072486}
-  - {fileID: 114249455352603430}
-  - {fileID: 114382652872650938}
+  countryDataObjects: []
+  castleSpawnTiles: []
   interactableSpawnTiles:
-  - {fileID: 114266126331880416}
-  - {fileID: 114128453510007014}
-  countryCounter: 570
---- !u!114 &114118455340595592
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70a61b8322cb70241b72bab650d5fddf, type: 3}
-  m_Name: Country 555 Data
-  m_EditorClassIdentifier: 
-  country:
-    countryID: 555
-    countryName: Country 555
-    castlePrefabId: 17
-    position: {x: 4, y: -17, z: 0}
-    speed: 0
-    population: 0
-    maxCapacity: 0
-    wood: 0
-    stone: 0
-    wheat: 0
-    gold: 0
-    water: 0
-    taxRate: 0
-    happiness: 0
-    detectionRadius: 5
-  territory:
-    points: []
---- !u!114 &114125874415950362
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70a61b8322cb70241b72bab650d5fddf, type: 3}
-  m_Name: Country 186 Data
-  m_EditorClassIdentifier: 
-  country:
-    countryID: 186
-    countryName: Country 186
-    castlePrefabId: 14
-    position: {x: 0, y: -23, z: 0}
-    speed: 0
-    population: 0
-    maxCapacity: 0
-    wood: 0
-    stone: 0
-    wheat: 0
-    gold: 0
-    water: 0
-    taxRate: 0
-    happiness: 0
-    detectionRadius: 2
-  territory:
-    points:
-    - {x: 3, y: -21, z: 0}
-    - {x: 3, y: -20, z: 0}
-    - {x: 2, y: -20, z: 0}
-    - {x: 1, y: -20, z: 0}
-    - {x: 0, y: -21, z: 0}
-    - {x: -1, y: -21, z: 0}
-    - {x: 0, y: -22, z: 0}
-    - {x: -1, y: -23, z: 0}
-    - {x: 0, y: -24, z: 0}
-    - {x: 1, y: -24, z: 0}
-    - {x: 2, y: -24, z: 0}
-    - {x: 3, y: -24, z: 0}
-    - {x: 3, y: -23, z: 0}
-    - {x: 4, y: -24, z: 0}
-    - {x: 4, y: -23, z: 0}
-    - {x: 5, y: -22, z: 0}
-    - {x: 4, y: -22, z: 0}
-    - {x: 3, y: -22, z: 0}
-    - {x: 2, y: -22, z: 0}
-    - {x: 1, y: -22, z: 0}
-    - {x: 0, y: -23, z: 0}
-    - {x: 1, y: -21, z: 0}
-    - {x: 2, y: -21, z: 0}
-    - {x: 1, y: -23, z: 0}
-    - {x: 2, y: -23, z: 0}
-    - {x: 2, y: -25, z: 0}
-    - {x: 1, y: -25, z: 0}
-    - {x: 0, y: -25, z: 0}
-    - {x: 1, y: -26, z: 0}
-    - {x: 2, y: -26, z: 0}
-    - {x: 3, y: -26, z: 0}
-    - {x: 4, y: -26, z: 0}
-    - {x: 4, y: -25, z: 0}
-    - {x: 5, y: -24, z: 0}
-    - {x: 5, y: -23, z: 0}
-    - {x: 6, y: -22, z: 0}
-    - {x: 3, y: -25, z: 0}
-    - {x: 4, y: -21, z: 0}
-    - {x: 4, y: -20, z: 0}
-    - {x: 4, y: -19, z: 0}
-    - {x: 5, y: -19, z: 0}
-    - {x: 6, y: -18, z: 0}
-    - {x: 6, y: -17, z: 0}
-    - {x: 7, y: -16, z: 0}
-    - {x: 7, y: -17, z: 0}
-    - {x: 8, y: -18, z: 0}
-    - {x: 7, y: -20, z: 0}
-    - {x: 8, y: -19, z: 0}
-    - {x: 7, y: -19, z: 0}
-    - {x: 6, y: -19, z: 0}
-    - {x: 7, y: -18, z: 0}
-    - {x: 5, y: -20, z: 0}
-    - {x: 5, y: -21, z: 0}
-    - {x: 6, y: -21, z: 0}
-    - {x: 7, y: -21, z: 0}
-    - {x: 8, y: -21, z: 0}
-    - {x: 6, y: -20, z: 0}
-    - {x: 8, y: -20, z: 0}
-    - {x: 9, y: -22, z: 0}
-    - {x: 9, y: -23, z: 0}
-    - {x: 8, y: -23, z: 0}
-    - {x: 7, y: -23, z: 0}
-    - {x: 6, y: -23, z: 0}
-    - {x: 7, y: -22, z: 0}
-    - {x: 8, y: -22, z: 0}
-    - {x: 6, y: -24, z: 0}
-    - {x: 5, y: -26, z: 0}
-    - {x: 6, y: -26, z: 0}
-    - {x: 6, y: -25, z: 0}
-    - {x: 7, y: -24, z: 0}
-    - {x: 8, y: -24, z: 0}
-    - {x: 5, y: -25, z: 0}
-    - {x: 9, y: -24, z: 0}
-    - {x: 9, y: -25, z: 0}
-    - {x: 10, y: -24, z: 0}
-    - {x: 8, y: -25, z: 0}
-    - {x: 7, y: -25, z: 0}
-    - {x: 7, y: -26, z: 0}
-    - {x: 8, y: -26, z: 0}
-    - {x: 9, y: -26, z: 0}
---- !u!114 &114128453510007014
+  - {fileID: 114367426383766210}
+  - {fileID: 114589692159074040}
+  - {fileID: 114153046043170964}
+  countryCounter: 597
+--- !u!114 &114153046043170964
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -174,7 +29,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a91fdc6c2c953b45b1ce7440c2e7593, type: 3}
   m_Name: Interactable SpawnTile
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300026, guid: 807041c866d849d47b491ce9e7d0408d, type: 3}
+  m_Sprite: {fileID: 21300006, guid: 1c63e1a8f1ad5bc46a4647c1a4747436, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 0.5
@@ -196,44 +51,9 @@ MonoBehaviour:
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 2
   m_ColliderType: 1
-  position: {x: 3, y: -21, z: 0}
-  prefab: {fileID: 114633482877653110, guid: bce1f789332cd4741a37e1670db156c0, type: 2}
---- !u!114 &114249455352603430
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12dfb1152f065754baf8039e84f49e9d, type: 3}
-  m_Name: Country 415 SpawnTile
-  m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300032, guid: d39f8dcf51612f546b46a16c5383e66e, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Transform:
-    e00: 1
-    e01: 0
-    e02: 0
-    e03: 0
-    e10: 0
-    e11: 1
-    e12: 0
-    e13: 0
-    e20: 0
-    e21: 0
-    e22: 1
-    e23: 0
-    e30: 0
-    e31: 0
-    e32: 0
-    e33: 1
-  m_InstancedGameObject: {fileID: 0}
-  m_Flags: 1
-  m_ColliderType: 1
-  position: {x: 1, y: -17, z: 0}
-  countryData: {fileID: 114570225612997300}
---- !u!114 &114266126331880416
+  position: {x: 0, y: 2, z: 0}
+  prefab: {fileID: 114505358365408646, guid: fee45179e99911849b0efb0412b1633c, type: 2}
+--- !u!114 &114367426383766210
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -244,7 +64,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a91fdc6c2c953b45b1ce7440c2e7593, type: 3}
   m_Name: Interactable SpawnTile
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300014, guid: 807041c866d849d47b491ce9e7d0408d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1c63e1a8f1ad5bc46a4647c1a4747436, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 0.5
@@ -266,9 +86,9 @@ MonoBehaviour:
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 2
   m_ColliderType: 1
-  position: {x: 2, y: -25, z: 0}
+  position: {x: -4, y: -10, z: 0}
   prefab: {fileID: 114505358365408646, guid: 3a213645604131744a500ca19c4edb55, type: 2}
---- !u!114 &114382652872650938
+--- !u!114 &114589692159074040
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -276,18 +96,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12dfb1152f065754baf8039e84f49e9d, type: 3}
-  m_Name: Country 555 SpawnTile
+  m_Script: {fileID: 11500000, guid: 5a91fdc6c2c953b45b1ce7440c2e7593, type: 3}
+  m_Name: Interactable SpawnTile
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 823730b51f150ba4da4bfb8c8ae405f6, type: 3}
+  m_Sprite: {fileID: 21300002, guid: 1c63e1a8f1ad5bc46a4647c1a4747436, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
-    e00: 1
+    e00: 0.5
     e01: 0
     e02: 0
     e03: 0
     e10: 0
-    e11: 1
+    e11: 0.5
     e12: 0
     e13: 0
     e20: 0
@@ -297,195 +117,9 @@ MonoBehaviour:
     e30: 0
     e31: 0
     e32: 0
-    e33: 1
+    e33: 0
   m_InstancedGameObject: {fileID: 0}
-  m_Flags: 1
+  m_Flags: 2
   m_ColliderType: 1
-  position: {x: 4, y: -17, z: 0}
-  countryData: {fileID: 114118455340595592}
---- !u!114 &114570225612997300
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70a61b8322cb70241b72bab650d5fddf, type: 3}
-  m_Name: Country 415 Data
-  m_EditorClassIdentifier: 
-  country:
-    countryID: 415
-    countryName: Country 415
-    castlePrefabId: 16
-    position: {x: 1, y: -17, z: 0}
-    speed: 0
-    population: 0
-    maxCapacity: 0
-    wood: 0
-    stone: 0
-    wheat: 0
-    gold: 0
-    water: 0
-    taxRate: 0
-    happiness: 0
-    detectionRadius: 2
-  territory:
-    points:
-    - {x: -2, y: -13, z: 0}
-    - {x: -1, y: -14, z: 0}
-    - {x: 0, y: -14, z: 0}
-    - {x: -1, y: -15, z: 0}
-    - {x: -1, y: -16, z: 0}
-    - {x: -1, y: -17, z: 0}
-    - {x: -1, y: -18, z: 0}
-    - {x: 0, y: -18, z: 0}
-    - {x: 0, y: -17, z: 0}
-    - {x: 1, y: -16, z: 0}
-    - {x: 0, y: -15, z: 0}
-    - {x: 0, y: -16, z: 0}
-    - {x: 1, y: -17, z: 0}
-    - {x: 2, y: -16, z: 0}
-    - {x: 1, y: -15, z: 0}
-    - {x: 1, y: -14, z: 0}
-    - {x: -1, y: -13, z: 0}
-    - {x: 0, y: -12, z: 0}
-    - {x: 1, y: -12, z: 0}
-    - {x: 0, y: -13, z: 0}
-    - {x: 2, y: -14, z: 0}
-    - {x: 2, y: -13, z: 0}
-    - {x: 1, y: -13, z: 0}
-    - {x: 3, y: -13, z: 0}
-    - {x: 4, y: -14, z: 0}
-    - {x: 3, y: -15, z: 0}
-    - {x: 3, y: -16, z: 0}
-    - {x: 2, y: -17, z: 0}
-    - {x: 2, y: -15, z: 0}
-    - {x: 3, y: -14, z: 0}
-    - {x: 2, y: -18, z: 0}
-    - {x: 1, y: -18, z: 0}
-    - {x: 0, y: -19, z: 0}
-    - {x: -1, y: -19, z: 0}
-    - {x: 1, y: -20, z: 0}
-    - {x: 1, y: -19, z: 0}
-    - {x: 2, y: -19, z: 0}
-    - {x: 3, y: -18, z: 0}
-    - {x: 3, y: -17, z: 0}
-    - {x: 4, y: -16, z: 0}
-    - {x: 4, y: -15, z: 0}
-    - {x: 5, y: -14, z: 0}
-    - {x: 5, y: -15, z: 0}
-    - {x: 5, y: -16, z: 0}
-    - {x: 4, y: -17, z: 0}
-    - {x: 5, y: -17, z: 0}
-    - {x: 6, y: -18, z: 0}
-    - {x: 5, y: -18, z: 0}
-    - {x: 4, y: -19, z: 0}
-    - {x: 6, y: -16, z: 0}
-    - {x: 4, y: -18, z: 0}
-    - {x: 3, y: -19, z: 0}
-    - {x: 3, y: -20, z: 0}
-    - {x: 2, y: -20, z: 0}
-    - {x: 0, y: -20, z: 0}
-    - {x: 4, y: -20, z: 0}
-    - {x: 6, y: -17, z: 0}
-    - {x: 7, y: -16, z: 0}
---- !u!114 &114639985450982846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12dfb1152f065754baf8039e84f49e9d, type: 3}
-  m_Name: Country 186 SpawnTile
-  m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300018, guid: d39f8dcf51612f546b46a16c5383e66e, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Transform:
-    e00: 1
-    e01: 0
-    e02: 0
-    e03: 0
-    e10: 0
-    e11: 1
-    e12: 0
-    e13: 0
-    e20: 0
-    e21: 0
-    e22: 1
-    e23: 0
-    e30: 0
-    e31: 0
-    e32: 0
-    e33: 1
-  m_InstancedGameObject: {fileID: 0}
-  m_Flags: 1
-  m_ColliderType: 1
-  position: {x: 4, y: -23, z: 0}
-  countryData: {fileID: 114125874415950362}
---- !u!114 &114680108962072486
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12dfb1152f065754baf8039e84f49e9d, type: 3}
-  m_Name: Country 199 SpawnTile
-  m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 1dc0982d61478ea48958f5284aca407b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Transform:
-    e00: 1
-    e01: 0
-    e02: 0
-    e03: 0
-    e10: 0
-    e11: 1
-    e12: 0
-    e13: 0
-    e20: 0
-    e21: 0
-    e22: 1
-    e23: 0
-    e30: 0
-    e31: 0
-    e32: 0
-    e33: 1
-  m_InstancedGameObject: {fileID: 0}
-  m_Flags: 1
-  m_ColliderType: 1
-  position: {x: 0, y: 0, z: 0}
-  countryData: {fileID: 114729429792636102}
---- !u!114 &114729429792636102
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70a61b8322cb70241b72bab650d5fddf, type: 3}
-  m_Name: Country 199 Data
-  m_EditorClassIdentifier: 
-  country:
-    countryID: 1
-    countryName: MyCountry
-    castlePrefabId: 5
-    position: {x: 0, y: 0, z: 0}
-    speed: 0
-    population: 0
-    maxCapacity: 0
-    wood: 0
-    stone: 0
-    wheat: 0
-    gold: 0
-    water: 0
-    taxRate: 0
-    happiness: 0
-    detectionRadius: 2
-  territory:
-    points: []
+  position: {x: -10, y: -20, z: 0}
+  prefab: {fileID: 114505358365408646, guid: e5f66eaa4ff0b3a44a3f57a2b196e2e0, type: 2}
