@@ -18,6 +18,26 @@ TextureImporter:
     21300026: Hex_Trees_White1
     21300028: Hex_Trees_White2
     21300030: Hex_Trees_White3
+    21300032: Hex_Trees_0
+    21300034: Hex_Trees_1
+    21300036: Hex_Trees_2
+    21300038: Hex_Trees_3
+    21300040: Hex_Trees_4
+    21300042: Hex_Trees_5
+    21300044: Hex_Trees_6
+    21300046: Hex_Trees_7
+    21300048: Hex_Trees_8
+    21300050: Hex_Trees_9
+    21300052: Hex_Trees_10
+    21300054: Hex_Trees_11
+    21300056: Hex_Trees_12
+    21300058: Hex_Trees_13
+    21300060: Hex_Trees_14
+    21300062: Hex_Trees_15
+    21300064: Hex_Trees_16
+    21300066: Hex_Trees_17
+    21300068: Hex_Trees_18
+    21300070: Hex_Trees_19
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -100,321 +120,401 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Hex_Trees_Plain0
+      name: Hex_Trees_0
       rect:
         serializedVersion: 2
         x: 0
         y: 1664
         width: 256
         height: 384
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ca58db757e23c174e8c14f15744b3bd6
+      spriteID: bfa39563fe3b78849aab6c5cbfedfee2
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hex_Trees_Plain1
+      name: Hex_Trees_1
       rect:
         serializedVersion: 2
         x: 256
         y: 1664
         width: 256
         height: 384
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 96e0a4ca4f3641b498534bf6267e85e3
+      spriteID: 5e217a95009488642bb2f9e7633a3e3e
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hex_Trees_Plain2
+      name: Hex_Trees_2
       rect:
         serializedVersion: 2
         x: 512
         y: 1664
         width: 256
         height: 384
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a4fe27b5c85a37446a2d728c2cf22a0d
+      spriteID: b59f7fb46ec153248adfee65dd164412
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hex_Trees_Plain3
+      name: Hex_Trees_3
       rect:
         serializedVersion: 2
         x: 768
         y: 1664
         width: 256
         height: 384
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 15ccc897f3cd3944ba52d27cb7dec26b
+      spriteID: 38d0a6dd94c1da843a2109c9afa39b8b
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hex_Trees_Red0
+      name: Hex_Trees_4
       rect:
         serializedVersion: 2
         x: 0
         y: 1280
         width: 256
         height: 384
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a9fc8f6e9f826934080eefca7b325617
+      spriteID: d4e40c57b4c704341be3993e3cbd9ecd
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hex_Trees_Red1
+      name: Hex_Trees_5
       rect:
         serializedVersion: 2
         x: 256
         y: 1280
         width: 256
         height: 384
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c732b06ac0a808b4787038a5ed50adc3
+      spriteID: 935ceef3970e2e64aa38cc5225e5092a
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hex_Trees_Red2
+      name: Hex_Trees_6
       rect:
         serializedVersion: 2
         x: 512
         y: 1280
         width: 256
         height: 384
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4badbaa1e71441f45838a6ae3c629f32
+      spriteID: f6985c77755b2f249b5b8040397a477a
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hex_Trees_Red3
+      name: Hex_Trees_7
       rect:
         serializedVersion: 2
         x: 768
         y: 1280
         width: 256
         height: 384
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b53620acbd489624ca55b29eb86c49d1
+      spriteID: fa22bb1333508e449a202f46ec5dcab6
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hex_Trees_Yellow0
+      name: Hex_Trees_8
       rect:
         serializedVersion: 2
         x: 0
         y: 896
         width: 256
         height: 384
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ea21462a76f137f4baf7574e0a213897
+      spriteID: 901c380fae7e9164da5bfc6e32099261
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hex_Trees_Yellow1
+      name: Hex_Trees_9
       rect:
         serializedVersion: 2
         x: 256
         y: 896
         width: 256
         height: 384
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eff51d780ace3b84ab26413232970e76
+      spriteID: fc5907d2550cdc94a904eef9cb7c15ec
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hex_Trees_Yellow2
+      name: Hex_Trees_10
       rect:
         serializedVersion: 2
         x: 512
         y: 896
         width: 256
         height: 384
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5d3f28554a449b94b9472c3a0fcbbb27
+      spriteID: 161aaed478eac0145b0d61d9de10360e
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hex_Trees_Yellow3
+      name: Hex_Trees_11
       rect:
         serializedVersion: 2
         x: 768
         y: 896
         width: 256
         height: 384
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d15cef0d024ec6a41ae30ba1bdc89520
+      spriteID: 3183f6f99245fd94498fc31c0920acb3
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hex_Trees_White0
+      name: Hex_Trees_12
       rect:
         serializedVersion: 2
         x: 0
         y: 512
         width: 256
         height: 384
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b141564a466b5d64087dee937dfefcbb
+      spriteID: 44733f33ecc1a83409b7c2b48986cf67
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hex_Trees_White1
+      name: Hex_Trees_13
       rect:
         serializedVersion: 2
         x: 256
         y: 512
         width: 256
         height: 384
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5a98183ae88018042a3c1ca8a1b5cedd
+      spriteID: 52fd39dcb7813c54882d7c75cab33b14
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hex_Trees_White2
+      name: Hex_Trees_14
       rect:
         serializedVersion: 2
         x: 512
         y: 512
         width: 256
         height: 384
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8304e1cfbd3200b4cbe1e80f2e9d99d5
+      spriteID: 8511aaf36785e99469810ea4dd6ca3fb
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hex_Trees_White3
+      name: Hex_Trees_15
       rect:
         serializedVersion: 2
         x: 768
         y: 512
         width: 256
         height: 384
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cd0551a7b7514514c9aa72412641037d
+      spriteID: 13db3a5e637d6754181352a17dd1b508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hex_Trees_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 126
+        width: 256
+        height: 384
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a712a8bee436244894d4c22ae1b2ed8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hex_Trees_17
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 128
+        width: 256
+        height: 384
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79823ac63b67f0448a24224ab3314904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hex_Trees_18
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 128
+        width: 256
+        height: 384
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7c86555b7966834595ef3cc9a47bfe5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hex_Trees_19
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 128
+        width: 256
+        height: 384
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cc6d957fc64df94386b7d3e0ab2bc1b
       vertices: []
       indices: 
       edges: []
