@@ -4,7 +4,8 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -16,20 +17,61 @@ MonoBehaviour:
   - {fileID: 114729429792636102}
   - {fileID: 114570225612997300}
   - {fileID: 114118455340595592}
+  - {fileID: 114311852357081972}
   castleSpawnTiles:
   - {fileID: 114639985450982846}
   - {fileID: 114680108962072486}
   - {fileID: 114249455352603430}
   - {fileID: 114382652872650938}
+  - {fileID: 114503222996107868}
   interactableSpawnTiles:
   - {fileID: 114266126331880416}
   - {fileID: 114128453510007014}
-  countryCounter: 569
+  - {fileID: 114676798994962602}
+  - {fileID: 114096493104822440}
+  countryCounter: 613
+--- !u!114 &114096493104822440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a91fdc6c2c953b45b1ce7440c2e7593, type: 3}
+  m_Name: Interactable SpawnTile
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 21300014, guid: 807041c866d849d47b491ce9e7d0408d, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 0.5
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 0.5
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 0
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 2
+  m_ColliderType: 1
+  position: {x: -2, y: -20, z: 0}
+  prefab: {fileID: 114505358365408646, guid: 3a213645604131744a500ca19c4edb55, type: 3}
 --- !u!114 &114118455340595592
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -58,7 +100,8 @@ MonoBehaviour:
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -167,7 +210,8 @@ MonoBehaviour:
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -197,12 +241,13 @@ MonoBehaviour:
   m_Flags: 2
   m_ColliderType: 1
   position: {x: 3, y: -21, z: 0}
-  prefab: {fileID: 114633482877653110, guid: bce1f789332cd4741a37e1670db156c0, type: 2}
+  prefab: {fileID: 114633482877653110, guid: bce1f789332cd4741a37e1670db156c0, type: 3}
 --- !u!114 &114249455352603430
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -237,7 +282,8 @@ MonoBehaviour:
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -267,12 +313,43 @@ MonoBehaviour:
   m_Flags: 2
   m_ColliderType: 1
   position: {x: 2, y: -25, z: 0}
-  prefab: {fileID: 114505358365408646, guid: 3a213645604131744a500ca19c4edb55, type: 2}
+  prefab: {fileID: 114505358365408646, guid: 3a213645604131744a500ca19c4edb55, type: 3}
+--- !u!114 &114311852357081972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70a61b8322cb70241b72bab650d5fddf, type: 3}
+  m_Name: Country 571 Data
+  m_EditorClassIdentifier: 
+  country:
+    countryID: 571
+    countryName: Country 571
+    castlePrefabId: 18
+    position: {x: 0, y: -16, z: 0}
+    speed: 0
+    population: 0
+    maxCapacity: 0
+    wood: 0
+    stone: 0
+    wheat: 0
+    gold: 0
+    water: 0
+    taxRate: 0
+    happiness: 0
+    detectionRadius: 5
+  territory:
+    points: []
 --- !u!114 &114382652872650938
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -303,11 +380,48 @@ MonoBehaviour:
   m_ColliderType: 1
   position: {x: 4, y: -17, z: 0}
   countryData: {fileID: 114118455340595592}
+--- !u!114 &114503222996107868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12dfb1152f065754baf8039e84f49e9d, type: 3}
+  m_Name: Country 571 SpawnTile
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 21300000, guid: d360bc09311c590499db6ef2c8f46ec4, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 1
+  m_ColliderType: 1
+  position: {x: 0, y: -19, z: 0}
+  countryData: {fileID: 114311852357081972}
 --- !u!114 &114570225612997300
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -394,7 +508,8 @@ MonoBehaviour:
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -425,11 +540,48 @@ MonoBehaviour:
   m_ColliderType: 1
   position: {x: 4, y: -23, z: 0}
   countryData: {fileID: 114125874415950362}
+--- !u!114 &114676798994962602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a91fdc6c2c953b45b1ce7440c2e7593, type: 3}
+  m_Name: Interactable SpawnTile
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 21300026, guid: 807041c866d849d47b491ce9e7d0408d, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 0.5
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 0.5
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 0
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 2
+  m_ColliderType: 1
+  position: {x: -2, y: -19, z: 0}
+  prefab: {fileID: 114633482877653110, guid: bce1f789332cd4741a37e1670db156c0, type: 3}
 --- !u!114 &114680108962072486
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -464,7 +616,8 @@ MonoBehaviour:
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0

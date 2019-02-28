@@ -47,8 +47,8 @@
             "countryName": "Country 415",
             "castlePrefabId": 16,
             "position": {
-                "x": 6,
-                "y": -18,
+                "x": -2,
+                "y": -13,
                 "z": 0
             },
             "speed": 0.0,
@@ -125,8 +125,8 @@
         },
         {
             "position": {
-                "x": 6,
-                "y": -18,
+                "x": -2,
+                "y": -13,
                 "z": 0
             },
             "countryID": 415

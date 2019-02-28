@@ -8,8 +8,6 @@ using UnityEngine.SceneManagement;
 public enum SceneType
 {
     Map,
-    Floor,
-    Tower,
     Country,
     Market,
     CashShop,
@@ -21,13 +19,7 @@ public class SceneChanger : MonoBehaviour
 {
     [NonSerialized]
     public Country targetCountry;
-
-    [NonSerialized]
-    public TowerFloor targetFloor;
-
-    [NonSerialized]
-    public Tower targetTower;
-
+    
     public static SceneType currentScene;
 
     public void Start()
@@ -87,21 +79,5 @@ public class SceneChanger : MonoBehaviour
 
         targetCountry = target;
         SceneManager.LoadScene("CountryScene");
-    }
-
-    public void ChangeScene(TowerFloor target)
-    {
-        GameManager.instance.gameStateManager.Save();
-
-        targetFloor = target;
-        SceneManager.LoadScene("FloorScene");
-    }
-
-    public void ChangeScene(Tower target)
-    {
-        GameManager.instance.gameStateManager.Save();
-
-        targetTower = target;
-        SceneManager.LoadScene("TowerScene");
     }
 }
