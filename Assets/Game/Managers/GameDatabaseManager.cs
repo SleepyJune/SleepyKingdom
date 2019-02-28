@@ -17,15 +17,11 @@ public class GameDatabaseManager : MonoBehaviour
 
     public Dictionary<int, SpriteObject> spriteObjects = new Dictionary<int, SpriteObject>();
 
-    public Dictionary<int, BuildingObject> buildingObjects = new Dictionary<int, BuildingObject>();
-
     public Dictionary<int, CastleObject> castleObjects = new Dictionary<int, CastleObject>();
 
     public Dictionary<int, ShopItemObject> shopItemObjects = new Dictionary<int, ShopItemObject>();
 
     public Dictionary<int, CountryUpgradeObject> countryUpgradeObjects = new Dictionary<int, CountryUpgradeObject>();
-
-    public Dictionary<int, BattleUnitObject> battleUnitObjects = new Dictionary<int, BattleUnitObject>();
 
     public Dictionary<int, MapResourceObject> mapResourcesObjects = new Dictionary<int, MapResourceObject>();
 
@@ -53,12 +49,7 @@ public class GameDatabaseManager : MonoBehaviour
             {
                 spriteObjects.Add(obj.id, obj as SpriteObject);
             }
-
-            if (obj is BuildingObject)
-            {
-                buildingObjects.Add(obj.id, obj as BuildingObject);
-            }
-
+            
             if (obj is CastleObject)
             {
                 castleObjects.Add(obj.id, obj as CastleObject);
@@ -72,11 +63,6 @@ public class GameDatabaseManager : MonoBehaviour
             if (obj is CountryUpgradeObject)
             {
                 countryUpgradeObjects.Add(obj.id, obj as CountryUpgradeObject);
-            }
-
-            if (obj is BattleUnitObject)
-            {
-                battleUnitObjects.Add(obj.id, obj as BattleUnitObject);
             }
 
             if (obj is MapResourceObject)
@@ -131,17 +117,6 @@ public class GameDatabaseManager : MonoBehaviour
     {
         SpriteObject obj;
         if(spriteObjects.TryGetValue(id, out obj))
-        {
-            return obj;
-        }
-
-        return null;
-    }
-
-    public BuildingObject GetBuildingObject(int id)
-    {
-        BuildingObject obj;
-        if (buildingObjects.TryGetValue(id, out obj))
         {
             return obj;
         }

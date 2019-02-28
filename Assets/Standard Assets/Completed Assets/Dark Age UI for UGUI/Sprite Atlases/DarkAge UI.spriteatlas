@@ -4,7 +4,8 @@
 SpriteAtlas:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: DarkAge UI
   m_EditorData:
     serializedVersion: 2
@@ -73,6 +74,7 @@ SpriteAtlas:
     - {fileID: 102900000, guid: 347b9ce490c782c45813dbd59e8739cd, type: 3}
     - {fileID: 102900000, guid: a64f24cf569065e46a3cdecbdcca21dd, type: 3}
     - {fileID: 102900000, guid: 75f6bf7da51d26c47ab5206cbd6849b6, type: 3}
+    totalSpriteSurfaceArea: 3953043
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
