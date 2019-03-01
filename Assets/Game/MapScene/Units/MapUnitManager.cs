@@ -7,7 +7,7 @@ using UnityEngine;
 public class MapUnitManager : MonoBehaviour
 {
     [NonSerialized]
-    public MapDatabase mapDatabase;
+    public MapDatabaseObject mapDatabase;
 
     [NonSerialized]
     public Dictionary<int, MapUnit> allUnits = new Dictionary<int, MapUnit>();
@@ -33,7 +33,7 @@ public class MapUnitManager : MonoBehaviour
         //gameTileClickHandler.OnGameTileClickedEvent += OnGameTileClickedEvent;
         inputManager = GetComponent<MapSceneInputManager>();
 
-        mapDatabase = GameManager.instance.gamedatabaseManager.mapDatabase;
+        mapDatabase = GameManager.instance.gamedatabaseManager.currentMap;
         map = Pathfinder.map;
     }
 

@@ -12,6 +12,8 @@ public class GameDatabaseManager : MonoBehaviour
 
     public MapDatabase mapDatabase;
 
+    public MapDatabaseObject currentMap;
+
     public Dictionary<int, GameDataObject> allObjects = new Dictionary<int, GameDataObject>();
     public Dictionary<int, GameDataPrefab> allPrefabs = new Dictionary<int, GameDataPrefab>();
 
@@ -31,6 +33,9 @@ public class GameDatabaseManager : MonoBehaviour
         InitializePrefabDictionary();
 
         mapDatabase.InitDictionary();
+
+        currentMap = mapDatabase.mapDatabaseObjects[0];
+        currentMap.InitDictionary();
     }
 
     void InitializePrefabDictionary()
@@ -75,9 +80,7 @@ public class GameDatabaseManager : MonoBehaviour
     }
 
     public List<T> GetAllObjects<T>(int id) where T : GameDataObject
-    {
-        List<int> blah = new List<int>();
-        
+    {        
         return allObjects.Values.OfType<T>().ToList();
     }
 

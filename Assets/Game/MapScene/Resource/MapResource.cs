@@ -45,7 +45,7 @@ public class MapResource : MapUnit
 
         resourceID = resourceObject.id;
 
-        myCountry = myCountry = GameManager.instance.globalCountryManager.myCountry;
+        myCountry = GameManager.instance.globalCountryManager.myCountry;
 
         position = pos;
 

@@ -8,65 +8,28 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Game/Map Database")]
 public class MapDatabase : ScriptableObject
 {
-    //public MapDataObject[] allObjects = new MapDataObject[0];
+    public MapDatabaseObject[] mapDatabaseObjects = new MapDatabaseObject[0];
 
-    public CountryDataObject[] countryDataObjects = new CountryDataObject[0];
-    public CastleSpawnTile[] castleSpawnTiles = new CastleSpawnTile[0];
-    public InteractableSpawnTile[] interactableSpawnTiles = new InteractableSpawnTile[0];
-
-    public Dictionary<int, CountryDataObject> countryDataObjectDictionary = new Dictionary<int, CountryDataObject>();
-    public Dictionary<Vector3Int, CastleSpawnTile> castleSpawnTileDictionary = new Dictionary<Vector3Int, CastleSpawnTile>();
-    public Dictionary<Vector3Int, InteractableSpawnTile> interactableSpawnTileDictionary = new Dictionary<Vector3Int, InteractableSpawnTile>();
-
-    public int countryCounter = 0;
+    public Dictionary<string, MapDatabaseObject> mapDatabaseDictionary = new Dictionary<string, MapDatabaseObject>();
 
     public void InitDictionary()
     {
-        MakeCountryDictionary();
-        MakeCastleDictionary();
-        MakeInteractableDictionary();
+        MakeMapDatabaseDictionary();
+    }
+
+    public void MakeMapDatabaseDictionary()
+    {
+        Dictionary<string, MapDatabaseObject> ret = new Dictionary<string, MapDatabaseObject>();
+        foreach (var data in mapDatabaseObjects)
+        {
+            ret.Add(data.name, data);
+        }
+
+        mapDatabaseDictionary = ret;
     }
 
     public void Save()
     {
-        countryDataObjects = countryDataObjectDictionary.Values.ToArray();
-        castleSpawnTiles = castleSpawnTileDictionary.Values.ToArray();
-        interactableSpawnTiles = interactableSpawnTileDictionary.Values.ToArray();
+        mapDatabaseObjects = mapDatabaseDictionary.Values.ToArray();
     }
-
-    void MakeInteractableDictionary()
-    {
-        Dictionary<Vector3Int, InteractableSpawnTile> ret = new Dictionary<Vector3Int, InteractableSpawnTile>();
-        foreach (var data in interactableSpawnTiles)
-        {
-            ret.Add(data.position, data);
-        }
-
-        interactableSpawnTileDictionary = ret;
-    }
-
-    void MakeCountryDictionary()
-    {        
-        Dictionary<int, CountryDataObject> ret = new Dictionary<int, CountryDataObject>();
-        foreach (var data in countryDataObjects)
-        {
-            ret.Add(data.country.countryID, data);
-            countryCounter = Math.Max(countryCounter, data.country.countryID);
-        }
-
-        countryDataObjectDictionary = ret;
-        countryCounter += 1;
-    }
-
-    void MakeCastleDictionary()
-    {
-        Dictionary<Vector3Int, CastleSpawnTile> ret = new Dictionary<Vector3Int, CastleSpawnTile>();
-        foreach (var data in castleSpawnTiles)
-        {
-            ret.Add(data.position, data);
-        }
-
-        castleSpawnTileDictionary = ret;
-    }
-
 }
