@@ -20,10 +20,13 @@ public class GameMapEditor : EditorWindow
         Animal,
         Interactable,
         Territory,
+        Map,
     }
 
     GameDatabase database;
     MapDatabase mapDatabase;
+
+    MapDatabaseObject currentMap;
 
     TerritoryTile territoryTile;
 
@@ -205,15 +208,19 @@ public class GameMapEditor : EditorWindow
         if (spawnMap != null)
         {
             spawnMap.ClearAllTiles();
-            
-            foreach (var spawnTile in mapDatabase.castleSpawnTiles)
-            {
-                spawnMap.SetTile(spawnTile.position, spawnTile);
-            }
 
-            foreach (var spawnTile in mapDatabase.interactableSpawnTiles)
+            if (currentMap != null)
             {
-                spawnMap.SetTile(spawnTile.position, spawnTile);
+
+                foreach (var spawnTile in currentMap.castleSpawnTiles)
+                {
+                    spawnMap.SetTile(spawnTile.position, spawnTile);
+                }
+
+                foreach (var spawnTile in currentMap.interactableSpawnTiles)
+                {
+                    spawnMap.SetTile(spawnTile.position, spawnTile);
+                }
             }
 
             EditorUtility.SetDirty(spawnMap);
@@ -225,6 +232,66 @@ public class GameMapEditor : EditorWindow
         InitTextures();
     }
 
+    string newMapName = "";
+    private void ShowMapSelectMenu()
+    {
+        EditorGUILayout.Space();
+
+        if (selectedCreateType == MapDataType.Map)
+        {
+            EditorGUILayout.LabelField("Create New Map");
+
+            newMapName = EditorGUILayout.TextField(newMapName);
+
+            GUILayout.BeginHorizontal();
+            if (GUILayout.Button("Create"))
+            {
+                var newMap = CreateInstance(typeof(MapDatabaseObject)) as MapDatabaseObject;
+                newMap.name = newMapName;
+
+                mapDatabase.mapDatabaseDictionary.Add(newMap.name, newMap);
+                mapDatabase.Save();
+
+                AssetDatabase.AddObjectToAsset(newMap, mapDatabase);
+                EditorUtility.SetDirty(mapDatabase);
+
+                currentMap = newMap;
+
+                selectedCreateType = MapDataType.None;
+            }
+
+            if (GUILayout.Button("Cancel"))
+            {
+                selectedCreateType = MapDataType.None;
+            }
+            GUILayout.EndHorizontal();
+
+            return;
+        }
+
+        if (GUILayout.Button("Create New Map"))
+        {
+            selectedCreateType = MapDataType.Map;
+        }
+
+        EditorGUILayout.Space();
+
+        EditorGUILayout.LabelField("Map List");
+        EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
+
+        foreach (var map in mapDatabase.mapDatabaseObjects.OrderBy(m=>m.name))
+        {
+            if (GUILayout.Button(map.name))
+            {
+                map.InitDictionary();
+                currentMap = map;
+
+                RefreshMap();
+            }
+        }        
+    }
+
+    bool removeMapConfirmation = false;
     void OnGUI()
     {
         if (!initSuccessful)
@@ -244,6 +311,23 @@ public class GameMapEditor : EditorWindow
             EditorGUILayout.LabelField("GameMapEditor only works in MapScene.", EditorStyles.boldLabel);
             return;
         }
+
+        if(currentMap == null)
+        {
+            ShowMapSelectMenu();
+            return;
+        }
+
+        GUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField(currentMap.name);
+
+        if (GUILayout.Button("Map Menu"))
+        {
+            currentMap = null;
+
+            RefreshMap();
+        }
+        GUILayout.EndHorizontal();
 
         EditorGUILayout.Vector3IntField("Position: ", lastClickedTilePosition);
         EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
@@ -323,6 +407,37 @@ public class GameMapEditor : EditorWindow
         if (GUILayout.Button("Refresh Map"))
         {
             RefreshMap();
+        }
+
+        if (!removeMapConfirmation && GUILayout.Button("Remove Map"))
+        {
+            removeMapConfirmation = true;
+        }
+
+        if (removeMapConfirmation)
+        {
+            GUILayout.BeginHorizontal();
+
+            if (GUILayout.Button("Confirm"))
+            {
+                removeMapConfirmation = false;
+
+                mapDatabase.mapDatabaseDictionary.Remove(currentMap.name);
+                mapDatabase.Save();
+
+                DestroyImmediate(currentMap, true);
+
+                EditorUtility.SetDirty(mapDatabase);
+
+                RefreshMap();
+            }
+
+            if (GUILayout.Button("Cancel"))
+            {
+                removeMapConfirmation = false;
+            }
+
+            GUILayout.EndHorizontal();
         }
     }
 
@@ -422,7 +537,7 @@ public class GameMapEditor : EditorWindow
 
     void ShowCreateInteractableMenu()
     {
-        if (mapDatabase.interactableSpawnTileDictionary.ContainsKey(lastClickedTilePosition))
+        if (currentMap.interactableSpawnTileDictionary.ContainsKey(lastClickedTilePosition))
         {
             EditorGUILayout.LabelField("Tile already contains an interactable.", EditorStyles.boldLabel);
             return;
@@ -451,17 +566,17 @@ public class GameMapEditor : EditorWindow
             matrix.m33 = 0;
             newTile.transform = matrix;
 
-            mapDatabase.interactableSpawnTileDictionary.Add(newTile.position, newTile);
+            currentMap.interactableSpawnTileDictionary.Add(newTile.position, newTile);
 
-            AssetDatabase.AddObjectToAsset(newTile, mapDatabase);
+            AssetDatabase.AddObjectToAsset(newTile, currentMap);
 
             spawnMap.SetTile(lastClickedTilePosition, newTile);
 
-            mapDatabase.Save();
+            currentMap.Save();
 
             SetNewInteractable(newTile);
 
-            EditorUtility.SetDirty(mapDatabase);
+            EditorUtility.SetDirty(currentMap);
         }
         GUILayout.EndScrollView();
     }
@@ -483,10 +598,10 @@ public class GameMapEditor : EditorWindow
             if (GUILayout.Button("Remove"))
             {
                 spawnMap.SetTile(selectedInteractable.position, null);
-                                
-                mapDatabase.interactableSpawnTileDictionary.Remove(selectedInteractable.position);
 
-                mapDatabase.Save();
+                currentMap.interactableSpawnTileDictionary.Remove(selectedInteractable.position);
+
+                currentMap.Save();
 
                 DestroyImmediate(selectedInteractable, true);
             }
@@ -495,7 +610,7 @@ public class GameMapEditor : EditorWindow
 
     void ShowCreateCastleMenu()
     {
-        if (mapDatabase.castleSpawnTileDictionary.ContainsKey(lastClickedTilePosition))
+        if (currentMap.castleSpawnTileDictionary.ContainsKey(lastClickedTilePosition))
         {
             EditorGUILayout.LabelField("Tile already contains a castle.", EditorStyles.boldLabel);
             return;
@@ -516,14 +631,14 @@ public class GameMapEditor : EditorWindow
             var newCountryData = CreateInstance(typeof(CountryDataObject)) as CountryDataObject;
             var newCountry = new Country();
             newCountryData.country = newCountry;
-            newCountryData.country.countryID = mapDatabase.countryCounter;
+            newCountryData.country.countryID = currentMap.countryCounter;
             newCountryData.country.countryName = "Country " + newCountryData.country.countryID;
             newCountryData.country.castlePrefabId = castleObject.id;
             newCountryData.country.position = lastClickedTilePosition;
             newCountryData.name = newCountry.countryName + " Data";
 
-            mapDatabase.countryDataObjectDictionary.Add(mapDatabase.countryCounter, newCountryData);
-            mapDatabase.countryCounter += 1;
+            currentMap.countryDataObjectDictionary.Add(currentMap.countryCounter, newCountryData);
+            currentMap.countryCounter += 1;
 
             var newTile = CreateInstance(typeof(CastleSpawnTile)) as CastleSpawnTile;
             newTile.name = newCountry.countryName + " SpawnTile";
@@ -531,18 +646,18 @@ public class GameMapEditor : EditorWindow
             newTile.position = lastClickedTilePosition;
             newTile.sprite = castleObject.image;
 
-            mapDatabase.castleSpawnTileDictionary.Add(newTile.position, newTile);
+            currentMap.castleSpawnTileDictionary.Add(newTile.position, newTile);
 
-            AssetDatabase.AddObjectToAsset(newTile, mapDatabase);
-            AssetDatabase.AddObjectToAsset(newCountryData, mapDatabase);
+            AssetDatabase.AddObjectToAsset(newTile, currentMap);
+            AssetDatabase.AddObjectToAsset(newCountryData, currentMap);
 
             spawnMap.SetTile(lastClickedTilePosition, newTile);
 
-            mapDatabase.Save();
+            currentMap.Save();
 
             SetNewCastle(newTile);
 
-            EditorUtility.SetDirty(mapDatabase);
+            EditorUtility.SetDirty(currentMap);
         }
 
         GUILayout.EndScrollView();
@@ -599,10 +714,10 @@ public class GameMapEditor : EditorWindow
 
                     spawnMap.SetTile(selectedCastle.position, null);
 
-                    mapDatabase.countryDataObjectDictionary.Remove(selectedCastle.countryData.country.countryID);
-                    mapDatabase.castleSpawnTileDictionary.Remove(selectedCastle.position);
+                    currentMap.countryDataObjectDictionary.Remove(selectedCastle.countryData.country.countryID);
+                    currentMap.castleSpawnTileDictionary.Remove(selectedCastle.position);
 
-                    mapDatabase.Save();
+                    currentMap.Save();
 
                     DestroyImmediate(selectedCastle.countryData, true);
                     DestroyImmediate(selectedCastle, true);

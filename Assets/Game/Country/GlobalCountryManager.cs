@@ -40,7 +40,7 @@ public class GlobalCountryManager : MonoBehaviour
 
         foreach (var country in countries)
         {
-            if (!GameManager.instance.gamedatabaseManager.mapDatabase.countryDataObjectDictionary.ContainsKey(country.countryID))
+            if (!GameManager.instance.gamedatabaseManager.currentMap.countryDataObjectDictionary.ContainsKey(country.countryID))
             {
                 //country never existed in the first place, remove it
                 countryToDelete.Add(country);                
@@ -65,7 +65,7 @@ public class GlobalCountryManager : MonoBehaviour
 
     void AddMapDataCountries()
     {
-        foreach (var tile in GameManager.instance.gamedatabaseManager.mapDatabase.castleSpawnTileDictionary.Values)
+        foreach (var tile in GameManager.instance.gamedatabaseManager.currentMap.castleSpawnTileDictionary.Values)
         {            
             var country = tile.countryData.country;
             if (!gameState.CountryExists(country.countryID))
@@ -99,7 +99,7 @@ public class GlobalCountryManager : MonoBehaviour
 
         CountryDataObject countryData;
 
-        if (GameManager.instance.gamedatabaseManager.mapDatabase.countryDataObjectDictionary.TryGetValue(newCountry.countryID, out countryData))
+        if (GameManager.instance.gamedatabaseManager.currentMap.countryDataObjectDictionary.TryGetValue(newCountry.countryID, out countryData))
         {
             newCountry.Initialize(countryData);
         }
