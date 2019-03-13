@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/CreationScene.unity
+    guid: cc26b1e7630f108418b0596d2a77fd89
+  - enabled: 1
     path: Assets/Scenes/MapScene.unity
     guid: ba66dd160b2d19a488039fc0ca30bc97
   - enabled: 1
@@ -21,12 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MarketScene.unity
     guid: 9fd7720a94bf3a1468316f70f6c3b4c3
   - enabled: 1
-    path: Assets/Scenes/UpgradeScene.unity
-    guid: cc26b1e7630f108418b0596d2a77fd89
-  - enabled: 1
     path: Assets/Scenes/TempleScene.unity
     guid: 2ed3305bbae78c44c98b32dc3132d851
   - enabled: 1
-    path: Assets/Scenes/RecruitScene.unity
-    guid: 3bacdb6f4e9db8e47978d868129beaaa
+    path: Assets/Scenes/UpgradeScene.unity
+    guid: 275c456b9c5c98b46a397b6f87ea2b85
   m_configObjects: {}

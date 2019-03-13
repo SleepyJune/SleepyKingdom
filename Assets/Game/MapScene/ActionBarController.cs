@@ -19,7 +19,7 @@ public enum UnitCommandType
 public class ActionBarController : Popup
 {
     [NonSerialized]
-    public MapCastleUnit selectedCastle;
+    public MapUnit selectedUnit;
 
     public CastleWindowController castleWindow;
 
@@ -44,16 +44,31 @@ public class ActionBarController : Popup
     
     private void OnDestroy()
     {
-        unitManager.inputManager.OnGameTileClickEvent -= OnGameTileClickedEvent;
+        if(unitManager && unitManager.inputManager)
+        {
+            unitManager.inputManager.OnGameTileClickEvent -= OnGameTileClickedEvent;
+        }
     }
 
-    public void OnCastleClick(MapCastleUnit castle)
+    public void OnUnitClick(MapUnit unit)
     {
         if(currentCommand == UnitCommandType.None)
         {
-            selectedCastle = castle;
-            castleOverlay.SetCastle(castle);
-            Show();
+            if(unit is MapCastleUnit)
+            {
+                var castle = unit as MapCastleUnit;
+
+                selectedUnit = castle;
+                castleOverlay.SetCastle(castle);
+                Show();
+            }
+            else if (unit is MapShip)
+            {
+                var ship = unit as MapShip;
+
+                selectedUnit = ship;
+                Show();
+            }
         }
     }
 
@@ -65,7 +80,7 @@ public class ActionBarController : Popup
 
         if (actionType == UnitCommandType.Attack)
         {
-            Debug.Log("Attack");
+            
         }
         else if (actionType == UnitCommandType.Move)
         {
@@ -73,7 +88,7 @@ public class ActionBarController : Popup
         }
         else if (actionType == UnitCommandType.Inspect)
         {
-            castleWindow.SetCountry(selectedCastle.country);
+            //castleWindow.SetCountry(selectedUnit.country);
         }
 
         Hide();
@@ -82,14 +97,16 @@ public class ActionBarController : Popup
     private void ResetCommand()
     {
         currentCommand = UnitCommandType.None;
-        selectedCastle = null;
+        selectedUnit = null;
     }
 
     private void OnGameTileClickedEvent(GameTile tile, GameClickEventData clickEventData)
     {
-        if (currentCommand == UnitCommandType.Move && selectedCastle != null)
+        if (currentCommand == UnitCommandType.Move && selectedUnit != null && selectedUnit is MapMobileUnit)
         {
-            selectedCastle.SetMovePosition(tile.position);
+            var mobileUnit = selectedUnit as MapMobileUnit;
+
+            mobileUnit.SetMovePosition(tile.position);
             clickEventData.isUsed = true;
         }
 

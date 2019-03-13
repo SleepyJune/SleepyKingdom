@@ -29,12 +29,10 @@ public class MapResource : MapUnit
 
     public int resourceID = -1;
 
-    Country myCountry;
+    MapShip myShip;
             
     public void SetItem(MapResourceObject resourceObject, int amount, int max, Vector3Int pos, MapResourceManager manager)
     {
-        canMove = false;
-
         this.resourceObject = resourceObject;
         this.amount = amount;
         this.maxCapacity = max;
@@ -45,7 +43,7 @@ public class MapResource : MapUnit
 
         resourceID = resourceObject.id;
 
-        myCountry = GameManager.instance.globalCountryManager.myCountry;
+        //myShip = GameManager.instance.globalCountryManager.myCountry;
 
         position = pos;
 
@@ -67,23 +65,23 @@ public class MapResource : MapUnit
 
         if(amount - num >= 0)
         {
-            switch (resourceType)
+            /*switch (resourceType)
             {
                 case MapResourceType.Stone:
-                    myCountry.stone += num;
+                    myShip.stone += num;
                     break;
                 case MapResourceType.Water:
-                    myCountry.water += num;
+                    myShip.water += num;
                     break;
                 case MapResourceType.Wheat:
-                    myCountry.wheat += num;
+                    myShip.wheat += num;
                     break;
                 case MapResourceType.Wood:
-                    myCountry.wood += num;
+                    myShip.wood += num;
                     break;
                 default:
                     break;
-            }            
+            }*/            
 
             amount -= num;
             return num;

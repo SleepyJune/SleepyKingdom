@@ -36,7 +36,16 @@ public class GameTile
 
     public bool isUnitBlocked()
     {
-        return units.Count > 0;
+        //return units.Count > 0;
+        foreach(var unit in units)
+        {
+            if (unit.isBlocked)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public void AddUnit(MapUnit unit)

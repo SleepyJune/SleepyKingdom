@@ -1,59 +1,65 @@
 {
     "countries": [],
-    "mapCastles": [],
+    "myCountry": {
+        "name": "new",
+        "population": 0.0,
+        "maxCapacity": 0.0,
+        "gold": 0,
+        "gems": 0
+    },
+    "myShip": {},
+    "currentMapName": "",
     "mapResources": [
         {
             "position": {
-                "x": -2,
-                "y": 2,
-                "z": 0
-            },
-            "amount": 438,
-            "maxCapacity": 3038,
-            "resourceID": 18
-        },
-        {
-            "position": {
-                "x": -3,
-                "y": 3,
-                "z": 0
-            },
-            "amount": 4614,
-            "maxCapacity": 4614,
-            "resourceID": 19
-        },
-        {
-            "position": {
-                "x": 0,
+                "x": 3,
                 "y": -1,
                 "z": 0
             },
-            "amount": 1596,
-            "maxCapacity": 2596,
+            "amount": 3076,
+            "maxCapacity": 3076,
             "resourceID": 19
         },
         {
             "position": {
                 "x": 1,
-                "y": 3,
+                "y": -3,
                 "z": 0
             },
-            "amount": 2359,
-            "maxCapacity": 3359,
-            "resourceID": 18
+            "amount": 253,
+            "maxCapacity": 253,
+            "resourceID": 21
         },
         {
             "position": {
-                "x": -1,
-                "y": 6,
+                "x": 0,
+                "y": 3,
                 "z": 0
             },
-            "amount": 2066,
-            "maxCapacity": 2066,
+            "amount": 823,
+            "maxCapacity": 823,
+            "resourceID": 20
+        },
+        {
+            "position": {
+                "x": -2,
+                "y": 1,
+                "z": 0
+            },
+            "amount": 2247,
+            "maxCapacity": 2247,
             "resourceID": 19
+        },
+        {
+            "position": {
+                "x": -2,
+                "y": 0,
+                "z": 0
+            },
+            "amount": 4422,
+            "maxCapacity": 4422,
+            "resourceID": 18
         }
     ],
-    "gold": 0,
-    "gems": 0,
-    "countryCounter": 5
+    "countryCounter": 1
 }

@@ -38,6 +38,20 @@ public class GameDatabaseManager : MonoBehaviour
         currentMap.InitDictionary();
     }
 
+    public bool ChangeMap(string mapName)
+    {
+        MapDatabaseObject map;
+        if(mapDatabase.mapDatabaseDictionary.TryGetValue(mapName, out map))
+        {
+            currentMap = map;
+            currentMap.InitDictionary();
+
+            return true;
+        }
+
+        return false;
+    }
+
     void InitializePrefabDictionary()
     {
         foreach (var prefab in database.allPrefabs)

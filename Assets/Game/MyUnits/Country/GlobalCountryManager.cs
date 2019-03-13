@@ -13,15 +13,13 @@ public class GlobalCountryManager : MonoBehaviour
     private float updateFrequency = 1;
 
     private GameState gameState;
-
-    public CreateCountryPopup createCountryPrefab;
-
+    
     public delegate void CountryEventFunction(Country country);
     public event CountryEventFunction OnAddCountryEvent;
     public event CountryEventFunction OnDeleteCountryEvent;
 
     [NonSerialized]
-    public Country myCountry;
+    public MyCountry myCountry;
 
     private void Awake()
     {
@@ -32,9 +30,23 @@ public class GlobalCountryManager : MonoBehaviour
 
     private void InitiateCountries()
     {
+        if (!gameState.isInitialized())
+        {
+            return;
+        }
+
         Country.countryCounter = gameState.countryCounter;
 
         var countries = gameState.GetCountries();
+
+        myCountry = gameState.myCountry;
+
+        if(myCountry == null)
+        {
+            myCountry = new MyCountry("New Country");
+
+            //should jump to create country scene
+        }
 
         List<Country> countryToDelete = new List<Country>();
 
@@ -48,11 +60,6 @@ public class GlobalCountryManager : MonoBehaviour
             }
 
             AddCountry(country, false);
-
-            if (country.countryID == 1)
-            {
-                myCountry = country;
-            }
         }
 
         foreach(var country in countryToDelete)
@@ -72,16 +79,6 @@ public class GlobalCountryManager : MonoBehaviour
             {
                 AddCountry(country);
             }
-        }
-    }
-
-    private void CreateCountryPopup()
-    {
-        var canvas = GameObject.Find("Canvas");
-
-        if(canvas != null)
-        {
-            var newPopup = Instantiate(createCountryPrefab, canvas.transform);
         }
     }
 
@@ -142,43 +139,7 @@ public class GlobalCountryManager : MonoBehaviour
     {
         foreach(var country in gameState.GetCountries())
         {
-            if (Random.Range(0f, 1f) <= country.matingRate)
-            {
-                country.population += (.2f * country.population * country.birthRate) * Time.deltaTime;
-
-                if(country.population > country.maxCapacity)
-                {
-                    country.population = country.maxCapacity;
-                }
-
-            }
-
-            if (Random.Range(0f, 1f) <= country.deathRate)
-            {
-                country.population -= .1f *(country.population) * Time.deltaTime;
-
-                if(country.population < 0)
-                {
-                    country.population = 0;
-                }
-            }
-
-            country.wood += country.population / 1000.0f;
-            country.stone += country.population / 1000.0f;
-            country.wheat += 2 * country.population / 1000.0f;
-            country.gold += country.population / 1000.0f;
-            country.water += country.population / 1000.0f;
-
-            //food consumption
-            if(Random.Range(0f, 1f) <= country.foodConsumptionRate)
-            {
-                country.water -= (country.population / 1000.0f) * Time.deltaTime;
-            }
-
-            if (Random.Range(0f, 1f) <= country.waterConsumptionRate)
-            {
-                country.wheat -= (country.population / 1000.0f) * Time.deltaTime;
-            }
+            
         }
     }
 }

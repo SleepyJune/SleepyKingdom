@@ -46,7 +46,7 @@ public class PopulationUpgradeObject : CountryUpgradeObject
             }
         }
 
-        if(upgradeTarget == PopulationUpgradeType.MatingRate)
+        /*if(upgradeTarget == PopulationUpgradeType.MatingRate)
         {
             country.matingRate += (baseStatValue + valueIncrement * level);
         }
@@ -57,7 +57,7 @@ public class PopulationUpgradeObject : CountryUpgradeObject
         else if (upgradeTarget == PopulationUpgradeType.DeathRate)
         {
             country.deathRate += (baseStatValue + valueIncrement * level);
-        }
+        }*/
 
         if(upgradeType == UpgradeType.Single)
         {
@@ -90,7 +90,7 @@ public class PopulationUpgradeObject : CountryUpgradeObject
             return false;
         }
 
-        if (upgradeTarget == PopulationUpgradeType.MatingRate)
+        /*if (upgradeTarget == PopulationUpgradeType.MatingRate)
         {
             country.matingRate -= (baseStatValue + valueIncrement * level);
         }
@@ -101,7 +101,7 @@ public class PopulationUpgradeObject : CountryUpgradeObject
         else if (upgradeTarget == PopulationUpgradeType.DeathRate)
         {
             country.deathRate -= (baseStatValue + valueIncrement * level);
-        }
+        }*/
 
         return true;
     }

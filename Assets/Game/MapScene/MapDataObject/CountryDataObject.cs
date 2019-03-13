@@ -8,5 +8,4 @@ using UnityEngine;
 public class CountryDataObject : MapDataObject
 {
     public Country country;
-    public Territory territory;
 }

@@ -36,9 +36,6 @@ public class CastleWindowController : Popup
 
     private void Update()
     {
-        woodText.text = NumberTextFormater.FormatNumber(country.wood);
-        stoneText.text = NumberTextFormater.FormatNumber(country.stone);
-        wheatText.text = NumberTextFormater.FormatNumber(country.wheat);
-        waterText.text = NumberTextFormater.FormatNumber(country.water);
+        //woodText.text = NumberTextFormater.FormatNumber(country.wood);
     }
 }

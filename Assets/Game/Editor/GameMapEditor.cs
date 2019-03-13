@@ -27,11 +27,10 @@ public class GameMapEditor : EditorWindow
     MapDatabase mapDatabase;
 
     MapDatabaseObject currentMap;
-
-    TerritoryTile territoryTile;
-
+    
     Tilemap spawnMap;
-    Tilemap territoryMap;
+
+    Transform tilemapParent;
 
     SpawnTile selectedTile;
     SpawnTile previousSelectedTile;
@@ -97,14 +96,6 @@ public class GameMapEditor : EditorWindow
         database = (GameDatabase)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/GameDataObjects/GameDatabase.asset", typeof(GameDatabase));
         mapDatabase = (MapDatabase)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/MapDataObjects/MapDatabase.asset", typeof(MapDatabase));
 
-        territoryTile = (TerritoryTile)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Tiles/TerritoryTiles/TerritoryTile.asset", typeof(TerritoryTile));
-
-        if (territoryTile == null)
-        {
-            initSuccessful = false;
-            Debug.Log("Cannot find TerritoryTile");
-        }
-
         if (database == null)
         {
             initSuccessful = false;
@@ -125,6 +116,12 @@ public class GameMapEditor : EditorWindow
 
         SceneView.onSceneGUIDelegate += OnSceneGUI;
 
+        var terrain = GameObject.Find("TerrainMap");
+        if (terrain)
+        {
+            tilemapParent = terrain.transform;
+        }
+
         var map = GameObject.Find("SpawnMap");
         if (map != null)
         {
@@ -136,20 +133,8 @@ public class GameMapEditor : EditorWindow
             Debug.Log("Cannot find SpawnMap");
         }
 
-        map = GameObject.Find("TerritoryMap");
-        if (map != null)
-        {
-            territoryMap = map.transform.Find("Territory").GetComponent<Tilemap>();
-        }
-        else
-        {
-            initSuccessful = false;
-            Debug.Log("Cannot find TerritoryMap");
-        }
-
         selectedCountry = null;
         selectedCreateType = MapDataType.None;
-        ShowTerritory(false);
 
         Tools.current = Tool.None;
         Tools.hidden = true;
@@ -211,6 +196,7 @@ public class GameMapEditor : EditorWindow
 
             if (currentMap != null)
             {
+                ChangeTilemap();
 
                 foreach (var spawnTile in currentMap.castleSpawnTiles)
                 {
@@ -224,6 +210,23 @@ public class GameMapEditor : EditorWindow
             }
 
             EditorUtility.SetDirty(spawnMap);
+        }
+    }
+
+    void ChangeTilemap()
+    {
+        if (tilemapParent != null)
+        {
+            foreach (Transform child in tilemapParent)
+            {
+                child.gameObject.SetActive(false);
+            }
+
+            var mapTransform = tilemapParent.Find(currentMap.name);
+            if (mapTransform)
+            {
+                mapTransform.gameObject.SetActive(true);
+            }
         }
     }
 
@@ -334,16 +337,7 @@ public class GameMapEditor : EditorWindow
 
         if (selectedCountry != null)
         {
-            if (selectedCreateType == MapDataType.Territory)
-            {
-                ShowEditTerritoryMenu();
-                return;
-            }
-        }
 
-        if(!(selectedTile is CastleSpawnTile))
-        {
-            ShowTerritory(false);
         }
 
         if(selectedTile != null)
@@ -473,8 +467,7 @@ public class GameMapEditor : EditorWindow
             }
             else if(Event.current.type == EventType.MouseDrag)
             {
-                SetTerritoryTile(GetMousePosition());
-                Repaint();
+
             }            
         }
     }
@@ -664,7 +657,6 @@ public class GameMapEditor : EditorWindow
     }
 
     bool removeCountryConfirmation = false;
-    bool isShowingTerritory = false;
     void ShowCountry()
     {
         var selectedCastle = selectedTile as CastleSpawnTile;
@@ -688,16 +680,6 @@ public class GameMapEditor : EditorWindow
             if(subEditor != null)
             {
                 subEditor.DrawDefaultInspector();
-            }
-
-            isShowingTerritory = EditorGUILayout.Toggle("Show Territory", isShowingTerritory);
-            ShowTerritory(isShowingTerritory);
-
-            if (GUILayout.Button("Edit Territory"))
-            {
-                previousSelectedTile = selectedTile;
-                selectedCreateType = MapDataType.Territory;
-                ShowTerritory(true);
             }
 
             if (!removeCountryConfirmation && GUILayout.Button("Remove"))
@@ -731,98 +713,4 @@ public class GameMapEditor : EditorWindow
             }
         }
     }
-
-    void ShowEditTerritoryMenu()
-    {
-        if (GUILayout.Button("Back"))
-        {
-            selectedCountry = null;
-            selectedCreateType = MapDataType.None;
-
-            ShowTerritory(false);
-
-            selectedTile = previousSelectedTile;
-        }
-
-        if (selectedCountry == null)
-        {
-            selectedCreateType = MapDataType.None;
-            return;
-        }
-
-        string[] selectionString = {"Add","Delete"};
-                
-        EditorGUILayout.Space();
-        selectionGridIndex = GUILayout.SelectionGrid(selectionGridIndex, selectionString, 2, GUI.skin.button, GUILayout.Height(50));
-
-    }
-
-    void SetTerritoryTile(Vector3Int position)
-    {
-        if(selectedCreateType == MapDataType.Territory && selectedCountry != null)
-        {
-            if(selectionGridIndex == 0)
-            {
-                selectedCountry.territory.pointsHashset.Add(position);
-                territoryMap.SetTile(position, territoryTile);
-            }
-            else
-            {
-                selectedCountry.territory.pointsHashset.Remove(position);
-                territoryMap.SetTile(position, null);
-            }
-
-            selectedCountry.territory.Save();
-            
-            EditorUtility.SetDirty(selectedCountry);
-        }
-    }
-
-    CountryDataObject lastShownTerritoryCountry;
-    void ShowTerritory(bool show)
-    {
-        if (show)
-        {
-            if (selectedCountry != null)
-            {
-                if(lastShownTerritoryCountry != selectedCountry)
-                {                    
-                    DrawTerritoryMap();
-                }
-            }
-        }
-        else
-        {
-            if (territoryMap.gameObject.activeInHierarchy)
-            {
-                lastShownTerritoryCountry = null;
-                territoryMap.gameObject.SetActive(false);
-            }
-        }
-    }
-
-    void DrawTerritoryMap()
-    {
-        if (selectedCountry != null)
-        {
-            if(selectedCountry.territory == null)
-            {
-                Debug.Log("Territory not found");
-                return;
-            }
-
-            territoryMap.ClearAllTiles();
-
-            selectedCountry.territory.InitDictionary();
-
-            foreach(var point in selectedCountry.territory.points)
-            {
-                territoryMap.SetTile(point, territoryTile);
-            }
-
-            lastShownTerritoryCountry = selectedCountry;
-            territoryMap.gameObject.SetActive(true);
-        }
-    }
-
 }

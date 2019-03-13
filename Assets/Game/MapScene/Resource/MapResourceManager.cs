@@ -16,8 +16,6 @@ public class MapResourceManager : MonoBehaviour
 
     public MapResourcePopup collectResourcePopup;
 
-    public MapResourceCollector mapCollectorPrefab;
-
     [NonSerialized]
     public MapResource currentResource;
 
@@ -27,9 +25,7 @@ public class MapResourceManager : MonoBehaviour
     float lastUpdateTime;
 
     List<MapResourceObject> resourceList;
-
-    Dictionary<MapResource, MapResourceCollector> collectors = new Dictionary<MapResource, MapResourceCollector>();
-
+        
     private void Start()
     {
         resourceList = GameManager.instance.gamedatabaseManager.mapResourcesObjects.Values.ToList();
@@ -58,7 +54,7 @@ public class MapResourceManager : MonoBehaviour
 
     void SpawnResource()
     {
-        var castle = unitManager.myCastle;
+        var castle = unitManager.myShip;
         if (castle == null)
         {
             return;
@@ -103,7 +99,7 @@ public class MapResourceManager : MonoBehaviour
 
     void CollectResource()
     {
-        if (currentResource != null && !collectors.ContainsKey(currentResource))
+        if (currentResource != null)
         {
             var amountLeft = currentResource.CollectResource(100);
             collectResourcePopup.SetAmount(amountLeft);
@@ -114,20 +110,13 @@ public class MapResourceManager : MonoBehaviour
     public void OnSelectResource(MapResource resource)
     {
         currentResource = resource;
-
-        MapResourceCollector collector = null;
-        collectors.TryGetValue(resource, out collector);
-
-        collectResourcePopup.SetResource(resource, collector);
+        
+        collectResourcePopup.SetResource(resource);
     }
 
     public void OnCollectPressed()
     {
-        if (currentResource != null && !collectors.ContainsKey(currentResource))
-        {
-            var newCollector = Instantiate(mapCollectorPrefab, unitParent);
-            newCollector.resource = currentResource;                        
-        }
+        //collect by button press or timed collect
     }
 
     public void StopCollecting()
