@@ -30,6 +30,8 @@ public class GameMapEditor : EditorWindow
     
     Tilemap spawnMap;
 
+    Transform tilemapParent;
+
     SpawnTile selectedTile;
     SpawnTile previousSelectedTile;
     CountryDataObject selectedCountry;
@@ -114,6 +116,12 @@ public class GameMapEditor : EditorWindow
 
         SceneView.onSceneGUIDelegate += OnSceneGUI;
 
+        var terrain = GameObject.Find("TerrainMap");
+        if (terrain)
+        {
+            tilemapParent = terrain.transform;
+        }
+
         var map = GameObject.Find("SpawnMap");
         if (map != null)
         {
@@ -188,6 +196,7 @@ public class GameMapEditor : EditorWindow
 
             if (currentMap != null)
             {
+                ChangeTilemap();
 
                 foreach (var spawnTile in currentMap.castleSpawnTiles)
                 {
@@ -201,6 +210,23 @@ public class GameMapEditor : EditorWindow
             }
 
             EditorUtility.SetDirty(spawnMap);
+        }
+    }
+
+    void ChangeTilemap()
+    {
+        if (tilemapParent != null)
+        {
+            foreach (Transform child in tilemapParent)
+            {
+                child.gameObject.SetActive(false);
+            }
+
+            var mapTransform = tilemapParent.Find(currentMap.name);
+            if (mapTransform)
+            {
+                mapTransform.gameObject.SetActive(true);
+            }
         }
     }
 

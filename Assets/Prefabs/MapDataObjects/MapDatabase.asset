@@ -14,6 +14,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapDatabaseObjects:
   - {fileID: 114157812901997272}
+  - {fileID: 114128734293694496}
+--- !u!114 &114061261839420762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a91fdc6c2c953b45b1ce7440c2e7593, type: 3}
+  m_Name: Interactable SpawnTile
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 21300000, guid: 1c63e1a8f1ad5bc46a4647c1a4747436, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 0.5
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 0.5
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 0
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 2
+  m_ColliderType: 1
+  position: {x: -15, y: -5, z: 0}
+  prefab: {fileID: 6268581729690006768, guid: 97329510d00995f4abd1a2b76eef765d, type: 3}
 --- !u!114 &114070454339658154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50,6 +87,23 @@ MonoBehaviour:
   m_ColliderType: 1
   position: {x: -3, y: -13, z: 0}
   prefab: {fileID: 114505358365408646, guid: 3a213645604131744a500ca19c4edb55, type: 3}
+--- !u!114 &114128734293694496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bde4ef17a76b9fb4ba2ee8ea9d3ae48e, type: 3}
+  m_Name: Newfoundland
+  m_EditorClassIdentifier: 
+  countryDataObjects: []
+  castleSpawnTiles: []
+  interactableSpawnTiles:
+  - {fileID: 114476175417745096}
+  countryCounter: 7
 --- !u!114 &114153046043170964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,10 +155,10 @@ MonoBehaviour:
   countryDataObjects: []
   castleSpawnTiles: []
   interactableSpawnTiles:
-  - {fileID: 114280848539957910}
+  - {fileID: 114061261839420762}
   - {fileID: 114556546756830752}
   - {fileID: 114410072967581868}
-  countryCounter: 62
+  countryCounter: 90
 --- !u!114 &114204655924349210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,42 +231,6 @@ MonoBehaviour:
   m_ColliderType: 1
   position: {x: -1, y: -14, z: 0}
   prefab: {fileID: 114633482877653110, guid: bce1f789332cd4741a37e1670db156c0, type: 3}
---- !u!114 &114280848539957910
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a91fdc6c2c953b45b1ce7440c2e7593, type: 3}
-  m_Name: Interactable SpawnTile
-  m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 1c63e1a8f1ad5bc46a4647c1a4747436, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Transform:
-    e00: 0.5
-    e01: 0
-    e02: 0
-    e03: 0
-    e10: 0
-    e11: 0.5
-    e12: 0
-    e13: 0
-    e20: 0
-    e21: 0
-    e22: 1
-    e23: 0
-    e30: 0
-    e31: 0
-    e32: 0
-    e33: 0
-  m_InstancedGameObject: {fileID: 0}
-  m_Flags: 2
-  m_ColliderType: 1
-  position: {x: -15, y: -5, z: 0}
-  prefab: {fileID: 114505358365408646, guid: 97329510d00995f4abd1a2b76eef765d, type: 3}
 --- !u!114 &114315936196633028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -429,6 +447,42 @@ MonoBehaviour:
   m_ColliderType: 1
   position: {x: -7, y: -5, z: 0}
   prefab: {fileID: 114505358365408646, guid: e5f66eaa4ff0b3a44a3f57a2b196e2e0, type: 3}
+--- !u!114 &114476175417745096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a91fdc6c2c953b45b1ce7440c2e7593, type: 3}
+  m_Name: Interactable SpawnTile
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 21300000, guid: 1c63e1a8f1ad5bc46a4647c1a4747436, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 0.5
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 0.5
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 0
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 2
+  m_ColliderType: 1
+  position: {x: 8, y: -26, z: 0}
+  prefab: {fileID: 6268581729690006768, guid: 005b42bdccf671d47a207717147a05c9, type: 3}
 --- !u!114 &114556546756830752
 MonoBehaviour:
   m_ObjectHideFlags: 0

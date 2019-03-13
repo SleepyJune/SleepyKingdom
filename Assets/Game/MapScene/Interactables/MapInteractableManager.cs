@@ -33,6 +33,23 @@ public class MapInteractableManager : MonoBehaviour
         }
     }
 
+    public MapPortalUnit FindPortal(string mapName)
+    {
+        foreach(var interactable in interactables.Values)
+        {
+            if(interactable is MapPortalUnit)
+            {
+                var portal = interactable as MapPortalUnit;
+                if(portal.mapName == mapName)
+                {
+                    return portal;
+                }
+            }
+        }
+
+        return null;
+    }
+
     void Load(InteractableSpawnTile save)
     {        
         if (save.prefab != null)

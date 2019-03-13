@@ -72,6 +72,16 @@ public class MapUnit : GameDataPrefab
         }
     }
 
+    public bool isCloseToShip()
+    {
+        return isClose(unitManager.myShip);
+    }
+
+    public bool isClose(MapUnit unit)
+    {
+        return gameTile == unit.gameTile || gameTile.neighbours.Contains(unit.gameTile);
+    }
+
     public float Distance(MapUnit unit)
     {
         return Vector3.Distance(position, unit.position);

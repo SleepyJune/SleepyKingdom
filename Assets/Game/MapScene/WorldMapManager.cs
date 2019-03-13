@@ -45,6 +45,8 @@ public class WorldMapManager : MonoBehaviour
         if( InitTilemap(mapName) &&
             InitInteractables(mapName))
         {
+            unitManager.cameraController.CenterMyShip();
+
             currentMapName = mapName;
             return true;
         }
@@ -78,6 +80,13 @@ public class WorldMapManager : MonoBehaviour
         if (GameManager.instance.gamedatabaseManager.ChangeMap(mapName))
         {
             unitManager.interactableManager.Initialize();
+
+            var portal = unitManager.interactableManager.FindPortal(currentMapName);
+            if (portal)
+            {
+                unitManager.myShip.SetPosition(portal.position);
+            }
+
             return true;
         }
         else

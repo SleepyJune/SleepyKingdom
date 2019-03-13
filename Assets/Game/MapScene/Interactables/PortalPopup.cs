@@ -7,17 +7,37 @@ using UnityEngine.UI;
 
 public class PortalPopup : InteractablePopup
 {
-    public string mapName;
+    private string mapName;
 
     public Text text;
 
+    MapPortalUnit portal;
+
+    MapShip myShip;
+
     private void Start()
     {
-        text.text = "Move to " + mapName + "?";
+        portal = unit as MapPortalUnit;
+
+        mapName = portal.mapName;
+
+        myShip = unit.unitManager.myShip;
+
+        if(unit.isCloseToShip())
+        {
+            text.text = "Move to " + mapName + "?";
+        }
+        else
+        {
+            text.text = "Portal to " + mapName + ". Please move ship closer to use the portal.";
+        }
     }
 
     public void OnConfirmButtonPress()
     {
-        unit.unitManager.worldMapManager.ChangeMap(mapName);
+        if (unit.isCloseToShip())
+        {
+            unit.unitManager.worldMapManager.ChangeMap(mapName);
+        }
     }
 }
