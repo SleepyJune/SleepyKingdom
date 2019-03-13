@@ -10,19 +10,30 @@ using UnityEngine;
 [Serializable]
 public class GameState
 {
+    private bool initSuccess = false;
+
     [SerializeField]
     private Country[] countries = new Country[0];
 
-    public MapCastleSave[] mapCastles = new MapCastleSave[0];
-    public MapResourceSave[] mapResources = new MapResourceSave[0];
+    public MyCountry myCountry;
 
-    public int gold;
-    public int gems;
+    public Ship myShip;
+
+    public string currentMapName;
+
+    //public MapCastleSave[] mapCastles = new MapCastleSave[0];
+    public MapResourceSave[] mapResources = new MapResourceSave[0];
 
     [NonSerialized]
     private Dictionary<int, Country> countryDictionary = new Dictionary<int, Country>();
 
     public int countryCounter = Country.countryCounter;
+
+    public GameState(string countryName)
+    {
+        myCountry = new MyCountry(countryName);
+        myShip = new Ship();
+    }
 
     public void AddCountry(Country newCountry)
     {
@@ -62,9 +73,7 @@ public class GameState
             //if unit is in range of the castle
             castleSaveUnits.Add(unit);
         }
-
-        mapCastles = manager.castleManager.castles.Values.Select(castle => castle.Save()).ToArray();
-
+                
         mapResources = manager.resourceManager.resources.Select(resource=> resource.Save()).ToArray();
 
         Save();
@@ -85,8 +94,18 @@ public class GameState
         return countryDictionary.ContainsKey(id);
     }
 
+    public bool isInitialized()
+    {
+        return initSuccess;
+    }
+
     private void Initialize()
     {
+        if(countryDictionary == null)
+        {
+            countryDictionary = new Dictionary<int, Country>();
+        }
+
         foreach(var country in countries)
         {
             if (countryDictionary.ContainsKey(country.countryID))
@@ -97,6 +116,14 @@ public class GameState
 
             countryDictionary.Add(country.countryID, country);
         }
+
+        if (myCountry == null || myCountry.name == "")
+        {
+            initSuccess = false;
+            return;
+        }
+
+        initSuccess = true;
     }
 
     public void Save()
@@ -129,7 +156,7 @@ public class GameState
             if (savedState != null)
             {
                 savedState.Initialize();
-
+                
                 return savedState;
             }
             else
@@ -142,6 +169,6 @@ public class GameState
             Debug.Log("Save file not found at " + filePath);
         }
 
-        return new GameState();
+        return null;
     }
 }

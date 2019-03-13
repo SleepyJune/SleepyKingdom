@@ -10,13 +10,7 @@ public class MapCastleManager : MonoBehaviour
 
     [NonSerialized]
     public Dictionary<int, MapCastleUnit> castles = new Dictionary<int, MapCastleUnit>();
-           
-    [NonSerialized]
-    public MapCastleUnit myCastle;
-
-    [NonSerialized]
-    public MapCastleTerritoryOverlay territoryOverlay;
-
+    
     MapUnitManager unitManager;
 
 
@@ -26,7 +20,6 @@ public class MapCastleManager : MonoBehaviour
         GameManager.instance.globalCountryManager.OnDeleteCountryEvent += OnDeleteCountryEvent;
 
         unitManager = GetComponent<MapUnitManager>();
-        territoryOverlay = GetComponent<MapCastleTerritoryOverlay>();
 
         Initialize();
     }
@@ -37,41 +30,12 @@ public class MapCastleManager : MonoBehaviour
         {
             OnAddCountryEvent(country);
         }
-
-        foreach (var save in GameManager.instance.gameStateManager.gameState.mapCastles)
-        {
-            if (!castles.ContainsKey(save.countryID))
-            {
-                Load(save);
-            }
-        }
     }
 
     private void OnDestroy()
     {
         GameManager.instance.globalCountryManager.OnAddCountryEvent -= OnAddCountryEvent;
         GameManager.instance.globalCountryManager.OnDeleteCountryEvent -= OnDeleteCountryEvent;
-    }
-
-    void Load(MapCastleSave save)
-    {
-        var country = GameManager.instance.globalCountryManager.GetCountry(save.countryID);
-
-        if (country != null)
-        {
-            var castlePrefab = defaultCastleUnit;
-
-            if (country.castlePrefabId != 0)
-            {
-                castlePrefab = GameManager.instance.gamedatabaseManager.GetPrefab<MapCastleUnit>(country.castlePrefabId);
-            }
-
-            var newCastle = Instantiate(castlePrefab, unitManager.unitParent);
-
-            newCastle.Load(save, country);
-
-            castles.Add(country.countryID, newCastle);
-        }
     }
 
     private void OnAddCountryEvent(Country country)
@@ -95,12 +59,6 @@ public class MapCastleManager : MonoBehaviour
         var newCastle = Instantiate(castlePrefab, unitManager.unitParent);
         newCastle.country = country;
         newCastle.position = country.position;
-
-        if (country.countryID == 1)
-        {
-            myCastle = newCastle;
-            unitManager.myCastle = newCastle;
-        }
 
         castles.Add(country.countryID, newCastle);
     }

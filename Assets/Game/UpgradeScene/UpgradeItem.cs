@@ -15,7 +15,7 @@ public class UpgradeItem : MonoBehaviour
 
     public Text itemDescription;
 
-    Country country;
+    MyCountry country;
 
     public void SetItem(CountryUpgradeObject item)
     {

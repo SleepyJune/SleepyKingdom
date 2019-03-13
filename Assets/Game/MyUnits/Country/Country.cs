@@ -18,49 +18,16 @@ public class Country
     public int castlePrefabId;
     public Vector3Int position;
 
-    public float speed;
-
-    //leader
-
     //private resources
 
     public float population;
     public float maxCapacity;
 
-    public float wood;
-    public float stone;
-    public float wheat;
-    public float gold;
-    public float water;
-
-    public float taxRate;
-    public float happiness;
-
-    public int detectionRadius = 5;
-
-    [NonSerialized]
-    public float birthRate = .5f;
-    [NonSerialized]
-    public float matingRate = .2f;
-    [NonSerialized]
-    public float deathRate = .05f;
-    [NonSerialized]
-    public float foodConsumptionRate = .2f;
-    [NonSerialized]
-    public float waterConsumptionRate = .2f;
-
-    [NonSerialized]
-    public Territory territory;
-
     public static int countryCounter = 1;
 
     public void Initialize(CountryDataObject countryData)
     {
-        if (countryData.territory != null && countryData.territory.points.Length > 0)
-        {
-            territory = countryData.territory;
-            territory.InitDictionary();
-        }
+
     }
 
     public static Country Generate(string countryName = "")
@@ -80,15 +47,6 @@ public class Country
 
         newCountry.population = Random.Range(100, 1000);
         newCountry.maxCapacity = Random.Range(2000, 10000);
-
-        newCountry.wood = Random.Range(1, 100);
-        newCountry.stone = Random.Range(1, 100);
-        newCountry.wheat = Random.Range(1, 100);
-        newCountry.gold = Random.Range(1, 100);
-
-        newCountry.taxRate = Random.Range(0, 100);
-
-        newCountry.happiness = Random.Range(1, 100);
 
         return newCountry;
     }
