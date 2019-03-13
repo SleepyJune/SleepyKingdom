@@ -10,10 +10,13 @@ public class MapShip : MapMobileUnit
 
     public SpriteRenderer render;
 
-    private Ship ship;
+    [NonSerialized]
+    public Ship ship;
         
     protected override void Start()
     {
+        ship = GameManager.instance.gameStateManager.gameState.myShip;
+
         base.Start();
 
         if (render != null)
@@ -21,7 +24,7 @@ public class MapShip : MapMobileUnit
             render.sprite = image;
         }
 
-        ship = GameManager.instance.gameStateManager.gameState.myShip;
+        SetPosition(ship.position);
     }
 
     public override bool SetMovePosition(Vector3Int pos)
@@ -63,6 +66,11 @@ public class MapShip : MapMobileUnit
                 Destroy(unitManager.actionBar.myDestinationFlag);
             }
         }
+    }
+
+    protected override void OnPositionChanged(Vector3Int oldPos, Vector3Int newPos)
+    {
+        ship.position = newPos;
     }
 
     public override void OnClickEvent()

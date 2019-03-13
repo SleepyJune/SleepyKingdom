@@ -103,9 +103,11 @@ public class MapMobileUnit : MapUnit
 
             transform.position = currentPos;
 
-            OnPositionChanged(position, lastPos);
-
+            Vector3Int oldPos = position;
+            
             position = lastPos;
+
+            OnPositionChanged(oldPos, position);
 
             path = null;
 
@@ -119,6 +121,15 @@ public class MapMobileUnit : MapUnit
         {
             GetPosition();
         }
+    }
+
+    public override void SetPosition(Vector3Int nextPosition)
+    {
+        Vector3Int oldPos = position;
+
+        base.SetPosition(nextPosition);
+
+        OnPositionChanged(oldPos, position);
     }
 
     protected virtual void OnPositionChanged(Vector3Int oldPos, Vector3Int newPos)
