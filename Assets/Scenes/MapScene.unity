@@ -11612,8 +11612,6 @@ MonoBehaviour:
     type: 3}
   unitParent: {fileID: 1131644253}
   collectResourcePopup: {fileID: 65429823}
-  mapCollectorPrefab: {fileID: 114095505136353658, guid: 5a6603fa0107d9c4cbd7a733978b97f3,
-    type: 3}
 --- !u!114 &177972049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11684,7 +11682,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &178894035
 Transform:
   m_ObjectHideFlags: 0
