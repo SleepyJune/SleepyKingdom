@@ -101,9 +101,9 @@ public class MapSceneCameraController : MonoBehaviour
         }
     }
 
-    public void CenterMyCastle()
+    public void CenterMyShip()
     {
-        CenterOn(MapSceneManager.instance.unitManager.myCastle);
+        CenterOn(MapSceneManager.instance.unitManager.myShip);
     }
 
     public void CenterOn(MapUnit unit)

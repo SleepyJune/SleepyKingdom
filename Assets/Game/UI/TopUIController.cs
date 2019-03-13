@@ -9,7 +9,7 @@ public class TopUIController : MonoBehaviour
 {
     public Text populationText;
 
-    Country country;
+    MyCountry country;
 
     private void Start()
     {

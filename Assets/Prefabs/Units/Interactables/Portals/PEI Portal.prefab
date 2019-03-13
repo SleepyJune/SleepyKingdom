@@ -56,10 +56,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4453367529752566}
-  - component: {fileID: 114505358365408646}
+  - component: {fileID: 6268581729690006768}
   - component: {fileID: 95135896417874346}
   m_Layer: 8
-  m_Name: DummyInteractable
+  m_Name: PEI Portal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -81,7 +81,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114505358365408646
+--- !u!114 &6268581729690006768
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -90,17 +90,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1549847044852996}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fefa51a2a0e04c468e0f84127c6f472, type: 3}
+  m_Script: {fileID: 11500000, guid: a13e840f24f5e444babb1e53a4ae8910, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: sign 1
-  id: 9
+  name: PEI Portal
+  id: 28
   unitId: 0
   position: {x: 0, y: 0, z: 0}
   isBlocked: 0
   image: {fileID: 21300000, guid: 1c63e1a8f1ad5bc46a4647c1a4747436, type: 3}
-  popup: {fileID: 114390949385556856, guid: 3c3cfc67bebeb11499030c7d0f46b2c1, type: 3}
+  popup: {fileID: 4525876126880595160, guid: 507c8cb56383e4e4e937f329f3f2fe53, type: 3}
   render: {fileID: 212679466389861432}
+  mapName: PEI
 --- !u!95 &95135896417874346
 Animator:
   serializedVersion: 3

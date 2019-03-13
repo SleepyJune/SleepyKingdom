@@ -23,11 +23,13 @@ public class Pathfinder
         }
     }
 
-    public static void InitializeMap(Tilemap tilemap)
+    private static void InitializeMap(Tilemap tilemap)
     {
         BoundsInt bounds = tilemap.cellBounds;
 
         Pathfinder.tilemap = tilemap;
+
+        map = new Dictionary<Vector3Int, GameTile>();
 
         for (int x = bounds.xMin; x < bounds.xMax; x++)
         {
@@ -50,7 +52,7 @@ public class Pathfinder
         }
     }
 
-    public static void InitializeNeighbours()
+    private static void InitializeNeighbours()
     {
         var directions = HexVectorExtensions.hexDirections;
 
@@ -68,7 +70,10 @@ public class Pathfinder
                 GameTile neighbour;
                 if (map.TryGetValue(pos, out neighbour))
                 {
-                    tile.neighbours.Add(neighbour);
+                    if (!neighbour.isBlocked)
+                    {
+                        tile.neighbours.Add(neighbour);
+                    }                    
                 }
             }
         }
@@ -103,20 +108,7 @@ public class Pathfinder
         {
             return false;
         }
-
-        if (tile.isBlocked)
-        {
-            return false;
-        }
-
-        if(unit.territory != null)
-        {
-            if (!unit.territory.pointsHashset.Contains(tile.position))
-            {
-                return false;
-            }
-        }
-
+        
         return true;
     }
 

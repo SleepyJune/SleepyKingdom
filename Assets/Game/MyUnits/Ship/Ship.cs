@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 
 using UnityEngine;
 
 [Serializable]
-public class MapCastleSave : MapUnitSave
+public class Ship
 {
-    public int countryID;
+
 }

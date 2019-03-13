@@ -18,16 +18,36 @@ public class MapInteractableManager : MonoBehaviour
         Initialize();
     }
 
-    private void Initialize()
+    public void Initialize()
     {
-        foreach (var save in unitManager.mapDatabase.interactableSpawnTileDictionary.Values)
-        {
-                        
+        Unload();
+
+        interactables = new Dictionary<Vector3, MapInteractableUnit>();
+        
+        foreach (var save in GameManager.instance.gamedatabaseManager.currentMap.interactableSpawnTileDictionary.Values)
+        {                        
             if (!interactables.ContainsKey(save.position))
             {
                 Load(save);
             }
         }
+    }
+
+    public MapPortalUnit FindPortal(string mapName)
+    {
+        foreach(var interactable in interactables.Values)
+        {
+            if(interactable is MapPortalUnit)
+            {
+                var portal = interactable as MapPortalUnit;
+                if(portal.mapName == mapName)
+                {
+                    return portal;
+                }
+            }
+        }
+
+        return null;
     }
 
     void Load(InteractableSpawnTile save)
@@ -38,6 +58,14 @@ public class MapInteractableManager : MonoBehaviour
             newInteractable.position = save.position;
 
             interactables.Add(save.position, newInteractable);
+        }
+    }
+
+    public void Unload()
+    {
+        foreach(var interactable in interactables.Values)
+        {
+            Destroy(interactable.gameObject);
         }
     }
 }
