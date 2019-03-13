@@ -7,7 +7,14 @@
         "gold": 0,
         "gems": 0
     },
-    "myShip": {},
+    "myShip": {
+        "mapName": "PEI",
+        "position": {
+            "x": -15,
+            "y": -5,
+            "z": 0
+        }
+    },
     "currentMapName": "",
     "mapResources": [
         {

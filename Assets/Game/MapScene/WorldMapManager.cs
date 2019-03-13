@@ -27,6 +27,8 @@ public class WorldMapManager : MonoBehaviour
     {
         currentMapName = GameManager.instance.gameStateManager.gameState.currentMapName;
 
+        currentMapName = unitManager.myShip.ship.mapName;
+
         if (!ChangeMap(currentMapName)) //if changing map failed
         {
             ChangeMap(defaultMap);
@@ -45,6 +47,7 @@ public class WorldMapManager : MonoBehaviour
         if( InitTilemap(mapName) &&
             InitInteractables(mapName))
         {
+            unitManager.myShip.ship.mapName = mapName;
             unitManager.cameraController.CenterMyShip();
 
             currentMapName = mapName;

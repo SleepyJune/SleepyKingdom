@@ -11503,6 +11503,7 @@ GameObject:
   - component: {fileID: 177972049}
   - component: {fileID: 177972050}
   - component: {fileID: 177972051}
+  - component: {fileID: 177972053}
   - component: {fileID: 177972052}
   m_Layer: 0
   m_Name: MapSceneManager
@@ -11659,12 +11660,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 177972041}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b32113bb86f89a4b9618830b77772cb, type: 3}
+  m_Script: {fileID: 11500000, guid: c010a61e944ff1e4f93c9d5d8978ddfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  territoryMap: {fileID: 42857459}
-  greenTile: {fileID: 11400000, guid: 9d8654c3339b99c49a7c6a7446c27ee2, type: 2}
-  redTile: {fileID: 11400000, guid: 8a5551cd8caaa7346914d72a0c9d0a0a, type: 2}
+  shipPrefab: {fileID: 1357934357395746492, guid: eda2ce6251c66614db50227129cdaa6f,
+    type: 3}
+--- !u!114 &177972053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177972041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04d5725f7e61c2d4e8d49f4ce105497c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapParent: {fileID: 583352500}
+  defaultMap: PEI
 --- !u!1 &178894034
 GameObject:
   m_ObjectHideFlags: 0
@@ -127640,7 +127654,7 @@ PrefabInstance:
     - target: {fileID: 114588007296988796, guid: 8beaf6c5668c61147b8ce33a15a3375e,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CenterMyCastle
+      value: CenterMyShip
       objectReference: {fileID: 0}
     - target: {fileID: 114588007296988796, guid: 8beaf6c5668c61147b8ce33a15a3375e,
         type: 3}

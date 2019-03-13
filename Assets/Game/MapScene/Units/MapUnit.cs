@@ -48,7 +48,7 @@ public class MapUnit : GameDataPrefab
         Destroy(gameObject);
     }
 
-    public void SetPosition(Vector3Int nextPosition)
+    public virtual void SetPosition(Vector3Int nextPosition)
     {
         position = nextPosition;
 
