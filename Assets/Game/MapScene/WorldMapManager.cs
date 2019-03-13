@@ -10,7 +10,7 @@ public class WorldMapManager : MonoBehaviour
     [NonSerialized]
     public string currentMapName;
 
-    public Transform mapParent;
+    private Transform mapParent;
 
     public string defaultMap = "PEI";
 
@@ -20,7 +20,9 @@ public class WorldMapManager : MonoBehaviour
     {
         unitManager = GetComponent<MapUnitManager>();
 
-        Invoke("Initialize", 1);
+        mapParent = GameObject.Find("TerrainMap").transform;
+
+        Invoke("Initialize", .05f);
     }
 
     void Initialize()

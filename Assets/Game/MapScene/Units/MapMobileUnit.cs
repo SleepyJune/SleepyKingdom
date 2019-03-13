@@ -80,7 +80,11 @@ public class MapMobileUnit : MapUnit
                     angle += 360;
                 }
 
+                var oldRot = transform.rotation;                
+
                 transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+                OnRotationChanged(oldRot, transform.rotation);
 
                 if (!negativeRotation)
                 {
@@ -108,7 +112,7 @@ public class MapMobileUnit : MapUnit
             position = lastPos;
 
             OnPositionChanged(oldPos, position);
-
+            
             path = null;
 
             OnDestinationReached();
@@ -133,6 +137,11 @@ public class MapMobileUnit : MapUnit
     }
 
     protected virtual void OnPositionChanged(Vector3Int oldPos, Vector3Int newPos)
+    {
+
+    }
+
+    protected virtual void OnRotationChanged(Quaternion oldRot, Quaternion newRot)
     {
 
     }

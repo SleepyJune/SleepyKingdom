@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -81,15 +82,27 @@ public class MapSceneInputManager : MonoBehaviour
             var mouse2D = new Vector2(worldPos.x, worldPos.y);
 
             //var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            
+            var results = Physics2D.RaycastAll(mouse2D, Vector2.zero, 100, mapUnitMask);
 
-            var hit = Physics2D.Raycast(mouse2D, Vector2.zero, 100);
-            if (hit.collider != null && hit.collider.transform.parent != null)
+            List<MapUnit> units = new List<MapUnit>();
+
+            foreach(var hit in results)
             {
-                var unit = hit.collider.transform.parent.GetComponent<MapUnit>();
-                if (unit != null)
+                if (hit.collider != null && hit.collider.transform.parent != null)
                 {
-                    unit.OnClickEvent();
+                    var unit = hit.collider.transform.parent.GetComponent<MapUnit>();
+                    if (unit != null)
+                    {
+                        units.Add(unit);
+                    }
                 }
+            }
+
+            foreach(var unit in units.OrderByDescending(unit => unit is MapShip))
+            {
+                unit.OnClickEvent();
+                break;
             }
         }
     }
