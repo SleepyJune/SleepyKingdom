@@ -4,7 +4,8 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -34,6 +35,7 @@ MonoBehaviour:
   m_Flags: 1
   m_ColliderType: 2
   isBlocked: 0
+  mapResourceSpawn: {fileID: 11400000, guid: 67965ba6d5ed0b443b303217c82d6061, type: 2}
   sprites:
   - {fileID: 21300000, guid: f63bdac46a532cc489c54627c8f51dda, type: 3}
   - {fileID: 21300000, guid: 0e663f298dc18f242ab9f86a778a8c4d, type: 3}

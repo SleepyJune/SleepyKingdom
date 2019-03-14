@@ -17,14 +17,15 @@ public class MapShip : MapMobileUnit
     {
         ship = GameManager.instance.gameStateManager.gameState.myShip;
 
+        position = ship.position;
+        transform.rotation = ship.rotation;
+
         base.Start();
 
         if (render != null)
         {
             render.sprite = image;
         }
-
-        SetPosition(ship.position);
     }
 
     public override bool SetMovePosition(Vector3Int pos)
@@ -73,13 +74,16 @@ public class MapShip : MapMobileUnit
         ship.position = newPos;
     }
 
+    protected override void OnRotationChanged(Quaternion oldRot, Quaternion newRot)
+    {
+        ship.rotation = newRot;
+    }
+
     public override void OnClickEvent()
     {
         if (!unitManager.inputManager.isMultiTouch())
         {
             unitManager.actionBar.OnUnitClick(this);
-
-            Debug.Log("click");
         }
     }
 }

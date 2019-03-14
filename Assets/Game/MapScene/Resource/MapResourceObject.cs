@@ -7,5 +7,5 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Game/MapResource Object")]
 public class MapResourceObject : SpriteObject
 {
-    public MapResource.MapResourceType resourceType;
+    public MapResourceType resourceType;
 }

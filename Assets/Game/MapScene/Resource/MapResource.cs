@@ -4,16 +4,17 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
+public enum MapResourceType
+{
+    None,
+    Water,
+    Wheat,
+    Stone,
+    Wood,
+}
+
 public class MapResource : MapUnit
 {
-    public enum MapResourceType
-    {
-        Water,
-        Wheat,
-        Stone,
-        Wood,
-    }
-
     public MapResourceType resourceType;
 
     public SpriteRenderer icon;

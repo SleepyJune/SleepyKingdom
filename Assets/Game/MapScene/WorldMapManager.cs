@@ -10,7 +10,7 @@ public class WorldMapManager : MonoBehaviour
     [NonSerialized]
     public string currentMapName;
 
-    public Transform mapParent;
+    private Transform mapParent;
 
     public string defaultMap = "PEI";
 
@@ -20,7 +20,9 @@ public class WorldMapManager : MonoBehaviour
     {
         unitManager = GetComponent<MapUnitManager>();
 
-        Invoke("Initialize", 1);
+        mapParent = GameObject.Find("TerrainMap").transform;
+
+        Invoke("Initialize", .05f);
     }
 
     void Initialize()
@@ -45,7 +47,8 @@ public class WorldMapManager : MonoBehaviour
         Debug.Log("Changing map to " + mapName);
 
         if( InitTilemap(mapName) &&
-            InitInteractables(mapName))
+            InitInteractables(mapName) &&
+            InitMapResources())
         {
             unitManager.myShip.ship.mapName = mapName;
             unitManager.cameraController.CenterMyShip();
@@ -55,6 +58,12 @@ public class WorldMapManager : MonoBehaviour
         }
 
         return false;
+    }
+
+    bool InitMapResources()
+    {
+        unitManager.mapResourcesManager.Unload();
+        return true;
     }
 
     bool InitTilemap(string mapName)

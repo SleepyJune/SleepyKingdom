@@ -15,6 +15,8 @@ public class GroundTile : GameTileBase
 {
     public bool isBlocked;
 
+    public MapResourceObject mapResourceSpawn = null;
+
     public Sprite[] sprites;
     
     public override void GetTileData(Vector3Int location, ITilemap tilemap, ref TileData tileData)

@@ -23,22 +23,46 @@ public class SceneChanger : MonoBehaviour
     
     public static SceneType currentScene;
 
+    public Dictionary<string, SceneType> sceneNameDictionary = new Dictionary<string, SceneType>();
+
     public void Start()
     {
-        var current = SceneManager.GetActiveScene();
-        currentScene = (SceneType)current.buildIndex;
+        InitDictionary();
 
-        SceneManager.activeSceneChanged += OnChangeActiveScene;
+        var current = SceneManager.GetActiveScene();
+        ChangeCurrentScene(current.name);
+
+        SceneManager.activeSceneChanged += OnChangeActiveScene;        
     }
 
     private void OnChangeActiveScene(Scene current, Scene next)
     {
-        currentScene = (SceneType)next.buildIndex;
+        ChangeCurrentScene(next.name);
+    }
+
+    void ChangeCurrentScene(string sceneName)
+    {
+        SceneType sceneType;
+        if (sceneNameDictionary.TryGetValue(sceneName, out sceneType))
+        {
+            currentScene = sceneType;
+        }
     }
 
     public void GoBack()
     {
         ChangeScene((Country)null);
+    }
+
+    void InitDictionary()
+    {
+        sceneNameDictionary.Add("MapScene", SceneType.Map);
+        sceneNameDictionary.Add("MarketScene", SceneType.Market);
+        sceneNameDictionary.Add("CountryScene", SceneType.Country);
+        sceneNameDictionary.Add("CashShopScene", SceneType.CashShop);
+        sceneNameDictionary.Add("TempleScene", SceneType.Temple);
+        sceneNameDictionary.Add("UpgradeScene", SceneType.Upgrade);
+        sceneNameDictionary.Add("CreationScene", SceneType.NewGame);
     }
 
     public void ChangeScene(SceneType sceneType)
@@ -48,33 +72,13 @@ public class SceneChanger : MonoBehaviour
             return;
         }
 
-        if(sceneType == SceneType.Map)
+        foreach(var pair in sceneNameDictionary)
         {
-            SceneManager.LoadScene("MapScene");
-        }
-        else if (sceneType == SceneType.Market)
-        {
-            SceneManager.LoadScene("MarketScene");
-        }
-        else if (sceneType == SceneType.Country)
-        {
-            SceneManager.LoadScene("CountryScene");
-        }
-        else if (sceneType == SceneType.CashShop)
-        {
-            SceneManager.LoadScene("CashShopScene");
-        }
-        else if (sceneType == SceneType.Temple)
-        {
-            SceneManager.LoadScene("TempleScene");
-        }
-        else if (sceneType == SceneType.Upgrade)
-        {
-            SceneManager.LoadScene("UpgradeScene");
-        }
-        else if (sceneType == SceneType.NewGame)
-        {
-            SceneManager.LoadScene("CreationScene");
+            if(pair.Value == sceneType)
+            {
+                SceneManager.LoadScene(pair.Key);
+                break;
+            }
         }
     }
 

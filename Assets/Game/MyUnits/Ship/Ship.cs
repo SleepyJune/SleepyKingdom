@@ -10,4 +10,5 @@ public class Ship
     public string mapName;
 
     public Vector3Int position;
+    public Quaternion rotation;
 }

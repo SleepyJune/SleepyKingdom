@@ -20,11 +20,14 @@ public class GameTile
     public GameTile parent = null;
 
     public bool isBlocked = false;
+
+    public MapResourceObject mapResourceSpawn;
     
-    public GameTile(Vector3Int pos, bool isBlocked = false)
+    public GameTile(Vector3Int pos, bool isBlocked = false, MapResourceObject mapResourceSpawn = null)
     {
         this.position = pos;
         this.isBlocked = isBlocked;
+        this.mapResourceSpawn = mapResourceSpawn;
 
         units = new HashSet<MapUnit>();
     }
