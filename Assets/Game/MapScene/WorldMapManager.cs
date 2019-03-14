@@ -47,7 +47,8 @@ public class WorldMapManager : MonoBehaviour
         Debug.Log("Changing map to " + mapName);
 
         if( InitTilemap(mapName) &&
-            InitInteractables(mapName))
+            InitInteractables(mapName) &&
+            InitMapResources())
         {
             unitManager.myShip.ship.mapName = mapName;
             unitManager.cameraController.CenterMyShip();
@@ -57,6 +58,12 @@ public class WorldMapManager : MonoBehaviour
         }
 
         return false;
+    }
+
+    bool InitMapResources()
+    {
+        unitManager.mapResourcesManager.Unload();
+        return true;
     }
 
     bool InitTilemap(string mapName)

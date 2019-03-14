@@ -8,70 +8,80 @@
         "gems": 0
     },
     "myShip": {
-        "mapName": "PEI",
+        "mapName": "Newfoundland",
         "position": {
-            "x": -13,
-            "y": -2,
+            "x": 8,
+            "y": -26,
             "z": 0
         },
         "rotation": {
             "x": 0.0,
             "y": 0.0,
-            "z": -0.28978464007377627,
-            "w": 0.9570918679237366
+            "z": -0.9570921063423157,
+            "w": 0.28978392481803896
         }
     },
     "currentMapName": "",
     "mapResources": [
         {
             "position": {
-                "x": 3,
-                "y": -1,
+                "x": 6,
+                "y": -18,
                 "z": 0
             },
-            "amount": 3076,
-            "maxCapacity": 3076,
-            "resourceID": 19
+            "amount": 3735,
+            "maxCapacity": 3735,
+            "resourceID": 21
         },
         {
             "position": {
-                "x": 1,
-                "y": -3,
+                "x": 6,
+                "y": -18,
                 "z": 0
             },
-            "amount": 253,
-            "maxCapacity": 253,
+            "amount": 3735,
+            "maxCapacity": 3735,
+            "resourceID": 21
+        },
+        {
+            "position": {
+                "x": 9,
+                "y": -22,
+                "z": 0
+            },
+            "amount": 413,
+            "maxCapacity": 413,
+            "resourceID": 20
+        },
+        {
+            "position": {
+                "x": 9,
+                "y": -22,
+                "z": 0
+            },
+            "amount": 413,
+            "maxCapacity": 413,
+            "resourceID": 20
+        },
+        {
+            "position": {
+                "x": 0,
+                "y": -12,
+                "z": 0
+            },
+            "amount": 4254,
+            "maxCapacity": 4254,
             "resourceID": 21
         },
         {
             "position": {
                 "x": 0,
-                "y": 3,
+                "y": -12,
                 "z": 0
             },
-            "amount": 823,
-            "maxCapacity": 823,
-            "resourceID": 20
-        },
-        {
-            "position": {
-                "x": -2,
-                "y": 1,
-                "z": 0
-            },
-            "amount": 2247,
-            "maxCapacity": 2247,
-            "resourceID": 19
-        },
-        {
-            "position": {
-                "x": -2,
-                "y": 0,
-                "z": 0
-            },
-            "amount": 4422,
-            "maxCapacity": 4422,
-            "resourceID": 18
+            "amount": 4254,
+            "maxCapacity": 4254,
+            "resourceID": 21
         }
     ],
     "countryCounter": 1

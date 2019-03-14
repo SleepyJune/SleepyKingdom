@@ -32,7 +32,7 @@ public class MapResourceManager : MonoBehaviour
 
         unitManager = GetComponent<MapUnitManager>();
 
-        Initialize();
+        //Initialize();
     }
 
     private void Initialize()
@@ -63,23 +63,22 @@ public class MapResourceManager : MonoBehaviour
         int tries = 0;
         while (resources.Count < 5 && tries < 50)
         {
-            var dist = UnityEngine.Random.Range(1, 5);
-            var angle = UnityEngine.Random.Range(0, 360);
-            var dir = VectorExtensions.DegreeToVector(angle);
+            var rand = UnityEngine.Random.Range(0, Pathfinder.map.Count);
 
-            var pos = castle.position + dir * dist;
+            var gameTile = Pathfinder.map.ElementAt(rand).Value;
 
-            int index = UnityEngine.Random.Range(0, resourceList.Count);
-
-            var amount = UnityEngine.Random.Range(100, 5000);
-
-            var posInt = Pathfinder.tilemap.WorldToCell(pos);
-
-            if (!resources.Any(resource => resource.position == posInt))
+            if (gameTile.mapResourceSpawn != null)
             {
-                var newResource = Instantiate(resourcePrefab, unitParent);
-                newResource.SetItem(resourceList[index], amount, amount, posInt, this);
-            }
+                var amount = UnityEngine.Random.Range(100, 5000);
+                var posInt = gameTile.position;
+
+                if (!resources.Any(resource => resource.position == posInt))
+                {
+                    var newResource = Instantiate(resourcePrefab, unitParent);
+                    newResource.SetItem(gameTile.mapResourceSpawn, amount, amount, posInt, this);
+                    resources.Add(newResource);
+                }
+            }            
 
             tries += 1;
         }
@@ -95,6 +94,16 @@ public class MapResourceManager : MonoBehaviour
             
             newResource.SetItem(resourceObject, save.amount, save.maxCapacity, save.position, this);
         }
+    }
+
+    public void Unload()
+    {
+        foreach(var resource in resources)
+        {
+            Destroy(resource.gameObject);
+        }
+
+        resources = new List<MapResource>();
     }
 
     void CollectResource()

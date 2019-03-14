@@ -41,7 +41,7 @@ public class Pathfinder
 
                 if (tile != null)
                 {
-                    var newTile = new GameTile(new Vector3Int(x, y, 0), tile.isBlocked);
+                    var newTile = new GameTile(new Vector3Int(x, y, 0), tile.isBlocked, tile.mapResourceSpawn);
 
                     if (!map.ContainsKey(newTile.position))
                     {
