@@ -21,9 +21,13 @@ public class MapSceneCameraController : MonoBehaviour
 
     private Vector3 displacement;
 
+    MapUnitManager unitManager;
+
     private void Start()
     {
         displacement = Camera.main.transform.position - transform.position;
+
+        unitManager = GetComponent<MapUnitManager>();
     }
 
     public bool MouseInsideScreen()
@@ -48,6 +52,11 @@ public class MapSceneCameraController : MonoBehaviour
     private void LateUpdate()
     {
         Zoom();
+
+        if (unitManager.myShip.isMoving)
+        {
+            CenterMyShip();
+        }
     }
 
     public void OnMouseDown()

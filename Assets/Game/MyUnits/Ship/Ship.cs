@@ -11,4 +11,11 @@ public class Ship
 
     public Vector3Int position;
     public Quaternion rotation;
+
+    public int water;
+    public int wheat;
+    public int stone;
+    public int wood;
+
+    float resourceCollectRate;
 }

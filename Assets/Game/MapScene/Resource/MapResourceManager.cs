@@ -20,12 +20,20 @@ public class MapResourceManager : MonoBehaviour
     public MapResource currentResource;
 
     [NonSerialized]
+    public MapResource currentCollecting;
+
+    [NonSerialized]
     public List<MapResource> resources = new List<MapResource>();
 
     float lastUpdateTime;
 
     List<MapResourceObject> resourceList;
-        
+
+    [NonSerialized]
+    public bool isCollecting = false;
+
+    float lastCollectTime;
+
     private void Start()
     {
         resourceList = GameManager.instance.gamedatabaseManager.mapResourcesObjects.Values.ToList();
@@ -49,6 +57,12 @@ public class MapResourceManager : MonoBehaviour
         {
             SpawnResource();
             lastUpdateTime = Time.time;
+        }
+
+        if(Time.time - lastCollectTime > 1)
+        {
+            CollectResource();
+            lastCollectTime = Time.time;
         }
     }
 
@@ -78,7 +92,7 @@ public class MapResourceManager : MonoBehaviour
                     newResource.SetItem(gameTile.mapResourceSpawn, amount, amount, posInt, this);
                     resources.Add(newResource);
                 }
-            }            
+            }
 
             tries += 1;
         }
@@ -91,14 +105,14 @@ public class MapResourceManager : MonoBehaviour
         if (resourceObject != null && save.amount > 0)
         {
             var newResource = Instantiate(resourcePrefab, unitParent);
-            
+
             newResource.SetItem(resourceObject, save.amount, save.maxCapacity, save.position, this);
         }
     }
 
     public void Unload()
     {
-        foreach(var resource in resources)
+        foreach (var resource in resources)
         {
             Destroy(resource.gameObject);
         }
@@ -108,28 +122,60 @@ public class MapResourceManager : MonoBehaviour
 
     void CollectResource()
     {
-        if (currentResource != null)
+        if (isCollecting)
         {
-            var amountLeft = currentResource.CollectResource(100);
-            collectResourcePopup.SetAmount(amountLeft);
-            collectResourcePopup.ResetFill();
-        }
+            if (currentCollecting != null && currentCollecting.isCloseToShip())
+            {
+                var amountCollected = currentCollecting.CollectResource(100);
+                collectResourcePopup.SetAmount(amountCollected);
+                collectResourcePopup.ResetFill();
+                
+                if(currentCollecting.amount <= 0)
+                {
+                    StopCollecting();
+                    collectResourcePopup.Hide();
+                }
+            }
+            else
+            {
+                isCollecting = false;
+            }
+        }        
+    }
+
+    public void StartCollecting(MapResource resource)
+    {
+        currentCollecting = resource;
+        currentResource = resource;
+        isCollecting = true;
+        collectResourcePopup.Show();
+    }
+
+    public void OnShipMoved()
+    {
+        StopCollecting();
     }
 
     public void OnSelectResource(MapResource resource)
     {
         currentResource = resource;
-        
+
         collectResourcePopup.SetResource(resource);
     }
 
     public void OnCollectPressed()
     {
         //collect by button press or timed collect
+        if (currentResource != null)
+        {
+            unitManager.actionBar.SetTarget(currentResource);
+            collectResourcePopup.Hide();
+        }
     }
 
     public void StopCollecting()
     {
-        currentResource = null;
+        isCollecting = false;
+        currentCollecting = null;
     }
 }

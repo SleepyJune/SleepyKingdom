@@ -25,6 +25,8 @@ public class MapMobileUnit : MapUnit
     public bool rotateMovingUnit = false;
     public bool negativeRotation = true;
 
+    public bool isMoving = false;
+
     public virtual bool SetMovePosition(Vector3Int pos)
     {
         var tempPath = Pathfinder.GetShortestPath(this, position, pos, true);
@@ -96,9 +98,13 @@ public class MapMobileUnit : MapUnit
 
             }
 
-            OnPositionChanged(position, path[currentPosIndex]);
+            isMoving = true;
+
+            var oldPos = position;
 
             position = path[currentPosIndex];
+
+            OnPositionChanged(oldPos, position);
         }
         else
         {
@@ -114,6 +120,8 @@ public class MapMobileUnit : MapUnit
             OnPositionChanged(oldPos, position);
             
             path = null;
+
+            isMoving = false;
 
             OnDestinationReached();
         }
