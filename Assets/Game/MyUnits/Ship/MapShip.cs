@@ -12,7 +12,7 @@ public class MapShip : MapMobileUnit
 
     [NonSerialized]
     public Ship ship;
-        
+       
     protected override void Start()
     {
         ship = GameManager.instance.gameStateManager.gameState.myShip;
@@ -66,19 +66,23 @@ public class MapShip : MapMobileUnit
             {
                 Destroy(unitManager.actionBar.myDestinationFlag);
             }
+
+            unitManager.actionBar.OnShipDestinationReached();
         }
     }
 
     protected override void OnPositionChanged(Vector3Int oldPos, Vector3Int newPos)
     {
         ship.position = newPos;
+
+        unitManager.mapResourcesManager.OnShipMoved();
     }
 
     protected override void OnRotationChanged(Quaternion oldRot, Quaternion newRot)
     {
         ship.rotation = newRot;
     }
-
+    
     public override void OnClickEvent()
     {
         if (!unitManager.inputManager.isMultiTouch())

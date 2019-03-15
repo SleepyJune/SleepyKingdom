@@ -13,7 +13,7 @@ public class MapResourcePopup : Popup
     public Image fill;
 
     MapResource targetResource;
-
+    
     private void Update()
     {
         if(targetResource != null)

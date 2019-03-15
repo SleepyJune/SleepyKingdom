@@ -33,6 +33,9 @@ public class ActionBarController : Popup
 
     MapUnitManager unitManager;
 
+    [NonSerialized]
+    public MapUnit targetUnit;
+
     private UnitCommandType currentCommand = UnitCommandType.None;
 
     private void Start()
@@ -47,6 +50,45 @@ public class ActionBarController : Popup
         if(unitManager && unitManager.inputManager)
         {
             unitManager.inputManager.OnGameTileClickEvent -= OnGameTileClickedEvent;
+        }
+    }
+
+    void UseTarget()
+    {
+        if (targetUnit != null)
+        {
+            if (targetUnit.isCloseToShip())
+            {
+                if (targetUnit is MapResource)
+                {
+                    var resource = targetUnit as MapResource;
+                    unitManager.mapResourcesManager.StartCollecting(resource);
+                }
+            }
+        }
+    }
+
+    public void OnShipDestinationReached()
+    {
+        UseTarget();
+    }
+
+    public void SetTarget(MapUnit target)
+    {
+        if (target)
+        {
+            targetUnit = target;
+            if (targetUnit is MapResource)
+            {
+                if (targetUnit.isCloseToShip())
+                {
+                    UseTarget();
+                }
+                else
+                {
+                    unitManager.myShip.SetMovePosition(targetUnit.position);
+                }
+            }
         }
     }
 
