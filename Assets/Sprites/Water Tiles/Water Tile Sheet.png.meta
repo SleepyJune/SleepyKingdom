@@ -43,7 +43,7 @@ TextureImporter:
     21300076: Water Tile Sheet_38
     21300078: Water Tile Sheet_39
   externalObjects: {}
-  serializedVersion: 7
+  serializedVersion: 9
   mipmaps:
     mipMapMode: 0
     enableMipMap: 1
@@ -807,8 +807,8 @@ TextureImporter:
       name: pond 03
       rect:
         serializedVersion: 2
-        x: 509
-        y: 0
+        x: 511
+        y: 1
         width: 256
         height: 384
       alignment: 7
@@ -828,7 +828,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 768
-        y: 0
+        y: 1
         width: 256
         height: 384
       alignment: 7
