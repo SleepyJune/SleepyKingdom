@@ -70,6 +70,8 @@ public class MapSceneInputManager : MonoBehaviour
 
         ClickTile(clickEventData);
         ClickUnit(clickEventData);
+
+        cameraController.OnMouseDragEndEvent(input);
     }
 
     private void ClickUnit(GameClickEventData clickEventData)

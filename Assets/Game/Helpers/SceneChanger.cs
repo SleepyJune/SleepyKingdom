@@ -24,29 +24,14 @@ public class SceneChanger : MonoBehaviour
     public static SceneType currentScene;
 
     public Dictionary<string, SceneType> sceneNameDictionary = new Dictionary<string, SceneType>();
+    public Dictionary<SceneType, string> sceneTypeDictionary = new Dictionary<SceneType, string>();
 
     public void Start()
     {
         InitDictionary();
 
         var current = SceneManager.GetActiveScene();
-        ChangeCurrentScene(current.name);
-
-        SceneManager.activeSceneChanged += OnChangeActiveScene;        
-    }
-
-    private void OnChangeActiveScene(Scene current, Scene next)
-    {
-        ChangeCurrentScene(next.name);
-    }
-
-    void ChangeCurrentScene(string sceneName)
-    {
-        SceneType sceneType;
-        if (sceneNameDictionary.TryGetValue(sceneName, out sceneType))
-        {
-            currentScene = sceneType;
-        }
+        currentScene = SceneType.Map;
     }
 
     public void GoBack()
@@ -63,6 +48,11 @@ public class SceneChanger : MonoBehaviour
         sceneNameDictionary.Add("TempleScene", SceneType.Temple);
         sceneNameDictionary.Add("UpgradeScene", SceneType.Upgrade);
         sceneNameDictionary.Add("CreationScene", SceneType.NewGame);
+
+        foreach(var pair in sceneNameDictionary)
+        {
+            sceneTypeDictionary.Add(pair.Value, pair.Key);
+        }
     }
 
     public void ChangeScene(SceneType sceneType)
@@ -72,13 +62,16 @@ public class SceneChanger : MonoBehaviour
             return;
         }
 
-        foreach(var pair in sceneNameDictionary)
+        if(currentScene != SceneType.Map)
         {
-            if(pair.Value == sceneType)
-            {
-                SceneManager.LoadScene(pair.Key);
-                break;
-            }
+            SceneManager.UnloadSceneAsync(sceneTypeDictionary[currentScene]);
+        }
+
+        currentScene = sceneType;
+
+        if (sceneType != SceneType.Map)
+        {
+            SceneManager.LoadScene(sceneTypeDictionary[sceneType], LoadSceneMode.Additive);
         }
     }
 

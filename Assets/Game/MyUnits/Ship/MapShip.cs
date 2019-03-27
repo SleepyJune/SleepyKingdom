@@ -45,6 +45,8 @@ public class MapShip : MapMobileUnit
 
                 unitManager.actionBar.myDestinationFlag = Instantiate(unitManager.actionBar.flagPrefab, MapSceneManager.instance.overlayMap.transform);
                 unitManager.actionBar.myDestinationFlag.transform.position = worldPos;
+
+                unitManager.cameraController.setCenterOnShipWhenMoving = true;
             }
             else
             {

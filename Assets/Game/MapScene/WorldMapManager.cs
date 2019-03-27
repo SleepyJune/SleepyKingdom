@@ -31,13 +31,13 @@ public class WorldMapManager : MonoBehaviour
 
         currentMapName = unitManager.myShip.ship.mapName;
 
-        if (!ChangeMap(currentMapName)) //if changing map failed
+        if (!ChangeMap(currentMapName, unitManager.myShip.ship.position)) //if changing map failed
         {
-            ChangeMap(defaultMap);
+            ChangeMap(unitManager.myShip.ship.lastMapName, unitManager.myShip.ship.lastMapPosition);
         }
     }
 
-    public bool ChangeMap(string mapName)
+    public bool ChangeMap(string mapName, Vector3Int pos = new Vector3Int())
     {
         if (mapName == null || mapName == "")
         {
@@ -45,11 +45,15 @@ public class WorldMapManager : MonoBehaviour
         }
 
         Debug.Log("Changing map to " + mapName);
-
-        if( InitTilemap(mapName) &&
-            InitInteractables(mapName) &&
-            InitMapResources())
+                
+        if ( InitTilemap(mapName) &&
+            InitInteractables(mapName, pos) &&
+            InitMapResources() &&
+            CheckShipPosition())
         {
+            unitManager.myShip.ship.lastMapPosition = unitManager.myShip.ship.position;
+            unitManager.myShip.ship.lastMapName = unitManager.myShip.ship.mapName;
+
             unitManager.myShip.ship.mapName = mapName;
             unitManager.cameraController.CenterMyShip();
 
@@ -58,6 +62,19 @@ public class WorldMapManager : MonoBehaviour
         }
 
         return false;
+    }
+
+    bool CheckShipPosition()
+    {
+        if (unitManager.myShip.gameTile == null || unitManager.myShip.gameTile.isBlocked)
+        {
+            //something went wrong
+            //unitManager.worldMapManager.ChangeMap(unitManager.myShip.ship.lastMapName, unitManager.myShip.ship.lastMapPosition);
+
+            return false;
+        }
+
+        return true;
     }
 
     bool InitMapResources()
@@ -87,16 +104,23 @@ public class WorldMapManager : MonoBehaviour
         return false;
     }
 
-    bool InitInteractables(string mapName)
+    bool InitInteractables(string mapName, Vector3Int pos)
     {
         if (GameManager.instance.gamedatabaseManager.ChangeMap(mapName))
         {
             unitManager.interactableManager.Initialize();
 
-            var portal = unitManager.interactableManager.FindPortal(currentMapName);
-            if (portal)
+            if (pos != new Vector3Int())
             {
-                unitManager.myShip.SetPosition(portal.position);
+                unitManager.myShip.SetPosition(pos);
+            }
+            else
+            {
+                var portal = unitManager.interactableManager.FindPortal(currentMapName);
+                if (portal)
+                {
+                    unitManager.myShip.SetPosition(portal.position);
+                }
             }
 
             return true;
