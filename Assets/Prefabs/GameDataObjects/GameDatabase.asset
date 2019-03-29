@@ -13,6 +13,11 @@ MonoBehaviour:
   m_Name: GameDatabase
   m_EditorClassIdentifier: 
   allObjects:
+  - {fileID: 11400000, guid: 05cb93766157700419586ba24ce637b6, type: 2}
+  - {fileID: 11400000, guid: 38daeb04a78260e40a5113fba89bcd50, type: 2}
+  - {fileID: 11400000, guid: ff583ae0e92c72f41966b9dc0301dce5, type: 2}
+  - {fileID: 11400000, guid: 3c41452b1c2097649a6082e8a1cf2a51, type: 2}
+  - {fileID: 11400000, guid: 07569b08f0c84f44fb0973eac4d45ff7, type: 2}
   - {fileID: 11400000, guid: fea2f9d4ba4359e4b83c046673c248f6, type: 2}
   - {fileID: 11400000, guid: 06e9c1db716f1a84ab7875913b9e47bb, type: 2}
   - {fileID: 11400000, guid: 541b3eba956f6004091fb419e3acd753, type: 2}

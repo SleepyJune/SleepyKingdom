@@ -42,4 +42,9 @@ public class NavigationButtonController : MonoBehaviour
     {
         sceneChanger.ChangeScene(SceneType.Upgrade);
     }
+
+    public void OnTowerSceneButtonPress()
+    {
+        sceneChanger.ChangeScene(SceneType.Tower);
+    }
 }

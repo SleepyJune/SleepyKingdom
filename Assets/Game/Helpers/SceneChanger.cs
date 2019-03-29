@@ -13,6 +13,7 @@ public enum SceneType
     CashShop,
     Temple,
     Upgrade,
+    Tower,
     NewGame,
 }
 
@@ -47,6 +48,7 @@ public class SceneChanger : MonoBehaviour
         sceneNameDictionary.Add("CashShopScene", SceneType.CashShop);
         sceneNameDictionary.Add("TempleScene", SceneType.Temple);
         sceneNameDictionary.Add("UpgradeScene", SceneType.Upgrade);
+        sceneNameDictionary.Add("TowerScene", SceneType.Tower);
         sceneNameDictionary.Add("CreationScene", SceneType.NewGame);
 
         foreach(var pair in sceneNameDictionary)
