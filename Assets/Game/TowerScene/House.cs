@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class House
 {
-    HouseObject houseObject;
+    public HouseObject houseObject;
 
 
 }

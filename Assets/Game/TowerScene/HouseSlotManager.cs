@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class HouseSlotManager : MonoBehaviour
 {
-    List<HouseSlot> cageSlots = new List<HouseSlot>();
+    List<HouseSlot> houseSlots = new List<HouseSlot>();
 
     private void Start()
     {
@@ -15,6 +15,6 @@ public class HouseSlotManager : MonoBehaviour
 
     public void AddCageSlot(HouseSlot slot)
     {
-        cageSlots.Add(slot);
+        houseSlots.Add(slot);
     }
 }

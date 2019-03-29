@@ -11,10 +11,15 @@ public class HousePopupManager : MonoBehaviour
 
     public HouseItem houseItemPrefab;
 
-    public HouseSlot currentSelectedCageSlot;
+    [NonSerialized]
+    public HouseSlot currentSelectedSlot;
+
+    public GameObject closeButton;
 
     private void Start()
     {
+        Transform lastItem = null;
+
         foreach(var item in GameManager.instance.gamedatabaseManager.spriteObjects.Values)
         {
             if(item is HouseObject)
@@ -23,13 +28,20 @@ public class HousePopupManager : MonoBehaviour
 
                 var newHouse = Instantiate(houseItemPrefab, houseItemParent);
                 newHouse.SetItem(houseObject, this);
+
+                lastItem = newHouse.transform;
             }
+        }
+
+        if(lastItem != null)
+        {
+            closeButton.transform.SetSiblingIndex(lastItem.GetSiblingIndex() + 1);
         }
     }
 
     public void SetItem(HouseSlot cage)
     {
-        currentSelectedCageSlot = cage;
+        currentSelectedSlot = cage;
         housePopup.Show();
     }
 
@@ -37,9 +49,9 @@ public class HousePopupManager : MonoBehaviour
     {
         housePopup.Hide();
 
-        if (currentSelectedCageSlot)
+        if (currentSelectedSlot)
         {
-            currentSelectedCageSlot.SetHouseObject(houseObject);
+            currentSelectedSlot.SetHouseObject(houseObject);
         }
     }
 }

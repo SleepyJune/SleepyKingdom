@@ -12,6 +12,8 @@ public class TowerManager : MonoBehaviour
     [NonSerialized]
     public HousePopupManager housePopupManager;
 
+    public HouseInspectPopup houseInspectPopup;
+
     public static TowerManager instance = null;
 
     void Awake()

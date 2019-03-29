@@ -9,30 +9,42 @@ public class HouseSlot : MonoBehaviour
 {
     public Image houseIcon;
 
-    HouseObject houseObject;
-
+    House house;
+    
     HouseSlotManager cageManager;
     HousePopupManager housePopupManager;
+    HouseInspectPopup houseInspectPopup;
 
     private void Start()
     {
         cageManager = TowerManager.instance.houseSlotManager;
         housePopupManager = TowerManager.instance.housePopupManager;
 
+        houseInspectPopup = TowerManager.instance.houseInspectPopup;
+
         cageManager.AddCageSlot(this);
     }
 
-    public void SetHouseObject(HouseObject house)
+    public void SetHouseObject(HouseObject houseObject)
     {
-        houseObject = house;
-        houseIcon.sprite = houseObject.image;
+        if(house == null)
+        {
+            house = new House();
+        }
+
+        house.houseObject = houseObject;
+        houseIcon.sprite = house.houseObject.image;
     }
 
     public void OnButtonPress()
     {
-        if (houseObject == null)
+        if (house == null)
         {
             housePopupManager.SetItem(this);
+        }
+        else
+        {
+            houseInspectPopup.SetHouse(house);
         }
     }
 }
