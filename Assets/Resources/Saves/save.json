@@ -19,69 +19,73 @@
             "y": 0.0,
             "z": -0.2897844612598419,
             "w": 0.9570919275283814
-        }
+        },
+        "water": 0,
+        "wheat": 0,
+        "stone": 0,
+        "wood": 0
     },
     "currentMapName": "",
     "mapResources": [
         {
             "position": {
-                "x": -2,
-                "y": -18,
+                "x": -9,
+                "y": -20,
                 "z": 0
             },
-            "amount": 4240,
-            "maxCapacity": 4240,
+            "amount": 1287,
+            "maxCapacity": 1287,
             "resourceID": 21
         },
         {
             "position": {
-                "x": -2,
-                "y": -18,
+                "x": -9,
+                "y": -20,
                 "z": 0
             },
-            "amount": 4240,
-            "maxCapacity": 4240,
+            "amount": 1287,
+            "maxCapacity": 1287,
             "resourceID": 21
         },
         {
             "position": {
-                "x": -11,
-                "y": -19,
-                "z": 0
-            },
-            "amount": 3741,
-            "maxCapacity": 3741,
-            "resourceID": 21
-        },
-        {
-            "position": {
-                "x": -11,
-                "y": -19,
-                "z": 0
-            },
-            "amount": 3741,
-            "maxCapacity": 3741,
-            "resourceID": 21
-        },
-        {
-            "position": {
-                "x": -5,
+                "x": 3,
                 "y": -12,
                 "z": 0
             },
-            "amount": 3350,
-            "maxCapacity": 3350,
+            "amount": 3461,
+            "maxCapacity": 3461,
             "resourceID": 21
         },
         {
             "position": {
-                "x": -5,
+                "x": 3,
                 "y": -12,
                 "z": 0
             },
-            "amount": 3350,
-            "maxCapacity": 3350,
+            "amount": 3461,
+            "maxCapacity": 3461,
             "resourceID": 21
+        },
+        {
+            "position": {
+                "x": 8,
+                "y": -21,
+                "z": 0
+            },
+            "amount": 2782,
+            "maxCapacity": 2782,
+            "resourceID": 20
+        },
+        {
+            "position": {
+                "x": 8,
+                "y": -21,
+                "z": 0
+            },
+            "amount": 2782,
+            "maxCapacity": 2782,
+            "resourceID": 20
         }
     ],
     "countryCounter": 1
