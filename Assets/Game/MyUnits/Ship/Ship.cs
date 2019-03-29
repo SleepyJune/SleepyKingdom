@@ -9,6 +9,9 @@ public class Ship
 {
     public string mapName;
 
+    public string lastMapName = "PEI";
+    public Vector3Int lastMapPosition = new Vector3Int(0,0,0);
+
     public Vector3Int position;
     public Quaternion rotation;
 

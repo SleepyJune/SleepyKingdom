@@ -114,7 +114,10 @@ public class MapResourceManager : MonoBehaviour
     {
         foreach (var resource in resources)
         {
-            Destroy(resource.gameObject);
+            if(resource && resource.gameObject)
+            {
+                Destroy(resource.gameObject);
+            }
         }
 
         resources = new List<MapResource>();

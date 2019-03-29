@@ -8,17 +8,23 @@
         "gems": 0
     },
     "myShip": {
-        "mapName": "Newfoundland",
+        "mapName": "PEI",
+        "lastMapName": "PEI",
+        "lastMapPosition": {
+            "x": 0,
+            "y": -1,
+            "z": 0
+        },
         "position": {
-            "x": 8,
-            "y": -23,
+            "x": 0,
+            "y": -1,
             "z": 0
         },
         "rotation": {
             "x": 0.0,
             "y": 0.0,
-            "z": -0.2897844612598419,
-            "w": 0.9570919275283814
+            "z": 0.9570921063423157,
+            "w": 0.28978392481803896
         },
         "water": 0,
         "wheat": 0,
@@ -29,62 +35,62 @@
     "mapResources": [
         {
             "position": {
-                "x": -9,
-                "y": -20,
+                "x": 25,
+                "y": -1,
                 "z": 0
             },
-            "amount": 1287,
-            "maxCapacity": 1287,
-            "resourceID": 21
-        },
-        {
-            "position": {
-                "x": -9,
-                "y": -20,
-                "z": 0
-            },
-            "amount": 1287,
-            "maxCapacity": 1287,
-            "resourceID": 21
-        },
-        {
-            "position": {
-                "x": 3,
-                "y": -12,
-                "z": 0
-            },
-            "amount": 3461,
-            "maxCapacity": 3461,
-            "resourceID": 21
-        },
-        {
-            "position": {
-                "x": 3,
-                "y": -12,
-                "z": 0
-            },
-            "amount": 3461,
-            "maxCapacity": 3461,
-            "resourceID": 21
-        },
-        {
-            "position": {
-                "x": 8,
-                "y": -21,
-                "z": 0
-            },
-            "amount": 2782,
-            "maxCapacity": 2782,
+            "amount": 1497,
+            "maxCapacity": 1497,
             "resourceID": 20
         },
         {
             "position": {
-                "x": 8,
-                "y": -21,
+                "x": 25,
+                "y": -1,
                 "z": 0
             },
-            "amount": 2782,
-            "maxCapacity": 2782,
+            "amount": 1497,
+            "maxCapacity": 1497,
+            "resourceID": 20
+        },
+        {
+            "position": {
+                "x": -10,
+                "y": 1,
+                "z": 0
+            },
+            "amount": 2212,
+            "maxCapacity": 2212,
+            "resourceID": 20
+        },
+        {
+            "position": {
+                "x": -10,
+                "y": 1,
+                "z": 0
+            },
+            "amount": 2212,
+            "maxCapacity": 2212,
+            "resourceID": 20
+        },
+        {
+            "position": {
+                "x": -17,
+                "y": 10,
+                "z": 0
+            },
+            "amount": 3514,
+            "maxCapacity": 3514,
+            "resourceID": 20
+        },
+        {
+            "position": {
+                "x": -17,
+                "y": 10,
+                "z": 0
+            },
+            "amount": 3514,
+            "maxCapacity": 3514,
             "resourceID": 20
         }
     ],
