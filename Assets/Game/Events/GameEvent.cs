@@ -10,8 +10,6 @@ public class GameEvent
 
     public Sprite image;
 
-    public SpriteObjectType eventType;
-
     public string shortDescription;
 
     public GameEvent(SpriteObject eventObject)
@@ -23,7 +21,5 @@ public class GameEvent
     {
         this.eventName = spriteObject.name;
         this.image = spriteObject.image;
-        this.eventType = spriteObject.spriteType;
-        this.shortDescription = spriteObject.shortDescription;
     }
 }

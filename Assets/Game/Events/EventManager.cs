@@ -9,28 +9,19 @@ public class EventManager : MonoBehaviour
     public Dictionary<string, SpriteObject> eventObjects = new Dictionary<string, SpriteObject>();
 
     [NonSerialized]
-    public List<SpriteObject> weatherSpriteObjects = new List<SpriteObject>();
-
-    [NonSerialized]
-    public List<SpriteObject> defaultResourceObjects = new List<SpriteObject>();
+    public List<WeatherObject> weatherSpriteObjects = new List<WeatherObject>();
 
     public delegate void ProcessGameEvent(GameEvent gameEvent);
     public event ProcessGameEvent OnNewWeatherEvent;
 
     private void Start()
     {
-        foreach(var gameEvent in GameManager.instance.gamedatabaseManager.spriteObjects.Values)
-        {
-            eventObjects.Add(gameEvent.name, gameEvent);
-
-            if(gameEvent.spriteType == SpriteObjectType.Weather)
+        foreach(var item in GameManager.instance.gamedatabaseManager.spriteObjects.Values)
+        {            
+            if(item is WeatherObject)
             {
-                weatherSpriteObjects.Add(gameEvent);
-            }
-
-            if(gameEvent.spriteType == SpriteObjectType.Resource)
-            {
-                defaultResourceObjects.Add(gameEvent);
+                var weatherObject = item as WeatherObject;
+                weatherSpriteObjects.Add(weatherObject);
             }
         }
     }

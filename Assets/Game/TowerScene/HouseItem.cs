@@ -29,7 +29,6 @@ public class HouseItem : MonoBehaviour
     {
         itemIcon.sprite = houseObject.image;
         itemName.text = houseObject.name;
-        itemDescription.text = houseObject.shortDescription;
     }
 
     public void OnButtonPressed()
