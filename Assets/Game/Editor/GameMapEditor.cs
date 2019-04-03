@@ -215,17 +215,17 @@ public class GameMapEditor : EditorWindow
     {
         if (spawnMap != null)
         {
-            spawnMap.ClearAllTiles();
+            spawnMap.ClearAllTiles();            
 
             if (currentMap != null)
             {
                 ChangeTilemap();
 
-                List<Vector3Int> tilesToDelete = new List<Vector3Int>();
+                HashSet<int> allTiles = new HashSet<int>();
 
                 foreach (var spawnTile in currentMap.castleSpawnTiles)
                 {
-                    spawnMap.SetTile(spawnTile.position, spawnTile);
+                    spawnMap.SetTile(spawnTile.position, spawnTile);                    
                 }
 
                 foreach (var spawnTile in currentMap.interactableSpawnTiles)
@@ -262,8 +262,48 @@ public class GameMapEditor : EditorWindow
 
     private void RefreshDatabase()
     {
+        PruneDatabase();
         mapDatabase.InitDictionary();
         InitTextures();
+    }
+
+    private void PruneDatabase()
+    {
+        HashSet<int> allTiles = new HashSet<int>();
+
+        foreach (var map in mapDatabase.mapDatabaseObjects)
+        {
+            foreach (var spawnTile in map.castleSpawnTiles)
+            {
+                allTiles.Add(spawnTile.GetInstanceID());
+            }
+
+            foreach (var spawnTile in map.interactableSpawnTiles)
+            {
+                allTiles.Add(spawnTile.GetInstanceID());
+            }
+
+            foreach (var spawnTile in map.animalSpawnTiles)
+            {
+                allTiles.Add(spawnTile.GetInstanceID());
+            }
+        }
+
+        UnityEngine.Object[] assets = AssetDatabase.LoadAllAssetsAtPath(AssetDatabase.GetAssetPath(mapDatabase));
+
+        foreach (var asset in assets)
+        {
+            if (!allTiles.Contains(asset.GetInstanceID()))
+            {
+                if(asset is SpawnTile)
+                {
+                    Debug.Log("Deleted from database:" + asset.name);
+                    DestroyImmediate(asset, true);
+                }
+            }
+        }
+
+        EditorUtility.SetDirty(mapDatabase);
     }
 
     string newMapName = "";

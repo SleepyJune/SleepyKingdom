@@ -35,62 +35,62 @@
     "mapResources": [
         {
             "position": {
-                "x": 25,
-                "y": -1,
+                "x": -20,
+                "y": 22,
                 "z": 0
             },
-            "amount": 1497,
-            "maxCapacity": 1497,
+            "amount": 1544,
+            "maxCapacity": 1544,
             "resourceID": 20
         },
         {
             "position": {
-                "x": 25,
-                "y": -1,
+                "x": -20,
+                "y": 22,
                 "z": 0
             },
-            "amount": 1497,
-            "maxCapacity": 1497,
+            "amount": 1544,
+            "maxCapacity": 1544,
+            "resourceID": 20
+        },
+        {
+            "position": {
+                "x": 4,
+                "y": -3,
+                "z": 0
+            },
+            "amount": 1068,
+            "maxCapacity": 1068,
+            "resourceID": 20
+        },
+        {
+            "position": {
+                "x": 4,
+                "y": -3,
+                "z": 0
+            },
+            "amount": 1068,
+            "maxCapacity": 1068,
             "resourceID": 20
         },
         {
             "position": {
                 "x": -10,
-                "y": 1,
+                "y": 0,
                 "z": 0
             },
-            "amount": 2212,
-            "maxCapacity": 2212,
+            "amount": 1082,
+            "maxCapacity": 1082,
             "resourceID": 20
         },
         {
             "position": {
                 "x": -10,
-                "y": 1,
+                "y": 0,
                 "z": 0
             },
-            "amount": 2212,
-            "maxCapacity": 2212,
-            "resourceID": 20
-        },
-        {
-            "position": {
-                "x": -17,
-                "y": 10,
-                "z": 0
-            },
-            "amount": 3514,
-            "maxCapacity": 3514,
-            "resourceID": 20
-        },
-        {
-            "position": {
-                "x": -17,
-                "y": 10,
-                "z": 0
-            },
-            "amount": 3514,
-            "maxCapacity": 3514,
+            "amount": 1082,
+            "maxCapacity": 1082,
             "resourceID": 20
         }
     ],
