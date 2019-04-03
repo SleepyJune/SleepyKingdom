@@ -90,7 +90,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1549847044852996}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 205fa25b64f720148b41e5b00b719558, type: 3}
+  m_Script: {fileID: 11500000, guid: 1d21b59d456ea984199a57c239774361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   name: DefaultCat

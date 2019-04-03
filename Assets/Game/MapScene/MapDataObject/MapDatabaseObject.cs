@@ -10,10 +10,12 @@ public class MapDatabaseObject : ScriptableObject
     public CountryDataObject[] countryDataObjects = new CountryDataObject[0];
     public CastleSpawnTile[] castleSpawnTiles = new CastleSpawnTile[0];
     public InteractableSpawnTile[] interactableSpawnTiles = new InteractableSpawnTile[0];
+    public AnimalSpawnTile[] animalSpawnTiles = new AnimalSpawnTile[0];
 
     public Dictionary<int, CountryDataObject> countryDataObjectDictionary = new Dictionary<int, CountryDataObject>();
     public Dictionary<Vector3Int, CastleSpawnTile> castleSpawnTileDictionary = new Dictionary<Vector3Int, CastleSpawnTile>();
     public Dictionary<Vector3Int, InteractableSpawnTile> interactableSpawnTileDictionary = new Dictionary<Vector3Int, InteractableSpawnTile>();
+    public Dictionary<Vector3Int, AnimalSpawnTile> animalSpawnTileDictionary = new Dictionary<Vector3Int, AnimalSpawnTile>();
 
     public int countryCounter = 0;
 
@@ -22,6 +24,7 @@ public class MapDatabaseObject : ScriptableObject
         MakeCountryDictionary();
         MakeCastleDictionary();
         MakeInteractableDictionary();
+        MakeAnimalDictionary();
     }
 
     public void Save()
@@ -29,6 +32,18 @@ public class MapDatabaseObject : ScriptableObject
         countryDataObjects = countryDataObjectDictionary.Values.ToArray();
         castleSpawnTiles = castleSpawnTileDictionary.Values.ToArray();
         interactableSpawnTiles = interactableSpawnTileDictionary.Values.ToArray();
+        animalSpawnTiles = animalSpawnTileDictionary.Values.ToArray();
+    }
+
+    void MakeAnimalDictionary()
+    {
+        Dictionary<Vector3Int, AnimalSpawnTile> ret = new Dictionary<Vector3Int, AnimalSpawnTile>();
+        foreach (var data in animalSpawnTiles)
+        {
+            ret.Add(data.position, data);
+        }
+
+        animalSpawnTileDictionary = ret;
     }
 
     void MakeInteractableDictionary()

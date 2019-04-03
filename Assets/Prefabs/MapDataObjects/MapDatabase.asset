@@ -44,7 +44,8 @@ MonoBehaviour:
   interactableSpawnTiles:
   - {fileID: 114940761825027342}
   - {fileID: 114430655050095634}
-  countryCounter: 4
+  animalSpawnTiles: []
+  countryCounter: 5
 --- !u!114 &114026361250619400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,7 +172,8 @@ MonoBehaviour:
   - {fileID: 114633101537665258}
   - {fileID: 114026361250619400}
   - {fileID: 114207194765848640}
-  countryCounter: 5
+  animalSpawnTiles: []
+  countryCounter: 6
 --- !u!114 &114070454339658154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,6 +228,7 @@ MonoBehaviour:
   - {fileID: 114307494259498610}
   - {fileID: 114161317939258222}
   - {fileID: 114457554561214928}
+  animalSpawnTiles: []
   countryCounter: 9
 --- !u!114 &114094940630917656
 MonoBehaviour:
@@ -316,6 +319,7 @@ MonoBehaviour:
   interactableSpawnTiles:
   - {fileID: 114547641781693264}
   - {fileID: 114473026662721798}
+  animalSpawnTiles: []
   countryCounter: 18
 --- !u!114 &114153046043170964
 MonoBehaviour:
@@ -367,10 +371,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   countryDataObjects: []
   castleSpawnTiles: []
-  interactableSpawnTiles:
-  - {fileID: 114919460900406168}
-  - {fileID: 114619439124325032}
-  countryCounter: 99
+  interactableSpawnTiles: []
+  animalSpawnTiles:
+  - {fileID: 114584314841414972}
+  - {fileID: 114947954428387452}
+  countryCounter: 134
 --- !u!114 &114161317939258222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -424,6 +429,7 @@ MonoBehaviour:
   interactableSpawnTiles:
   - {fileID: 114983647574709254}
   - {fileID: 114354320441634828}
+  animalSpawnTiles: []
   countryCounter: 4
 --- !u!114 &114193369082529682
 MonoBehaviour:
@@ -622,7 +628,8 @@ MonoBehaviour:
   interactableSpawnTiles:
   - {fileID: 114203407823772772}
   - {fileID: 114317328642519704}
-  countryCounter: 6
+  animalSpawnTiles: []
+  countryCounter: 7
 --- !u!114 &114307494259498610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1144,7 +1151,8 @@ MonoBehaviour:
   interactableSpawnTiles:
   - {fileID: 114514518883745950}
   - {fileID: 114035905172298006}
-  countryCounter: 5
+  animalSpawnTiles: []
+  countryCounter: 6
 --- !u!114 &114547641781693264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1181,6 +1189,78 @@ MonoBehaviour:
   m_ColliderType: 1
   position: {x: -10, y: -20, z: 0}
   prefab: {fileID: 6268581729690006768, guid: bdaa58fa60d4c1f4d9dadb7220dbee6c, type: 3}
+--- !u!114 &114563120428845976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 838dc2d153a12414ebe379e8334e3b4d, type: 3}
+  m_Name: Animal SpawnTile
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 21300018, guid: 42ce449417039b74691af905198fd738, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 0.5
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 0.5
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 0
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 2
+  m_ColliderType: 1
+  position: {x: -5, y: -10, z: 0}
+  prefab: {fileID: 8436851236172082915, guid: 409cf4a6c3f8a4f4ea71ecf594fe459c, type: 3}
+--- !u!114 &114584314841414972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 838dc2d153a12414ebe379e8334e3b4d, type: 3}
+  m_Name: Animal SpawnTile
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 21300004, guid: 42ce449417039b74691af905198fd738, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 0.5
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 0.5
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 0
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 2
+  m_ColliderType: 1
+  position: {x: -3, y: -9, z: 0}
+  prefab: {fileID: 8436851236172082915, guid: ab4087371af8f7244bd5f19fde22f559, type: 3}
 --- !u!114 &114589692159074040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1217,6 +1297,42 @@ MonoBehaviour:
   m_ColliderType: 1
   position: {x: -10, y: -20, z: 0}
   prefab: {fileID: 114505358365408646, guid: e5f66eaa4ff0b3a44a3f57a2b196e2e0, type: 3}
+--- !u!114 &114614048004960150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 838dc2d153a12414ebe379e8334e3b4d, type: 3}
+  m_Name: Animal SpawnTile
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 21300004, guid: 42ce449417039b74691af905198fd738, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 0.5
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 0.5
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 0
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 2
+  m_ColliderType: 1
+  position: {x: -2, y: -8, z: 0}
+  prefab: {fileID: 8436851236172082915, guid: ab4087371af8f7244bd5f19fde22f559, type: 3}
 --- !u!114 &114619439124325032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1307,7 +1423,44 @@ MonoBehaviour:
   - {fileID: 114836861645387062}
   - {fileID: 114953079698623748}
   - {fileID: 114958720645348432}
-  countryCounter: 2
+  animalSpawnTiles: []
+  countryCounter: 12
+--- !u!114 &114682521424437936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 838dc2d153a12414ebe379e8334e3b4d, type: 3}
+  m_Name: Animal SpawnTile
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 21300004, guid: 42ce449417039b74691af905198fd738, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 0.5
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 0.5
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 0
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 2
+  m_ColliderType: 1
+  position: {x: -4, y: -9, z: 0}
+  prefab: {fileID: 8436851236172082915, guid: ab4087371af8f7244bd5f19fde22f559, type: 3}
 --- !u!114 &114761945266649210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1397,6 +1550,7 @@ MonoBehaviour:
   interactableSpawnTiles:
   - {fileID: 114412664421968066}
   - {fileID: 114094940630917656}
+  animalSpawnTiles: []
   countryCounter: 5
 --- !u!114 &114823185397684480
 MonoBehaviour:
@@ -1415,7 +1569,8 @@ MonoBehaviour:
   interactableSpawnTiles:
   - {fileID: 114828782720144134}
   - {fileID: 114193369082529682}
-  countryCounter: 18
+  animalSpawnTiles: []
+  countryCounter: 19
 --- !u!114 &114826903575510026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1541,6 +1696,7 @@ MonoBehaviour:
   interactableSpawnTiles:
   - {fileID: 114323029071946106}
   - {fileID: 114916362453207014}
+  animalSpawnTiles: []
   countryCounter: 3
 --- !u!114 &114889017057998244
 MonoBehaviour:
@@ -1559,6 +1715,7 @@ MonoBehaviour:
   interactableSpawnTiles:
   - {fileID: 114943940153772128}
   - {fileID: 114026827721009782}
+  animalSpawnTiles: []
   countryCounter: 2
 --- !u!114 &114916362453207014
 MonoBehaviour:
@@ -1740,6 +1897,42 @@ MonoBehaviour:
   m_ColliderType: 1
   position: {x: -12, y: -25, z: 0}
   prefab: {fileID: 6268581729690006768, guid: f9a1063e517bf85499798f22a616627f, type: 3}
+--- !u!114 &114947954428387452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 838dc2d153a12414ebe379e8334e3b4d, type: 3}
+  m_Name: Animal SpawnTile
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 21300004, guid: 42ce449417039b74691af905198fd738, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 0.5
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 0.5
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 0
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 2
+  m_ColliderType: 1
+  position: {x: -5, y: -10, z: 0}
+  prefab: {fileID: 8436851236172082915, guid: ab4087371af8f7244bd5f19fde22f559, type: 3}
 --- !u!114 &114953079698623748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1830,6 +2023,7 @@ MonoBehaviour:
   - {fileID: 114128087861362164}
   - {fileID: 114782108759398642}
   - {fileID: 114917857983421640}
+  animalSpawnTiles: []
   countryCounter: 5
 --- !u!114 &114983647574709254
 MonoBehaviour:

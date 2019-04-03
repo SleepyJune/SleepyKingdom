@@ -50,6 +50,9 @@ public class GameMapEditor : EditorWindow
     MapInteractableUnit[] interactables = new MapInteractableUnit[0];
     GUIContent[] interactableContents = new GUIContent[0];
 
+    AnimalUnit[] animals = new AnimalUnit[0];
+    GUIContent[] animalContents = new GUIContent[0];
+
     int selectionGridIndex = 0;
 
     bool initSuccessful = false;
@@ -156,6 +159,9 @@ public class GameMapEditor : EditorWindow
         List<GUIContent> castleContentsList = new List<GUIContent>();
         List<MapCastleUnit> castleObjectsList = new List<MapCastleUnit>();
 
+        List<GUIContent> animalContentsList = new List<GUIContent>();
+        List<AnimalUnit> animalList = new List<AnimalUnit>();
+
         foreach (var obj in database.allPrefabs)
         {
             var interactable = obj as MapInteractableUnit;
@@ -167,6 +173,7 @@ public class GameMapEditor : EditorWindow
 
                 interactableContentsList.Add(content);
                 interactableList.Add(interactable);
+                continue;
             }            
 
             var castleObject = obj as MapCastleUnit;
@@ -178,8 +185,24 @@ public class GameMapEditor : EditorWindow
 
                 castleContentsList.Add(content);
                 castleObjectsList.Add(castleObject);
+                continue;
+            }
+
+            var animal = obj as AnimalUnit;
+            if (animal != null)
+            {
+                var texture = AssetPreview.GetAssetPreview(animal.faceImage);
+
+                GUIContent content = new GUIContent(texture, animal.name);
+
+                animalContentsList.Add(content);
+                animalList.Add(animal);
+                continue;
             }
         }
+
+        animalContents = animalContentsList.ToArray();
+        animals = animalList.ToArray();
 
         interactableContents = interactableContentsList.ToArray();
         interactables = interactableList.ToArray();
@@ -198,12 +221,19 @@ public class GameMapEditor : EditorWindow
             {
                 ChangeTilemap();
 
+                List<Vector3Int> tilesToDelete = new List<Vector3Int>();
+
                 foreach (var spawnTile in currentMap.castleSpawnTiles)
                 {
                     spawnMap.SetTile(spawnTile.position, spawnTile);
                 }
 
                 foreach (var spawnTile in currentMap.interactableSpawnTiles)
+                {
+                    spawnMap.SetTile(spawnTile.position, spawnTile);
+                }
+
+                foreach (var spawnTile in currentMap.animalSpawnTiles)
                 {
                     spawnMap.SetTile(spawnTile.position, spawnTile);
                 }
@@ -232,6 +262,7 @@ public class GameMapEditor : EditorWindow
 
     private void RefreshDatabase()
     {
+        mapDatabase.InitDictionary();
         InitTextures();
     }
 
@@ -350,6 +381,10 @@ public class GameMapEditor : EditorWindow
             {
                 ShowInteractable();
             }
+            else if(selectedTile is AnimalSpawnTile)
+            {
+                ShowAnimal();
+            }
 
             return;
         }
@@ -368,6 +403,10 @@ public class GameMapEditor : EditorWindow
             else if (selectedCreateType == MapDataType.Interactable)
             {
                 ShowCreateInteractableMenu();
+            }
+            else if(selectedCreateType == MapDataType.Animal)
+            {
+                ShowCreateAnimalMenu();
             }
 
             return;
@@ -458,7 +497,7 @@ public class GameMapEditor : EditorWindow
                     }
                     else if (tile is InteractableSpawnTile)
                     {
-                        SetNewInteractable(tile as InteractableSpawnTile);
+                        SetSelectedTile(tile as InteractableSpawnTile);
                     }
                 }
 
@@ -523,7 +562,7 @@ public class GameMapEditor : EditorWindow
         }
     }
 
-    void SetNewInteractable(InteractableSpawnTile newTile)
+    void SetSelectedTile(SpawnTile newTile)
     {
         selectedTile = newTile;
     }
@@ -567,7 +606,7 @@ public class GameMapEditor : EditorWindow
 
             currentMap.Save();
 
-            SetNewInteractable(newTile);
+            SetSelectedTile(newTile);
 
             EditorUtility.SetDirty(currentMap);
         }
@@ -597,6 +636,74 @@ public class GameMapEditor : EditorWindow
                 currentMap.Save();
 
                 DestroyImmediate(selectedInteractable, true);
+            }
+        }
+    }
+
+    void ShowCreateAnimalMenu()
+    {
+        if (currentMap.animalSpawnTileDictionary.ContainsKey(lastClickedTilePosition))
+        {
+            EditorGUILayout.LabelField("Tile already contains an animal.", EditorStyles.boldLabel);
+            return;
+        }
+
+        scrollPos = GUILayout.BeginScrollView(scrollPos, false, true);
+
+        int columns = (int)Math.Floor(Screen.width / 256.0f);
+
+        selectionGridIndex = GUILayout.SelectionGrid(selectionGridIndex, animalContents, columns, GUI.skin.button);
+
+        EditorGUILayout.Space();
+
+        if (GUILayout.Button("Add"))
+        {
+            var animal = animals[selectionGridIndex];
+
+            var newTile = CreateInstance(typeof(AnimalSpawnTile)) as AnimalSpawnTile;
+            newTile.name = "Animal SpawnTile";
+            newTile.prefab = animal;
+            newTile.position = lastClickedTilePosition;
+            newTile.sprite = animal.faceImage;
+            newTile.flags = TileFlags.LockTransform;
+
+            var matrix = Matrix4x4.Scale(new Vector3(.5f, .5f, 1f));
+            matrix.m33 = 0;
+            newTile.transform = matrix;
+
+            currentMap.animalSpawnTileDictionary.Add(newTile.position, newTile);
+
+            AssetDatabase.AddObjectToAsset(newTile, currentMap);
+
+            spawnMap.SetTile(lastClickedTilePosition, newTile);
+
+            currentMap.Save();
+
+            SetSelectedTile(newTile);
+
+            EditorUtility.SetDirty(currentMap);
+        }
+        GUILayout.EndScrollView();
+    }
+
+    void ShowAnimal()
+    {
+        var selectedAnimal = selectedTile as AnimalSpawnTile;
+
+        if (selectedAnimal != null)
+        {
+            EditorGUILayout.LabelField("Animal", EditorStyles.boldLabel);
+            EditorGUILayout.Separator();
+
+            if (GUILayout.Button("Remove"))
+            {
+                spawnMap.SetTile(selectedAnimal.position, null);
+
+                currentMap.animalSpawnTileDictionary.Remove(selectedAnimal.position);
+
+                currentMap.Save();
+
+                DestroyImmediate(selectedAnimal, true);
             }
         }
     }
