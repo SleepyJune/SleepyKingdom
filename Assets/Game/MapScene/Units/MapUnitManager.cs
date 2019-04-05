@@ -19,6 +19,9 @@ public class MapUnitManager : MonoBehaviour
     public MapResourceManager mapResourcesManager;
 
     [NonSerialized]
+    public MapAnimalManager animalManager;
+
+    [NonSerialized]
     public Dictionary<int, MapUnit> allUnits = new Dictionary<int, MapUnit>();
 
     public Transform popupParent;
@@ -47,6 +50,8 @@ public class MapUnitManager : MonoBehaviour
         cameraController = GetComponent<MapSceneCameraController>();
 
         mapResourcesManager = GetComponent<MapResourceManager>();
+
+        animalManager = GetComponent<MapAnimalManager>();
     }
 
     private void OnDestroy()

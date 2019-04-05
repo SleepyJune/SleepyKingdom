@@ -8,6 +8,8 @@ public class AnimalUnit : MapMobileUnit
 {
     public Sprite faceImage;
 
+    public SpriteRenderer faceRender;
+
     public int randomWalkRadius = 5;
     public float randomWalkFrequency = 1f;
     float lastRandomWalkTime;
@@ -17,12 +19,13 @@ public class AnimalUnit : MapMobileUnit
 
     Vector3Int spawnPosition;
 
-
     private new void Start()
     {
         base.Start();
 
         spawnPosition = position;
+
+        faceRender.sprite = faceImage;
     }
 
     private new void Update()
@@ -59,6 +62,18 @@ public class AnimalUnit : MapMobileUnit
                     SetMovePosition(newPos);
                 }
             }
+        }
+    }
+
+    public override void OnClickEvent()
+    {
+        var popup = unitManager.animalManager.capturePopupPrefab;
+
+        if (popup != null)
+        {
+            var newPopup = Instantiate(popup, unitManager.popupParent);
+
+            newPopup.SetAnimal(this);
         }
     }
 }

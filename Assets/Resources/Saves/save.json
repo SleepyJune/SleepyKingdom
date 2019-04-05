@@ -35,62 +35,62 @@
     "mapResources": [
         {
             "position": {
-                "x": -21,
-                "y": 4,
+                "x": 11,
+                "y": -14,
                 "z": 0
             },
-            "amount": 122,
-            "maxCapacity": 122,
+            "amount": 1855,
+            "maxCapacity": 1855,
             "resourceID": 20
         },
         {
             "position": {
-                "x": -21,
-                "y": 4,
+                "x": 11,
+                "y": -14,
                 "z": 0
             },
-            "amount": 122,
-            "maxCapacity": 122,
+            "amount": 1855,
+            "maxCapacity": 1855,
             "resourceID": 20
         },
         {
             "position": {
-                "x": -2,
-                "y": -3,
+                "x": -8,
+                "y": 3,
                 "z": 0
             },
-            "amount": 4552,
-            "maxCapacity": 4552,
+            "amount": 2265,
+            "maxCapacity": 2265,
             "resourceID": 20
         },
         {
             "position": {
-                "x": -2,
-                "y": -3,
+                "x": -8,
+                "y": 3,
                 "z": 0
             },
-            "amount": 4552,
-            "maxCapacity": 4552,
+            "amount": 2265,
+            "maxCapacity": 2265,
             "resourceID": 20
         },
         {
             "position": {
-                "x": -23,
-                "y": 15,
+                "x": -17,
+                "y": 1,
                 "z": 0
             },
-            "amount": 1991,
-            "maxCapacity": 1991,
+            "amount": 3506,
+            "maxCapacity": 3506,
             "resourceID": 20
         },
         {
             "position": {
-                "x": -23,
-                "y": 15,
+                "x": -17,
+                "y": 1,
                 "z": 0
             },
-            "amount": 1991,
-            "maxCapacity": 1991,
+            "amount": 3506,
+            "maxCapacity": 3506,
             "resourceID": 20
         }
     ],

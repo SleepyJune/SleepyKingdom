@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3328561225765812245
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1549847044852996, guid: 87960b666b79b6c46886e2faf9da3c65, type: 3}
+      propertyPath: m_Name
+      value: MunchkinCat
+      objectReference: {fileID: 0}
+    - target: {fileID: 4453367529752566, guid: 87960b666b79b6c46886e2faf9da3c65, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4453367529752566, guid: 87960b666b79b6c46886e2faf9da3c65, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4453367529752566, guid: 87960b666b79b6c46886e2faf9da3c65, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4453367529752566, guid: 87960b666b79b6c46886e2faf9da3c65, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4453367529752566, guid: 87960b666b79b6c46886e2faf9da3c65, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4453367529752566, guid: 87960b666b79b6c46886e2faf9da3c65, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4453367529752566, guid: 87960b666b79b6c46886e2faf9da3c65, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4453367529752566, guid: 87960b666b79b6c46886e2faf9da3c65, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4453367529752566, guid: 87960b666b79b6c46886e2faf9da3c65, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4453367529752566, guid: 87960b666b79b6c46886e2faf9da3c65, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4453367529752566, guid: 87960b666b79b6c46886e2faf9da3c65, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8436851236172082915, guid: 87960b666b79b6c46886e2faf9da3c65,
+        type: 3}
+      propertyPath: name
+      value: MuchinkinCat
+      objectReference: {fileID: 0}
+    - target: {fileID: 8436851236172082915, guid: 87960b666b79b6c46886e2faf9da3c65,
+        type: 3}
+      propertyPath: id
+      value: 77
+      objectReference: {fileID: 0}
+    - target: {fileID: 8436851236172082915, guid: 87960b666b79b6c46886e2faf9da3c65,
+        type: 3}
+      propertyPath: faceImage
+      value: 
+      objectReference: {fileID: 21300012, guid: 42ce449417039b74691af905198fd738,
+        type: 3}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 87960b666b79b6c46886e2faf9da3c65, type: 3}

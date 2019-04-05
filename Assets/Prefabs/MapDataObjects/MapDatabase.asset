@@ -301,9 +301,9 @@ MonoBehaviour:
   castleSpawnTiles: []
   interactableSpawnTiles: []
   animalSpawnTiles:
-  - {fileID: 114584314841414972}
-  - {fileID: 114947954428387452}
-  countryCounter: 137
+  - {fileID: 114262128040430700}
+  - {fileID: 114423327879591524}
+  countryCounter: 184
 --- !u!114 &114161317939258222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -467,6 +467,42 @@ MonoBehaviour:
   m_ColliderType: 1
   position: {x: -11, y: -29, z: 0}
   prefab: {fileID: 6268581729690006768, guid: b1a7a455fa0ba1a4c8ddd18025da288e, type: 3}
+--- !u!114 &114262128040430700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 838dc2d153a12414ebe379e8334e3b4d, type: 3}
+  m_Name: Animal SpawnTile
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 21300018, guid: 42ce449417039b74691af905198fd738, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 0.5
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 0.5
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 0
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 2
+  m_ColliderType: 1
+  position: {x: -3, y: -9, z: 0}
+  prefab: {fileID: 6567615718864639734, guid: 6fce9004e18741a44892de255f7e91b5, type: 3}
 --- !u!114 &114299987165721052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -666,6 +702,42 @@ MonoBehaviour:
   m_ColliderType: 1
   position: {x: 17, y: 10, z: 0}
   prefab: {fileID: 6268581729690006768, guid: 97329510d00995f4abd1a2b76eef765d, type: 3}
+--- !u!114 &114423327879591524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 838dc2d153a12414ebe379e8334e3b4d, type: 3}
+  m_Name: Animal SpawnTile
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 21300004, guid: 42ce449417039b74691af905198fd738, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 0.5
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 0.5
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 0
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 2
+  m_ColliderType: 1
+  position: {x: -5, y: -10, z: 0}
+  prefab: {fileID: 6567615718864639734, guid: f2e8568677e6c364f96a1b62d5d52544, type: 3}
 --- !u!114 &114430655050095634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -865,42 +937,6 @@ MonoBehaviour:
   m_ColliderType: 1
   position: {x: -10, y: -20, z: 0}
   prefab: {fileID: 6268581729690006768, guid: bdaa58fa60d4c1f4d9dadb7220dbee6c, type: 3}
---- !u!114 &114584314841414972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 838dc2d153a12414ebe379e8334e3b4d, type: 3}
-  m_Name: Animal SpawnTile
-  m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300004, guid: 42ce449417039b74691af905198fd738, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Transform:
-    e00: 0.5
-    e01: 0
-    e02: 0
-    e03: 0
-    e10: 0
-    e11: 0.5
-    e12: 0
-    e13: 0
-    e20: 0
-    e21: 0
-    e22: 1
-    e23: 0
-    e30: 0
-    e31: 0
-    e32: 0
-    e33: 0
-  m_InstancedGameObject: {fileID: 0}
-  m_Flags: 2
-  m_ColliderType: 1
-  position: {x: -3, y: -9, z: 0}
-  prefab: {fileID: 8436851236172082915, guid: ab4087371af8f7244bd5f19fde22f559, type: 3}
 --- !u!114 &114633101537665258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1285,42 +1321,6 @@ MonoBehaviour:
   m_ColliderType: 1
   position: {x: -12, y: -25, z: 0}
   prefab: {fileID: 6268581729690006768, guid: f9a1063e517bf85499798f22a616627f, type: 3}
---- !u!114 &114947954428387452
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 838dc2d153a12414ebe379e8334e3b4d, type: 3}
-  m_Name: Animal SpawnTile
-  m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300004, guid: 42ce449417039b74691af905198fd738, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Transform:
-    e00: 0.5
-    e01: 0
-    e02: 0
-    e03: 0
-    e10: 0
-    e11: 0.5
-    e12: 0
-    e13: 0
-    e20: 0
-    e21: 0
-    e22: 1
-    e23: 0
-    e30: 0
-    e31: 0
-    e32: 0
-    e33: 0
-  m_InstancedGameObject: {fileID: 0}
-  m_Flags: 2
-  m_ColliderType: 1
-  position: {x: -5, y: -10, z: 0}
-  prefab: {fileID: 8436851236172082915, guid: ab4087371af8f7244bd5f19fde22f559, type: 3}
 --- !u!114 &114953079698623748
 MonoBehaviour:
   m_ObjectHideFlags: 0

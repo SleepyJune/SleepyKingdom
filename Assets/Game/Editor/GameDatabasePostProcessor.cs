@@ -18,6 +18,13 @@ class GameDatabasePostProcessor : AssetPostprocessor
         public string[] deletedAssets;
         public string[] movedAssets;
         public string[] movedFromAssetPaths;
+
+        public HashSet<string> importedSet = new HashSet<string>();
+
+        public void MakeDictionary()
+        {
+            importedAssets.ToList().ForEach(x => importedSet.Add(x));
+        }
     }
 
     static void OnPostprocessAllAssets(string[] importedAssets, string[] deletedAssets, string[] movedAssets, string[] movedFromAssetPaths)
@@ -26,7 +33,7 @@ class GameDatabasePostProcessor : AssetPostprocessor
         {
             database = (GameDatabase)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/GameDataObjects/GameDatabase.asset", typeof(GameDatabase));
         }
-
+                
         var info = new AssetInfo()
         {
             importedAssets = importedAssets,
@@ -34,6 +41,8 @@ class GameDatabasePostProcessor : AssetPostprocessor
             movedAssets = movedAssets,
             movedFromAssetPaths = movedFromAssetPaths,
         };
+
+        info.MakeDictionary();
 
         CheckModified("/Prefabs/GameDataObjects/", ref database.allObjects, "*.asset", info);
 
@@ -82,8 +91,29 @@ class GameDatabasePostProcessor : AssetPostprocessor
         {
             EditorHelperFunctions.GenerateFromAsset(path, ref collection, database, searchPattern);
 
+            CheckName(collection, info);
             CheckCollection(collection, info);
         }
+    }
+
+    static void CheckName<T>(T[] collection, AssetInfo info) where T : UnityEngine.Object, IGameDataObject
+    {
+        foreach (var item in collection)
+        {
+            var path = AssetDatabase.GetAssetPath(item);
+
+            if (info.importedSet.Contains(path))
+            {
+                var pathName = Path.GetFileNameWithoutExtension(path);
+
+                if (pathName != item.GetName())
+                {
+                    Debug.Log("Auto set filename: " + item.GetName());
+                    AssetDatabase.RenameAsset(path, item.GetName());
+                }
+            }
+        }
+        
     }
 
     static void CheckCollection<T>(T[] collection, AssetInfo info) where T : UnityEngine.Object, IGameDataObject
@@ -99,7 +129,7 @@ class GameDatabasePostProcessor : AssetPostprocessor
 
             var path = AssetDatabase.GetAssetPath(item);
 
-            if (info.importedAssets.Contains(path))
+            if (info.importedSet.Contains(path))
             {
                 checkItems.Add(item);
             }

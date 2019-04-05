@@ -12,6 +12,8 @@ public class MapAnimalManager : MonoBehaviour
 
     private Dictionary<AnimalSpawnTile, int> animalsSpawned = new Dictionary<AnimalSpawnTile, int>();
 
+    public AnimalCapturePopup capturePopupPrefab;
+
     MapUnitManager unitManager;
 
     private void Start()
