@@ -58,6 +58,8 @@ public class MapInteractableManager : MonoBehaviour
             newInteractable.position = save.position;
 
             interactables.Add(save.position, newInteractable);
+
+            unitManager.AddUnit(newInteractable);
         }
     }
 

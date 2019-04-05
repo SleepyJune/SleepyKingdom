@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -22,7 +23,9 @@ public class MapAnimalManager : MonoBehaviour
 
     public void Update()
     {
-        foreach(var pair in animalsSpawned)
+        //Dictionary<AnimalSpawnTile, int> toBeUpdated = new Dictionary<AnimalSpawnTile, int>();
+
+        foreach (var pair in animalsSpawned.ToList())
         {
             var spawnTile = pair.Key;
             var numSpawned = pair.Value;
@@ -37,8 +40,13 @@ public class MapAnimalManager : MonoBehaviour
                     {
                         var newAnimal = Instantiate(animal, unitManager.unitParent);
                         newAnimal.position = spawnTile.position;
+                        newAnimal.spawnTile = spawnTile;
 
                         animals.Add(newAnimal);
+
+                        unitManager.AddUnit(newAnimal);
+
+                        animalsSpawned[spawnTile] = numSpawned + 1;
                     }
                 }
             }

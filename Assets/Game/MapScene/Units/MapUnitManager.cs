@@ -61,7 +61,7 @@ public class MapUnitManager : MonoBehaviour
         Destroy(unit.gameObject);
     }
 
-    public void InitializeUnit(MapUnit unit)
+    public void AddUnit(MapUnit unit)
     {
         unit.unitManager = this;
         unit.unitId = unitCounter;

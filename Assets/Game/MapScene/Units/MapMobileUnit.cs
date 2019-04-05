@@ -16,6 +16,9 @@ public class MapMobileUnit : MapUnit
     public Vector3Int[] path;
 
     [NonSerialized]
+    public Vector3Int queuedTargetPos = new Vector3Int(-999, -999, -999);
+
+    [NonSerialized]
     public float startMovingTime;
 
     public bool canMove = true;
@@ -29,6 +32,12 @@ public class MapMobileUnit : MapUnit
 
     public virtual bool SetMovePosition(Vector3Int pos)
     {
+        if (isMoving)
+        {
+            queuedTargetPos = pos;
+            return true;
+        }
+
         var tempPath = Pathfinder.GetShortestPath(this, position, pos, true);
 
         if (tempPath != null && tempPath.Length > 1)
@@ -82,7 +91,7 @@ public class MapMobileUnit : MapUnit
                     angle += 360;
                 }
 
-                var oldRot = transform.rotation;                
+                var oldRot = transform.rotation;
 
                 transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
@@ -104,6 +113,17 @@ public class MapMobileUnit : MapUnit
 
             position = path[currentPosIndex];
 
+            if (queuedTargetPos != new Vector3Int(-999, -999, -999) && position != oldPos)
+            {
+                var tempPos = queuedTargetPos;
+                isMoving = false;
+
+                SetMovePosition(queuedTargetPos);
+                queuedTargetPos = new Vector3Int(-999, -999, -999);
+
+                isMoving = true;
+            }
+
             OnPositionChanged(oldPos, position);
         }
         else
@@ -114,11 +134,11 @@ public class MapMobileUnit : MapUnit
             transform.position = currentPos;
 
             Vector3Int oldPos = position;
-            
+
             position = lastPos;
 
             OnPositionChanged(oldPos, position);
-            
+
             path = null;
 
             isMoving = false;

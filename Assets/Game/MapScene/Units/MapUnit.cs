@@ -24,7 +24,7 @@ public class MapUnit : GameDataPrefab
 
     protected virtual void Start()
     {
-        MapSceneManager.instance.unitManager.InitializeUnit(this);
+        MapSceneManager.instance.unitManager.AddUnit(this);
 
         tilemap = Pathfinder.tilemap;
 
