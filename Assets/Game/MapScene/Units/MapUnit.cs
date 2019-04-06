@@ -79,7 +79,15 @@ public class MapUnit : GameDataPrefab
 
     public bool isClose(MapUnit unit)
     {
-        return gameTile == unit.gameTile || gameTile.neighbours.Contains(unit.gameTile);
+        var myGameTile = Pathfinder.GetGameTile(transform.position);
+        var unitGameTile = Pathfinder.GetGameTile(unit.transform.position);
+
+        if(myGameTile != null && unitGameTile != null)
+        {
+            return myGameTile == unitGameTile || myGameTile.neighbours.Contains(unitGameTile);
+        }
+
+        return false;
     }
 
     public float Distance(MapUnit unit)

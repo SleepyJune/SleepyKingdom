@@ -38,6 +38,8 @@ public class ActionBarController : Popup
 
     private UnitCommandType currentCommand = UnitCommandType.None;
 
+    float lastUpdateTime;
+
     private void Start()
     {
         unitManager = MapSceneManager.instance.unitManager;
@@ -53,7 +55,33 @@ public class ActionBarController : Popup
         }
     }
 
-    void UseTarget()
+    private void Update()
+    {
+        if(Time.time - lastUpdateTime > .5f)
+        {
+            if(targetUnit != null)
+            {
+                if(targetUnit is MapMobileUnit)
+                {
+                    if (targetUnit.isCloseToShip())
+                    {
+                        UseTarget();
+                    }
+                    else
+                    {
+                        if (targetUnit.position != unitManager.myShip.targetPos)
+                        {
+                            unitManager.myShip.SetMovePosition(targetUnit.position);
+                        }
+                    }
+                }
+            }
+
+            lastUpdateTime = Time.time;
+        }
+    }
+
+    bool UseTarget()
     {
         if (targetUnit != null)
         {
@@ -64,8 +92,23 @@ public class ActionBarController : Popup
                     var resource = targetUnit as MapResource;
                     unitManager.mapResourcesManager.StartCollecting(resource);
                 }
+                else if(targetUnit is AnimalUnit)
+                {
+                    var animal = targetUnit as AnimalUnit;
+                    Debug.Log("Captured: " + animal.name);
+
+                    animal.Death();
+                }
+
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
+
+        return true;
     }
 
     public void OnShipDestinationReached()
@@ -78,7 +121,7 @@ public class ActionBarController : Popup
         if (target)
         {
             targetUnit = target;
-            if (targetUnit is MapResource)
+            if (targetUnit is MapUnit)
             {
                 if (targetUnit.isCloseToShip())
                 {

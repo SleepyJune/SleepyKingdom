@@ -8,7 +8,7 @@ using UnityEngine;
 public class MapAnimalManager : MonoBehaviour
 {
     [NonSerialized]
-    public List<AnimalUnit> animals = new List<AnimalUnit>();
+    public HashSet<AnimalUnit> animals = new HashSet<AnimalUnit>();
 
     private Dictionary<AnimalSpawnTile, int> animalsSpawned = new Dictionary<AnimalSpawnTile, int>();
 
@@ -59,7 +59,7 @@ public class MapAnimalManager : MonoBehaviour
     {
         Unload();
 
-        animals = new List<AnimalUnit>();
+        animals = new HashSet<AnimalUnit>();
 
         foreach (var save in GameManager.instance.gamedatabaseManager.currentMap.animalSpawnTileDictionary.Values)
         {
@@ -71,7 +71,13 @@ public class MapAnimalManager : MonoBehaviour
     {
         foreach (var animal in animals)
         {
-            Destroy(animal.gameObject);
+            animal.Death();
         }
+    }
+
+    public void RemoveAnimal(AnimalUnit animal)
+    {
+        animals.Remove(animal);
+        animalsSpawned[animal.spawnTile] -= 1;
     }
 }

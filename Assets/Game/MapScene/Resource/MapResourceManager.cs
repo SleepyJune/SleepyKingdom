@@ -23,7 +23,7 @@ public class MapResourceManager : MonoBehaviour
     public MapResource currentCollecting;
 
     [NonSerialized]
-    public List<MapResource> resources = new List<MapResource>();
+    public HashSet<MapResource> resources = new HashSet<MapResource>();
 
     float lastUpdateTime;
 
@@ -116,11 +116,11 @@ public class MapResourceManager : MonoBehaviour
         {
             if(resource && resource.gameObject)
             {
-                Destroy(resource.gameObject);
+                resource.Death();
             }
         }
 
-        resources = new List<MapResource>();
+        resources = new HashSet<MapResource>();
     }
 
     void CollectResource()

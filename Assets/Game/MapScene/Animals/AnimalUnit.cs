@@ -76,4 +76,10 @@ public class AnimalUnit : MapMobileUnit
             newPopup.SetAnimal(this);
         }
     }
+
+    public override void Death()
+    {
+        unitManager.animalManager.RemoveAnimal(this);
+        base.Death();
+    }
 }

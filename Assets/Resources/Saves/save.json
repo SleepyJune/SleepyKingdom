@@ -11,20 +11,20 @@
         "mapName": "PEI",
         "lastMapName": "PEI",
         "lastMapPosition": {
-            "x": 3,
-            "y": -11,
+            "x": -2,
+            "y": -8,
             "z": 0
         },
         "position": {
-            "x": 3,
-            "y": -11,
+            "x": 0,
+            "y": -7,
             "z": 0
         },
         "rotation": {
             "x": 0.0,
             "y": 0.0,
-            "z": 0.70710688829422,
-            "w": 0.7071067094802856
+            "z": -0.7071068286895752,
+            "w": 0.7071068286895752
         },
         "water": 0,
         "wheat": 0,
@@ -35,62 +35,52 @@
     "mapResources": [
         {
             "position": {
-                "x": 11,
+                "x": 5,
                 "y": -14,
                 "z": 0
             },
-            "amount": 1855,
-            "maxCapacity": 1855,
-            "resourceID": 20
-        },
-        {
-            "position": {
-                "x": 11,
-                "y": -14,
-                "z": 0
-            },
-            "amount": 1855,
-            "maxCapacity": 1855,
-            "resourceID": 20
+            "amount": 3475,
+            "maxCapacity": 3475,
+            "resourceID": 21
         },
         {
             "position": {
                 "x": -8,
-                "y": 3,
+                "y": 2,
                 "z": 0
             },
-            "amount": 2265,
-            "maxCapacity": 2265,
+            "amount": 431,
+            "maxCapacity": 431,
             "resourceID": 20
         },
         {
             "position": {
-                "x": -8,
-                "y": 3,
+                "x": -19,
+                "y": 9,
                 "z": 0
             },
-            "amount": 2265,
-            "maxCapacity": 2265,
+            "amount": 4100,
+            "maxCapacity": 4100,
             "resourceID": 20
         },
         {
             "position": {
-                "x": -17,
+                "x": -4,
                 "y": 1,
                 "z": 0
             },
-            "amount": 3506,
-            "maxCapacity": 3506,
+            "amount": 2712,
+            "maxCapacity": 2712,
             "resourceID": 20
         },
         {
             "position": {
-                "x": -17,
-                "y": 1,
+                "x": 24,
+                "y": 2,
                 "z": 0
             },
-            "amount": 3506,
-            "maxCapacity": 3506,
+            "amount": 2132,
+            "maxCapacity": 2132,
             "resourceID": 20
         }
     ],

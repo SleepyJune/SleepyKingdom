@@ -18,4 +18,13 @@ public class AnimalCapturePopup : Popup
                 
         faceImage.sprite = animal.faceImage;
     }
+
+    public void OnButtonPressed()
+    {
+        if (animal != null)
+        {
+            animal.unitManager.actionBar.SetTarget(animal);
+            Close();
+        }
+    }
 }
