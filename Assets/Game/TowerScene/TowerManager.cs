@@ -4,32 +4,38 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-public class TowerManager : MonoBehaviour
+namespace TowerScene
 {
-    [NonSerialized]
-    public HouseSlotManager houseSlotManager;
-
-    [NonSerialized]
-    public HousePopupManager housePopupManager;
-
-    public HouseInspectPopup houseInspectPopup;
-
-    public static TowerManager instance = null;
-
-    void Awake()
+    public class TowerManager : MonoBehaviour
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(this);
-        }
-        else if (instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
+        [NonSerialized]
+        public HouseSlotManager houseSlotManager;
 
-        houseSlotManager = GetComponent<HouseSlotManager>();
-        housePopupManager = GetComponent<HousePopupManager>();
+        public HouseInspectPopup houseInspectPopup;
+
+        public static TowerManager instance = null;
+
+        public Transform popupParent;
+
+        public SideUIController sideUIController;
+
+        [NonSerialized]
+        public TemporaryHouseSlot temporaryHouse;
+
+        void Awake()
+        {
+            if (instance == null)
+            {
+                instance = this;
+                DontDestroyOnLoad(this);
+            }
+            else if (instance != this)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            houseSlotManager = GetComponent<HouseSlotManager>();
+        }
     }
 }

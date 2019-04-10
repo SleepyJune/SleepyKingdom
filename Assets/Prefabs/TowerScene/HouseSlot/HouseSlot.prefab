@@ -138,8 +138,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4801944292299900008}
   - component: {fileID: 3498472855881642210}
+  - component: {fileID: 6995216341612835722}
   m_Layer: 5
-  m_Name: CageSlot
+  m_Name: HouseSlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -178,3 +179,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   houseIcon: {fileID: 5466619859594743854}
+--- !u!225 &6995216341612835722
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3894317815685916112}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

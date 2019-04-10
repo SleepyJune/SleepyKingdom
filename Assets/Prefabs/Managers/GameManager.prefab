@@ -59,6 +59,7 @@ GameObject:
   - component: {fileID: 114832715140779184}
   - component: {fileID: 114441995602465836}
   - component: {fileID: 114298329028251624}
+  - component: {fileID: 1363650178286091675}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -107,6 +108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   database: {fileID: 11400000, guid: 712e1cf080c8d7f43b26c5062f0500d1, type: 2}
   mapDatabase: {fileID: 11400000, guid: 5665f65c3c7ce2f4ea4557b28a3d0c2c, type: 2}
+  currentMap: {fileID: 0}
 --- !u!114 &114021183068192512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,8 +157,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe22d09537b88234cb426e86cc03195b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  createCountryPrefab: {fileID: 114393483414073790, guid: 67c3df78b28fca741aadf1137c176af1,
-    type: 3}
 --- !u!114 &114298329028251624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,3 +169,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b9a877228932744095a19631ec5a47a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1363650178286091675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1535288021289118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fea114ccccc25634ba3063c9b4d70eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultHouseObject: {fileID: 11400000, guid: 07569b08f0c84f44fb0973eac4d45ff7, type: 2}
+  houseLevels:
+  - {fileID: 11400000, guid: c799b67906507944b9a5a6c83d08dd9f, type: 2}
+  - {fileID: 11400000, guid: 9a4f52a76d9f22f44afd68feeef72674, type: 2}
+  - {fileID: 11400000, guid: 3247e53b91226084eaf0e9199465ce60, type: 2}
+  - {fileID: 11400000, guid: b9b6589810563e946965d000ef5fc585, type: 2}
+  - {fileID: 11400000, guid: 8e3e55587dbba6e42bdb5d4fe04a24d7, type: 2}
+  - {fileID: 11400000, guid: caa80f2cc0e2af14ea7a603f6826903f, type: 2}
+  - {fileID: 11400000, guid: 201f5f42752827743a01c9055078ce05, type: 2}

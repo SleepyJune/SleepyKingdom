@@ -5,27 +5,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HouseInspectPopup : Popup
+namespace TowerScene
 {
-    House currentSelectedHouse;
-
-    public Image houseImage;
-    public Image animalImage;
-
-    public void SetHouse(House house)
+    public class HouseInspectPopup : Popup
     {
-        currentSelectedHouse = house;
+        House currentSelectedHouse;
 
-        if (house != null)
+        public Image houseImage;
+        public Image animalImage;
+
+        public void SetHouse(House house)
         {
+            currentSelectedHouse = house;
 
-            if (house.houseObject)
+            if (house != null)
             {
-                houseImage.sprite = house.houseObject.image;
+
+                if (house.houseObject)
+                {
+                    houseImage.sprite = house.houseObject.image;
+                }
+
+                Show();
             }
 
-            Show();
         }
-
     }
 }

@@ -7,12 +7,145 @@
         "gold": 0,
         "gems": 0
     },
+    "houseLevels": [
+        {
+            "houses": [
+                {
+                    "animal": {
+                        "animalUnitId": 0,
+                        "happiness": 10
+                    },
+                    "houseObjectId": -1
+                },
+                {
+                    "animal": {
+                        "animalUnitId": 0,
+                        "happiness": 10
+                    },
+                    "houseObjectId": 81
+                },
+                {
+                    "animal": {
+                        "animalUnitId": 0,
+                        "happiness": 10
+                    },
+                    "houseObjectId": -1
+                },
+                {
+                    "animal": {
+                        "animalUnitId": 0,
+                        "happiness": 10
+                    },
+                    "houseObjectId": 79
+                },
+                {
+                    "animal": {
+                        "animalUnitId": 0,
+                        "happiness": 10
+                    },
+                    "houseObjectId": 77
+                },
+                {
+                    "animal": {
+                        "animalUnitId": 0,
+                        "happiness": 10
+                    },
+                    "houseObjectId": 79
+                }
+            ]
+        },
+        {
+            "houses": [
+                {
+                    "animal": {
+                        "animalUnitId": 0,
+                        "happiness": 10
+                    },
+                    "houseObjectId": -1
+                },
+                {
+                    "animal": {
+                        "animalUnitId": 0,
+                        "happiness": 10
+                    },
+                    "houseObjectId": -1
+                },
+                {
+                    "animal": {
+                        "animalUnitId": 0,
+                        "happiness": 10
+                    },
+                    "houseObjectId": -1
+                },
+                {
+                    "animal": {
+                        "animalUnitId": 0,
+                        "happiness": 10
+                    },
+                    "houseObjectId": -1
+                },
+                {
+                    "animal": {
+                        "animalUnitId": 0,
+                        "happiness": 10
+                    },
+                    "houseObjectId": -1
+                }
+            ]
+        },
+        {
+            "houses": [
+                {
+                    "animal": {
+                        "animalUnitId": 0,
+                        "happiness": 10
+                    },
+                    "houseObjectId": -1
+                },
+                {
+                    "animal": {
+                        "animalUnitId": 0,
+                        "happiness": 10
+                    },
+                    "houseObjectId": -1
+                },
+                {
+                    "animal": {
+                        "animalUnitId": 0,
+                        "happiness": 10
+                    },
+                    "houseObjectId": -1
+                },
+                {
+                    "animal": {
+                        "animalUnitId": 0,
+                        "happiness": 10
+                    },
+                    "houseObjectId": -1
+                },
+                {
+                    "animal": {
+                        "animalUnitId": 0,
+                        "happiness": 10
+                    },
+                    "houseObjectId": -1
+                }
+            ]
+        }
+    ],
+    "temporaryHouse": {
+        "animal": {
+            "animalUnitId": 0,
+            "happiness": 10
+        },
+        "houseObjectId": 77
+    },
     "myShip": {
         "mapName": "PEI",
         "lastMapName": "PEI",
         "lastMapPosition": {
-            "x": -2,
-            "y": -8,
+            "x": 0,
+            "y": -7,
             "z": 0
         },
         "position": {
@@ -35,52 +168,52 @@
     "mapResources": [
         {
             "position": {
-                "x": 5,
-                "y": -14,
+                "x": 6,
+                "y": -12,
                 "z": 0
             },
-            "amount": 3475,
-            "maxCapacity": 3475,
-            "resourceID": 21
-        },
-        {
-            "position": {
-                "x": -8,
-                "y": 2,
-                "z": 0
-            },
-            "amount": 431,
-            "maxCapacity": 431,
+            "amount": 4622,
+            "maxCapacity": 4622,
             "resourceID": 20
         },
         {
             "position": {
-                "x": -19,
-                "y": 9,
+                "x": -18,
+                "y": 8,
                 "z": 0
             },
-            "amount": 4100,
-            "maxCapacity": 4100,
+            "amount": 819,
+            "maxCapacity": 819,
             "resourceID": 20
         },
         {
             "position": {
-                "x": -4,
-                "y": 1,
+                "x": 0,
+                "y": -3,
                 "z": 0
             },
-            "amount": 2712,
-            "maxCapacity": 2712,
+            "amount": 1038,
+            "maxCapacity": 1038,
             "resourceID": 20
         },
         {
             "position": {
-                "x": 24,
-                "y": 2,
+                "x": 10,
+                "y": -21,
                 "z": 0
             },
-            "amount": 2132,
-            "maxCapacity": 2132,
+            "amount": 4255,
+            "maxCapacity": 4255,
+            "resourceID": 20
+        },
+        {
+            "position": {
+                "x": -14,
+                "y": -2,
+                "z": 0
+            },
+            "amount": 4469,
+            "maxCapacity": 4469,
             "resourceID": 20
         }
     ],

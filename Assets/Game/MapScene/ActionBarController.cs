@@ -95,6 +95,8 @@ public class ActionBarController : Popup
                 else if(targetUnit is AnimalUnit)
                 {
                     var animal = targetUnit as AnimalUnit;
+                    GameManager.instance.gameStateManager.gameState.temporaryHouse.animal = animal.animal;
+
                     Debug.Log("Captured: " + animal.name);
 
                     animal.Death();

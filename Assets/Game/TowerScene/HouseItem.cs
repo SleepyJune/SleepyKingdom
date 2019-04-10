@@ -5,34 +5,37 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HouseItem : MonoBehaviour
+namespace TowerScene
 {
-    public Image itemIcon;
-    public Text itemName;
-
-    public Text itemDescription;
-
-    HouseObject houseObject;
-
-    HousePopupManager housePopupManager;
-
-    public void SetItem(HouseObject item, HousePopupManager manager)
+    public class HouseItem : MonoBehaviour
     {
-        houseObject = item;
+        public Image itemIcon;
+        public Text itemName;
 
-        this.housePopupManager = manager;
+        public Text itemDescription;
 
-        RefreshItem();
-    }
+        HouseObject houseObject;
 
-    private void RefreshItem()
-    {
-        itemIcon.sprite = houseObject.image;
-        itemName.text = houseObject.name;
-    }
+        HousePopupController controller;
 
-    public void OnButtonPressed()
-    {
-        housePopupManager.SetHouse(houseObject);
+        public void SetItem(HouseObject item, HousePopupController controller)
+        {
+            houseObject = item;
+
+            this.controller = controller;
+
+            RefreshItem();
+        }
+
+        private void RefreshItem()
+        {
+            itemIcon.sprite = houseObject.image;
+            itemName.text = houseObject.name;
+        }
+
+        public void OnButtonPressed()
+        {
+            controller.SetHouse(houseObject);
+        }
     }
 }

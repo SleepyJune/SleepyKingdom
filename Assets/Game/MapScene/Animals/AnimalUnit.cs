@@ -19,6 +19,8 @@ public class AnimalUnit : MapMobileUnit
 
     Vector3Int spawnPosition;
 
+    public Animal animal;
+
     private new void Start()
     {
         base.Start();
@@ -26,6 +28,9 @@ public class AnimalUnit : MapMobileUnit
         spawnPosition = position;
 
         faceRender.sprite = faceImage;
+
+        animal = new Animal();
+        animal.animalUnitId = unitId;
     }
 
     private new void Update()

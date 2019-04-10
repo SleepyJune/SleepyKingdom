@@ -17,8 +17,12 @@ public class GameState
 
     public MyCountry myCountry;
 
-    public Ship myShip;
+    public HouseLevel[] houseLevels = new HouseLevel[0];
 
+    public House temporaryHouse;
+
+    public Ship myShip;
+        
     public string currentMapName;
 
     //public MapCastleSave[] mapCastles = new MapCastleSave[0];
@@ -26,7 +30,7 @@ public class GameState
 
     [NonSerialized]
     private Dictionary<int, Country> countryDictionary = new Dictionary<int, Country>();
-
+    
     public int countryCounter = Country.countryCounter;
 
     public GameState(string countryName)
@@ -57,6 +61,37 @@ public class GameState
         countries = countryDictionary.Values.ToArray();
 
         Save();
+    }
+
+    public void AddHouseLevel()
+    {
+        if (houseLevels.Length < GameManager.instance.defaultHouseManager.houseLevels.Length)
+        {
+            var levelObject = GameManager.instance.defaultHouseManager.houseLevels[houseLevels.Length];
+
+            var newLevel = new HouseLevel();
+            newLevel.houses = new House[levelObject.numHouses];
+
+            var tempList = houseLevels.ToList();
+            tempList.Add(newLevel);
+
+            houseLevels = tempList.ToArray();
+
+            Save();
+        }
+    }
+
+    public void AddHouse(House house, int index)
+    {
+        if(index >= 0 && index < houseLevels.Length)
+        {
+            var level = houseLevels[index];
+
+            level.housesList.Add(house);
+            level.houses = level.housesList.ToArray();
+
+            Save();
+        }
     }
 
     private void SaveCounters()
@@ -104,6 +139,25 @@ public class GameState
         if(countryDictionary == null)
         {
             countryDictionary = new Dictionary<int, Country>();
+        }
+
+        if(houseLevels == null || houseLevels.Length == 0)
+        {
+            //Debug.Log("null house");
+
+            houseLevels = new HouseLevel[0];                    
+
+            temporaryHouse = new House();
+            temporaryHouse.SetHouseObject(GameManager.instance.defaultHouseManager.defaultHouseObject);
+        }
+        else
+        {
+            foreach(var level in houseLevels)
+            {
+                level.Initialize();
+            }
+
+            temporaryHouse.Load();
         }
 
         foreach(var country in countries)

@@ -5,46 +5,87 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HouseSlot : MonoBehaviour
+namespace TowerScene
 {
-    public Image houseIcon;
-
-    House house;
-    
-    HouseSlotManager cageManager;
-    HousePopupManager housePopupManager;
-    HouseInspectPopup houseInspectPopup;
-
-    private void Start()
+    public class HouseSlot : MonoBehaviour
     {
-        cageManager = TowerManager.instance.houseSlotManager;
-        housePopupManager = TowerManager.instance.housePopupManager;
+        public Image houseIcon;
 
-        houseInspectPopup = TowerManager.instance.houseInspectPopup;
+        public int levelIndex;
+        public int houseIndex;
 
-        cageManager.AddCageSlot(this);
-    }
+        [NonSerialized]
+        public House house;
 
-    public void SetHouseObject(HouseObject houseObject)
-    {
-        if(house == null)
+        HouseSlotManager houseManager;
+        HouseInspectPopup houseInspectPopup;
+
+        CanvasGroup canvasGroup;
+
+        private void Start()
         {
-            house = new House();
+            houseManager = TowerManager.instance.houseSlotManager;
+
+            houseInspectPopup = TowerManager.instance.houseInspectPopup;
+
+            canvasGroup = GetComponent<CanvasGroup>();
+
+            houseManager.AddHouseSlot(this);
+
+            HideHouse();
         }
 
-        house.houseObject = houseObject;
-        houseIcon.sprite = house.houseObject.image;
-    }
-
-    public void OnButtonPress()
-    {
-        if (house == null)
+        public void HideHouse()
         {
-            housePopupManager.SetItem(this);
+            if (house == null || house.houseObjectId == -1)
+            {
+                canvasGroup.alpha = 0;
+                canvasGroup.interactable = false;
+            }
+            else
+            {
+                canvasGroup.alpha = 1;
+                canvasGroup.interactable = true;
+            }
         }
-        else
+
+        public void ShowHouse()
         {
-            houseInspectPopup.SetHouse(house);
+            canvasGroup.alpha = 1;
+            canvasGroup.interactable = true;
+        }
+
+        public void SetHouse(House house)
+        {
+            this.house = house;
+
+            if (house.houseObject)
+            {
+                SetHouseObject(house.houseObject);
+            }
+        }
+
+        public void SetHouseObject(HouseObject houseObject)
+        {
+            if (house == null)
+            {
+                house = new House();
+            }
+
+            house.SetHouseObject(houseObject);
+            houseIcon.sprite = house.houseObject.image;
+        }
+
+        public void OnButtonPress()
+        {
+            if (house == null || house.houseObjectId == -1)
+            {
+                houseManager.SetAddHouseSlot(this);
+            }
+            else
+            {
+                houseInspectPopup.SetHouse(house);
+            }
         }
     }
 }
