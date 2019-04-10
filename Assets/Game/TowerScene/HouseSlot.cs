@@ -10,9 +10,12 @@ namespace TowerScene
     public class HouseSlot : MonoBehaviour
     {
         public Image houseIcon;
+        public Image animalIcon;
 
-        public int levelIndex;
-        public int houseIndex;
+        [NonSerialized]
+        public int levelIndex = -1;
+        [NonSerialized]
+        public int houseIndex = -1;
 
         [NonSerialized]
         public House house;
@@ -33,9 +36,22 @@ namespace TowerScene
             houseManager.AddHouseSlot(this);
 
             HideHouse();
+            HideAnimal();
         }
 
-        public void HideHouse()
+        public void HideAnimal()
+        {
+            if(house == null || house.animal == null || house.animal.animalUnitId == -1)
+            {
+                animalIcon.gameObject.SetActive(false);
+            }
+            else
+            {
+                animalIcon.gameObject.SetActive(true);
+            }
+        }
+
+        public virtual void HideHouse()
         {
             if (house == null || house.houseObjectId == -1)
             {
@@ -62,6 +78,13 @@ namespace TowerScene
             if (house.houseObject)
             {
                 SetHouseObject(house.houseObject);
+            }
+                
+            //unity sets uninstantiated prefab as null?
+            if (house.animal != null && house.animal.animalUnitId != -1)
+            {
+                animalIcon.sprite = house.animal.animalUnit.faceImage;
+                HideAnimal();
             }
         }
 

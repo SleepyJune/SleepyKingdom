@@ -8,6 +8,8 @@ namespace TowerScene
 {
     public class HouseSlotManager : MonoBehaviour
     {
+        public TemporaryHouseSlot temporaryHouse;
+
         public HouseLevelObject[] houseLevelObjects;
 
         public Transform[] houseLevelParents;
@@ -20,7 +22,7 @@ namespace TowerScene
         
         [NonSerialized]
         public bool isShowingHouse = false;
-
+        
         private void Start()
         {
             for (int i = 0; i < houseLevelObjects.Length; i++)
@@ -36,6 +38,10 @@ namespace TowerScene
                     AddHouseSlot(newHouse);
                 }
             }
+
+            temporaryHouse.SetHouse(GameManager.instance.gameStateManager.gameState.temporaryHouse);
+
+            Debug.Log(temporaryHouse.house.animal.animalUnit.id);
         }
 
         public void ToggleShowHouse(bool show)
@@ -64,11 +70,11 @@ namespace TowerScene
         {
             var gameState = GameManager.instance.gameStateManager.gameState;
 
-            if(slot.levelIndex < gameState.houseLevels.Length)
+            if(slot.levelIndex >= 0 && slot.levelIndex < gameState.houseLevels.Length)
             {
                 var level = gameState.houseLevels[slot.levelIndex];
 
-                if(slot.houseIndex < level.houses.Length)
+                if(slot.houseIndex >= 0 && slot.houseIndex < level.houses.Length)
                 {
                     var house = gameState.houseLevels[slot.levelIndex].houses[slot.houseIndex];
 

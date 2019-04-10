@@ -19,9 +19,6 @@ namespace TowerScene
 
         public SideUIController sideUIController;
 
-        [NonSerialized]
-        public TemporaryHouseSlot temporaryHouse;
-
         void Awake()
         {
             if (instance == null)

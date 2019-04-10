@@ -6,22 +6,11 @@ using UnityEngine;
 
 namespace TowerScene
 {
-    public class TemporaryHouseSlot : MonoBehaviour
-    {
-        House house;
-
-        HouseSlotManager houseManager;
-        HouseInspectPopup houseInspectPopup;
-
-        CanvasGroup canvasGroup;
-
-        private void Start()
+    public class TemporaryHouseSlot : HouseSlot
+    {        
+        public override void HideHouse()
         {
-            houseManager = TowerManager.instance.houseSlotManager;
 
-            houseInspectPopup = TowerManager.instance.houseInspectPopup;
-
-            //houseManager.AddHouseSlot(this);
         }
     }
 }

@@ -31,6 +31,7 @@ public class AnimalUnit : MapMobileUnit
 
         animal = new Animal();
         animal.animalUnitId = unitId;
+        animal.animalUnit = this;
     }
 
     private new void Update()

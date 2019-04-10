@@ -12,120 +12,42 @@
             "houses": [
                 {
                     "animal": {
-                        "animalUnitId": 0,
+                        "animalUnitId": -1,
                         "happiness": 10
                     },
                     "houseObjectId": -1
                 },
                 {
                     "animal": {
-                        "animalUnitId": 0,
+                        "animalUnitId": -1,
                         "happiness": 10
                     },
                     "houseObjectId": 81
                 },
                 {
                     "animal": {
-                        "animalUnitId": 0,
+                        "animalUnitId": -1,
                         "happiness": 10
                     },
                     "houseObjectId": -1
                 },
                 {
                     "animal": {
-                        "animalUnitId": 0,
+                        "animalUnitId": -1,
+                        "happiness": 10
+                    },
+                    "houseObjectId": -1
+                },
+                {
+                    "animal": {
+                        "animalUnitId": -1,
                         "happiness": 10
                     },
                     "houseObjectId": 79
                 },
                 {
                     "animal": {
-                        "animalUnitId": 0,
-                        "happiness": 10
-                    },
-                    "houseObjectId": 77
-                },
-                {
-                    "animal": {
-                        "animalUnitId": 0,
-                        "happiness": 10
-                    },
-                    "houseObjectId": 79
-                }
-            ]
-        },
-        {
-            "houses": [
-                {
-                    "animal": {
-                        "animalUnitId": 0,
-                        "happiness": 10
-                    },
-                    "houseObjectId": -1
-                },
-                {
-                    "animal": {
-                        "animalUnitId": 0,
-                        "happiness": 10
-                    },
-                    "houseObjectId": -1
-                },
-                {
-                    "animal": {
-                        "animalUnitId": 0,
-                        "happiness": 10
-                    },
-                    "houseObjectId": -1
-                },
-                {
-                    "animal": {
-                        "animalUnitId": 0,
-                        "happiness": 10
-                    },
-                    "houseObjectId": -1
-                },
-                {
-                    "animal": {
-                        "animalUnitId": 0,
-                        "happiness": 10
-                    },
-                    "houseObjectId": -1
-                }
-            ]
-        },
-        {
-            "houses": [
-                {
-                    "animal": {
-                        "animalUnitId": 0,
-                        "happiness": 10
-                    },
-                    "houseObjectId": -1
-                },
-                {
-                    "animal": {
-                        "animalUnitId": 0,
-                        "happiness": 10
-                    },
-                    "houseObjectId": -1
-                },
-                {
-                    "animal": {
-                        "animalUnitId": 0,
-                        "happiness": 10
-                    },
-                    "houseObjectId": -1
-                },
-                {
-                    "animal": {
-                        "animalUnitId": 0,
-                        "happiness": 10
-                    },
-                    "houseObjectId": -1
-                },
-                {
-                    "animal": {
-                        "animalUnitId": 0,
+                        "animalUnitId": -1,
                         "happiness": 10
                     },
                     "houseObjectId": -1
@@ -135,7 +57,7 @@
     ],
     "temporaryHouse": {
         "animal": {
-            "animalUnitId": 0,
+            "animalUnitId": 11,
             "happiness": 10
         },
         "houseObjectId": 77
@@ -144,20 +66,20 @@
         "mapName": "PEI",
         "lastMapName": "PEI",
         "lastMapPosition": {
-            "x": 0,
-            "y": -7,
+            "x": -3,
+            "y": -8,
             "z": 0
         },
         "position": {
-            "x": 0,
-            "y": -7,
+            "x": -1,
+            "y": -6,
             "z": 0
         },
         "rotation": {
             "x": 0.0,
             "y": 0.0,
-            "z": -0.7071068286895752,
-            "w": 0.7071068286895752
+            "z": -0.28978416323661806,
+            "w": 0.9570920467376709
         },
         "water": 0,
         "wheat": 0,
@@ -168,52 +90,52 @@
     "mapResources": [
         {
             "position": {
-                "x": 6,
-                "y": -12,
+                "x": -12,
+                "y": -8,
                 "z": 0
             },
-            "amount": 4622,
-            "maxCapacity": 4622,
+            "amount": 2224,
+            "maxCapacity": 2224,
+            "resourceID": 21
+        },
+        {
+            "position": {
+                "x": 17,
+                "y": -16,
+                "z": 0
+            },
+            "amount": 215,
+            "maxCapacity": 215,
             "resourceID": 20
         },
         {
             "position": {
-                "x": -18,
-                "y": 8,
+                "x": -4,
+                "y": 1,
                 "z": 0
             },
-            "amount": 819,
-            "maxCapacity": 819,
+            "amount": 2834,
+            "maxCapacity": 2834,
             "resourceID": 20
         },
         {
             "position": {
-                "x": 0,
-                "y": -3,
+                "x": 5,
+                "y": -18,
                 "z": 0
             },
-            "amount": 1038,
-            "maxCapacity": 1038,
+            "amount": 1347,
+            "maxCapacity": 1347,
             "resourceID": 20
         },
         {
             "position": {
-                "x": 10,
-                "y": -21,
+                "x": -19,
+                "y": 9,
                 "z": 0
             },
-            "amount": 4255,
-            "maxCapacity": 4255,
-            "resourceID": 20
-        },
-        {
-            "position": {
-                "x": -14,
-                "y": -2,
-                "z": 0
-            },
-            "amount": 4469,
-            "maxCapacity": 4469,
+            "amount": 2776,
+            "maxCapacity": 2776,
             "resourceID": 20
         }
     ],
